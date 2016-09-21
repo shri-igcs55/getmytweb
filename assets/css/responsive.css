@@ -1,0 +1,302 @@
+
+/*==========================*/
+/*ALL DEVICE OPTIMIZATION*/
+/*===========================*/
+
+/*Large Widescreen Monitors*/
+
+@media (min-width: 1441px) and (max-width: 3000px){
+	
+	.container {
+	    width: 1366px !important;
+	}
+
+
+}
+
+
+/*===============================================================================================*/
+
+
+@media (max-width: 1365px) {
+
+	.container {
+	    /*width: 990px !important;*/
+	}
+	
+}
+/*===============================================================================================*/
+
+
+@media (max-width: 1280px) {
+	
+	.container {
+	    /*width: 990px !important;*/
+	}
+	
+}
+/*===============================================================================================*/
+
+
+/*Very Large Tablets and Medium Laptops*/
+@media (max-width: 1214px) {
+
+	.container {
+	    width: 98% !important;
+	}
+	.footer-mid ul.mid-foot-1 li:last-child{
+		padding-left: 20px;
+	}
+	.sign-up-page .signup-form-wrp{
+		padding: 0;
+	}
+	.MIdle{
+		width: 200px;
+	}
+	.RIght{
+		float: left;
+	}
+	.MIdle p{
+		font-size: 12px;
+	}
+
+
+}
+/*===============================================================================================*/
+
+
+/*Notebooks and Small Laptops*/
+@media (max-width: 1152px) {
+
+	.container {
+	    /*max-width: 900px !important;*/
+	}
+	
+	
+}
+/*===============================================================================================*/
+
+@media (max-width: 1024px) {
+
+	.container {
+	    /*width: 900px !important;*/
+	}
+	.MIdle{
+		width: 180px;
+	}
+	
+
+}
+/*===============================================================================================*/
+
+
+/*iPad Landscape Mode and Large Tablets */
+@media (max-width: 991px) {
+
+	.container {
+	    width: 100% !important;
+	}
+	.col-md-3.pad-0{
+		padding: 15px;
+	}
+	.col-md-6.pad-rit-0{
+		padding-right: 15px;
+	}
+	.signup-wrp .creat_free img{
+		float: none;
+		margin: 0 auto;
+	}
+	.signup-as-wrp{
+		border:none;
+	}
+	.signUpAs_each-wrp{
+		max-width: 650px;
+		margin: 0 auto;
+	}
+}
+/*===============================================================================================*/
+
+/*Small Desktop and Very Small Notebook */
+@media (max-width: 960px) {
+	.container {
+	    /*max-width: 760px !important;*/
+	}
+
+	
+	
+}
+/*===============================================================================================*/
+
+/*windows machine 782px*/
+@media (max-width: 800px) { 
+
+	.container {
+	    /*max-width: 720px !important;*/
+	}
+
+
+}
+/*===============================================================================================*/
+
+/*iPad Portrait Mode, iPad Mini and Small Tablets */
+@media (max-width: 767px) {
+
+	.container {
+	    /*max-width: 600px !important;*/
+	}
+
+	
+
+}
+/*===============================================================================================*/
+
+/*Medium Smart Phones v2*/
+@media (max-width: 640px) {
+
+	.container {
+	    /*max-width: 560px !important;*/
+	}
+	.footer-mid ul.mid-foot-1 li{
+		width: 49%;
+		padding-left: 15%;
+		font-size: 13px;
+	}
+	.footer-mid ul.mid-foot-1 li p span{
+		font-size: 14px;
+	}
+	.footer-mid ul.mid-foot-1 li:last-child{
+		width: 100%;
+		text-align: center;
+		border:none;
+	}
+
+	.footer-mid ul.mid-foot-2 li{
+		width: 49%;
+		padding-left: 2%;
+		font-size: 13px;
+	}
+	.footer-mid ul.mid-foot-2 li p span{
+		font-size: 14px;
+	}
+	.footer-mid ul.mid-foot-2 li:last-child{
+		width: 100%;
+		text-align: center;
+		border:none;
+		padding: 0;
+	}
+
+	.footer-mid ul.mid-foot-2 li img{
+		float: none;
+		margin: 0 auto;
+		padding-top: 30px;
+	}
+	.form_wrp{
+		padding: 30px 20px;
+	}
+	.section_head h1{
+		font-size: 22px;
+	}
+	.search_order_wrp .form-wrp{
+		padding: 20px 30px;
+	}
+	
+
+} 
+/*===============================================================================================*/
+
+/*Google Nexus and Other Large Smart Phones v1*/
+@media (max-width: 600px) {
+
+	.container {
+	    /*max-width: 440px !important;*/
+	}
+
+} 
+/*===============================================================================================*/
+
+/*iPhone Landscape Mode and Mediium Smart Phones*/
+@media (max-width: 480px) {
+
+	.container {
+	    /*width: 320px !important;*/
+	}
+	.footer-mid ul.mid-foot-1 li{
+		width: 49%;
+		padding-left: 5%;
+		font-size: 13px;
+	}
+
+	.signup-as-wrp ul li{
+		height: auto;
+		width: 100%;
+	}
+	.signUpAs_each {
+	    min-width: 100%;
+	}
+	.LEft{
+		width: 100%;
+		text-align: center;
+	}
+	.MIdle{
+		width: 100%;
+		text-align: center;
+	}
+	.MIdle p{
+		font-size: 14px;
+	}
+	.RIght{
+		float: none;
+	    margin: 0 auto;
+	    padding: 10px;
+	    text-align: center;
+	    width: 100%;
+	}
+	.signUpAs_each span img{
+		display: none;
+	}
+	.LEft, .MIdle, .RIght{
+		display: block;
+	}
+	.sign-up-page center h1{
+		font-size: 20px;
+		padding-top: 30px;
+	}
+	.signup-wrp .creat_free p{
+		font-size: 13px;
+	}
+	.each-col {
+	    margin: 0 auto;
+	    width: 200px;
+	}
+
+
+}
+/*===============================================================================================*/
+
+/*Other Major Small Smart Phones*/
+@media (max-width: 360px) {
+
+	.container {
+	    /*max-width: 300px !important;*/
+	}
+
+	.footer-mid ul.mid-foot-1 li{
+		
+		font-size: 10px;
+	}
+	.footer-mid ul.mid-foot-1 li p span{
+		font-size: 12px;
+	}
+	.footer-mid ul.mid-foot-2 li{
+		font-size: 12px;
+	}
+	.sign-up-page center h1{
+		font-size: 17px;
+	}
+	.signup-wrp .creat_free p{
+		font-size: 11px;
+	}
+
+}
+/*===============================================================================================*/
+
