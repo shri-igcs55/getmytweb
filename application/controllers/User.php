@@ -31,20 +31,9 @@ class User extends CI_Controller
 	// User sign up customer
 	public function customer()
 	{
-		if(empty($_POST)){
-           $captcha_data = $this->captcha_setting();
-        }
-        else{
-            // Case comparing values.
-            if (strcasecmp($_SESSION['captchaWord'], $_POST['captcha']) == 0) {
-                echo "<script type='text/javascript'> alert('Your form successfully submitted'); </script>";
-                    $captcha_data =  $this->captcha_setting();
-                 } else {
-               echo "<script type='text/javascript'> alert('Try Again'); </script>";
-                    $captcha_data =  $this->captcha_setting();
-            }
-        }
-		$this->load->view('comman/header');
+		$captcha_data =  $this->captcha_setting();
+       	
+       	$this->load->view('comman/header');
 		$this->load->view('customer-reg', $captcha_data);
 		$this->load->view('comman/footer');
 	}
@@ -87,7 +76,7 @@ class User extends CI_Controller
 	        'expiration' => 3600
 	    );
     	$data = create_captcha($values);
-        $_SESSION['captchaWord'] = $data['word'];
+        $data['word'];
         return $data;  
         // image will store in "$data['image']" index and its send on view page 
     	// $this->load->view('customer-reg', $data);
@@ -106,10 +95,9 @@ class User extends CI_Controller
 	        'expiration' => 3600
         );
 	    $data = create_captcha($values);
-	    // var_dump($data);exit();
-	    $_SESSION['captchaWord'] = $data['word'];
+	    $data['word'];
 	   	echo $data['image'];
-	   	// return $data;
+	   	return $data;
         
     }
 

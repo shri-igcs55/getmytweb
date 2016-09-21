@@ -16,7 +16,7 @@
 
 						    <div class="tab-content">
 							    <div id="Individual" class="tab-pane fade in active">
-							      <form action="" class="cus_indvl">
+							      <form action="" class="cus_indvl" id="cust_indv">
 							
 										<div class="section_sub">
 											<h3>Basic <span>Details</span></h3>
@@ -135,8 +135,8 @@
 										<div class="row">
 											<article class="col-md-4">
 												<div class="form-group">
-												    <label for="COde">Enter Code Here</label>
-												    <input type="text" class="form-control" id="COde" required>
+												    <label for="COde">Enter Code Here<sup>*</sup></label>
+												    <input type="text" class="form-control" id="captcha" required>
 												</div>
 											</article>
 											<br/>
@@ -158,18 +158,21 @@
 												    <div class="checkbox">
 													  	<input id="check1" type="checkbox" name="check" value="check1">
 													  	<label for="check1">I accept <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+													  	<!-- color:#37b1d8; -->
+													  	<ul id="form_validation_msg" style="color:red; padding-left: 25px;"></ul>
 													</div>
 												</div>
 											</article>
 										</div>
 
 										<div class="row">
-											<article class="col-md-8">
+											<article class="col-md-4">
 												<div class="form-group">
 												    <input type="submit" id="cus-reg-sbmit" class="form-control" value="Submit">
 												    
 												</div>
 											</article>
+											
 										</div>
 									</form>
 								</div>
@@ -416,6 +419,13 @@
        	$("#cus-reg-sbmit").click(function(event) {
 	        event.preventDefault();
 
+	        var captcha = $('#captcha').val();
+	        alert(captcha);
+	        var captcha_word = "<?php echo $word; ?>";
+	        if(captcha == captcha_word){
+	        	alert(captcha_word);
+	        }
+
 	        var first_name = $("#F_name").val();
 	        var last_name = $("#L_name").val();
 	        var user_mob = $("#M_number").val();
@@ -429,9 +439,8 @@
 	        var district = $("#District").val();
 	        var city = $("#City").val();
 	        var pin = $("#Pincode").val();
-	        var pkg_id = "<?php if() ?>";
-	        var pkg_id = $("#").val();
-	        var user_type = $("user_type").val();
+	        var pkg_id = $("#pkg_id").val();
+	        var user_type = $("#user_type").val();
 
 	        $.ajax({
 		        type: "POST",
@@ -439,30 +448,37 @@
 		        cache: false,
 		        dataType: 'json',
 		        data: {
-		        	user_email: user_email, 
-		            user_mob: user_mob,
-		            user_pass: user_pass,
-		            c_pass: c_pass,
-		            u_type_id: user_type_id,
-		            trans_cat_id: transporter_cat_id,
-		            pkg_id: package_id
+		        	first_name : first_name,
+					last_name : last_name,
+					user_mob : user_mob,
+					user_email : user_email,
+					user_pass : user_pass,
+					c_pass : c_pass,
+					address1 : address1,
+					address2 : address2,
+					country : country,
+					state : state,
+					district : district,
+					city : city,
+					pin : pin,
+					pkg_id : pkg_id,
+					user_type : user_type
 		       	},
 		        success: function(res) {
 		            if (res.status_code == 200)
 		            {
-		              	$('<li>Registered Successfully.</li>').appendTo('#status_msg');
+		              	$('ul').empty();
+			            $('<li><strong>Registered Successfully.</strong></li>').appendTo('#form_validation_msg');
+		              	document.getElementById("cust_indv").reset();
 			            /*$.each(res.data, function(key, val) {
 			            	$.each(val, function(k, v){
 			                    $('<li>'+v+'</li>').appendTo('#test');
 			                });
 			            });*/
 		            }else{
-			            console.log(res);
 			            $('ul').empty();
 			            $.each(res.data, function(key, val) {
-			                $.each(val, function(k, v){
-			            	    $('<li>'+v+'</li>').appendTo('#'+k+'1');
-			                });
+			            	$('<li><strong>'+val+'</strong></li>').appendTo('#form_validation_msg');
 			            });
 		            }
 	          	},
