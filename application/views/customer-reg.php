@@ -42,7 +42,7 @@
 												<div class="form-group">
 												    <label for="M_number">Mobile Number<sup>*</sup></label>
 												    <span class="M_number_befr">
-												    	<input type="number" class="form-control" id="M_number" required>
+												    	<input maxlength="10" type="number" class="form-control" id="M_number" required>
 												    </span>
 												</div>
 											</article>
@@ -88,32 +88,25 @@
 											</article>
 										</div>
 
-										<div class="row">
-											<article class="col-md-6">
-												<div class="form-group">
-												    <label for="Pincode">Pin code<sup>*</sup></label>
-												    <input type="number" class="form-control" id="Pincode" required>
-												</div>
-											</article>
-											<article class="col-md-6">
-												<div class="form-group">
-												    <label for="Country">Country<sup>*</sup></label>
-												    <input type="text" class="form-control" id="Country" required>
-												</div>
-											</article>
-										</div>
+										
 
 										<div class="row">
 											<article class="col-md-6">
 												<div class="form-group">
 												    <label for="State">State<sup>*</sup></label>
-												    <input type="text" class="form-control" id="State" required>
+												    <!-- <input type="text" class="form-control" id="State" required> -->
+												    <select id="State" class="form-control" required>
+												    	<option value="">Select State</option>
+												    </select>
 												</div>
 											</article>
 											<article class="col-md-6">
 												<div class="form-group">
 												    <label for="District">District<sup>*</sup></label>
-												    <input type="text" class="form-control" id="District" required>
+												    <!-- <input type="text" class="form-control" id="District" required> -->
+												    <select id="District" class="form-control" required>
+												    	<option value="">Select District</option>
+												    </select>
 												</div>
 											</article>
 										</div>
@@ -121,7 +114,16 @@
 											<article class="col-md-6">
 												<div class="form-group">
 												    <label for="City">City<sup>*</sup></label>
-												    <input type="text" class="form-control" id="City" required>
+												    <!--<input type="text" class="form-control" id="City" required>-->
+												    <select id="City" class="form-control" required>
+												    	<option value="">Select City</option>
+												    </select>
+												</div>
+											</article>
+											<article class="col-md-6">
+												<div class="form-group">
+												    <label for="Pincode">Pin code<sup>*</sup></label>
+												    <input maxlength="6" type="number" class="form-control" id="Pincode" required>
 												</div>
 											</article>
 											<article class="col-md-6">
@@ -131,7 +133,7 @@
 												</div>
 											</article>
 										</div>
-
+										
 										<div class="row">
 											<article class="col-md-4">
 												<div class="form-group">
@@ -159,7 +161,7 @@
 													  	<input id="check1" type="checkbox" name="check" value="check1">
 													  	<label for="check1">I accept <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
 													  	<!-- color:#37b1d8; -->
-													  	<ul id="form_validation_msg" style="color:red; padding-left: 25px;"></ul>
+													  	<span id="form_validation_msg" style="color:red; padding-left: 25px;"></span>
 													</div>
 												</div>
 											</article>
@@ -402,6 +404,79 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		// to get state list
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/Indian_city_dropdown/state_dropdown",
+			success: function(res){
+				if(res){
+					// $('#State').empty();
+		            $.each(res.data, function(key, val) {
+		            	$.each(val, function(k, v){
+		                    $('<option value="'+v+'">'+v+'</option>').appendTo('#State');
+		                });
+		            });
+				}
+			},
+	        error: function(){
+	        	console.log('Somthing went wrong');
+	        }
+		});
+		
+		// to get state list
+		$("#State").change(function(event){
+			event.preventDefault();
+	        var state = $( "#State option:selected" ).text();
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/Indian_city_dropdown/district_dropdown",
+				dataType: 'json',
+		        data: { state: state },
+				success: function(res){
+					if(res){
+						$('#District').empty();
+						$('<option value="">Select District</option>').appendTo('#District');
+			            $.each(res.data, function(key, val) {
+			            	$.each(val, function(k, v){
+			                    $('<option value="'+v+'">'+v+'</option>').appendTo('#District');
+			                });
+			            });
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
+
+		// to get state list
+		$("#District").change(function(event){
+			event.preventDefault();
+	        var state = $( "#State option:selected" ).text();
+	        var district = $( "#District option:selected" ).text();
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/Indian_city_dropdown/city_dropdown",
+				dataType: 'json',
+		        data: { 
+		        	state: state,
+		        	district: district
+		        },
+				success: function(res){
+					if(res){
+						$('#City').empty();
+						$('<option value="">Select City</option>').appendTo('#City');
+			            $.each(res.data, function(key, val) {
+			            	$('<option value="'+val['id']+'">'+val['city']+'</option>').appendTo('#City');
+			            });
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
+
 		// Ajax post for refresh captcha image.
        	$("#img").click(function() {
         	jQuery.ajax({
@@ -410,22 +485,21 @@
                 success: function(res) {
                     if (res)
                     {
-                          jQuery("#image").html(res);
+                        jQuery("#image").html(res);
                     }
-                }
+                },
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
             });
         }); // Captcha refresh function close
 
+       	// Ajax post for submiting registration form
        	$("#cus-reg-sbmit").click(function(event) {
 	        event.preventDefault();
 
 	        var captcha = $('#captcha').val();
-	        alert(captcha);
 	        var captcha_word = "<?php echo $word; ?>";
-	        if(captcha == captcha_word){
-	        	alert(captcha_word);
-	        }
-
 	        var first_name = $("#F_name").val();
 	        var last_name = $("#L_name").val();
 	        var user_mob = $("#M_number").val();
@@ -441,51 +515,62 @@
 	        var pin = $("#Pincode").val();
 	        var pkg_id = $("#pkg_id").val();
 	        var user_type = $("#user_type").val();
+	        
+	        if(first_name == '', user_mob == '', user_pass == '', address1 == '', 
+	        	country == '', state == '', district == '', city == '', pin == '', 
+	        	captcha == '' ){
+	        	$('#form_validation_msg').empty();
+			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+	        }else if(captcha != captcha_word){
+	        	$('#form_validation_msg').empty();
+			    $('<p><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');
+	        }else{
 
-	        $.ajax({
-		        type: "POST",
-		        url: "/gmt/User/user_signup",
-		        cache: false,
-		        dataType: 'json',
-		        data: {
-		        	first_name : first_name,
-					last_name : last_name,
-					user_mob : user_mob,
-					user_email : user_email,
-					user_pass : user_pass,
-					c_pass : c_pass,
-					address1 : address1,
-					address2 : address2,
-					country : country,
-					state : state,
-					district : district,
-					city : city,
-					pin : pin,
-					pkg_id : pkg_id,
-					user_type : user_type
-		       	},
-		        success: function(res) {
-		            if (res.status_code == 200)
-		            {
-		              	$('ul').empty();
-			            $('<li><strong>Registered Successfully.</strong></li>').appendTo('#form_validation_msg');
-		              	document.getElementById("cust_indv").reset();
-			            /*$.each(res.data, function(key, val) {
-			            	$.each(val, function(k, v){
-			                    $('<li>'+v+'</li>').appendTo('#test');
-			                });
-			            });*/
-		            }else{
-			            $('ul').empty();
-			            $.each(res.data, function(key, val) {
-			            	$('<li><strong>'+val+'</strong></li>').appendTo('#form_validation_msg');
-			            });
-		            }
-	          	},
-		        error: function(){
-		        	console.log('Somthing went wrong');
-		        }
-	        });
+		        $.ajax({
+			        type: "POST",
+			        url: "/gmt/User/user_signup",
+			        cache: false,
+			        dataType: 'json',
+			        data: {
+			        	first_name : first_name,
+						last_name : last_name,
+						user_mob : user_mob,
+						user_email : user_email,
+						user_pass : user_pass,
+						c_pass : c_pass,
+						address1 : address1,
+						address2 : address2,
+						country : country,
+						state : state,
+						district : district,
+						city : city,
+						pin : pin,
+						pkg_id : pkg_id,
+						user_type : user_type
+			       	},
+			        success: function(res) {
+			            if (res.status_code == 200)
+			            {
+			              	$('#form_validation_msg').empty();
+				            $('<p><strong>Registered Successfully.</strong></p>').appendTo('#form_validation_msg');
+			              	document.getElementById("cust_indv").reset();
+				            /*$.each(res.data, function(key, val) {
+				            	$.each(val, function(k, v){
+				                    $('<li>'+v+'</li>').appendTo('#test');
+				                });
+				            });*/
+			            }else{
+				            $('#form_validation_msg').empty();
+				            $.each(res.data, function(key, val) {
+				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+			            }
+		          	},
+			        error: function(){
+			        	console.log('Somthing went wrong');
+			        }
+		        });
+		    }
 	    });
 
 	}); // Document ready close

@@ -520,6 +520,24 @@ input[type="radio"]:checked + label span.radio::before{
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
+.custmer_reg select#State{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
+.custmer_reg select#District{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
+.custmer_reg select#City{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
 input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
