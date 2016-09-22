@@ -589,7 +589,7 @@
 			            {
 			              	$('#company_form_validation_msg').empty();
 				            $('<p><strong>Registered Successfully.</strong></p>').appendTo('#company_form_validation_msg');
-			              	document.getElementById("cust_indv").reset();
+			              	document.getElementById("cus_compny").reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
 				                    $('<li>'+v+'</li>').appendTo('#test');
