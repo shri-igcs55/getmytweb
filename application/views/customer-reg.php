@@ -424,6 +424,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
+		/*------------------------*/
+		// indv form is in main js	
+		/*------------------------*/
+
 		$('ul li.radio_company').click(function(){
 
 			// to get state list for company form
