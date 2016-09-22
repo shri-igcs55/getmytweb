@@ -514,7 +514,7 @@ input[type="radio"]:checked + label span.radio::before{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(237, 67, 67, 0.6);
 }
 
-.custmer_reg select#Designatn{
+.custmer_reg select#c_Designatn{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -533,6 +533,24 @@ input[type="radio"]:checked + label span.radio::before{
       background:url(../images/down.png)95% 50% no-repeat;
 }
 .custmer_reg select#City{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
+.custmer_reg select#company_state{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
+.custmer_reg select#company_district{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
+.custmer_reg select#company_city{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -611,7 +629,12 @@ img.refresh{
     padding: 6px;
     border:1px solid #ED4343;
 }
-#cus-reg-sbmit{
+#cus-indv-reg-sbmit{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
+#cus-comp-reg-sbmit{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 150px;
