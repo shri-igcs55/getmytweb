@@ -514,6 +514,13 @@ input[type="radio"]:checked + label span.radio::before{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(237, 67, 67, 0.6);
 }
 
+.custmer_reg select#user_type{
+	-webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background:url(../images/down.png)95% 50% no-repeat;
+}
+
 .custmer_reg select#Designatn{
 	-webkit-appearance: none;
       -moz-appearance: none;

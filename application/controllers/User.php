@@ -41,24 +41,30 @@ class User extends CI_Controller
 	// User sign up Transporter & Logistics
 	public function transporter_logistic()
 	{
+		$captcha_data =  $this->captcha_setting();
+       	
 		$this->load->view('comman/header');
-		$this->load->view('transporter-reg');
+		$this->load->view('transporter-reg', $captcha_data);
 		$this->load->view('comman/footer');
 	}
 
 	// User sign up Packers & Movers
 	public function packer_mover()
 	{
+		$captcha_data =  $this->captcha_setting();
+       	
 		$this->load->view('comman/header');
-		$this->load->view('picker-reg');
+		$this->load->view('picker-reg', $captcha_data);
 		$this->load->view('comman/footer');
 	}
 
 	// User sign up Crane Providers
 	public function crane_provider()
 	{
+		$captcha_data =  $this->captcha_setting();
+       	
 		$this->load->view('comman/header');
-		$this->load->view('crane-provdr_reg');
+		$this->load->view('crane-provdr_reg', $captcha_data);
 		$this->load->view('comman/footer');
 	}
 
