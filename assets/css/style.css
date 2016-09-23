@@ -514,7 +514,7 @@ input[type="radio"]:checked + label span.radio::before{
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(237, 67, 67, 0.6);
 }
 
-.custmer_reg select#c_Designatn{
+.custmer_reg select#Designatn{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -538,7 +538,7 @@ input[type="radio"]:checked + label span.radio::before{
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
-.custmer_reg select#company_state{
+/*.custmer_reg select#company_state{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
@@ -555,7 +555,7 @@ input[type="radio"]:checked + label span.radio::before{
       -moz-appearance: none;
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
-}
+}*/
 input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
@@ -629,7 +629,12 @@ img.refresh{
     padding: 6px;
     border:1px solid #ED4343;
 }
-#cus-indv-reg-sbmit{
+#cus-reg-sbmit{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
+/*#cus-indv-reg-sbmit{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 150px;
@@ -638,7 +643,7 @@ img.refresh{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 150px;
-}
+}*/
 
 .nav.nav-tabs li a,.nav.nav-tabs li a:hover,.nav.nav-tabs li a:active,
 .nav.nav-tabs li a:focus{

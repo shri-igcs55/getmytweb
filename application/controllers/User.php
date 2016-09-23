@@ -95,10 +95,9 @@ class User extends CI_Controller
 	        'expiration' => 3600
         );
 	    $data = create_captcha($values);
-	    $data['word'];
-	   	echo $data['image'];
-	   	return $data;
-        
+	    
+	   	echo json_encode($data);
+        exit;
     }
 
 }
