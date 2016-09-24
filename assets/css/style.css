@@ -314,7 +314,31 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 	color: #47acf0;
 	text-decoration: underline;
 }
-.signin-wrp a.signin, .register-wrp a.register-btn{
+.signin-wrp input.signin{
+	width: 75%;
+	-webkit-transition: all .3s ease-in-out;
+	     -moz-transition: all .3s ease-in-out;
+		    -ms-transition: all .3s ease-in-out;
+		     -o-transition: all .3s ease-in-out;
+		      transition: all .3s ease-in-out;
+}
+
+.register-btn:hover{
+	color: #ED4343;
+	background-color: #fff;
+}
+.signin-wrp input.signin{
+	-webkit-transition: all .3s ease-in-out;
+	     -moz-transition: all .3s ease-in-out;
+		    -ms-transition: all .3s ease-in-out;
+		     -o-transition: all .3s ease-in-out;
+		      transition: all .3s ease-in-out;
+}
+.signin-wrp input.signin:hover{
+	background-color: #fff;
+	color: #ED4343;
+}
+.signin-wrp input.signin, .register-wrp a.register-btn{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 300px;
@@ -326,9 +350,15 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 	border-radius: 5px;
 	font-size: 16px;
 	cursor: pointer;
+	-webkit-transition: all .3s ease-in-out;
+	     -moz-transition: all .3s ease-in-out;
+		    -ms-transition: all .3s ease-in-out;
+		     -o-transition: all .3s ease-in-out;
+		      transition: all .3s ease-in-out;
 }
 .signin-wrp a.signin:hover,.register-wrp a.register-btn:hover{
 	color: #ED4343;
+	background-color: #fff;
 }
 /* Shutter Out Vertical */
 .hvr-shutter-out-vertical {
@@ -971,4 +1001,13 @@ li.active .signUpAs_each .RIght{
 
 .sss{
 	border: 1px solid #ddd;
+}
+
+
+/* Shrikant */
+.disable{
+	disable:disable;
+}
+.enable{
+	
 }

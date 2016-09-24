@@ -80,25 +80,35 @@ $(document).ready(function() {
 $(document).ready(function(){
 
 	// to get state list
-
-	jQuery.ajax({
-		type:"GET",
-		url: "/gmt/Indian_city_dropdown/state_dropdown",
-		success: function(res){
-			if(res){
-				// $('#State').empty();
-	            $.each(res.data, function(key, val) {
-	            	$.each(val, function(k, v){
-	                    $('<option value="'+v+'">'+v+'</option>').appendTo('.state');
-	                });
-	            });
-			}
-		},
-        error: function(){
-        	console.log('Somthing went wrong');
-        }
+	var loadingStatelist = $('section.custmer_reg');
+	var states = $('.tab-content div.active').find('.state');
+	//$('.state section.custmer_reg').load(function(){
+		
+	$('.state').one('click',function(){
+		//alert("working");
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/Indian_city_dropdown/state_dropdown",
+			success: function(res){
+				if(res.status_code == 200){
+					$(".district").removeAttr("disabled");
+					$(".district").removeAttr("title");
+					$('.state').empty();
+					$('<option value="">Select State</option>').appendTo('.state');
+					$.each(res.data, function(key, val) {
+		            	$.each(val, function(k, v){
+		                    $('<option value="'+v+'">'+v+'</option>').appendTo('.state');
+		                });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+	        error: function(){
+	        	console.log('Somthing went wrong');
+	        }
+		});
 	});
-
 	// to get state list
 	$(".state").change(function(event){
         var state = $(this).find("option:selected").text();
@@ -108,7 +118,9 @@ $(document).ready(function(){
 			dataType: 'json',
 	        data: { state: state },
 			success: function(res){
-				if(res){
+				if(res.status_code == 200){
+					$(".city").removeAttr("disabled");
+					$(".city").removeAttr("title");
 					$('.district').val('');
 					var option ='<option value="">Select District</option>';
 		            $.each(res.data, function(key, val) {
@@ -118,6 +130,8 @@ $(document).ready(function(){
 		            });
 		            $('.tab-content div.active').find('.district').html(option);
 		            // $('.form_wrp').find('.district').html(option);
+				}else{
+					console.log('No response.');
 				}
 			},
 	        error: function(){
@@ -140,7 +154,7 @@ $(document).ready(function(){
 	        	district: district
 	        },
 			success: function(res){
-				if(res){
+				if(res.status_code == 200){
 					$('.city').val('');
 					var option ='<option value="">Select City</option>';
 		            $.each(res.data, function(key, val) {
@@ -148,6 +162,8 @@ $(document).ready(function(){
 		            });
 					$('.tab-content div.active').find('.city').html(option);
 					// $('.form_wrp').find('.city').html(option);
+				}else{
+					console.log('No response.');
 				}
 			},
 	        error: function(){
@@ -162,12 +178,14 @@ $(document).ready(function(){
             type: "POST",
             url: base_url+"user/captcha_refresh",
             success: function(res) {
-                if (res)
+                if (res.status_code == 200)
                 {
                 	var res = jQuery.parseJSON(res);                    	
                 	jQuery('input:hidden[name=hidden_captcha]').val(res.word);
                     jQuery(".captcha_image").html(res.image);
-                }
+                }else{
+					console.log('No response.');
+				}
             },
 	        error: function(){
 	        	console.log('Somthing went wrong');
@@ -203,8 +221,8 @@ $(document).ready(function(){
         var firm_name	 	= objCurrentSection.find("#FirmName").val();
         var company_type	= objCurrentSection.find("#C_type").val();
         var company_pan		= objCurrentSection.find("#email_phn").val();
-
-		if(first_name == '', user_mob == '', user_pass == '', address1 == '', 
+        
+        if(first_name == '', user_mob == '', user_pass == '', address1 == '', 
         	state == '', district == '', city == '', pin == '', captcha == '' ){
         	$('#form_validation_msg').empty();
 		    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');

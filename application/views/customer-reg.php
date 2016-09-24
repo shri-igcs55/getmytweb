@@ -97,6 +97,7 @@
 											    <!-- <input type="text" class="form-control" id="State" required> -->
 											    <select id="State" class="state form-control" required>
 											    	<option value="">Select State</option>
+											    	<option value="">Loading...</option>
 											    </select>
 											</div>
 										</article>
@@ -104,7 +105,7 @@
 											<div class="form-group">
 											    <label for="District">District<sup>*</sup></label>
 											    <!-- <input type="text" class="form-control" id="District" required> -->
-											    <select id="District" class="district form-control" required>
+											    <select id="District" class="district form-control" required disabled="" title="Select State First">
 											    	<option value="">Select District</option>
 											    </select>
 											</div>
@@ -115,8 +116,9 @@
 											<div class="form-group">
 											    <label for="City">City<sup>*</sup></label>
 											    <!--<input type="text" class="form-control" id="City" required>-->
-											    <select id="City" class="city form-control" required>
+											    <select id="City" class="city form-control" required disabled="" title="Select District First">
 											    	<option value="">Select City</option>
+											    	<option value="">Please select District First</option>
 											    </select>
 											</div>
 										</article>
@@ -129,7 +131,7 @@
 										<article class="col-md-6">
 											<div class="form-group">
 											    <input type="hidden" class="form-control" id="user_type" value="3" required>
-											    <input type="hidden" class="form-control" id="pkg_id" value="1" required>
+											    <!-- <input type="hidden" class="form-control" id="pkg_id" value="1" required> -->
 											</div>
 										</article>
 									</div>
@@ -284,6 +286,7 @@
 										    <!-- <input type="text" class="form-control" id="State" required> -->
 										    <select id="State" class="state form-control" required>
 										    	<option value="">Select State</option>
+										    	<option value="">Loading...</option>
 										    </select>
 										</div>
 									</article>
@@ -291,7 +294,7 @@
 										<div class="form-group">
 										    <label for="District">District<sup>*</sup></label>
 										    <!-- <input type="text" class="form-control" id="District" required> -->
-										    <select id="District" class="district form-control" required>
+										    <select id="District" class="district form-control" required disabled="" title="Select State First">
 										    	<option value="">Select District</option>
 										    </select>
 										</div>
@@ -302,7 +305,7 @@
 										<div class="form-group">
 										    <label for="City">City<sup>*</sup></label>
 										    <!--<input type="text" class="form-control" id="City" required>-->
-										    <select id="City" class="city form-control" required>
+										    <select id="City" class="city form-control" required disabled="" title="Select District First">
 										    	<option value="">Select City</option>
 										    </select>
 										</div>
@@ -316,7 +319,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <input type="hidden" class="form-control" id="user_type" value="4" required>
-										    <input type="hidden" class="form-control" id="pkg_id" value="1" required>
+										    <!-- <input type="hidden" class="form-control" id="pkg_id" value="1" required> -->
 										</div>
 									</article>
 								</div>

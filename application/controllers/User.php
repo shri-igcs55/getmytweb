@@ -32,7 +32,15 @@ class User extends CI_Controller
 	public function customer()
 	{
 		$captcha_data =  $this->captcha_setting();
-       	
+
+       	if (isset($this->session->userdata['logged_in_user'])) {
+       		$logged_in_user = $this->session->userdata('logged_in_user');
+       		print_r($logged_in_user);
+       		//$this->session->unset_userdata('logged_in_user', array('user_type'=>'','user_id'=>'','email'=>'','mobile'=>''));
+       		
+       	}
+
+
        	$this->load->view('comman/header');
 		$this->load->view('customer-reg', $captcha_data);
 		$this->load->view('comman/footer');
