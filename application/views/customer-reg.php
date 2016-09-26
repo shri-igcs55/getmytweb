@@ -332,7 +332,10 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="C_type">Company Type<sup>*</sup></label>
-										    <input type="text" class="form-control" id="C_type" required>
+										    <!-- <input type="text" class="form-control" id="C_type" required> -->
+										    <select id="C_type" class="ctype form-control" required title="Select Company Type">
+										    	<option value="">Select Company Type</option>
+										    </select>
 										</div>
 									</article>
 									<article class="col-md-6">

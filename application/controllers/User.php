@@ -76,6 +76,40 @@ class User extends CI_Controller
 		$this->load->view('comman/footer');
 	}
 
+	// after login dashboard
+	public function customer_dashboard(){
+
+		$this->load->view('comman/header');
+		$this->load->view('place_order_transport');
+		$this->load->view('comman/footer');
+
+	}
+
+	// after login dashboard
+	/*public function customer_dashboard(){
+
+		$this->load->view('comman/header');
+		$this->load->view('place_order_transport');
+		$this->load->view('comman/footer');
+
+	}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// This function genrate CAPTCHA image and store in "image folder".
     public function captcha_setting()
     {

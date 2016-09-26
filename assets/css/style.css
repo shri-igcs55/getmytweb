@@ -575,13 +575,13 @@ input[type="radio"]:checked + label span.radio::before{
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
-/*.custmer_reg select#company_state{
+.custmer_reg select#C_type{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
-.custmer_reg select#company_district{
+/*.custmer_reg select#company_district{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;

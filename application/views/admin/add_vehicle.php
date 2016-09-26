@@ -47,7 +47,7 @@
                         <tr>
                             <th>Sr. No.</th>
                             <th>Vehicle Name</th>
-                            <th>Vehicle Image</th>
+                            <!-- <th>Vehicle Image</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -55,7 +55,7 @@
                         <tr>
                             <th>Sr. No.</th>
                             <th>Vehicle Name</th>
-                            <th>Vehicle Image</th>
+                            <!-- <th>Vehicle Image</th> -->
                             <th>Action</th>
                         </tr>
                     </tfoot>
@@ -75,9 +75,9 @@
                                 echo $value['vehicle_typ'];
                               ?>
                             </td>
-                            <td style="width:35%">
+                            <?php /*<td style="width:35%">
                               <a target="blank" href="<?php echo base_url('uploads/vehicle/').$value['vehicle_img'];?>"><img style="width:20%;height:20%;" src="<?php echo base_url('uploads/vehicle/').$value['vehicle_img'];?>"></a>                         
-                            </td>
+                            </td>*/ ?>
                             <td>
                             <a class="btn btn-warning" 
             onclick="javascript: return confirm('Are you sure to delete this?');" href="<?php echo site_url('admin/vehicle/remove_vehicle/').$value['vehicle_id']; ?>">Delete</a>

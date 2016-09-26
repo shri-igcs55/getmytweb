@@ -72,17 +72,17 @@
 								<div class="menu-wrp">
 
 									<ul class="top-menu text-right">
-										<li><a href="#">Sign In</a></li>
-										<li><a href="#">Sign Up</a></li>
+										<li><a href="<?php echo site_url('user/signin/'); ?>">Sign In</a></li>
+										<li><a href="<?php echo site_url('user/signup/'); ?>">Sign Up</a></li>
 									</ul>
 
 									<ul class="bottom-menu text-right">
-										<li><a class="active hvr-shutter-out-horizontal" href="#">Home</a></li>
-										<li><a class="hvr-shutter-out-horizontal" href="#">About Us</a></li>
-										<li><a class="hvr-shutter-out-horizontal" href="#">Our Services</a></li>
-										<li><a class="hvr-shutter-out-horizontal" href="#">How it works</a></li>
-										<li><a class="hvr-shutter-out-horizontal" href="#">Membership</a></li>
-										<li><a class="hvr-shutter-out-horizontal" href="#">Contact Us</a></li>
+										<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/'); ?>">Home</a></li>
+										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/about-us'); ?>">About Us</a></li>
+										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/our-services'); ?>">Our Services</a></li>
+										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/how-it-works'); ?>">How it works</a></li>
+										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/membership'); ?>">Membership</a></li>
+										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/contact-us'); ?>">Contact Us</a></li>
 									</ul>
 
 								</div>
@@ -98,17 +98,17 @@
 					<div class="mobile-menu-wrp">
 
 						<ul class="top-menu text-right">
-							<li><a href="#">Sign In</a></li>
-							<li><a href="#">Sign Up</a></li>
+							<li><a href="<?php echo site_url('user/signin/'); ?>">Sign In</a></li>
+							<li><a href="<?php echo site_url('user/signup/'); ?>">Sign Up</a></li>
 						</ul>
 
 						<ul class="bottom-menu text-center">
-							<li><a class="active hvr-shutter-out-horizontal" href="#">Home</a></li>
-							<li><a class="hvr-shutter-out-horizontal" href="#">About Us</a></li>
-							<li><a class="hvr-shutter-out-horizontal" href="#">Our Services</a></li>
-							<li><a class="hvr-shutter-out-horizontal" href="#">How it works</a></li>
-							<li><a class="hvr-shutter-out-horizontal" href="#">Membership</a></li>
-							<li><a class="hvr-shutter-out-horizontal" href="#">Contact Us</a></li>
+							<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/'); ?>">Home</a></li>
+							<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/about-us'); ?>">About Us</a></li>
+							<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/our-services'); ?>">Our Services</a></li>
+							<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/how-it-works'); ?>">How it works</a></li>
+							<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/membership'); ?>">Membership</a></li>
+							<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/contact-us'); ?>">Contact Us</a></li>
 						</ul>
 
 					</div>

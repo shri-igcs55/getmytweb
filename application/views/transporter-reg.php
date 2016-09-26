@@ -214,7 +214,7 @@ $(document).ready(function(){
 		success: function(res){
 			if(res){
 				$.each(res.data, function(key, val) {
-	            	$('<option value="'+val['u_type_id']+'">'+val['u_type_name']+'</option>').appendTo('.utype');
+	            	$('<option value="'+val['uid']+'">'+val['utype']+'</option>').appendTo('.utype');
 	            });
 			}
 		},

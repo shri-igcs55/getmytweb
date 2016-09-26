@@ -24,6 +24,7 @@ class Model_login extends CI_Model {
 
 		//while(list($user_id) =result_array($query)) 
 		//{ 
+			// $this->session->set_userdata('logged_in_user', array('user_type'=>$result_row->u_type_id,'user_id'=>$result_row->user_id,'email'=>$result_row->user_email,'mobile'=>$result_row->user_mob));
 			$user_session_data['user_id_admin'] = $userid;
 			$user_session_data['logged_in_admin']	= 'TRUE';
 		//}

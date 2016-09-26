@@ -185,7 +185,7 @@
 														<div class="row">
 															<article class="col-md-8">
 																<div class="form-group">
-																    <label for="F_name">Address from Where <br>Service is Provide<sup>*</sup></label>
+																    <label for="F_name">Address to Where <br>Service is Provide<sup>*</sup></label>
 																    <input type="text" class="form-control" id="F_name" required>
 																</div>
 															</article>
