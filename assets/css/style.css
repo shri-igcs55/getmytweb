@@ -581,18 +581,18 @@ input[type="radio"]:checked + label span.radio::before{
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
-/*.custmer_reg select#company_district{
+.custmer_reg select#material{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
-.custmer_reg select#company_city{
+.custmer_reg select#vehicle_type{
 	-webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
-}*/
+}
 input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
@@ -671,12 +671,12 @@ img.refresh{
 	color: #fff;
 	max-width: 150px;
 }
-/*#cus-indv-reg-sbmit{
+#plc-ord-sbmit{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 150px;
 }
-#cus-comp-reg-sbmit{
+/*#cus-comp-reg-sbmit{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 150px;
@@ -1010,4 +1010,34 @@ li.active .signUpAs_each .RIght{
 }
 .enable{
 	
+}
+
+
+.add_more_btn{
+	float: right;
+	background-color: #ed4343;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	padding: 3px 7px;
+	margin: 3px;
+}
+.add_more_btn:hover{
+	background-color: #ed4343;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+a.remove_more_btn{
+	
+	float: right;
+	background-color: #ddd;
+	color: #000;
+	border: none;
+	cursor: pointer;
+	padding: 3px 7px;
+	margin: 3px;
+}
+.addmore_wrp ul li{
+	list-style: none;
 }

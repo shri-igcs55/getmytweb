@@ -43,6 +43,11 @@ $(document).ready(function(){
 	    $( "#datepicker" ).datepicker();
 	} );
 
+	// Search order date picker
+	$( function() {
+	    $( "#schedule_date" ).datepicker();
+	} );
+	
 	// sign up as tabs
 
 	$('.signUpAs_each span').on('click', function(){
@@ -54,6 +59,35 @@ $(document).ready(function(){
 
 });
 
+
+$(document).ready(function(){
+	
+
+    $("a#add_more").click(function(){
+    	// alert(12345);
+       var ddd = $(".addmore_wrp ul li:first-child").clone();
+       $('.addmore_wrp ul').append(ddd);
+       // var ind = $('.addmore_wrp ul li').index();
+       // console.log(ind);
+    });
+
+    $("a.remove_more_btn").click(function(){
+    	var ind = $('.addmore_wrp ul li').index();
+    	console.log(ind);
+    	if(ind == 2)
+    	{
+    		alert(2); 
+    	}
+    	else{
+    		$(".addmore_wrp ul li:last-child").remove();
+    		// alert(12345);
+    	};
+
+
+
+
+    });
+});
 
 
 
@@ -169,6 +203,54 @@ $(document).ready(function(){
 	        error: function(){
 	        	console.log('Somthing went wrong');
 	        }
+		});
+	});
+
+	// to load material types
+	$('.material').one('click', function(){
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/User/material_type_list",
+			success: function(res){
+				if(res.status_code == 200){
+					$('.material').empty();
+					$('<option value="">Select Material Type</option>').appendTo('.material');
+					$.each(res.data, function(key, val) {
+		            	// $.each(val, function(k, v){
+		                    $('<option value="'+val['mid']+'">'+val['mtype']+'</option>').appendTo('.material');
+		                // });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+		    error: function(){
+		    	console.log('Somthing went wrong');
+		    }
+		});
+	});
+
+	// to load material types
+	$('.vehicle').one('click', function(){
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/User/vehicle_list",
+			success: function(res){
+				if(res.status_code == 200){
+					$('.vehicle').empty();
+					$('<option value="">Select Vehicle Type</option>').appendTo('.vehicle');
+					$.each(res.data, function(key, val) {
+		            	// $.each(val, function(k, v){
+		                    $('<option value="'+val['vid']+'">'+val['vtype']+'</option>').appendTo('.vehicle');
+		                // });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+		    error: function(){
+		    	console.log('Somthing went wrong');
+		    }
 		});
 	});
 
