@@ -1,5 +1,4 @@
 <!-- place order transporter starts -->
-
 <section class="place_orderwrp custmer_reg">
 	<section class="place_order_crane">
 		<div class="container">
@@ -30,40 +29,56 @@
 										    			<ul>
 										    				<li>
 										    					<div class="row">
-																	<article class="col-md-3">
+																	<article class="col-md-4">
 																		<div class="form-group">
-																		    <label for="State">From State<sup>*</sup></label>
-																		    <select id="State" class="state form-control" required>
+																		    <label for="From_State">From State<sup>*</sup></label>
+																		    <select id="From_State" class="from-state form-control trans_plc_ord" required>
 																		    	<option value="">Select State</option>
 																		    	<option value="">Loading...</option>
 																		    </select>
 																		</div>
 																	</article>
-																	<article class="col-md-3">
+																	<article class="col-md-4">
 																		<div class="form-group">
-																		    <label for="District">From District<sup>*</sup></label>
-																		    <select id="District" class="district form-control" required disabled="" title="Select State First">
-																		    	<option value="">Select District</option>
-																		    </select>
+																		    <label for="From_City">From City<sup>*</sup></label>
+																	     	<select id="From_city" class="from-city form-control">
+																			    <option value="">Select City District</option>
+																			</select>
 																		</div>
 																	</article>
-																	<article class="col-md-3">
+																	<article class="col-md-4">
 																		<div class="form-group">
-																		    <label for="City">From City<sup>*</sup></label>
-																		    <select id="from_city" class="from_city form-control" required disabled="" title="Select District First">
-																		    	<option value="">Select City</option>
-																		    </select>
-																		</div>
-																	</article>
-																	<article class="col-md-3">
-																		<div class="form-group">
-																		    <label for="location">From where in city<sup>*</sup></label>
-																		    <input type="text" id="from_location" class="city form-control" required  title="Select District First">
-																		    	
+																		    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
+																		    <input type="text" id="from_location" class="where-in-city form-control" required  title="Select District First">
 																		</div>
 																	</article>
 																</div>
 																<div class="row">
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="To_State">To State<sup>*</sup></label>
+																		    <select id="To_State" class="from-state trans_plc_ord form-control" required>
+																		    	<option value="">Select State</option>
+																		    	<option value="">Loading...</option>
+																		    </select>
+																		</div>
+																	</article>
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="To_City">From City<sup>*</sup></label>
+																	     	<select id="To_city" class="from-city form-control">
+																			    <option value="">Select City District</option>
+																			</select>
+																		</div>
+																	</article>
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="to_location">To Where in City (Area)<sup>*</sup></label>
+																		    <input type="text" id="to_location" class="where-in-city form-control" required  title="Select District First">
+																		</div>
+																	</article>
+																</div>
+																<!-- <div class="row">
 																	<article class="col-md-3">
 																		<div class="form-group">
 																		    <label for="State">To State<sup>*</sup></label>
@@ -97,7 +112,7 @@
 																		    
 																		</div>
 																	</article>
-																</div>
+																</div> -->
 										    				</li>
 										    			</ul>
 														<a id="add_more" class="add_more_btn">+ add more</a>
@@ -200,113 +215,307 @@
 </section>
 
 <!-- place order transporter starts -->
-
+  <script>
+  $( function() {
+    $.widget( "custom.combobox", {
+      _create: function() {
+        this.wrapper = $( "<span>" )
+          .addClass( "custom-combobox" )
+          .insertAfter( this.element );
+ 
+        this.element.hide();
+        this._createAutocomplete();
+        this._createShowAllButton();
+      },
+ 
+      _createAutocomplete: function() {
+        var selected = this.element.children( ":selected" ),
+          value = selected.val() ? selected.text() : "";
+ 
+        this.input = $( "<input>" )
+          .appendTo( this.wrapper )
+          .val( value )
+          .attr( "title", "" )
+          .addClass( "form-control custom-combobox-input ui-corner-left" )
+          .autocomplete({
+            delay: 0,
+            minLength: 0,
+            source: $.proxy( this, "_source" )
+          })
+          .tooltip({
+            classes: {
+              "ui-tooltip": "ui-state-highlight"
+            }
+          });
+ 
+        this._on( this.input, {
+          autocompleteselect: function( event, ui ) {
+            ui.item.option.selected = true;
+            this._trigger( "select", event, {
+              item: ui.item.option
+            });
+          },
+ 
+          autocompletechange: "_removeIfInvalid"
+        });
+      },
+ 
+      _createShowAllButton: function() {
+        var input = this.input,
+          wasOpen = false;
+ 
+        $( "<a>" )
+          .attr( "tabIndex", -1 )
+          .attr( "title", "Show All Items" )
+          .tooltip()
+          .appendTo( this.wrapper )
+          .button({
+            icons: {
+              primary: "ui-icon-triangle-1-s"
+            },
+            text: false
+          })
+          .removeClass( "ui-corner-all" )
+          .addClass( "custom-combobox-toggle ui-corner-right" )
+          .on( "mousedown", function() {
+            wasOpen = input.autocomplete( "widget" ).is( ":none" );
+          })
+          .on( "click", function() {
+            input.trigger( "focus" );
+ 
+            // Close if already visible
+            if ( wasOpen ) {
+              return;
+            }
+ 
+            // Pass empty string as value to search for, displaying all results
+            input.autocomplete( "search", "" );
+          });
+      },
+ 
+      _source: function( request, response ) {
+        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+        response( this.element.children( "option" ).map(function() {
+          var text = $( this ).text();
+          if ( this.value && ( !request.term || matcher.test(text) ) )
+            return {
+              label: text,
+              value: text,
+              option: this
+            };
+        }) );
+      },
+ 
+      _removeIfInvalid: function( event, ui ) {
+ 
+        // Selected an item, nothing to do
+        if ( ui.item ) {
+          return;
+        }
+ 
+        // Search for a match (case-insensitive)
+        var value = this.input.val(),
+          valueLowerCase = value.toLowerCase(),
+          valid = false;
+        this.element.children( "option" ).each(function() {
+          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+            this.selected = valid = true;
+            return false;
+          }
+        });
+ 
+        // Found a match, nothing to do
+        if ( valid ) {
+          return;
+        }
+ 
+        // Remove invalid value
+        this.input
+          .val( "" )
+          .attr( "title", value + " didn't match any item" )
+          .tooltip( "open" );
+        this.element.val( "" );
+        this._delay(function() {
+          this.input.tooltip( "close" ).attr( "title", "" );
+        }, 2500 );
+        this.input.autocomplete( "instance" ).term = "";
+      },
+ 
+      _destroy: function() {
+        this.wrapper.remove();
+        this.element.show();
+      }
+    });
+ 
+    $( "#From_city" ).combobox();
+    $( "#To_city" ).combobox();
+    /*$( "#toggle" ).on( "click", function() {
+    	$( "#To_city" ).toggle();
+    	$( "#From_city" ).toggle();
+    });*/
+  } );
+  </script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		// Ajax post for submiting registration form
-   	$(".plc-ord-sbmit").click(function(event) {
-   		var objCurrentSection = $('.transporter div.logestic_form');       		
-   		
-   		// var user_id 			= objCurrentSection.find("#user_id").val();
-        // var from_city 			= objCurrentSection.find("#from_city").val();
-        var user_id 			= '1';
-        var from_city 			= '9';
-        var from_location 		= objCurrentSection.find("#from_location").val();
-        // var to_city 			= objCurrentSection.find("#to_city").val();
-        var to_city 			= '10';
-        var to_location 		= objCurrentSection.find("#to_location").val();
-        var material_type 		= objCurrentSection.find("#material").val();
-        var no_of_quantity 		= objCurrentSection.find("#length").val();
-        var weight 				= objCurrentSection.find("#nag").val();
-        var feet 				= objCurrentSection.find("#weight").val();
-        var vehicle_type 		= objCurrentSection.find("#vehicle_type").val();
-        var no_of_vehicle 		= objCurrentSection.find("#vehicle_no").val();
-        var pickup_points 		= objCurrentSection.find("#pick_point").val();
-		var destination_points 	= objCurrentSection.find("#drop_point").val();
-        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
-        
-        if(user_id == '', from_city == '', from_location == '', to_city == '', 
-        	to_location == '', material_type == '', vehicle_type == '', no_of_vehicle == '', pickup_points == '', destination_points == '', sechdule_date == '' ){
-        	$('#form_validation_msg').empty();
-		    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-        }
-        /*else if(designation == '',firm_name == '',company_type == '',company_pan == ''){
-        	$('#form_validation_msg').empty();
-		    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-        }
-		else if(captcha !== captcha_word){
-        	$('#form_validation_msg').empty();
-		    $('<p><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');
-        }
-        else if(objCurrentSection.find("input[name=check1]").prop('checked') === false){
-		   	$('#form_validation_msg').empty();
-			$('<p><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
-		}*/
-		else{
 
-	        $.ajax({
-		        type: "POST",
-		        url: "/gmt/Enquiry_form/enquiry_form",
-		        cache: false,
-		        dataType: 'json',
-		        data: {
-		        	/*first_name 	: first_name,
-					last_name 	: last_name,
-					user_mob 	: user_mob,
-					user_email 	: user_email,
-					user_pass	: user_pass,
-					c_pass 		: c_pass,
-					address1 	: address1,
-					address2 	: address2,
-					state 		: state,
-					district 	: district,
-					city 		: city,
-					pin 		: pin,
-					pkg_id 		: pkg_id,
-					user_type 	: user_type,
-					designation : designation,
-					firm_name 	: firm_name,
-					company_type: company_type,
-					pan 		: company_pan*/
-
-					user_id				: user_id,
-					from_city			: from_city,
-					from_location		: from_location,
-					to_city				: to_city,
-					to_location			: to_location,
-					material_type		: material_type,
-					no_of_quantity		: no_of_quantity,
-					weight				: weight,
-					feet				: feet,
-					vehicle_type		: vehicle_type,
-					no_of_vehicle		: no_of_vehicle,
-					pickup_points		: pickup_points,
-					destination_points	: destination_points,
-					sechdule_date		: sechdule_date
-		       	},
-		        success: function(res) {
-		            if (res.status_code == 200)
-		            {
-		              	$('#form_validation_msg').empty();
-			            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
-		              	$('.plc_ord_frm')[0].reset();
-			            /*$.each(res.data, function(key, val) {
+		$('.from-state').one('click',function(){
+			//alert("working");
+			var obj = $(this).closest('.row');
+			jQuery.ajax({
+				type:"GET",
+				url: "/gmt/Indian_city_dropdown/state_dropdown",
+				success: function(res){
+					if(res.status_code == 200){
+						obj.find('.custom-combobox-input').empty();
+						obj.find('.custom-combobox-input').val('');
+						obj.find('.from-city').empty();
+						obj.find('.from-city').val('');
+						obj.find('.from-state').empty();
+						$('<option value="">Select State</option>').appendTo(obj.find('.from-state'));
+						$.each(res.data, function(key, val) {
 			            	$.each(val, function(k, v){
-			                    $('<li>'+v+'</li>').appendTo('#test');
+			                    $('<option value="'+v+'">'+v+'</option>').appendTo(obj.find('.from-state'));
 			                });
-			            });*/
-		            }else{
-			            $('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 			            });
-		            }
-	          	},
+					}else{
+						console.log('No response.');
+					}
+				},
 		        error: function(){
 		        	console.log('Somthing went wrong');
 		        }
-	        });
-	    }
-    });
+			});
+		});
+		// to get state list
+		$(".from-state").change(function(event){
+	        var state = $(this).find("option:selected").text();
+	        var obj = $(this).closest('.row');
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/Indian_city_dropdown/city_district_list",
+				dataType: 'json',
+		        data: { state: state },
+				success: function(res){
+					if(res.status_code == 200){
+						obj.find('.custom-combobox-input').empty();
+						obj.find('.custom-combobox-input').val('');
+						obj.find('.from-city').empty();
+						obj.find('.from-city').val('');
+						var option ='<option value="">Select District City</option>';
+			            $.each(res.data, function(key, val) {
+			            	// $.each(val, function(k, v){
+			                    option +='<option value="'+val['id']+'">'+val['city']+', '+val['district']+'</option>';
+			                // });
+			            });
+			            $('.tab-content div.active').find(obj.find('.from-city')).html(option);
+			            // $('.form_wrp').find('.district').html(option);
+					}else{
+						console.log('No response.');
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
+
+		$('#From_city').select(function(event){
+			var city_id = $(this).find("option:selected").val();
+			alert(city_id);
+		});
+		// Ajax post for submiting registration form
+	   	$(".plc-ord-sbmit").click(function(event) {
+	   		var objCurrentSection = $('.transporter div.logestic_form');       		
+	   		
+	   		// var user_id 			= objCurrentSection.find("#user_id").val();
+	        var user_id 			= '1';
+	        var from_city 			= objCurrentSection.find("#From_city").val();
+	        //var from_city 			= '9';
+	        var from_location 		= objCurrentSection.find("#from_location").val();
+	        var to_city 			= objCurrentSection.find("#To_city").val();
+	        // var to_city 			= '10';
+	        var to_location 		= objCurrentSection.find("#to_location").val();
+	        var material_type 		= objCurrentSection.find("#material").val();
+	        var no_of_quantity 		= objCurrentSection.find("#length").val();
+	        var weight 				= objCurrentSection.find("#nag").val();
+	        var feet 				= objCurrentSection.find("#weight").val();
+	        var vehicle_type 		= objCurrentSection.find("#vehicle_type").val();
+	        var no_of_vehicle 		= objCurrentSection.find("#vehicle_no").val();
+	        var pickup_points 		= objCurrentSection.find("#pick_point").val();
+			var destination_points 	= objCurrentSection.find("#drop_point").val();
+	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
+	        
+	        if(user_id == '', from_city == '', from_location == '', to_city == '', 
+	        	to_location == '', material_type == '', vehicle_type == '', no_of_vehicle == '', pickup_points == '', destination_points == '', sechdule_date == '' ){
+	        	$('#form_validation_msg').empty();
+			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+	        }
+	        
+			else{
+
+		        $.ajax({
+			        type: "POST",
+			        url: "/gmt/Enquiry_form/enquiry_form",
+			        cache: false,
+			        dataType: 'json',
+			        data: {
+			        	/*first_name 	: first_name,
+						last_name 	: last_name,
+						user_mob 	: user_mob,
+						user_email 	: user_email,
+						user_pass	: user_pass,
+						c_pass 		: c_pass,
+						address1 	: address1,
+						address2 	: address2,
+						state 		: state,
+						district 	: district,
+						city 		: city,
+						pin 		: pin,
+						pkg_id 		: pkg_id,
+						user_type 	: user_type,
+						designation : designation,
+						firm_name 	: firm_name,
+						company_type: company_type,
+						pan 		: company_pan*/
+
+						user_id				: user_id,
+						from_city			: from_city,
+						from_location		: from_location,
+						to_city				: to_city,
+						to_location			: to_location,
+						material_type		: material_type,
+						no_of_quantity		: no_of_quantity,
+						weight				: weight,
+						feet				: feet,
+						vehicle_type		: vehicle_type,
+						no_of_vehicle		: no_of_vehicle,
+						pickup_points		: pickup_points,
+						destination_points	: destination_points,
+						sechdule_date		: sechdule_date
+			       	},
+			        success: function(res) {
+			            if (res.status_code == 200)
+			            {
+			              	$('#form_validation_msg').empty();
+				            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+			              	$('.plc_ord_frm')[0].reset();
+				            /*$.each(res.data, function(key, val) {
+				            	$.each(val, function(k, v){
+				                    $('<li>'+v+'</li>').appendTo('#test');
+				                });
+				            });*/
+			            }else{
+				            $('#form_validation_msg').empty();
+				            $.each(res.data, function(key, val) {
+				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+			            }
+		          	},
+			        error: function(){
+			        	console.log('Somthing went wrong');
+			        }
+		        });
+		    }
+	    });
 	});
 </script>

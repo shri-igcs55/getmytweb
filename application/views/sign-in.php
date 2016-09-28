@@ -75,7 +75,7 @@
 				if(res.status_code == 200){
 					$('#form_validation_msg').empty();
 		    		$('<p><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
-		    		window.location = '<?php echo site_url('user/customer'); ?>';
+		    		window.location = '<?php echo site_url('userdashboard/customer'); ?>';
 				}else{
 					$('#form_validation_msg').empty();
 		        	$.each(res.data, function(key, val) {

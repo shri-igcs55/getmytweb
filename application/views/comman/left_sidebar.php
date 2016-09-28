@@ -9,6 +9,6 @@
 	    <li><a href="#plc_crn_bukd_histry" data-toggle="tab">Booked History</a></li>
 	    <li><a href="#plc_crn_cusmr_care" data-toggle="tab">Customer Care</a></li>
 	    <li><a href="#plc_crn_terms" data-toggle="tab">Terms & Conditions</a></li>
-	    <li><a href="#plc_crn_signout">Sign out</a></li>
+	    <li><a href="<?php echo site_url('user/signout'); ?>">Sign out</a></li>
 	</ul>
 </section>

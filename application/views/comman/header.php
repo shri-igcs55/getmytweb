@@ -1,3 +1,4 @@
+<?php $logged_in_user = $this->session->userdata('logged_in_user'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,12 +71,17 @@
 							</article>
 							<article class="col-sm-10 col-xs-6">
 								<div class="menu-wrp">
-
-									<ul class="top-menu text-right">
-										<li><a href="<?php echo site_url('user/signin/'); ?>">Sign In</a></li>
-										<li><a href="<?php echo site_url('user/signup/'); ?>">Sign Up</a></li>
-									</ul>
-
+									<?php if($logged_in_user['user_id']){ ?>
+										<ul class="top-menu text-right">
+											<li>Welcome <span style="color:#ed4343;"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></span></li>
+											<li><span style="color:#ed4343;"><a href="<?php echo site_url('user/signout'); ?>">Logout</a></span></li>
+										</ul>
+									<?php }else{ ?>
+										<ul class="top-menu text-right">
+											<li><a href="<?php echo site_url('user/signin/'); ?>">Sign In</a></li>
+											<li><a href="<?php echo site_url('user/signup/'); ?>">Sign Up</a></li>
+										</ul>
+									<?php } ?>
 									<ul class="bottom-menu text-right">
 										<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/'); ?>">Home</a></li>
 										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/about-us'); ?>">About Us</a></li>

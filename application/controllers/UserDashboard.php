@@ -14,9 +14,17 @@ class UserDashboard extends CI_Controller
 	// after login dashboard
 	public function customer(){
 
-		$this->load->view('comman/header');
-		$this->load->view('place_order_transport');
-		$this->load->view('comman/footer');
+		if (isset($this->session->userdata['logged_in_user'])) {
+
+       		$this->load->view('comman/header');
+			$this->load->view('place_order_transport');
+			$this->load->view('comman/footer');
+			
+       	}else{
+       		redirect(site_url('user/signin'));
+       	}
+
+		
 
 	}
 }

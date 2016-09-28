@@ -563,6 +563,7 @@ input[type="radio"]:checked + label span.radio::before{
       appearance: none;
       background:url(../images/down.png)95% 50% no-repeat;
 }
+
 .custmer_reg select#District{
 	-webkit-appearance: none;
       -moz-appearance: none;
@@ -589,10 +590,31 @@ input[type="radio"]:checked + label span.radio::before{
 }
 .custmer_reg select#vehicle_type{
 	-webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background:url(../images/down.png)95% 50% no-repeat;
+    -moz-appearance: none;
+    appearance: none;
+    background:url(../images/down.png)95% 50% no-repeat;
 }
+select.form-control{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background:url(../images/down.png)95% 50% no-repeat;
+}
+
+.trans_plc_ord select#From_State{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background:url(../images/down.png)95% 50% no-repeat;
+}
+
+.trans_plc_ord select#To_State{
+	-webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background:url(../images/down.png)95% 50% no-repeat;
+}
+
 input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
