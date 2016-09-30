@@ -697,6 +697,21 @@ img.refresh{
 	color: #fff;
 	max-width: 150px;
 }
+#pm_plc_ord{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
+#cus-reg-sbmit{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
+#crane_plc_ord{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
 #plc-ord-sbmit{
 	background-color: #ED4343;
 	color: #fff;

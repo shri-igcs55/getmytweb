@@ -83,7 +83,7 @@
 								<div class="menu-wrp">
 									<?php if($logged_in_user){ ?>
 										<ul class="top-menu text-right">
-											<li>Welcome <span style="color:#ed4343;"><a href="<?php echo site_url('userdashboard/customer'); ?>"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></a></span></li>
+											<li>Welcome <span style="color:#ed4343;"><a href="<?php echo site_url('user/edit'); ?>"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></a></span></li>
 											<li><span style="color:#ed4343;"><a href="<?php echo site_url('user/signout'); ?>">Logout</a></span></li>
 										</ul>
 									<?php }else{ ?>

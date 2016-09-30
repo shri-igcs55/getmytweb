@@ -15,7 +15,7 @@
 				    			<div class="row">
 				    				<article class="col-md-12">
 				    					<div class="section_head">
-											<h1>Place Order for <span>Crane Provider</span></h1>
+											<h1>Place Order for <span>Packers & Movers</span></h1>
 
 											<div class="radio_grp row">
 												<div class="col-sm-4">
@@ -24,12 +24,12 @@
 												</div>
 
 												<div class="col-sm-4">
-													<input type="radio" name="radio" id="radio2" class="radio"/>
+													<input type="radio" name="radio" id="radio2" class="radio" checked />
 													<label for="radio2">Packer and Mover</label>
 												</div>
 
 												<div class="col-sm-4">	
-													<input type="radio" name="radio" id="radio3" class="radio" checked />
+													<input type="radio" name="radio" id="radio3" class="radio"/>
 													<label for="radio3">Crane Service</label>
 												</div>
 											</div>
@@ -37,12 +37,14 @@
 										</div>
 				    				</article>
 				    			</div>
+				    			
 				    			<div class="row">
 				    				<article class="col-md-12">
 				    					<div class="tab-content">
-				    						<!-- tab two starts -->
-										    <div id="place_crane" class="fade in">
+											<!-- tab two starts -->
+										    <div id="place_packer" class="fade in">
 										    	<form action="" class="pace_order_crn_form">
+
 											    	<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
@@ -63,11 +65,10 @@
 															</div>
 														</article>
 													</div>
-
 													<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_State">State<sup>*</sup></label>
+															    <label for="From_State">From State<sup>*</sup></label>
 															    <select id="From_State" class="from-state form-control trans_plc_ord" required>
 															    	<option value="">Select State</option>
 															    	<option value="">Loading...</option>
@@ -76,7 +77,7 @@
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_City">City, District<sup>*</sup></label>
+															    <label for="From_City">From City, District<sup>*</sup></label>
 														     	<select id="From_city" class="from-city form-control">
 																    <option value="">Select City District</option>
 																</select>
@@ -84,56 +85,118 @@
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_location">Where in City (Area)<sup>*</sup></label>
+															    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
 															    <input type="text" id="from_location" class="where-in-city form-control" required disabled="">
 															</div>
 														</article>
-														<!-- <article class="col-md-6">
-															<div class="form-group">
-															    <label for="F_name">City<sup>*</sup></label>
-															    <input type="text" class="form-control" id="F_name" required>
-															</div>
-														</article> -->
-														<!-- <article class="col-md-4">
-															<div class="form-group">
-															    <label for="L_name">Where in City <sup>*</sup></label>
-															    <input type="text" class="form-control" id="L_name" required>
-															</div>
-														</article> -->
 													</div>
-
 													<div class="row">
-														<article class="col-md-6">
+														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="crane_service_location">Address (Where Service is required)<sup>*</sup></label>
-															    <input type="text" class="form-control" id="crane_service_location" required>
+															    <label for="To_State">To State<sup>*</sup></label>
+															    <select id="To_State" class="from-state trans_plc_ord form-control" required>
+															    	<option value="">Select State</option>
+															    	<option value="">Loading...</option>
+															    </select>
 															</div>
 														</article>
-														<article class="col-md-6">
+														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="weight">Weight (Estimate) <sup>*</sup></label>
-															    <input type="text" class="form-control" id="weight" required>
+															    <label for="To_City">To City, District<sup>*</sup></label>
+														     	<select id="To_city" class="from-city form-control">
+																    <option value="">Select City District</option>
+																</select>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="to_location">To Where in City (Area)<sup>*</sup></label>
+															    <input type="text" id="to_location" class="where-in-city form-control" required disabled="">
+															</div>
+														</article>
+													</div>
+													
+													<div class="row">
+														<article class="col-md-8">
+															<div class="form-group">
+															    <label for="detail_address_from">Detail Address from Where Service is required<sup>*</sup></label>
+															    <input type="text" class="form-control" id="detail_address_from" required>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="row">
+																<article class="col-xs-8">
+																	<label class="labl">Lift Facility<sup>*</sup></label>
+																	<br><br>
+																	<div class="checkbox">
+																	  	<input id="from_lift_radio1" type="radio" name="check1" value="check1" required>
+																	  	<label for="from_lift_radio1">Yes </label>
+																	  	<input id="from_lift_radio2" type="radio" name="check1" value="check1" required>
+																	  	<label for="from_lift_radio2">No </label>
+																	</div>
+																</article>
+															</div>
+														</article>
+													</div>
+													<div class="row">
+														<article class="col-md-8">
+															<div class="form-group">
+															    <label for="detail_address_to">Detail Address to Where Service is Provide<sup>*</sup></label>
+															    <input type="text" class="form-control" id="detail_address_to" required>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="row">
+																<article class="col-xs-12">
+																	<label class="labl">Lift Facility<sup>*</sup></label>
+																	<br><br>
+																	<div class="checkbox">
+																	  	<input id="to_lift_radio3" type="radio" name="check1-1" value="check1" required>
+																	  	<label for="to_lift_radio3">Yes </label>
+																	  	<input id="to_lift_radio4" type="radio" name="check1-1" value="check1" required>
+																	  	<label for="to_lift_radio4">No </label>
+																	  	<input id="to_lift_radio5" type="radio" name="check1-1" value="check1" required>
+																	  	<label for="to_lift_radio5">Do Not Known </label>
+																	</div>
+																</article>
+															</div>
+														</article>
+													</div>
+													<div class="row">
+														<article class="col-md-8">
+															<div class="form-group">
+															    <label for="service">Service required for<sup>*</sup></label>
+															    <select id="service" class="form-control service" required>
+															    	<option value="">Select Service Type</option>
+															    	<option value="">Loading...</option>
+															    </select>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="pm_schedule_date">Schedule Date<sup>*</sup></label>
+															    <input type="text" class="form-control" id="pm_schedule_date" required>
 															</div>
 														</article>
 													</div>
 													<div class="row">
 														<article class="col-md-12">
 															<div class="form-group">
-															    <label for="crane_work_description">Description of Work<sup>*</sup></label>
-															    <textarea id="crane_work_description" class="form-control" required></textarea>
+															    <label for="work_description_pm">Description of Work<sup>*</sup></label>
+															    <textarea id="work_description_pm" class="form-control" required></textarea>
 															</div>
 														</article>
 													</div>
 
 													<div class="row">
 														<article class="col-md-12 text-center">
-															<input type="button" id="crane_plc_ord" class="form-control" value="Place Order" required>
+															<input type="button" id="pm_plc_ord" class="form-control pm_plc_ord" value="Place Order" required>
 														</article>
 													</div>
 
 										    	</form>
 										    </div>
-										    <!-- tab one ends -->
+										    <!-- tab two ends -->
 										</div>
 				    				</article>
 				    			</div>
@@ -291,8 +354,8 @@
 		    }
 		    return false;
 		});
-		$('#radio2').on('change', function () {
-			var url = '<?php echo site_url('/userdashboard/place_packer_mover_order') ?>';
+		$('#radio3').on('change', function () {
+			var url = '<?php echo site_url('/userdashboard/place_crane_order') ?>';
 			if (url) { 
 		    	window.location = url; 
 		    }
@@ -301,7 +364,7 @@
 
 
 		$('.from-state').one('click',function(){
-			
+
 			var obj = $(this).closest('.row');
 			jQuery.ajax({
 				type:"GET",
@@ -310,10 +373,10 @@
 					if(res.status_code == 200){
 						obj.find('.custom-combobox-input').empty();
 						obj.find('.custom-combobox-input').val('');
-						obj.find('.custom-combobox-input').removeAttr('disabled');					
-						obj.find('.where-in-city').removeAttr('disabled');
+						obj.find('.custom-combobox-input').removeAttr('disabled');
 						obj.find('.from-city').empty();
 						obj.find('.from-city').val('');
+						obj.find('.where-in-city').removeAttr('disabled');
 						obj.find('.from-state').empty();
 						$('<option value="">Select State</option>').appendTo(obj.find('.from-state'));
 						$.each(res.data, function(key, val) {
@@ -330,6 +393,7 @@
 		        }
 			});
 		});
+		
 		// to get state list
 		$(".from-state").change(function(event){
 	        var state = $(this).find("option:selected").text();
@@ -361,5 +425,9 @@
 		        }
 			});
 		});
+
+		// to placed order for packer mover
+
+
 	});
 </script>

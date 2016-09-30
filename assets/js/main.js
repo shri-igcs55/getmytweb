@@ -1,8 +1,4 @@
 // main js
-
-
-
-
 $(document).ready(function(){
 
 	// adding active class to main menu
@@ -39,14 +35,19 @@ $(document).ready(function(){
 
 	// ===== 
 	// Search order date picker
-	$( function() {
-	    $( "#datepicker" ).datepicker();
-	} );
+	$(function(){
+	    $("#datepicker").datepicker();
+	});
 
 	// Search order date picker
-	$( function() {
-	    $( "#schedule_date" ).datepicker();
-	} );
+	$(function(){
+	    $("#schedule_date").datepicker();
+	});
+
+	// date picker for packer and mover place order
+	$(function(){
+		$("#pm_schedule_date").datepicker();
+	});
 	
 	// sign up as tabs
 
@@ -300,6 +301,30 @@ $(document).ready(function(){
 					$.each(res.data, function(key, val) {
 		            	// $.each(val, function(k, v){
 		                    $('<option value="'+val['mid']+'">'+val['mtype']+'</option>').appendTo('.material');
+		                // });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+		    error: function(){
+		    	console.log('Somthing went wrong');
+		    }
+		});
+	});
+
+	// to load service types
+	$('.service').one('click', function(){
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/Service_dropdown/available_service",
+			success: function(res){
+				if(res.status_code == 200){
+					$('.service').empty();
+					$('<option value="">Select Service Type</option>').appendTo('.service');
+					$.each(res.data, function(key, val) {
+		            	// $.each(val, function(k, v){
+		                    $('<option value="'+val['id']+'">'+val['service_type']+'</option>').appendTo('.service');
 		                // });
 		            });
 				}else{

@@ -58,7 +58,7 @@
 																	</article>
 																	<article class="col-md-4">
 																		<div class="form-group">
-																		    <label for="From_City">From City<sup>*</sup></label>
+																		    <label for="From_City">From City, District<sup>*</sup></label>
 																	     	<select id="From_city" class="from-city form-control">
 																			    <option value="">Select City District</option>
 																			</select>
@@ -67,7 +67,7 @@
 																	<article class="col-md-4">
 																		<div class="form-group">
 																		    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
-																		    <input type="text" id="from_location" class="where-in-city form-control" required  title="Select District First">
+																		    <input type="text" id="from_location" class="where-in-city form-control" required disabled="">
 																		</div>
 																	</article>
 																</div>
@@ -83,7 +83,7 @@
 																	</article>
 																	<article class="col-md-4">
 																		<div class="form-group">
-																		    <label for="To_City">From City<sup>*</sup></label>
+																		    <label for="To_City">To City, District<sup>*</sup></label>
 																	     	<select id="To_city" class="from-city form-control">
 																			    <option value="">Select City District</option>
 																			</select>
@@ -92,55 +92,40 @@
 																	<article class="col-md-4">
 																		<div class="form-group">
 																		    <label for="to_location">To Where in City (Area)<sup>*</sup></label>
-																		    <input type="text" id="to_location" class="where-in-city form-control" required  title="Select District First">
+																		    <input type="text" id="to_location" class="where-in-city form-control" required disabled="">
 																		</div>
 																	</article>
 																</div>
-																<!-- <div class="row">
-																	<article class="col-md-3">
-																		<div class="form-group">
-																		    <label for="State">To State<sup>*</sup></label>
-																		    <select id="State" class="state form-control" required>
-																		    	<option value="">Select State</option>
-																		    	<option value="">Loading...</option>
-																		    </select>
-																		</div>
-																	</article>
-																	<article class="col-md-3">
-																		<div class="form-group">
-																		    <label for="District">To District<sup>*</sup></label>
-																		    <select id="District" class="district form-control" required disabled="" title="Select State First">
-																		    	<option value="">Select District</option>
-																		    </select>
-																		</div>
-																	</article>
-																	<article class="col-md-3">
-																		<div class="form-group">
-																		    <label for="City">To City<sup>*</sup></label>
-																		    <select id="to_city" class="to_city form-control" required disabled="" title="Select District First">
-																		    	<option value="">Select City</option>
-																		    </select>
-																		</div>
-																	</article>
-																	<article class="col-md-3">
-																		<div class="form-group">
-																		    <label for="location">To where in city<sup>*</sup></label>
-																		    <input type="text" id="to_location" class="city form-control" required title="Select District First">
-																		    	
-																		    
-																		</div>
-																	</article>
-																</div> -->
 										    				</li>
 										    			</ul>
 														<a id="add_more" class="add_more_btn">+ add more</a>
 														<a id="remove_more" class="remove_more_btn">remove</a>
 										    		</div><br><br>
+										    		<input type="hidden" name="uid" id="uid" value="<?php echo $logged_in_user['user_id']; ?>">
+										    		<div class="row">
+										    			<article class="col-md-4">
+															<div class="form-group">
+															    <label for="F_name">First Name<sup>*</sup></label>
+															    <input type="text" class="form-control" id="F_name" required>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="L_name">Last Name<sup>*</sup></label>
+															    <input type="text" class="form-control" id="L_name" required>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="mobile">Mobile<sup>*</sup></label>
+															    <input type="number" class="form-control" id="mobile" required>
+															</div>
+														</article>
+										    		</div>
 											    	<div class="row">
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="material">Material Type<sup>*</sup></label>
-															    <!-- <input type="text" class="form-control" id="F_name" required> -->
 															    <select id="material" class="material form-control" required title="Select Material Type">
 															    	<option value="">Select Material Type</option>
 															    	<option value="">Loading...</option>
@@ -174,7 +159,6 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="vehicle_type">Vehicle Type<sup>*</sup></label>
-															    <!-- <input type="text" class="form-control" id="F_name" required> -->
 															    <select id="vehicle_type" class="vehicle form-control" required title="Select Vehicle Type">
 															    	<option value="">Select Vehicle Type</option>
 															    	<option value="">Loading...</option>
@@ -198,7 +182,7 @@
 														</article>
 														<article class="col-md-3">
 															<div class="form-group">
-															    <label for="drop_point">Destination Point<sup>*</sup></label>
+															    <label for="drop_point">Drop Points<sup>*</sup></label>
 															    <input type="number" class="form-control" id="drop_point" required>
 															</div>
 														</article>
@@ -233,7 +217,9 @@
 </section>
 
 <!-- place order transporter starts -->
-  <script>
+<script>
+
+// this code is for auto complete in place order page after login
   $( function() {
     $.widget( "custom.combobox", {
       _create: function() {
@@ -254,6 +240,7 @@
           .appendTo( this.wrapper )
           .val( value )
           .attr( "title", "" )
+          .attr( "disabled", true)
           .addClass( "form-control custom-combobox-input ui-corner-left" )
           .autocomplete({
             delay: 0,
@@ -367,14 +354,26 @@
  
     $( "#From_city" ).combobox();
     $( "#To_city" ).combobox();
-    /*$( "#toggle" ).on( "click", function() {
-    	$( "#To_city" ).toggle();
-    	$( "#From_city" ).toggle();
-    });*/
+    
   } );
-  </script>
+</script>
 <script type="text/javascript">
 	$(document).ready(function(){
+
+		$('#radio2').on('change', function () {
+			var url = '<?php echo site_url('/userdashboard/place_packer_mover_order') ?>';
+			if (url) { // require a URL
+		    	window.location = url; // redirect
+		    }
+		    return false;
+		});
+		$('#radio3').on('change', function () {
+			var url = '<?php echo site_url('/userdashboard/place_crane_order') ?>';
+			if (url) { // require a URL
+		    	window.location = url; // redirect
+		    }
+		    return false;
+		});
 
 		$('.from-state').one('click',function(){
 			//alert("working");
@@ -386,6 +385,8 @@
 					if(res.status_code == 200){
 						obj.find('.custom-combobox-input').empty();
 						obj.find('.custom-combobox-input').val('');
+						obj.find('.custom-combobox-input').removeAttr('disabled');					
+						obj.find('.where-in-city').removeAttr('disabled');
 						obj.find('.from-city').empty();
 						obj.find('.from-city').val('');
 						obj.find('.from-state').empty();
@@ -417,6 +418,8 @@
 					if(res.status_code == 200){
 						obj.find('.custom-combobox-input').empty();
 						obj.find('.custom-combobox-input').val('');
+						obj.find('.custom-combobox-input').removeAttr('disabled');					
+						obj.find('.where-in-city').removeAttr('disabled');
 						obj.find('.from-city').empty();
 						obj.find('.from-city').val('');
 						var option ='<option value="">Select District City</option>';
@@ -437,21 +440,17 @@
 			});
 		});
 
-		$('#From_city').select(function(event){
-			var city_id = $(this).find("option:selected").val();
-			alert(city_id);
-		});
 		// Ajax post for submiting registration form
 	   	$(".plc-ord-sbmit").click(function(event) {
 	   		var objCurrentSection = $('.transporter div.logestic_form');       		
 	   		
-	   		// var user_id 			= objCurrentSection.find("#user_id").val();
-	        var user_id 			= '1';
+	   		var user_id 			= objCurrentSection.find("#uid").val();
+	        var first_name			= objCurrentSection.find("#F_name").val();
+	        var last_name			= objCurrentSection.find("#L_name").val();
+	        var user_mob			= objCurrentSection.find("#mobile").val();
 	        var from_city 			= objCurrentSection.find("#From_city").val();
-	        //var from_city 			= '9';
 	        var from_location 		= objCurrentSection.find("#from_location").val();
 	        var to_city 			= objCurrentSection.find("#To_city").val();
-	        // var to_city 			= '10';
 	        var to_location 		= objCurrentSection.find("#to_location").val();
 	        var material_type 		= objCurrentSection.find("#material").val();
 	        var no_of_quantity 		= objCurrentSection.find("#length").val();
@@ -463,13 +462,11 @@
 			var destination_points 	= objCurrentSection.find("#drop_point").val();
 	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
 	        
-	        if(user_id == '', from_city == '', from_location == '', to_city == '', 
-	        	to_location == '', material_type == '', vehicle_type == '', no_of_vehicle == '', pickup_points == '', destination_points == '', sechdule_date == '' ){
+	        if(user_id == '', first_name == '', last_name == '', user_mob == '', from_city == '', from_location == '', to_city == '', to_location == '', material_type == '', vehicle_type == '', no_of_vehicle == '', pickup_points == '', destination_points == '', sechdule_date == '' ){
 	        	$('#form_validation_msg').empty();
 			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
-	        
-			else{
+	        else{
 
 		        $.ajax({
 			        type: "POST",
@@ -477,26 +474,10 @@
 			        cache: false,
 			        dataType: 'json',
 			        data: {
-			        	/*first_name 	: first_name,
-						last_name 	: last_name,
-						user_mob 	: user_mob,
-						user_email 	: user_email,
-						user_pass	: user_pass,
-						c_pass 		: c_pass,
-						address1 	: address1,
-						address2 	: address2,
-						state 		: state,
-						district 	: district,
-						city 		: city,
-						pin 		: pin,
-						pkg_id 		: pkg_id,
-						user_type 	: user_type,
-						designation : designation,
-						firm_name 	: firm_name,
-						company_type: company_type,
-						pan 		: company_pan*/
-
-						user_id				: user_id,
+			        	user_id				: user_id,
+						odr_by_fname		: first_name,
+						odr_by_lname		: last_name,
+						odr_by_mob 			: user_mob,
 						from_city			: from_city,
 						from_location		: from_location,
 						to_city				: to_city,
