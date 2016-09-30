@@ -30,9 +30,14 @@ class User extends CI_Controller
 
 	public function edit()
 	{
-		$this->load->view('comman/header');
-		$this->load->view('update_profle');
-		$this->load->view('comman/footer');
+		if(isset($this->session->userdata['logged_in_user'])){
+			$this->load->view('comman/header');
+			$this->load->view('update_profle');
+			$this->load->view('comman/footer');
+
+       	}else{
+       		redirect(site_url('user/signin'));
+       	}
 	}
 
 	// User sign up customer
@@ -75,10 +80,25 @@ class User extends CI_Controller
 		$this->load->view('comman/footer');
 	}
 
+
+	// after login Chanee password
+	public function changePassword(){
+
+		if (isset($this->session->userdata['logged_in_user'])) {
+
+       		$this->load->view('comman/header');
+			$this->load->view('change_password');
+			$this->load->view('comman/footer');
+
+       	}else{
+       		redirect(site_url('user/signin'));
+       	}
+	}
+
 	// after login dashboard
 	public function signout(){
 		$this->session->unset_userdata('logged_in_user');
-		redirect(site_url('user/signin'));
+		redirect(site_url('/'));
 	}
 
 

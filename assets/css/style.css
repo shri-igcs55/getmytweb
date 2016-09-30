@@ -614,7 +614,11 @@ select.form-control{
     appearance: none;
     background:url(../images/down.png)95% 50% no-repeat;
 }
-
+input.form-control[type=submit]{
+    background-color: #ED4343;
+    color: #fff;
+    max-width: 150px;
+}
 input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
@@ -698,10 +702,8 @@ img.refresh{
 	color: #fff;
 	max-width: 150px;
 }
-/*#cus-comp-reg-sbmit{
-	background-color: #ED4343;
-	color: #fff;
-	max-width: 150px;
+/*.active{
+	background-color: #ed4343;
 }*/
 
 .nav.nav-tabs li a,.nav.nav-tabs li a:hover,.nav.nav-tabs li a:active,
@@ -1063,3 +1065,87 @@ a.remove_more_btn{
 .addmore_wrp ul li{
 	list-style: none;
 }
+
+/*=================================*/
+
+
+
+
+
+
+.radio_grp label {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #ED4343;
+  
+}
+
+/* hide input */
+.radio_grp input.radio:empty {
+	margin-left: -999px;
+}
+
+/* style label */
+.radio_grp input.radio:empty ~ label {
+	position: relative;
+	float: left;
+	line-height: 2.5em;
+	text-indent: 3.25em;
+	margin-top: 2em;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+.radio_grp input.radio:empty ~ label:before {
+	position: absolute;
+	display: block;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	/*content: '\2714';*/
+	text-indent: .9em;
+	width: 2.5em;
+	background: #ddd;
+	color: #000;
+	border-radius: 3px 0 0 3px;
+	-webkit-transition: all .3s ease-in-out;
+	     -moz-transition: all .3s ease-in-out;
+		    -ms-transition: all .3s ease-in-out;
+		     -o-transition: all .3s ease-in-out;
+		      transition: all .3s ease-in-out;
+}
+
+/* toggle hover */
+/*.radio_grp input.radio:hover:not(:checked) ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #fff;
+	background-color: #ED4343;
+}
+
+.radio_grp input.radio:hover:not(:checked) ~ label {
+	color: #888;
+}*/
+
+/* toggle on */
+.radio_grp input.radio:checked ~ label:before {
+	content:'\2714';
+	text-indent: .9em;
+	color: #fff;
+	background-color: #ED4343;
+}
+
+.radio_grp input.radio:checked ~ label {
+	color: #777;
+}
+
+/* radio focus */
+.radio_grp input.radio:focus ~ label:before {
+	box-shadow: 0 0 0 3px #999;
+}
+
+/*===============================*/

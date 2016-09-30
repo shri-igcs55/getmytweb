@@ -56,7 +56,89 @@ $(document).ready(function(){
 		
 	});
 		
+		// home slider
+	var owl_1 = $('.owl-carousel_1');
+	// owl.owlCarousel();
 
+	owl_1.owlCarousel({
+	    loop:true,
+	    // margin:10,
+	    autoplay:true,
+	    autoplayTimeout:4000,
+	    autoplaySpeed:1500,
+	    navSpeed:true,
+	    navSpeed:1000,
+	    nav:false,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        600:{
+	            items:1
+	        },
+	        1000:{
+	            items:1
+	        }
+	    }
+	})
+	 
+
+  	$('.owl-next_c').click(function() {
+	    owl_1.trigger('next.owl.carousel');
+	})
+	// Go to the previous item
+	$('.owl-prev_c').click(function() {
+	    owl_1.trigger('prev.owl.carousel');
+	})
+
+
+
+
+	// home slider
+	var owl_2 = $('.owl-carousel_2');
+	// owl.owlCarousel();
+
+	owl_2.owlCarousel({
+	    loop:true,
+	    // margin:10,
+	    autoplay:true,
+	    autoplayTimeout:4000,
+	    autoplaySpeed:1500,
+	    navSpeed:true,
+	    navSpeed:1000,
+	    nav:false,
+	    responsive:{
+	        0:{
+	            items:1
+	        },
+	        600:{
+	            items:1
+	        },
+	        1000:{
+	            items:1
+	        }
+	    }
+	})
+
+	$('.owl-next_c').click(function() {
+	    owl_2.trigger('next.owl.carousel');
+	})
+	// Go to the previous item
+	$('.owl-prev_c').click(function() {
+	    owl_2.trigger('prev.owl.carousel');
+	})
+
+
+
+
+	// home animated button
+	$(".goto_btn").click(function() {
+	    $('html, body').animate({
+	        scrollTop: $("#about").offset().top +20
+	    }, 1000);
+	});
+
+	
 });
 
 

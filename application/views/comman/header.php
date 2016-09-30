@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- <link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
 
+	
 	<!-- bootstrap css -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>bootstrap/css/bootstrap-theme.css">
@@ -37,12 +38,19 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/responsive.css">
 	<!-- main css ends -->
 
+	<!-- Home page css -->
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/home.css">
+
 	<!-- loader css -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/pre-loader.css">
 	<!-- loader css ends -->
 
 	<!-- jQuery js -->
 	<script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery-2.1.4.js"></script>
+
+	<!-- home page js -->
+	
+
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">  
 <script type="text/javascript">
 	var base_url = '<?php echo base_url(); ?>';
@@ -66,14 +74,16 @@
 						<div class="row">
 							<article class="col-sm-2 col-xs-6">
 								<div class="logo_wrp">
-									<img class="img-responsive" src="<?php echo base_url('assets/');?>images/logo.png" alt="LOGO">
+									<a href="<?php echo site_url('/'); ?>">
+										<img class="img-responsive" src="<?php echo base_url('assets/');?>images/logo.png" alt="LOGO">
+									</a>
 								</div>
 							</article>
 							<article class="col-sm-10 col-xs-6">
 								<div class="menu-wrp">
-									<?php if($logged_in_user['user_id']){ ?>
+									<?php if($logged_in_user){ ?>
 										<ul class="top-menu text-right">
-											<li>Welcome <span style="color:#ed4343;"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></span></li>
+											<li>Welcome <span style="color:#ed4343;"><a href="<?php echo site_url('userdashboard/customer'); ?>"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></a></span></li>
 											<li><span style="color:#ed4343;"><a href="<?php echo site_url('user/signout'); ?>">Logout</a></span></li>
 										</ul>
 									<?php }else{ ?>
@@ -83,7 +93,7 @@
 										</ul>
 									<?php } ?>
 									<ul class="bottom-menu text-right">
-										<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/'); ?>">Home</a></li>
+										<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('/'); ?>">Home</a></li>
 										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/about-us'); ?>">About Us</a></li>
 										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/our-services'); ?>">Our Services</a></li>
 										<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('welcome/how-it-works'); ?>">How it works</a></li>

@@ -16,6 +16,24 @@
 				    				<article class="col-md-12">
 				    					<div class="section_head">
 											<h1>Place Order for <span>Transporter / Logestic Service</span></h1>
+
+											<div class="radio_grp row">
+												<div class="col-sm-4">
+													<input type="radio" name="radio" id="radio1" class="radio" checked/>
+													<label for="radio1">Transporter / Logestic</label>
+												</div>
+
+												<div class="col-sm-4">
+													<input type="radio" name="radio" id="radio2" class="radio"/>
+													<label for="radio2">Packer and Mover</label>
+												</div>
+
+												<div class="col-sm-4">	
+													<input type="radio" name="radio" id="radio3" class="radio"/>
+													<label for="radio3">Crane Service</label>
+												</div>
+											</div>
+
 										</div>
 				    				</article>
 				    			</div>
@@ -141,7 +159,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="nag">Nag (Quantity)</label>
-															    <input type="number" class="form-control" id="nag" required>
+															    <input maxlength="5" type="text" class="form-control" id="nag" pattern="[0-9]*" required>
 															</div>
 														</article>
 														<article class="col-md-6">

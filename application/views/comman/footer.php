@@ -188,9 +188,14 @@
 <!-- main js -->
 <script type="text/javascript" src="<?php echo base_url('assets/');?>js/main.js"></script>
 <!-- main js ends -->
+<script type="text/javascript" src="<?php echo base_url('assets/'); ?>js/modernizr.custom.53451.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/'); ?>js/jquery.gallery.js"></script>
 
-
-
+<script type="text/javascript">
+            $(function() {
+                $('#dg-container').gallery();
+            });
+</script>
 </body>
 </html>
 
