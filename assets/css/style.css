@@ -1121,7 +1121,7 @@ a.remove_more_btn{
 	top: 0;
 	bottom: 0;
 	left: 0;
-	/*content: '\2714';*/
+	content: '\2714';
 	text-indent: .9em;
 	width: 2.5em;
 	background: #ddd;
