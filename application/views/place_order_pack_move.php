@@ -40,11 +40,11 @@
 				    			
 				    			<div class="row">
 				    				<article class="col-md-12">
-				    					<div class="tab-content">
+				    					<div class="tab-content packer">
 											<!-- tab two starts -->
-										    <div id="place_packer" class="fade in">
-										    	<form action="" class="pace_order_crn_form">
-
+										    <div id="place_packer" class="fade in mover">
+										    	<form action="" class="pace_order_crn_form plc_ord_pm">
+										    		<input type="hidden" name="uid" id="uid" value="<?php echo $logged_in_user['user_id']; ?>">
 											    	<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
@@ -117,45 +117,68 @@
 													</div>
 													
 													<div class="row">
-														<article class="col-md-8">
+														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="detail_address_from">Detail Address from Where Service is required<sup>*</sup></label>
 															    <input type="text" class="form-control" id="detail_address_from" required>
 															</div>
 														</article>
-														<article class="col-md-4">
+														<article class="col-md-6">
 															<div class="row">
+																<article class="col-md-4">
+																	<div class="form-group">
+																	    <label for="detail_address_from">From Floor<sup>*</sup></label>
+																	    <select id="f_floor" class="from-city form-control" required>
+																	    	<option value="G">Ground</option>
+																		    <?php for($ff=1; $ff<=50;$ff++){ ?><option value="<?php echo $ff; ?>"><?php echo $ff; ?></option><?php }
+																		    ?>
+																		</select>
+																	</div>
+																</article>
 																<article class="col-xs-8">
 																	<label class="labl">Lift Facility<sup>*</sup></label>
 																	<br><br>
 																	<div class="checkbox">
-																	  	<input id="from_lift_radio1" type="radio" name="check1" value="check1" required>
+																	  	<input id="from_lift_radio1" type="radio" name="check1" value="2" required>
 																	  	<label for="from_lift_radio1">Yes </label>
-																	  	<input id="from_lift_radio2" type="radio" name="check1" value="check1" required>
+																	  	<input id="from_lift_radio2" type="radio" name="check1" value="1" required>
 																	  	<label for="from_lift_radio2">No </label>
+																	  	<input id="to_lift_radio6" type="radio" name="check1" value="3" required>
+																	  	<label for="to_lift_radio6">Do Not Known </label>
 																	</div>
 																</article>
 															</div>
 														</article>
+														
 													</div>
 													<div class="row">
-														<article class="col-md-8">
+														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="detail_address_to">Detail Address to Where Service is Provide<sup>*</sup></label>
 															    <input type="text" class="form-control" id="detail_address_to" required>
 															</div>
 														</article>
-														<article class="col-md-4">
+														<article class="col-md-6">
 															<div class="row">
-																<article class="col-xs-12">
+																<article class="col-md-4">
+																	<div class="form-group">
+																	    <label for="detail_address_from">To Floor<sup>*</sup></label>
+																	    <select id="t_floor" class="from-city form-control" required>
+																		    <option value="G">Ground</option>
+																		    <?php for($tf=0; $tf<=50;$tf++){ ?><option value="<?php echo $tf; ?>"><?php echo $tf; ?></option><?php }
+																		    ?>
+																		</select>
+																	</div>
+																</article>
+																<article class="col-xs-8">
 																	<label class="labl">Lift Facility<sup>*</sup></label>
 																	<br><br>
 																	<div class="checkbox">
-																	  	<input id="to_lift_radio3" type="radio" name="check1-1" value="check1" required>
+																	  	<input id="to_lift_radio3" type="radio" name="check1-1" value="2" required>
 																	  	<label for="to_lift_radio3">Yes </label>
-																	  	<input id="to_lift_radio4" type="radio" name="check1-1" value="check1" required>
+																	  	<input id="to_lift_radio4" type="radio" name="check1-1" value="1" required>
 																	  	<label for="to_lift_radio4">No </label>
-																	  	<input id="to_lift_radio5" type="radio" name="check1-1" value="check1" required>
+																	  	<input id="to_lift_radio5" type="radio" name="check1-1" value="3" required>
 																	  	<label for="to_lift_radio5">Do Not Known </label>
 																	</div>
 																</article>
@@ -182,7 +205,7 @@
 													<div class="row">
 														<article class="col-md-12">
 															<div class="form-group">
-															    <label for="work_description_pm">Description of Work<sup>*</sup></label>
+															    <label for="work_description_pm">Description of Goods<sup>*</sup></label>
 															    <textarea id="work_description_pm" class="form-control" required></textarea>
 															</div>
 														</article>
@@ -192,6 +215,8 @@
 														<article class="col-md-12 text-center">
 															<input type="button" id="pm_plc_ord" class="form-control pm_plc_ord" value="Place Order" required>
 														</article>
+														<!-- color:#37b1d8; -->
+														<span id="form_validation_msg" style="color:red;"></span>
 													</div>
 
 										    	</form>
@@ -427,7 +452,89 @@
 		});
 
 		// to placed order for packer mover
+		$(".pm_plc_ord").click(function(event) {
+	   		var objPMSection = $('.packer div.mover');       		
+	   		
+	   		var user_id 				= objPMSection.find("#uid").val();
+	        var odr_by_fname			= objPMSection.find("#F_name").val();
+	        var odr_by_lname			= objPMSection.find("#L_name").val();
+	        var odr_by_mob				= objPMSection.find("#mobile").val();
+	        var from_state 				= objPMSection.find("#From_State").val();
+	        var from_city 				= objPMSection.find("#From_city").val();
+	        var from_location 			= objPMSection.find("#from_location").val();
+	        var to_state				= objPMSection.find("#To_State").val();
+	        var to_city 				= objPMSection.find("#To_city").val();
+	        var to_location 			= objPMSection.find("#to_location").val();
+	        
+	        // var user_type_id 			= objPMSection.find("#material").val();
+	        var user_type_id 			= '3';
+	        var detailed_from_address 	= objPMSection.find("#detail_address_from").val();
+	        var shift_floor_from 		= objPMSection.find("#f_floor").val();
+	        var from_lift_facility 		= $("input[name=check1]:checked").val();
+	        var detailed_to_address 	= objPMSection.find("#detail_address_to").val();
+	        var shift_floor_to 			= objPMSection.find("#t_floor").val();
+	        var to_lift_facility 		= $("input[name=check1-1]:checked").val();
+			var service_for 			= objPMSection.find("#service").val();
+	        var sechdule_date	 		= objPMSection.find("#pm_schedule_date").val();
+	        var desc_of_goods			= objPMSection.find("#work_description_pm").val();
+	        
+	        if(user_id == '' || odr_by_fname == '' || odr_by_lname == '' || odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || to_state == '' || to_city == '' || to_location == '' || detailed_from_address == '' || shift_floor_from == '' || from_lift_facility == '' || detailed_to_address == '' || shift_floor_to == '' || to_lift_facility == '' || service_for == '' || sechdule_date == '' || desc_of_goods == '' ){
+	        	$('#form_validation_msg').empty();
+			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+	        }
+	        else{
 
+		        $.ajax({
+			        type: "POST",
+			        url: "/gmt/Enquiry_form_pm/enquiry_form_pm",
+			        cache: false,
+			        dataType: 'json',
+			        data: {
+			        	user_id					: user_id,
+			        	user_type_id			: user_type_id,
+						odr_by_fname			: odr_by_fname,
+						odr_by_lname			: odr_by_lname,
+						odr_by_mob 				: odr_by_mob,
+						from_state				: from_state,
+						from_city				: from_city,
+						from_location			: from_location,
+						to_state				: to_state,
+						to_city					: to_city,
+						to_location				: to_location,
+						detailed_from_address	: detailed_from_address,
+						shift_floor_from		: shift_floor_from,
+						from_lift_facility		: from_lift_facility,
+						detailed_to_address		: detailed_to_address,
+						shift_floor_to			: shift_floor_to,
+						to_lift_facility		: to_lift_facility,
+						service_for				: service_for,
+						sechdule_date			: sechdule_date,
+						desc_of_goods			: desc_of_goods
+			       	},
+			        success: function(res) {
+			            if (res.status_code == 200)
+			            {
+			              	$('#form_validation_msg').empty();
+				            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+			              	$('.plc_ord_pm')[0].reset();
+				            /*$.each(res.data, function(key, val) {
+				            	$.each(val, function(k, v){
+				                    $('<li>'+v+'</li>').appendTo('#test');
+				                });
+				            });*/
+			            }else{
+				            $('#form_validation_msg').empty();
+				            $.each(res.data, function(key, val) {
+				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+			            }
+		          	},
+			        error: function(){
+			        	console.log('Somthing went wrong');
+			        }
+		        });
+		    }
+	    });
 
 	});
 </script>

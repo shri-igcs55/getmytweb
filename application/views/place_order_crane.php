@@ -39,27 +39,27 @@
 				    			</div>
 				    			<div class="row">
 				    				<article class="col-md-12">
-				    					<div class="tab-content">
+				    					<div class="tab-content crane">
 				    						<!-- tab two starts -->
-										    <div id="place_crane" class="fade in">
-										    	<form action="" class="pace_order_crn_form">
+										    <div id="place_crane" class="fade in provider">
+										    	<form action="" class="pace_order_crn_form plc_ord_crane">
 											    	<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="F_name">First Name<sup>*</sup></label>
-															    <input type="text" class="form-control" id="F_name" required>
+															    <input type="text" class="form-control" id="F_name" required value="">
 															</div>
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="L_name">Last Name<sup>*</sup></label>
-															    <input type="text" class="form-control" id="L_name" required>
+															    <input type="text" class="form-control" id="L_name" required value="">
 															</div>
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="mobile">Mobile<sup>*</sup></label>
-															    <input type="number" class="form-control" id="mobile" required>
+															    <input type="number" class="form-control" id="mobile" required value="">
 															</div>
 														</article>
 													</div>
@@ -85,7 +85,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="From_location">Where in City (Area)<sup>*</sup></label>
-															    <input type="text" id="from_location" class="where-in-city form-control" required disabled="">
+															    <input type="text" id="from_location" class="where-in-city form-control" required disabled="" value="">
 															</div>
 														</article>
 														<!-- <article class="col-md-6">
@@ -103,34 +103,76 @@
 													</div>
 
 													<div class="row">
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="To_State">To State<sup>*</sup></label>
+															    <select id="To_State" class="from-state trans_plc_ord form-control" required>
+															    	<option value="">Select State</option>
+															    	<option value="">Loading...</option>
+															    </select>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="To_City">To City, District<sup>*</sup></label>
+														     	<select id="To_city" class="from-city form-control">
+																    <option value="">Select City District</option>
+																</select>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="to_location">To Where in City (Area)<sup>*</sup></label>
+															    <input type="text" id="to_location" class="where-in-city form-control" required disabled="">
+															</div>
+														</article>
+													</div>
+
+													<div class="row">
 														<article class="col-md-6">
 															<div class="form-group">
-															    <label for="crane_service_location">Address (Where Service is required)<sup>*</sup></label>
-															    <input type="text" class="form-control" id="crane_service_location" required>
+															    <label for="crane_service_from_location">From Address (Where Service is required)<sup>*</sup></label>
+															    <input type="text" class="form-control" id="crane_service_from_location" required value="">
 															</div>
 														</article>
 														<article class="col-md-6">
 															<div class="form-group">
-															    <label for="weight">Weight (Estimate) <sup>*</sup></label>
-															    <input type="text" class="form-control" id="weight" required>
+															    <label for="crane_service_to_location">To Address (Where Service is required)<sup>*</sup></label>
+															    <input type="text" class="form-control" id="crane_service_to_location" required value="">
 															</div>
 														</article>
 													</div>
 													<div class="row">
-														<article class="col-md-12">
+														<article class="col-md-4 work">
 															<div class="form-group">
 															    <label for="crane_work_description">Description of Work<sup>*</sup></label>
-															    <textarea id="crane_work_description" class="form-control" required></textarea>
+															    <select id="crane_work_description" class="crane_work_description form-control" required>
+															    	<option value="">Select Work type</option>
+															    </select>
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="weight">Weight (Estimate) <sup>*</sup></label>
+															    <input type="text" class="form-control" id="weight" required value="">
+															</div>
+														</article>
+														<article class="col-md-4">
+															<div class="form-group">
+															    <label for="crane_schedule_date">Schedule Date<sup>*</sup></label>
+															    <input type="text" class="form-control crane_schedule_date" id="crane_schedule_date" required value="">
 															</div>
 														</article>
 													</div>
 
 													<div class="row">
 														<article class="col-md-12 text-center">
-															<input type="button" id="crane_plc_ord" class="form-control" value="Place Order" required>
+															<input type="button" id="crane_plc_ord" class="form-control crane_plc_ord" value="Place Order" required>
 														</article>
+														<!-- color:#37b1d8; -->
+														<span id="form_validation_msg" style="color:red;"></span>
 													</div>
-
+													<input type="hidden" name="uid" id="uid" value="<?php echo $logged_in_user['user_id']; ?>">
 										    	</form>
 										    </div>
 										    <!-- tab one ends -->
@@ -330,6 +372,7 @@
 		        }
 			});
 		});
+		
 		// to get state list
 		$(".from-state").change(function(event){
 	        var state = $(this).find("option:selected").text();
@@ -360,6 +403,114 @@
 		        	console.log('Somthing went wrong');
 		        }
 			});
+		});
+
+		// to get description of work gmt/User/work_desc_list
+		$(".crane_work_description").one('click',function(){
+			var objDescWork = $(this).closest('.work');
+			jQuery.ajax({
+				type: "GET",
+				url: '/gmt/User/work_desc_list',
+				success: function(res){
+					if(res.status_code == 200){
+						objDescWork.find('.crane_work_description').empty();
+						objDescWork.find('.crane_work_description').val('');
+						$('<option value="">Select Work type</option>').appendTo(objDescWork.find('.crane_work_description'));
+						$.each(res.data, function(key, val){
+							// $.each(val, function(k, v){
+								$('<option value="'+val['wdid']+'">'+val['wdtype']+'</option>').appendTo(objDescWork.find('.crane_work_description'));
+							// });
+						});
+					}else{
+						console.log('Somthing went wrong.');
+					}
+				},
+				error: function(){
+					console.log('Somthing went wrong.');
+				}
+			});
+		});
+
+		// to submit crane place order
+		$(".crane_plc_ord").click(function(event){
+			var objCraneProvider= $('.crane div.provider');
+
+			var user_id 		= objCraneProvider.find("#uid").val();
+			// var user_type_id	= objCraneProvider.find("#user_type_id").val();
+			var user_type_id	= '3';
+
+			var odr_by_fname 	= objCraneProvider.find("#F_name").val();
+			var odr_by_lname	= objCraneProvider.find("#L_name").val();
+			var odr_by_mob		= objCraneProvider.find("#mobile").val();
+			
+			var from_state		= objCraneProvider.find("#From_State").val();
+			var from_city		= objCraneProvider.find("#From_city").val();
+			var from_location	= objCraneProvider.find("#from_location").val();
+			var from_address	= objCraneProvider.find("#crane_service_from_location").val();
+			
+			var to_state		= objCraneProvider.find("#To_State").val();
+			var to_city			= objCraneProvider.find("#To_city").val();
+			var to_location		= objCraneProvider.find("#to_location").val();
+			var to_address		= objCraneProvider.find("#crane_service_to_location").val();
+
+			var weight			= objCraneProvider.find("#weight").val();
+			var desc_of_work	= objCraneProvider.find("#crane_work_description").val();
+			var sechdule_date	= objCraneProvider.find("#crane_schedule_date").val();
+			        	
+			if(user_id == '' || user_type_id == '' || odr_by_fname == '' || odr_by_lname == '' ||
+				odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || 
+				weight == '' ||	desc_of_work == '' || sechdule_date == '' || to_state == '' || 
+				to_city == '' || to_location == '' || to_address == '' ){
+				$('#form_validation_msg').empty();
+			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+	        }
+	        else{
+
+		        $.ajax({
+			        type: "POST",
+			        url: "/gmt/Enquiry_form_crain/enquiry_form_crain",
+			        cache: false,
+			        dataType: 'json',
+			        data: {
+			        		user_id 		: user_id,
+							user_type_id 	: user_type_id,
+							odr_by_fname 	: odr_by_fname,
+							odr_by_lname	: odr_by_lname,
+							odr_by_mob		: odr_by_mob,
+							from_state 		: from_state,
+							from_city 		: from_city,
+							from_location 	: from_location,
+							from_address 	: from_address,
+							to_state 		: to_state,
+							to_city 		: to_city,
+							to_location 	: to_location,
+							to_address	 	: to_address,
+							weight 			: weight,
+							desc_of_work	: desc_of_work,
+							sechdule_date	: sechdule_date
+			        	},
+			        success: function(res){
+			        	if(res.status_code == 200){
+			        		$('#form_validation_msg').empty();
+				            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+			              	$('.plc_ord_crane')[0].reset();
+				            /*$.each(res.data, function(key, val) {
+				            	$.each(val, function(k, v){
+				                    $('<li>'+v+'</li>').appendTo('#test');
+				                });
+				            });*/
+			            }else{
+				            $('#form_validation_msg').empty();
+				            $.each(res.data, function(key, val) {
+				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+			        	}
+			        },
+			        error: function(){
+			        	console.log('Something went wrong.');
+			        }
+				});
+			}
 		});
 	});
 </script>

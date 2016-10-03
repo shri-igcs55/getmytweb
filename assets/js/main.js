@@ -49,6 +49,11 @@ $(document).ready(function(){
 		$("#pm_schedule_date").datepicker();
 	});
 	
+	// date picker for crane provider
+	$(function(){
+		$("#crane_schedule_date").datepicker();
+	});
+
 	// sign up as tabs
 
 	$('.signUpAs_each span').on('click', function(){
@@ -411,12 +416,12 @@ $(document).ready(function(){
         var company_type	= objCurrentSection.find("#C_type").val();
         var company_pan		= objCurrentSection.find("#email_phn").val();
         
-        if(first_name == '', user_mob == '', user_pass == '', address1 == '', 
-        	state == '', district == '', city == '', pin == '', captcha == '' ){
+        if(first_name == '' || user_mob == '' || user_pass == '' || address1 == '' || 
+        	state == '' || district == '' || city == '' || pin == '' || captcha == '' ){
         	$('#form_validation_msg').empty();
 		    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(designation == '',firm_name == '',company_type == '',company_pan == ''){
+        else if(designation == '' || firm_name == '' || company_type == '' || company_pan == ''){
         	$('#form_validation_msg').empty();
 		    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }

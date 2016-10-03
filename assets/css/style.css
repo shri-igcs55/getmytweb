@@ -614,6 +614,21 @@ select.form-control{
     appearance: none;
     background:url(../images/down.png)95% 50% no-repeat;
 }
+
+.tans_plc_ord select#f_floor{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background:url(../images/down.png)95% 50% no-repeat;
+}
+
+.tans_plc_ord select#t_floor{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background:url(../images/down.png)95% 50% no-repeat;
+}
+
 input.form-control[type=submit]{
     background-color: #ED4343;
     color: #fff;

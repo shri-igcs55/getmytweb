@@ -462,7 +462,7 @@
 			var destination_points 	= objCurrentSection.find("#drop_point").val();
 	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
 	        
-	        if(user_id == '', first_name == '', last_name == '', user_mob == '', from_city == '', from_location == '', to_city == '', to_location == '', material_type == '', vehicle_type == '', no_of_vehicle == '', pickup_points == '', destination_points == '', sechdule_date == '' ){
+	        if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || from_city == '' || from_location == '' || to_city == '' || to_location == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || pickup_points == '' || destination_points == '' || sechdule_date == '' ){
 	        	$('#form_validation_msg').empty();
 			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
