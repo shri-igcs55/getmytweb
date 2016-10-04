@@ -717,11 +717,18 @@ img.refresh{
 	color: #fff;
 	max-width: 150px;
 }
-#cus-reg-sbmit{
+#update_cus-reg-sbmit{
 	background-color: #ED4343;
 	color: #fff;
 	max-width: 150px;
 }
+
+#e_sub_paswrd{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
+
 #crane_plc_ord{
 	background-color: #ED4343;
 	color: #fff;

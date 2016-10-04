@@ -15,19 +15,26 @@
 								<div class="section_head">
 									<h1>Reset Your <span>Password</span></h1>
 								</div>
+								<input type="hidden" name="u_id" id="u_id" value="<?php echo $logged_in_user['user_id']; ?>">
 								<br>
 								<br>
 								<div class="row">
-									<article class="col-md-6">
+									<article class="col-md-4">
 										<div class="form-group">
-										    <label for="e_F_name">New Password<sup>*</sup></label>
-										    <input type="password" class="form-control" id="e_F_name" required>
+										    <label for="old_pass">Old Password<sup>*</sup></label>
+										    <input type="password" class="form-control" id="old_pass" required>
 										</div>
 									</article>
-									<article class="col-md-6">
+									<article class="col-md-4">
 										<div class="form-group">
-										    <label for="e_L_name">Confirm Password<sup>*</sup></label>
-										    <input type="password" class="form-control" id="e_L_name">
+										    <label for="new_pass">New Password<sup>*</sup></label>
+										    <input type="password" class="form-control" id="new_pass" required>
+										</div>
+									</article>
+									<article class="col-md-4">
+										<div class="form-group">
+										    <label for="conf_pass">Confirm Password<sup>*</sup></label>
+										    <input type="password" class="form-control" id="conf_pass">
 										</div>
 									</article>
 								</div>
@@ -35,11 +42,11 @@
 								<div class="row">
 									<article class="col-md-12">
 										<div class="form-group">
-										    <input type="submit" class="form-control" id="e_paswrd" value="Save">
+										    <input type="button" class="form-control chg_pass" id="e_sub_paswrd" value="Save">
 										</div>
 									</article>
 								</div>
-								<span id ='form_validation_msg'></span>
+								<span id='form_validation_msg' style="color:#ed4343;"></span>
 
 							</form>
 						</div>
@@ -53,35 +60,44 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-		$('.customer_update_profile').load(function()
+		$('.chg_pass').click(function()
 		{
-			var user_id = <?php echo $u_id; ?>;
-			jQuery.ajax({
-				type 	: "POST",
-				url  	: "/gmt/User/chng_pass",
-				dataType: "json",
-				data	: {
-					user_id : user_id,
-					new_pass: new_pass,
-					c_pass  : c_pass
-				},
-				success: function(res){
-					if(res.status_code == 200){
-						$('#form_validation_msg').empty();
-						$('<p><strong>Paasword Changed  Successfully.</strong></p>').appendTo('#form_validation_msg');
-						$('.pass_form')[0].reset();
-					}else{
-						alert('No Response for user profile. Please Contact Admin.');
-						window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
-						console.log('No Response. Please Contact Admin.');
-					}
-				},
-				error: function(){
-					console.log('Something went wrong.');
-				}
-			}); // ajax
-		}); // section load
+			var user_id  = $('#u_id').val();
+			var old_pass = $('#old_pass').val();
+			var new_pass = $('#new_pass').val();
+			var c_pass   = $('#conf_pass').val();
 
-        // Ajax post for submiting registration form
+			if(user_id == '' || old_pass == '' || new_pass == '' || c_pass == ''){
+				jQuery.ajax({
+					type 	: "POST",
+					url  	: "/gmt/User/chng_pass",
+					dataType: "json",
+					data	: {
+						old_pass: old_pass,
+						user_id : user_id,
+						new_pass: new_pass,
+						c_pass  : c_pass
+					},
+					success: function(res){
+						if(res.status_code == 200){
+							$('#form_validation_msg').empty();
+							$('<p><strong>Paasword Changed  Successfully.</strong></p>').appendTo('#form_validation_msg');
+							$('.pass_form')[0].reset();
+						}else{
+							$('#form_validation_msg').empty();
+							$.each(res.data, function(key, val) {
+				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+						}
+					},
+					error: function(){
+						console.log('Something went wrong.');
+					}
+				}); // ajax
+			}else{
+				$('#form_validation_msg').empty();
+				$('<p><strong>All * fields are required.</strong></p>').appendTo('#form_validation_msg');
+			}
+		}); // Ajax post for submiting registration form
 	}); // doc ready 
 </script>

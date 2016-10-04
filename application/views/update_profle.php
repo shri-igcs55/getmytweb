@@ -1,17 +1,17 @@
 <!-- 	CUSTOMER REGISTRATION -->
-<section class="custmer_reg">
+<section class="custmer_reg update_profile">
 	<div class="container">
 		<div class="row">
 
 			<article class="col-md-3">
-				<?php include_once('comman/left_sidebar.php'); ?>
+				<?php include_once('comman/left_sidebar.php'); $u_id = $logged_in_user['user_id']; ?>
 			</article>
 
 			<article class="col-md-9">
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="edit_tab1">
 						<div class="form_wrp">
-							<form class="transporter-form" action="">
+							<form class="transporter-form cust_up_prof" action="">
 								<div class="section_head">
 									<h1>Update Your <span>Info</span></h1>
 								</div>
@@ -24,22 +24,22 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_F_name">First Name<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_F_name" required>
+										    <input type="text" name="fname" class="form-control" id="e_F_name" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_L_name">Last Name</label>
-										    <input type="text" class="form-control" id="e_L_name">
+										    <input type="text" name="lname" class="form-control" id="e_L_name">
 										</div>
 									</article>
 								</div>
 
-								<div class="row">
+								<!-- <div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="Designatn">Designation<sup>*</sup></label>
-										    <!-- <input type="text" class="form-control" id="Designatn" required> -->
+										    <input type="text" class="form-control" id="Designatn" required>
 										    <select id="e_designatn" class="form-control Designatn" required>
 										    	<option></option>
 										    	<option>Owner</option>
@@ -54,29 +54,12 @@
 										    <input type="text" class="form-control" id="FirmName" required>
 										</div>
 									</article>
-								</div>
-
-								<div class="row">
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_m_number">Mobile Number<sup>*</sup></label>
-										    <span class="M_number_befr">
-										    	<input type="number" class="form-control" id="e_m_number" required>
-										    </span>
-										</div>
-									</article>
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_e_mail">Email</label>
-										    <input type="email" class="form-control" id="e_e_mail" required>
-										</div>
-									</article>
-								</div>
-								<div class="row">
+								</div> -->
+								<!-- <div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_company_type">Company Type<sup>*</sup></label>
-										    <!-- <input type="text" class="form-control" id="Designatn" required> -->
+										    <input type="text" class="form-control" id="Designatn" required>
 										    <select id="e_company_type" class="form-control Designatn" required>
 										    	<option></option>
 										    	<option>Owner</option>
@@ -85,7 +68,23 @@
 										    </select>
 										</div>
 									</article>
-									
+								</div> -->
+
+								<div class="row">
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_m_number">Mobile Number<sup>*</sup></label>
+										    <span class="M_number_befr">
+										    	<input type="number" name="mobile" class="form-control" id="e_m_number" required>
+										    </span>
+										</div>
+									</article>
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_e_mail">Email</label>
+										    <input type="email" name="email" class="form-control" id="e_e_mail" required>
+										</div>
+									</article>
 								</div>
 
 								<div class="section_sub">
@@ -95,14 +94,14 @@
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="c_c_addrss">Firm Address<sup>*</sup></label>
-										    <input type="text" class="form-control" id="c_c_addrss" placeholder="Line 1" required>
+										    <label for="c_c_addrss">Address<sup>*</sup></label>
+										    <input type="text" name="addr1" class="form-control" id="c_c_addrss" placeholder="Line 1" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="c_c_addrss_2"><br></label>
-										    <input type="text" class="form-control" id="c_c_addrss_2" placeholder="Line 2" required>
+										    <input type="text" name="addr2" class="form-control" id="c_c_addrss_2" placeholder="Line 2" required>
 										</div>
 									</article>
 								</div>
@@ -110,65 +109,122 @@
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="e_pincode">Pin code<sup>*</sup></label>
-										    <input type="number" class="form-control" id="e_pincode" required>
-										</div>
-									</article>
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_country">Country<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_country" required>
-										</div>
-									</article>
-								</div>
-
-								<div class="row">
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_state">State<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_state" required>
+										    <label for="e_city">City<sup>*</sup></label>
+										    <input type="text" name="city" class="form-control" id="e_city" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_district">District<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_district" required>
+										    <input type="text" name="dstrt" class="form-control" id="e_district" required>
+										</div>
+									</article>
+									
+								</div>
+								<div class="row">
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_state">State<sup>*</sup></label>
+										    <input type="text" name="state" class="form-control" id="e_state" required>
+										</div>
+									</article>
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_pincode">Pin code<sup>*</sup></label>
+										    <input type="number" name="pincode" class="form-control" id="e_pincode" required>
 										</div>
 									</article>
 								</div>
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="e_city">City<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_city" required>
-										</div>
-									</article>
-									<article class="col-md-6">
-										<div class="form-group">
 										    <label for="e_pan_no">PAN No<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_pan_no" required>
+										    <input type="text" name="pan_no" class="form-control" id="e_pan_no" required>
 										</div>
 									</article>
 								</div>
-
 
 								<div class="row">
 									<article class="col-md-8">
 										<div class="form-group">
-										    <input type="submit" id="cus-reg-sbmit" class="form-control" id="" value="Save">
-										    
+										    <input type="button" id="update_cus-reg-sbmit" class="form-control update_cus-reg-sbmit" value="Save">
 										</div>
 									</article>
 								</div>
-
-
 							</form>
 						</div>
 					</div>
 				</div>
 			</article>
-			
 		</div>
 	</div>
 </section>
-<!-- 	CUSTOMER REGISTRATION ENDS-->
+<!-- 	CUSTOMER REGISTRATION ENDS -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.update_profile').ready(function(){
+			var user_id = <?php echo $u_id; ?>;
+			jQuery.ajax({
+				type 	: "POST",
+				url  	: "/gmt/View_profile/view_profile",
+				dataType: "json",
+				data	: {
+					user_id : user_id
+				},
+				success: function(res){
+					if(res.status_code == 200){
+						$('.cust_up_prof')[0].reset();
+						$.each(res.data, function(key, val) {
+			            	$.each(val, function(k, v){
+			                    // $('').appendTo('.vehicle');
+			                    $("input[name$='"+k+"']").val(v);
+			                });
+			            });
+					}else{
+						alert('No Response for user profile. Please Contact Admin.');
+						window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
+						console.log('No Response. Please Contact Admin.');
+					}
+				},
+				error: function(){
+					console.log('Something went wrong.');
+				}
+			}); // ajax
+		}); // section load
+
+		$('.update_cus-reg-sbmit').click(function(){
+			
+			var user_id  = $('#u_id').val();
+			var old_pass = $('#old_pass').val();
+			var new_pass = $('#new_pass').val();
+			var c_pass   = $('#conf_pass').val();
+
+			jQuery.ajax({
+				type 	: "POST",
+				url  	: "/gmt/User/chng_pass",
+				dataType: "json",
+				data	: {
+					old_pass: old_pass,
+					user_id : user_id,
+					new_pass: new_pass,
+					c_pass  : c_pass
+				},
+				success: function(res){
+					if(res.status_code == 200){
+						$('#form_validation_msg').empty();
+						$('<p><strong>Paasword Changed  Successfully.</strong></p>').appendTo('#form_validation_msg');
+						$('.pass_form')[0].reset();
+					}else{
+						$('#form_validation_msg').empty();
+						$.each(res.data, function(key, val) {
+			            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+					}
+				},
+				error: function(){
+					console.log('Something went wrong.');
+				}
+			}); // ajax
+		}); // submit form
+	}); // doc ready 
+</script>
