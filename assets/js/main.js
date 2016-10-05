@@ -485,4 +485,40 @@ $(document).ready(function(){
     });
    	/* ================Individual (cus-reg-sbmit) END========================== */
 
+   	// update profile
+   	$('.update_profile').ready(function(){
+			var user_id = <?php echo $u_id; ?>;
+			jQuery.ajax({
+				type 	: "POST",
+				url  	: "/gmt/View_profile/view_profile",
+				dataType: "json",
+				data	: {
+					user_id : user_id
+				},
+				success: function(res){
+					if(res.status_code == 200){
+						$('.cust_up_prof')[0].reset();
+						$.each(res.data, function(key, val) {
+							$.each(val, function(k, v){
+
+								if(k=='c_id'){
+									$('#e_state').append($("<option selected value='"+val['state']+"'>"+val['state']+"</option>"));
+									$('#e_district').append($("<option selected value='"+val['dstrt']+"'>"+val['dstrt']+"</option>"));
+									$('#e_city').append($("<option selected value='"+val['c_id']+"'>"+val['city']+"</option>"));
+								}
+								$("input[name$='"+k+"']").val(v);
+			                });
+			            });
+					}else{
+						alert('No Response for user profile. Please Contact Admin.');
+						window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
+						console.log('No Response. Please Contact Admin.');
+					}
+				},
+				error: function(){
+					console.log('Something went wrong.');
+				}
+			}); // ajax
+		}); // section load
+
 }); // Document ready close

@@ -8,7 +8,13 @@
 
 					<center><h1>Sign in to your account</h1></center>
 
-					<form action="" id="">
+					<form class="user_signin" action="" id="">
+						<div class="form-group">
+						    <label for="text">Role<sup>*</sup></label>
+						    <select id="role" class="role form-control" required>
+						    	<option value="">Select Role</option>
+						    </select>
+						</div>
 						<div class="form-group">
 						    <label for="text">Email/Mobile Number<sup>*</sup></label>
 						    <input type="text" class="form-control" id="email_phn" required>
@@ -57,35 +63,55 @@
 	</div>
 </section>
 <script type="text/javascript">
-	// to login
-	$(".signin").click(function(event){
-		var objCurrentSection = $('.pad-rit-0 div.signin-wrp');       		
-   		
-   		var email_mob 		= objCurrentSection.find("#email_phn").val();
-		var password 		= objCurrentSection.find("#paswrd").val();
-        jQuery.ajax({
-	    	type:"POST",
-			url: "/gmt/User/user_signin",
-			dataType: 'json',
-	        data: { 
-	        	email_mob: email_mob,
-	        	password: password
-	        },
+	$(document).ready(function(){
+		// to get user type list
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/User/login_user_type_list",
 			success: function(res){
-				if(res.status_code == 200){
-					$('#form_validation_msg').empty();
-		    		$('<p><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
-		    		window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
-				}else{
-					$('#form_validation_msg').empty();
-		        	$.each(res.data, function(key, val) {
-		            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				if(res){
+					$.each(res.data, function(key, val) {
+		            	$('<option value="'+val['uid']+'">'+val['utype']+'</option>').appendTo('.role');
 		            });
 				}
 			},
 	        error: function(){
 	        	console.log('Somthing went wrong');
 	        }
+		});
+
+		// to login
+		$(".signin").click(function(event){
+			var objCurrentSection = $('.pad-rit-0 div.signin-wrp');       		
+	   		
+	   		var email_mob 	= objCurrentSection.find("#email_phn").val();
+			var password 	= objCurrentSection.find("#paswrd").val();
+			var role 		= objCurrentSection.find("#role").val();
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/User/user_signin",
+				dataType: 'json',
+		        data: { 
+		        	email_mob: email_mob,
+		        	password : password,
+		        	utype_id : role
+		        },
+				success: function(res){
+					if(res.status_code == 200){
+						$('#form_validation_msg').empty();
+			    		$('<p><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
+			    		window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
+					}else{
+						$('#form_validation_msg').empty();
+			        	$.each(res.data, function(key, val) {
+			            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
 		});
 	});
 </script>

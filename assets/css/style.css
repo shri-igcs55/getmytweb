@@ -551,6 +551,13 @@ input[type="radio"]:checked + label span.radio::before{
       background:url(../images/down.png)95% 50% no-repeat;
 }
 
+.user_signin select#role{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: url('../images/down.png')95% 50% no-repeat;
+}
+
 .custmer_reg select#Designatn{
 	-webkit-appearance: none;
       -moz-appearance: none;

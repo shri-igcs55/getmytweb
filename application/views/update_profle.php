@@ -109,23 +109,25 @@
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="e_city">City<sup>*</sup></label>
-										    <input type="text" name="city" class="form-control" id="e_city" required>
+										    <label for="e_state">State<sup>*</sup></label>
+										    <select id="e_state" class="state form-control" required>
+										    </select>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_district">District<sup>*</sup></label>
-										    <input type="text" name="dstrt" class="form-control" id="e_district" required>
+										    <select id="e_district" class="district form-control" required>
+										    </select>
 										</div>
 									</article>
-									
 								</div>
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="e_state">State<sup>*</sup></label>
-										    <input type="text" name="state" class="form-control" id="e_state" required>
+										    <label for="e_city">City<sup>*</sup></label>
+										    <select id="e_city" class="city form-control" required>
+										    </select>
 										</div>
 									</article>
 									<article class="col-md-6">
@@ -159,38 +161,76 @@
 		</div>
 	</div>
 </section>
-<!-- 	CUSTOMER REGISTRATION ENDS -->
+<!-- CUSTOMER REGISTRATION ENDS -->
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.update_profile').ready(function(){
-			var user_id = <?php echo $u_id; ?>;
-			jQuery.ajax({
-				type 	: "POST",
-				url  	: "/gmt/View_profile/view_profile",
-				dataType: "json",
-				data	: {
-					user_id : user_id
-				},
-				success: function(res){
-					if(res.status_code == 200){
-						$('.cust_up_prof')[0].reset();
-						$.each(res.data, function(key, val) {
-			            	$.each(val, function(k, v){
-			                    // $('').appendTo('.vehicle');
-			                    $("input[name$='"+k+"']").val(v);
-			                });
-			            });
-					}else{
-						alert('No Response for user profile. Please Contact Admin.');
-						window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
-						console.log('No Response. Please Contact Admin.');
-					}
-				},
-				error: function(){
-					console.log('Something went wrong.');
-				}
-			}); // ajax
-		}); // section load
+		
+
+		/*$(".cus-reg-sbmit").click(function(event) {
+	   		var objCurrentSection = $('.tab-content div.active');       		
+	   		
+	        var first_name 		= objCurrentSection.find("#e_F_name").val();
+			var last_name 		= objCurrentSection.find("#e_L_name").val();
+	        var user_mob 		= objCurrentSection.find("#e_m_number").val();
+	        var user_email 		= objCurrentSection.find("#e_e_mail").val();
+	        var address1 		= objCurrentSection.find("#c_c_addrss").val();
+	        var address2 		= objCurrentSection.find("#c_c_addrss_2").val();
+	        var state 			= objCurrentSection.find("#e_state").val();
+	        var district 		= objCurrentSection.find("#e_district").val();
+	        var city 			= objCurrentSection.find("#e_city").val();
+	        var pin 			= objCurrentSection.find("#e_pincode").val();
+	        var pan 			= objCurrentSection.find("#e_pan_no").val();
+	        var user_type 		= objCurrentSection.find("#user_type").val();
+
+	        if(first_name == '' || user_mob == '' || user_email == '' || address1 == '' || 
+	        	state == '' || district == '' || city == '' || pin == '' || pan == '' || 
+	        	last_name == '' || user_type == '' || address2 == '' ){
+	        	$('#form_validation_msg').empty();
+			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+	        }else{
+		        $.ajax({
+			        type: "POST",
+			        url: "/gmt/User/user_signup",
+			        cache: false,
+			        dataType: 'json',
+			        data: {
+			        	first_name 	: first_name,
+						last_name 	: last_name,
+						user_mob 	: user_mob,
+						user_email 	: user_email,
+						address1 	: address1,
+						address2 	: address2,
+						state 		: state,
+						district 	: district,
+						city 		: city,
+						pin 		: pin,
+						user_type 	: user_type,
+						pan 		: pan
+			       	},
+			        success: function(res) {
+			            if (res.status_code == 200)
+			            {
+			              	$('#form_validation_msg').empty();
+				            $('<p><strong>Registered Successfully.</strong></p>').appendTo('#form_validation_msg');
+			              	$('.reg_form')[0].reset();
+				            // $.each(res.data, function(key, val) {
+				            // 	$.each(val, function(k, v){
+				            //         $('<li>'+v+'</li>').appendTo('#test');
+				            //     });
+				            // });
+			            }else{
+				            $('#form_validation_msg').empty();
+				            $.each(res.data, function(key, val) {
+				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+			            }
+		          	},
+			        error: function(){
+			        	console.log('Somthing went wrong');
+			        }
+		        });
+		    }
+	    });
 
 		$('.update_cus-reg-sbmit').click(function(){
 			
@@ -225,6 +265,6 @@
 					console.log('Something went wrong.');
 				}
 			}); // ajax
-		}); // submit form
+		});*/ // submit form
 	}); // doc ready 
 </script>

@@ -111,29 +111,31 @@
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="e_pincode">Pin code<sup>*</sup></label>
-										    <input type="number" class="form-control" id="e_pincode" required>
-										</div>
-									</article>
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_country">Country<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_country" required>
-										</div>
-									</article>
-								</div>
-
-								<div class="row">
-									<article class="col-md-6">
-										<div class="form-group">
 										    <label for="e_state">State<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_state" required>
+										    <select id="e_state" class="state form-control" required>
+										    </select>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_district">District<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_district" required>
+										    <select id="e_district" class="district form-control" required>
+										    </select>
+										</div>
+									</article>
+								</div>
+								<div class="row">
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_city">City<sup>*</sup></label>
+										    <select id="e_city" class="city form-control" required>
+										    </select>
+										</div>
+									</article>
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_pincode">Pin code<sup>*</sup></label>
+										    <input type="number" name="pincode" class="form-control" id="e_pincode" required>
 										</div>
 									</article>
 								</div>

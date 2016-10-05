@@ -35,8 +35,9 @@ class User extends CI_Controller
 			$logged_in_user = $this->session->userdata('logged_in_user');
 			
 			$this->load->view('comman/header');
-			
-			if($logged_in_user['user_type'] == 3 || $logged_in_user['user_type'] == 2){
+			// || $logged_in_user['user_type'] == 2
+			print_r($logged_in_user);
+			if($logged_in_user['user_type'] == 3){
 				$this->load->view('update_profle');	// for indiviual customer
 			}else if($logged_in_user['user_type'] == 4 || $logged_in_user['user_type'] == 2){
 				$this->load->view('cust_comp_update_profile');	// for company customer
