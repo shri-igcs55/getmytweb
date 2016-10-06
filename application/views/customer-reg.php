@@ -13,7 +13,7 @@
 					    	<li class="active radio_individual"><a data-toggle="tab" href="#Individual"><span>Individual</span></a></li>
 					    	<li class="radio_company"><a data-toggle="tab" href="#Company"><span>Company</span></a></li>
 					    </ul>
-					    <input class="captcha_wrd" type="hidden" name="hidden_captcha" value="<?php echo $word;?>">
+					    <input class="captcha_wrd" type="hidden" name="hidden_captcha" value="<?php echo $word; ?>">
 					    <div class="tab-content">
 						    <div id="Individual" class="tab-pane fade in active">
 						      <form action="" class="cus_indvl cust_form reg_form" id="cust_indv">

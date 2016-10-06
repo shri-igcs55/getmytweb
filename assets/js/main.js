@@ -372,7 +372,7 @@ $(document).ready(function(){
             type: "POST",
             url: base_url+"user/captcha_refresh",
             success: function(res) {
-                if (res.status_code == 200)
+                if (res)
                 {
                 	var res = jQuery.parseJSON(res);                    	
                 	jQuery('input:hidden[name=hidden_captcha]').val(res.word);
