@@ -372,16 +372,10 @@ $(document).ready(function(){
             type: "POST",
             url: base_url+"user/captcha_refresh",
             success: function(res) {
-<<<<<<< HEAD
-				console.log(res);
-                
-=======
-                if (res)
-                {
->>>>>>> 8721c0bb03ff40b76814a1251def8c00c06bc9f4
-                	var res = jQuery.parseJSON(res);                    	
-                	jQuery('input:hidden[name=hidden_captcha]').val(res.word);
-                    jQuery(".captcha_image").html(res.image);
+				
+				var res = jQuery.parseJSON(res);                    	
+				jQuery('input:hidden[name=hidden_captcha]').val(res.word);
+				jQuery(".captcha_image").html(res.image);
                 
             },
 	        error: function(){
