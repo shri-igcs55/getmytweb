@@ -59,7 +59,7 @@
 																	<article class="col-md-4">
 																		<div class="form-group">
 																		    <label for="From_City">From City, District<sup>*</sup></label>
-																	     	<select id="From_city" class="from-city form-control">
+																	     	<select id="From_city" name="from_city[]" class="from-city From_city form-control">
 																			    <option value="">Select City District</option>
 																			</select>
 																		</div>
@@ -67,7 +67,7 @@
 																	<article class="col-md-4">
 																		<div class="form-group">
 																		    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
-																		    <input type="text" id="from_location" class="where-in-city form-control" required disabled="">
+																		    <input type="text" id="from_location" name="from_location[]" class="where-in-city form-control" required disabled="">
 																		</div>
 																	</article>
 																</div>
@@ -84,7 +84,7 @@
 																	<article class="col-md-4">
 																		<div class="form-group">
 																		    <label for="To_City">To City, District<sup>*</sup></label>
-																	     	<select id="To_city" class="from-city form-control">
+																	     	<select id="To_city" name="to_city[]" class="from-city To_city form-control">
 																			    <option value="">Select City District</option>
 																			</select>
 																		</div>
@@ -92,7 +92,7 @@
 																	<article class="col-md-4">
 																		<div class="form-group">
 																		    <label for="to_location">To Where in City (Area)<sup>*</sup></label>
-																		    <input type="text" id="to_location" class="where-in-city form-control" required disabled="">
+																		    <input type="text" id="to_location" name="to_location[]" class="where-in-city form-control" required disabled="">
 																		</div>
 																	</article>
 																</div>
@@ -215,6 +215,12 @@
 		</div>
 	</section>
 </section>
+
+<style>
+.addmore_wrp ul li{
+	margin-bottom: 30px;
+}
+</style>
 
 <!-- place order transporter starts -->
 <script>
@@ -352,8 +358,8 @@
       }
     });
  
-    $( "#From_city" ).combobox();
-    $( "#To_city" ).combobox();
+	$( ".From_city" ).combobox();
+	$( ".To_city" ).combobox();
     
   } );
 </script>
@@ -375,8 +381,13 @@
 		    return false;
 		});
 
-		$('.from-state').one('click',function(){
-			//alert("working");
+		$('.addmore_wrp').on('click','.from-state',function(){						 		
+			
+			if(!$(this).hasClass('clicked'))
+				$(this).addClass('clicked');
+			else
+				return false;
+			
 			var obj = $(this).closest('.row');
 			jQuery.ajax({
 				type:"GET",
@@ -406,7 +417,9 @@
 			});
 		});
 		// to get state list
-		$(".from-state").change(function(event){
+		$('.addmore_wrp').on('change','.from-state',function(event){
+		//$(".from-state").change(function(event){
+			//alert('test');
 	        var state = $(this).find("option:selected").text();
 	        var obj = $(this).closest('.row');
 	        jQuery.ajax({
@@ -438,6 +451,7 @@
 		        	console.log('Somthing went wrong');
 		        }
 			});
+			
 		});
 
 		// Ajax post for submiting registration form
@@ -448,10 +462,10 @@
 	        var first_name			= objCurrentSection.find("#F_name").val();
 	        var last_name			= objCurrentSection.find("#L_name").val();
 	        var user_mob			= objCurrentSection.find("#mobile").val();
-	        var from_city 			= objCurrentSection.find("#From_city").val();
-	        var from_location 		= objCurrentSection.find("#from_location").val();
-	        var to_city 			= objCurrentSection.find("#To_city").val();
-	        var to_location 		= objCurrentSection.find("#to_location").val();
+	        var from_city 			= objCurrentSection.find("select[name='from_city[]']");
+	        var from_location 		= objCurrentSection.find("input[name='from_location[]']");
+	        var to_city 			= objCurrentSection.find("select[name='to_city[]']");
+	        var to_location 		= objCurrentSection.find("input[name='to_location[]']");
 	        var material_type 		= objCurrentSection.find("#material").val();
 	        var no_of_quantity 		= objCurrentSection.find("#length").val();
 	        var weight 				= objCurrentSection.find("#nag").val();
@@ -462,7 +476,20 @@
 			var destination_points 	= objCurrentSection.find("#drop_point").val();
 	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
 	        
-	        if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || from_city == '' || from_location == '' || to_city == '' || to_location == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || pickup_points == '' || destination_points == '' || sechdule_date == '' ){
+			
+
+			//console.log(from_city);
+			//return false;
+			
+			$('#form_validation_msg').empty();
+			from_city.each(function(index,val){
+				if($(this).val()!=''){				
+				}else{
+					$('<p><strong>Select City and Locations</strong></p>').appendTo('#form_validation_msg');
+				}
+			});
+			
+	        if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || pickup_points == '' || destination_points == '' || sechdule_date == '' ){
 	        	$('#form_validation_msg').empty();
 			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }

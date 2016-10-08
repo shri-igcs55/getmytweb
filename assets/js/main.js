@@ -145,24 +145,17 @@ $(document).ready(function(){
 	});
 
     $("a#add_more").click(function(){
-    	// alert(12345);
-       var ddd = $(".addmore_wrp ul li:first-child").clone();
-       $('.addmore_wrp ul').append(ddd);
-       // var ind = $('.addmore_wrp ul li').index();
-       // console.log(ind);
+		var ddd = $(".addmore_wrp ul li:first-child").clone();
+		ddd.find('.custom-combobox').remove();
+		ddd.find('input[type="text"]').val(' ');
+		
+		$('.addmore_wrp ul').append(ddd);
+		$( ".From_city" ).combobox();
+		$( ".To_city" ).combobox();
     });
 
     $("a.remove_more_btn").click(function(){
-    	var ind = $('.addmore_wrp ul li').index();
-    	console.log(ind);
-    	if(ind == 2)
-    	{
-    		alert(2); 
-    	}
-    	else{
-    		$(".addmore_wrp ul li:last-child").remove();
-    		// alert(12345);
-    	};
+    	$(".addmore_wrp ul li:last-child").not(".addmore_wrp ul li:first-child").remove();
     });
 
 	// refresh img animation
