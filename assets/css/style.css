@@ -730,6 +730,12 @@ img.refresh{
 	max-width: 150px;
 }
 
+#upload_doc{
+	background-color: #ED4343;
+	color: #fff;
+	max-width: 150px;
+}
+
 #e_sub_paswrd{
 	background-color: #ED4343;
 	color: #fff;
@@ -1193,3 +1199,58 @@ a.remove_more_btn{
 }
 
 /*===============================*/
+/*===============================*/
+#cancel_butn{
+    background-color: #fff;
+    color: #ED4344;
+}
+#rate_butn{
+    background-color: #ED4344;
+    color: #fff;
+}
+#cancel_butn,
+#rate_butn{
+    padding: 5px 10px;
+    border: 1px solid #ED4344;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 20px 10px;
+    margin-bottom: 10px;
+    -webkit-transition: all .3s ease-in-out;
+         -moz-transition: all .3s ease-in-out;
+            -ms-transition: all .3s ease-in-out;
+             -o-transition: all .3s ease-in-out;
+              transition: all .3s ease-in-out;
+}
+.order_no{
+    color: #0195e2;
+}
+
+.order_listing label{
+    padding: 0;
+    color: #9d9c9c;
+}
+
+.order_listing .col-sm-3{
+    padding: 5px;
+}
+.order_listing h4{
+    font-size: 15px;
+    color: #545454;
+}
+#view_rate_btn{
+    background-color: #ED4344;
+    color: #fff;
+    padding: 7px 17px;
+    border-radius: 5px;
+    margin-top: 30px;
+    display: inline-block;
+}
+.order_listing .col-md-2{
+    padding: 0 5px;
+}
+
+/* ### SANTHOSH CSS */
+.myProfileMenu{
+	display: none;
+}

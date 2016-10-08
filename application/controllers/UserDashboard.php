@@ -51,4 +51,17 @@ class UserDashboard extends CI_Controller
 		}
 	}
 
+	// place order for crane
+	public function booked_orders(){
+		if(isset($this->session->userdata['logged_in_user'])){
+
+			$this->load->view('comman/header');
+			$this->load->view('order_detls');
+			$this->load->view('comman/footer');
+			
+		}else{
+			redirect(site_url('user/signin'));
+		}
+	}
+
 }

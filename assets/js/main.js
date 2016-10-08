@@ -144,13 +144,6 @@ $(document).ready(function(){
 	    }, 1000);
 	});
 
-	
-});
-
-
-$(document).ready(function(){
-	
-
     $("a#add_more").click(function(){
     	// alert(12345);
        var ddd = $(".addmore_wrp ul li:first-child").clone();
@@ -170,17 +163,9 @@ $(document).ready(function(){
     		$(".addmore_wrp ul li:last-child").remove();
     		// alert(12345);
     	};
-
-
-
-
     });
-});
 
-
-
-// refresh img animation
-$(document).ready(function() {
+	// refresh img animation
     var angle = 180;
     
     $(document).on("click", ".refresh", function() {	
@@ -199,6 +184,9 @@ $(document).ready(function() {
 
 
 
+
+
+/* This doc ready is for form submition or view data */
 $(document).ready(function(){
 
 	// to get state list
@@ -262,7 +250,7 @@ $(document).ready(function(){
 		});
 	});
 
-	// to get state list
+	// to get district list
 	$(".district").change(function(event){
 		event.preventDefault();
         var state = $('.tab-content div.active').find('.state option:selected').text();
@@ -342,7 +330,55 @@ $(document).ready(function(){
 		});
 	});
 
-	// to load material types
+	// to load Designation types
+	$('.Designatn').one('click', function(){
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/user/designation_type_list",
+			success: function(res){
+				if(res.status_code == 200){
+					$('.Designatn').empty();
+					$('<option value="">Select Designation Type</option>').appendTo('.Designatn');
+					$.each(res.data, function(key, val) {
+		            	// $.each(val, function(k, v){
+		                    $('<option value="'+val['id']+'">'+val['designation']+'</option>').appendTo('.Designatn');
+		                // });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+		    error: function(){
+		    	console.log('Somthing went wrong');
+		    }
+		});
+	});
+
+	// to get company type
+	$('.ctype').one('click', function(){
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/User/comp_type_list",
+			success: function(res){
+				if(res.status_code == 200){
+					$('.ctype').empty();
+					$('<option value="">Select Company Type</option>').appendTo('.ctype');
+					$.each(res.data, function(key, val) {
+		            	// $.each(val, function(k, v){
+		                    $('<option value="'+val['cid']+'">'+val['ctype']+'</option>').appendTo('.ctype');
+		                // });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+		    error: function(){
+		    	console.log('Somthing went wrong');
+		    }
+		});
+	});
+
+	// to load vehicle types
 	$('.vehicle').one('click', function(){
 		jQuery.ajax({
 			type:"GET",
@@ -481,5 +517,47 @@ $(document).ready(function(){
 	    }
     });
    	/* ================Individual (cus-reg-sbmit) END========================== */
+
+   	// update profile view only
+   	$("#left_sidebar").load(function(){
+   		alert('test');
+		jQuery.ajax({
+			type 	: "POST",
+			url  	: "/gmt/View_profile/view_profile",
+			dataType: "json",
+			data	: {
+				user_id : user_id
+			},
+			success: function(res){
+				if(res.status_code == 200){
+					$('.cust_up_prof')[0].reset();
+					$.each(res.data, function(key, val) {
+						$.each(val, function(k, v){
+							if(k=='c_id'){
+								$('#e_state').append($("<option selected value='"+val['state']+"'>"+val['state']+"</option>"));
+								$('#e_district').append($("<option selected value='"+val['dstrt']+"'>"+val['dstrt']+"</option>"));
+								$('#e_city').append($("<option selected value='"+val['c_id']+"'>"+val['city']+"</option>"));
+							}else if(k=='designation_id'){
+								$('#e_designatn').append($("<option selected value='"+val['designation_id']+"'>"+val['designation']+"</option>"));
+								$('#e_company_type').append($("<option selected value='"+val['ctype_id']+"'>"+val['company_type']+"</option>"));
+							}
+							$("input[name$='"+k+"']").val(v);
+		                });
+		            });
+				}else{
+					alert('No Response for user profile. Please Contact Admin.');
+					window.location = site_url+'userdashboard/place_transporter_order';
+					console.log('No Response. Please Contact Admin.');
+				}
+			},
+			error: function(){
+				console.log('Something went wrong.');
+			}
+		}); // ajax
+	}); // section load
+   	// PROFILE HIDE AND SHOW
+   	$('#myProfile').click(function(){
+   		$('.myProfileMenu').slideToggle();
+   	});
 
 }); // Document ready close

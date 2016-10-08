@@ -333,8 +333,9 @@
 										<div class="form-group">
 										    <label for="C_type">Company Type<sup>*</sup></label>
 										    <!-- <input type="text" class="form-control" id="C_type" required> -->
-										    <select id="C_type" class="ctype form-control" required title="Select Company Type">
+										    <select id="C_type" class="ctype form-control" required>
 										    	<option value="">Select Company Type</option>
+										    	<option value="">Loading...</option>
 										    </select>
 										</div>
 									</article>

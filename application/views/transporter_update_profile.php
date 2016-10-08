@@ -16,11 +16,9 @@
 								<div class="section_head">
 									<h1>Update Your <span>Info</span></h1>
 								</div>
-
 								<div class="section_sub">
 									<h3>Basic <span>Details</span></h3>
 								</div>
-								
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
@@ -35,24 +33,6 @@
 										</div>
 									</article>
 								</div>
-
-								<div class="row">
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="Designatn">Designation<sup>*</sup></label>
-										    <!-- <input type="text" class="form-control" id="Designatn" required> -->
-										    <select name="designation" id="e_designatn" class="form-control Designatn" required>
-										    </select>
-										</div>
-									</article>
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="FirmName">Firm Name<sup>*</sup></label>
-										    <input name="firm_name" type="text" class="form-control" id="FirmName" required>
-										</div>
-									</article>
-								</div>
-
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
@@ -74,18 +54,34 @@
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="e_company_type">Company Type<sup>*</sup></label>
-										    <select  id="e_company_type" class="ctype form-control" required>
-										    </select>
+										    <label for="FirmName">Firm Name<sup>*</sup></label>
+										    <input name="firm_name" type="text" class="form-control" id="FirmName" required>
 										</div>
 									</article>
-									
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="e_pan_no">PAN No<sup>*</sup></label>
+										    <input name="pan_no" type="text" class="form-control" id="e_pan_no" required>
+										</div>
+									</article>
 								</div>
-
 								<div class="section_sub">
 									<h3>Contact <span>Details</span></h3>
 								</div>
-
+								<div class="row">
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="TinNo">TIN No.<sup>*</sup></label>
+										    <input name="tin_no" type="text" class="form-control" id="TinNo" required>
+										</div>
+									</article>
+									<article class="col-md-6">
+										<div class="form-group">
+										    <label for="sTAX">Service Tax No<sup>*</sup></label>
+										    <input name="stax" type="text" class="form-control" id="sTAX" required>
+										</div>
+									</article>
+								</div>
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
@@ -100,7 +96,6 @@
 										</div>
 									</article>
 								</div>
-
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
@@ -133,31 +128,12 @@
 									</article>
 								</div>
 								<div class="row">
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_city">City<sup>*</sup></label>
-										    <input name="city" type="text" class="form-control" id="e_city" required>
-										</div>
-									</article>
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="e_pan_no">PAN No<sup>*</sup></label>
-										    <input name="pan_no" type="text" class="form-control" id="e_pan_no" required>
-										</div>
-									</article>
-								</div>
-
-
-								<div class="row">
 									<article class="col-md-8">
 										<div class="form-group">
 										    <input type="submit" id="cus-reg-sbmit" class="form-control" id="" value="Save">
-										    
 										</div>
 									</article>
 								</div>
-
-
 							</form>
 						</div>
 					</div>

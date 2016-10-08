@@ -36,14 +36,16 @@ class User extends CI_Controller
 			
 			$this->load->view('comman/header');
 			// || $logged_in_user['user_type'] == 2
-			print_r($logged_in_user);
+			// print_r($logged_in_user);
 			if($logged_in_user['user_type'] == 3){
 				$this->load->view('update_profle');	// for indiviual customer
-			}else if($logged_in_user['user_type'] == 4 || $logged_in_user['user_type'] == 2){
+			}else if($logged_in_user['user_type'] == 4){
 				$this->load->view('cust_comp_update_profile');	// for company customer
+			}else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] == 6
+				  || $logged_in_user['user_type'] == 8 || $logged_in_user['user_type'] == 9
+				  || $logged_in_user['user_type'] == 10){
+				$this->load->view('transporter_update_profile');
 			}/*else if($logged_in_user['user_type'] == 5){
-				$this->load->view('');
-			}else if($logged_in_user['user_type'] == 6){
 				$this->load->view('');
 			}else if($logged_in_user['user_type'] == 8){
 				$this->load->view('');
@@ -55,6 +57,18 @@ class User extends CI_Controller
 
 			$this->load->view('comman/footer');
 
+       	}else{
+       		redirect(site_url('user/signin'));
+       	}
+	}
+
+
+	public function edit_doc()
+	{
+		if(isset($this->session->userdata['logged_in_user'])){
+			$this->load->view('comman/header');
+			$this->load->view('update_cust_doc');
+			$this->load->view('comman/footer');
        	}else{
        		redirect(site_url('user/signin'));
        	}

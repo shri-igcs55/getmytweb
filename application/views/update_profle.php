@@ -74,15 +74,17 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_m_number">Mobile Number<sup>*</sup></label>
+										    <input style="padding:0;" type="button" id="edit_mob" class="" value="Edit">
 										    <span class="M_number_befr">
-										    	<input type="number" name="mobile" class="form-control" id="e_m_number" required>
+										    	<input type="number" disabled="" name="mobile" class="form-control" id="e_m_number" required>
 										    </span>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="e_e_mail">Email</label>
-										    <input type="email" name="email" class="form-control" id="e_e_mail" required>
+										    <input style="padding:0;" type="button" id="edit_mail" class="" value="Edit">
+										    <input type="email" disabled="" name="email" class="form-control" id="e_e_mail" required>
 										</div>
 									</article>
 								</div>
@@ -165,41 +167,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-   	// update profile
-   	$('.update_profile').ready(function(){
-			var user_id = <?php echo $u_id; ?>;
-			jQuery.ajax({
-				type 	: "POST",
-				url  	: "/gmt/View_profile/view_profile",
-				dataType: "json",
-				data	: {
-					user_id : user_id
-				},
-				success: function(res){
-					if(res.status_code == 200){
-						$('.cust_up_prof')[0].reset();
-						$.each(res.data, function(key, val) {
-							$.each(val, function(k, v){
-
-								if(k=='c_id'){
-									$('#e_state').append($("<option selected value='"+val['state']+"'>"+val['state']+"</option>"));
-									$('#e_district').append($("<option selected value='"+val['dstrt']+"'>"+val['dstrt']+"</option>"));
-									$('#e_city').append($("<option selected value='"+val['c_id']+"'>"+val['city']+"</option>"));
-								}
-								$("input[name$='"+k+"']").val(v);
-			                });
-			            });
-					}else{
-						alert('No Response for user profile. Please Contact Admin.');
-						window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
-						console.log('No Response. Please Contact Admin.');
-					}
-				},
-				error: function(){
-					console.log('Something went wrong.');
-				}
-			}); // ajax
-		}); // section load
+			
+	   	
 
 
 		/*$(".cus-reg-sbmit").click(function(event) {
