@@ -513,7 +513,6 @@ $(document).ready(function(){
 
    	// update profile view only
    	$("#left_sidebar").load(function(){
-   		alert('test');
 		jQuery.ajax({
 			type 	: "POST",
 			url  	: "/gmt/View_profile/view_profile",
