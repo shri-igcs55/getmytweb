@@ -1250,6 +1250,74 @@ a.remove_more_btn{
     padding: 0 5px;
 }
 
+.order_outr{
+	padding: 50px 30px;
+}
+.section_head h1:before{
+	content: "";
+	position: absolute;
+	height: 1px;
+	width: 55%;
+	max-width: 150px;
+	min-width:50px;
+	background-color: #000;
+	bottom: -5px;
+	left: 0;
+}
+.order_wrpr{
+	border: 1px solid #ddd;
+	border-top: 7px solid #ED4344;
+	padding:20px 40px;
+}
+.order_row{
+	border-bottom: 1px solid #ddd;
+	padding:10px 0;
+}
+.order_row h4{
+	color: #9d9c9c;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 18px;
+}
+
+.order_row .order_no{
+	color: #0195e2;
+}
+.order_row .order_date{
+	color: #545454;
+}
+.order_row label {
+	color: #9d9c9c;
+	padding: 0;
+	font-size: 14px;
+	font-family: 'PT Sans', sans-serif;
+}
+.order_row p{
+	color: #545454;
+	font-size: 14px;
+	font-family: 'PT Sans', sans-serif;
+}
+.gat_vertcl{
+	padding: 15px;
+	width: 100%;
+}
+.order_row .col-sm-4, 
+.order_row .col-sm-6,
+.order_row .col-sm-12{
+	padding: 0 7px;
+}
+.order_row .row{
+	margin: 0 -7px;
+}
+.order_row center h4 span{
+	color: #ED4343;
+	border-bottom: 1px solid #ddd;
+	font-weight: 600;
+	font-family: 'PT Sans', sans-serif;
+	font-size: 16px;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
 /* ### SANTHOSH CSS */
 .myProfileMenu{
 	display: none;
