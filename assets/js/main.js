@@ -544,10 +544,13 @@ $(document).ready(function(){
     
    	/* ================Individual (cus-reg-sbmit) END========================== */
 
+
    	// View profile view only
    	// $("#left_sidebar").load(function(){
+   	// update profile view only
    	if($("#edit_profile").is(':visible')){
-   		jQuery.ajax({
+
+		jQuery.ajax({
 			type 	: "POST",
 			url  	: "/gmt/View_profile/view_profile",
 			dataType: "json",

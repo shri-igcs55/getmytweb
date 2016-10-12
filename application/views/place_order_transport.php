@@ -456,7 +456,9 @@
 
 		// Ajax post for submiting registration form
 	   	$(".plc-ord-sbmit").click(function(event) {
-	   		var objCurrentSection = $('.transporter div.logestic_form');       		
+	   		var objCurrentSection = $('.transporter div.logestic_form');
+			$('#form_validation_msg').empty();
+			event.preventDefault();
 	   		
 	   		var user_id 			= objCurrentSection.find("#uid").val();
 	        var first_name			= objCurrentSection.find("#F_name").val();
@@ -477,20 +479,26 @@
 	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
 	        
 			
-
-			//console.log(from_city);
-			//return false;
+			var array_from_city = new Array();
+			var array_from_location = new Array();
+			var array_to_city = new Array();
+			var array_to_location = new Array();
 			
-			$('#form_validation_msg').empty();
-			from_city.each(function(index,val){
-				if($(this).val()!=''){				
-				}else{
+			from_city.each(function(index,val1){
+				if($(this).val()=='' || from_location.eq(index).val()=='' || to_city.eq(index).val()=='' || to_location.eq(index).val()==''){	
 					$('<p><strong>Select City and Locations</strong></p>').appendTo('#form_validation_msg');
+					return false;
+				}
+				else
+				{
+					array_from_city[index] = $(this).val();
+					array_from_location[index] = from_location.eq(index).val();
+					array_to_city[index] = to_city.eq(index).val();
+					array_to_location[index] = to_location.eq(index).val();
 				}
 			});
 			
 	        if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || pickup_points == '' || destination_points == '' || sechdule_date == '' ){
-	        	$('#form_validation_msg').empty();
 			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
 	        else{
@@ -505,10 +513,10 @@
 						odr_by_fname		: first_name,
 						odr_by_lname		: last_name,
 						odr_by_mob 			: user_mob,
-						from_city			: from_city,
-						from_location		: from_location,
-						to_city				: to_city,
-						to_location			: to_location,
+						from_city			: array_from_city,
+						from_location		: array_from_location,
+						to_city				: array_to_city,
+						to_location			: array_to_location,
 						material_type		: material_type,
 						no_of_quantity		: no_of_quantity,
 						weight				: weight,

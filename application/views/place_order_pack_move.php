@@ -78,7 +78,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="From_City">From City, District<sup>*</sup></label>
-														     	<select id="From_city" class="from-city form-control">
+														     	<select id="From_city" name="from_city" class="from-city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -86,7 +86,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
-															    <input type="text" id="from_location" class="where-in-city form-control" required disabled="">
+															    <input type="text" name="from_location" id="from_location" class="where-in-city form-control" required disabled="">
 															</div>
 														</article>
 													</div>
@@ -103,7 +103,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="To_City">To City, District<sup>*</sup></label>
-														     	<select id="To_city" class="from-city form-control">
+														     	<select id="To_city" name="to_city" class="from-city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -111,7 +111,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="to_location">To Where in City (Area)<sup>*</sup></label>
-															    <input type="text" id="to_location" class="where-in-city form-control" required disabled="">
+															    <input type="text" id="to_location" name="to_location" class="where-in-city form-control" required disabled="">
 															</div>
 														</article>
 													</div>
