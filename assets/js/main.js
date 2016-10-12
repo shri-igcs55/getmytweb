@@ -514,7 +514,7 @@ $(document).ready(function(){
         }
         else{
         	var cust_comp_reg = objCurrentSection.closest('.update_my_info div.active').find('form').serialize();
-			alert(JSON.stringify(cust_comp_reg));
+			// alert(JSON.stringify(cust_comp_reg));
 			$.ajax({
 		        type: "POST",
 		        url : "/gmt/User/user_update_profile",
