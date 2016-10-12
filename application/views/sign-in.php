@@ -8,7 +8,7 @@
 
 					<center><h1>Sign in to your account</h1></center>
 
-					<form class="user_signin" action="" id="">
+					<form class="user_signin" action="" id="signin_form" name="signin_form">
 						<div class="form-group">
 						    <label for="text">Role<sup>*</sup></label>
 						    <select id="role" class="role form-control" required>
@@ -31,7 +31,7 @@
 						    	<input id="signin" class="signin form-control" value="Sign In" type="button" />
 						    </div>
 						    <!-- color:#37b1d8; -->
-							<span id="form_validation_msg" style="color:red;"></span>
+							<span id="form_validation_msg"></span>
 						    
 						</div>
 					</form>
@@ -99,12 +99,12 @@
 				success: function(res){
 					if(res.status_code == 200){
 						$('#form_validation_msg').empty();
-			    		$('<p><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
+			    		$('<p style="color:#00ff00;><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
 			    		window.location ='<?php echo site_url('userdashboard/place_transporter_order'); ?>';
 					}else{
 						$('#form_validation_msg').empty();
 			        	$.each(res.data, function(key, val) {
-			            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 			            });
 					}
 				},

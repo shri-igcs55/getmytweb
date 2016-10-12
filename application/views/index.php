@@ -1,3 +1,4 @@
+<?php $logged_in_user = $this->session->userdata('logged_in_user');	?>
 <!-- HOME STARTS -->
 <section id="home_outer" class="home_outer">
 	
@@ -31,7 +32,7 @@
 			</div>
 
 			<div class="home-form">
-				<form action="" class="home_form">
+				<form id="home_enq" name="home_enq" action="<?php if($logged_in_user['user_id']){ echo site_url('userdashboard/place_transporter_order'); }else{ echo site_url('user/signin'); } ?>" class="home_form">
 					<div class="container">
 						<div class="row">
 							<article class="col-sm-12">
@@ -44,7 +45,7 @@
 							<article class="col-sm-3 col-md-offset-1">
 								<div class="form-group">
 								    <span class="location">
-								    	<select type="text" class="form-control pick-state" id="location_1" required>
+								    	<select type="text" class="form-control pick-state" id="location_1" required="">
 									    	<option value="">Select Pickup Location</option>
 									    	<option value="">Loading...</option>
 									    </select>
@@ -54,7 +55,7 @@
 							<article class="col-sm-3">
 								<div class="form-group">
 								    <span class="location">
-								    	<select type="text" class="form-control drop-state" id="location_2" required>
+								    	<select type="text" class="form-control drop-state" id="location_2" required="">
 									    	<option class="">Select Drop Location</option>
 									    	<option value="">Loading...</option>
 									    </select>
@@ -64,7 +65,7 @@
 							<article class="col-sm-3">
 								<div class="form-group">
 								    <span class="vehicle_home">
-								    	<select type="text" class="form-control service-list" id="vehicle" required>
+								    	<select type="text" class="form-control service-list" id="vehicle" required="">
 									    	<option class="">Select Service Type</option>
 									    	<option value="pm-5">Packers and Movers</option>
 									    	<option value="cp-6">Crane Provider</option>
@@ -77,7 +78,7 @@
 							</article>
 							<article class="col-sm-2">
 								<div class="form-group">
-								    <input type="button" class="form-control home-button" id="home_submit" value="Next">
+								    <input type="submit" class="form-control home-button" id="home_submit" value="Next">
 								</div>
 							</article>
 						</div>
@@ -157,7 +158,7 @@
 								<div>
 									<img src="<?php echo base_url('assets/');?>images/trck.png" class="img-responsive truck">
 								</div>
-								<h5>PICKUP & DELIVER</h5>
+								<h5>PICKUP &amp; DELIVER</h5>
 								<p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,</p>
 							</li>
 							<li>
@@ -263,7 +264,7 @@
 						<div class="reg_each">
 							<img src="<?php echo base_url('assets/');?>images/reg_3.jpg" class="img-responsive">
 							<div class="overlay_r">
-								<h4>For Packers & Movers</h4>
+								<h4>For Packers &amp; Movers</h4>
 								<img src="<?php echo base_url('assets/');?>images/reg_movers.png" class="img-responsive">
 								<a href="<?php echo site_url('user/packer_mover'); ?>">Register</a>
 							</div>
@@ -471,23 +472,5 @@
 			});
 		});
 
-		// to get user type list
-		/*$('.service-list').one('click',function(){
-			jQuery.ajax({
-				type:"GET",
-				url: "/gmt/User/user_type_list",
-				success: function(res){
-					if(res){
-						$('.service-list').empty();
-						$.each(res.data, function(key, val) {
-			            	$('<option value="'+val['uid']+'">'+val['utype']+'</option>').appendTo('.service-list');
-			            });
-					}
-				},
-		        error: function(){
-		        	console.log('Somthing went wrong');
-		        }
-			});
-		});*/
 	});
 </script>

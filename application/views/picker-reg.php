@@ -5,9 +5,9 @@
 				<article class="col-md-9">
 					<div class="form_wrp tab-content">
 						<div class="active">
-							<form class="packer-form reg_form" action="">
+							<form id="pm_reg" name="pm_reg" class="packer-form reg_form" action="">
 								<div class="section_head">
-									<h1>Packers & Movers <span>Registration</span></h1>
+									<h1>Packers &amp; Movers <span>Registration</span></h1>
 								</div>
 								<input class="captcha_wrd" type="hidden" name="hidden_captcha" value="<?php echo $word;?>">
 						    	<div class="section_sub">
@@ -18,13 +18,13 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="F_name">First Name<sup>*</sup></label>
-										    <input type="text" class="form-control" id="F_name" required>
+										    <input name="first_name" type="text" class="form-control" id="F_name" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="L_name">Last Name</label>
-										    <input type="text" class="form-control" id="L_name">
+										    <input name="last_name" type="text" class="form-control" id="L_name">
 										</div>
 									</article>
 								</div>
@@ -36,14 +36,14 @@
 										<div class="form-group">
 										    <label for="M_number">Mobile Number<sup>*</sup></label>
 										    <span class="M_number_befr">
-										    	<input type="number" class="form-control" id="M_number" required>
+										    	<input name="user_mob" type="number" class="form-control" id="M_number" required>
 										    </span>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="E_mail">Email</label>
-										    <input type="email" class="form-control" id="E_mail" required>
+										    <input name="user_email" type="email" class="form-control" id="E_mail" required>
 										</div>
 									</article>
 								</div>
@@ -51,32 +51,32 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="password">Password<sup>*</sup></label>
-										    <input type="password" class="form-control" id="password" required>
+										    <input name="user_pass" type="password" class="form-control" id="password" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="confirm_password">Confirm Password</label>
-										    <input type="password" class="form-control" id="c_pass" required>
+										    <input name="c_pass" type="password" class="form-control" id="c_pass" required>
 										</div>
 									</article>
 								</div>
 								<div class="section_sub">
 									<h3>Contact <span>Details</span></h3>
 								</div>
-								<input type="hidden" class="form-control" id="user_type" value="5" required>
+								<input name="user_type" type="hidden" class="form-control" id="user_type" value="5" required>
 								<!-- <input type="hidden" class="form-control" id="pkg_id" value="1" required> -->
 								<div class="row">
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="FirmName">Firm Name<sup>*</sup></label>
-										    <input type="text" class="form-control" id="FirmName" required>
+										    <input name="firm_name" type="text" class="form-control" id="FirmName" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="email_phn">PAN No<sup>*</sup></label>
-										    <input type="text" class="form-control" id="email_phn" required>
+										    <input name="pan" type="text" class="form-control" id="email_phn" required>
 										</div>
 									</article>
 								</div>
@@ -84,13 +84,13 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="C_addrss">Company Address<sup>*</sup></label>
-										    <input type="text" class="form-control" id="C_addrss" placeholder="Line 1" required>
+										    <input name="address1" type="text" class="form-control" id="C_addrss" placeholder="Line 1" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="C_addrss_2"><br></label>
-										    <input type="text" class="form-control" id="C_addrss_2" placeholder="Line 2" required>
+										    <input name="address2" type="text" class="form-control" id="C_addrss_2" placeholder="Line 2" required>
 										</div>
 									</article>
 								</div>
@@ -100,7 +100,7 @@
 										<div class="form-group">
 										    <label for="State">State<sup>*</sup></label>
 										    <!-- <input type="text" class="form-control" id="State" required> -->
-										    <select id="State" class="state form-control" required>
+										    <select name="state" id="State" class="state form-control" required>
 										    	<option value="">Select State</option>
 										    	<option value="">Loading...</option>
 										    </select>
@@ -109,8 +109,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="District">District<sup>*</sup></label>
-										    <!-- <input type="text" class="form-control" id="District" required> -->
-										    <select id="District" class="district form-control" required disabled="" title="Select State First">
+										    <select name="district" id="District" class="district form-control" required disabled="" title="Select State First">
 										    	<option value="">Select District</option>
 										    </select>
 										</div>
@@ -120,8 +119,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="City">City<sup>*</sup></label>
-										    <!--<input type="text" class="form-control" id="City" required>-->
-										    <select id="City" class="city form-control" required disabled="" title="Select District First">
+										    <select name="city" id="City" class="city form-control" required disabled="" title="Select District First">
 										    	<option value="">Select City</option>
 										    </select>
 										</div>
@@ -129,7 +127,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="Pincode">Pin code<sup>*</sup></label>
-										    <input maxlength="6" type="number" class="form-control" id="Pincode" required>
+										    <input name="pin" maxlength="6" type="number" class="form-control" id="Pincode" required>
 										</div>
 									</article>
 								</div>
@@ -177,11 +175,11 @@
 							</form>
 						</div>
 						<!-- color:#37b1d8; -->
-						<span id="form_validation_msg" style="color:red;"></span>
+						<span id="form_validation_msg"></span>
 					</div>
 				</article>
 				<article class="col-md-3 pad-0">
-					<?php include_once('comman/right_sidebar.php'); ?>
+					<?php include_once('comman/signup_right_sidebar.php'); ?>
 				</article>
 			</div>
 		</div>

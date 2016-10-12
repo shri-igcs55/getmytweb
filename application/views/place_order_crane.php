@@ -42,7 +42,7 @@
 				    					<div class="tab-content crane">
 				    						<!-- tab two starts -->
 										    <div id="place_crane" class="fade in provider">
-										    	<form action="" class="pace_order_crn_form plc_ord_crane">
+										    	<form id="crane_ordr" name="crane_ordr" action="" class="pace_order_crn_form plc_ord_crane">
 											    	<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
@@ -88,18 +88,6 @@
 															    <input type="text" id="from_location" class="where-in-city form-control" required disabled="" value="">
 															</div>
 														</article>
-														<!-- <article class="col-md-6">
-															<div class="form-group">
-															    <label for="F_name">City<sup>*</sup></label>
-															    <input type="text" class="form-control" id="F_name" required>
-															</div>
-														</article> -->
-														<!-- <article class="col-md-4">
-															<div class="form-group">
-															    <label for="L_name">Where in City <sup>*</sup></label>
-															    <input type="text" class="form-control" id="L_name" required>
-															</div>
-														</article> -->
 													</div>
 
 													<div class="row">
@@ -170,7 +158,7 @@
 															<input type="button" id="crane_plc_ord" class="form-control crane_plc_ord" value="Place Order" required>
 														</article>
 														<!-- color:#37b1d8; -->
-														<span id="form_validation_msg" style="color:red;"></span>
+														<span id="form_validation_msg"></span>
 													</div>
 													<input type="hidden" name="uid" id="uid" value="<?php echo $logged_in_user['user_id']; ?>">
 										    	</form>
@@ -462,7 +450,7 @@
 				weight == '' ||	desc_of_work == '' || sechdule_date == '' || to_state == '' || 
 				to_city == '' || to_location == '' || to_address == '' ){
 				$('#form_validation_msg').empty();
-			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+			    $('<p style="color:#ed4343;><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
 	        else{
 
@@ -492,7 +480,7 @@
 			        success: function(res){
 			        	if(res.status_code == 200){
 			        		$('#form_validation_msg').empty();
-				            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+				            $('<p style="color:#00ff00;><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
 			              	$('.plc_ord_crane')[0].reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
@@ -502,7 +490,7 @@
 			            }else{
 				            $('#form_validation_msg').empty();
 				            $.each(res.data, function(key, val) {
-				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 			        	}
 			        },

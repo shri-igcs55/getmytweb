@@ -12,7 +12,7 @@
 	    		 $logged_in_user['user_type'] == 11 ||
 	    		 $logged_in_user['user_type'] == 12 ){ ?>
 
-		    <li><a href="#">Find Order</a></li>
+		    <li><a href="<?php echo site_url('userdashboard/search_transporter_order'); ?>">Find Order</a></li>
 		    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">View &amp; Rate Order</a></li>
 		    <li><a href="#">Select Station</a></li>
 		    
@@ -42,5 +42,5 @@
 </div>
 </section>
 <script type="text/javascript">
-	var user_id = '<?php echo $u_id; ?>';
+	var user_id = '<?php //echo $u_id; ?>';
 </script>

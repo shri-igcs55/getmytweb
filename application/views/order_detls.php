@@ -19,7 +19,6 @@
 		    			</div>
 						<div class="tab-content order_wrpr">
 					    	
-
 					    	<div class="tab-pane fade" id="order_detailes">
 
 			    				<div class="order_row">
@@ -32,7 +31,6 @@
 				    					</article>
 				    				</div>
 				    			</div>
-
 				    			<div class="order_row">
 				    				<div class="row">
 				    					<article class="col-sm-4">
@@ -137,6 +135,7 @@
 				    					<input type="button" name="rate_order" id="rate_butn" value="Rate it Now">
 				    				</article>
 				    			</div>
+
 					    	</div>
 					    	<div class="tab-pane fade in active" id="order_listing">
 				    			<div class="order_listing">

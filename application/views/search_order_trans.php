@@ -2,7 +2,10 @@
 	<section class="search_order_wrp">
 		<div class="container">
 			<div class="row">
-				<article class="col-md-12">
+				<article class="col-md-3">
+					<?php include_once('comman/left_sidebar.php'); $u_id = $logged_in_user['user_id']; ?>
+				</article>
+				<article class="col-md-9">
 					<div class="form-wrp custmer_reg">
 
 						<div class="section_head">

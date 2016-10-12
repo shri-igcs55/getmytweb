@@ -9,7 +9,7 @@
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="edit_tab1">
 						<div class="form_wrp">
-							<form class="transporter-form cust_doc_up" action="">
+							<form class="transporter-form cust_doc_up" action="" id="cust_docup" name="cust_docup">
 								<div class="section_head">
 									<h1>Update Your <span>Info</span></h1>
 								</div>
@@ -49,5 +49,5 @@
 </section>
 <!-- 	CUSTOMER REGISTRATION ENDS-->
 <script type="text/javascript">
-	var user_id = '<?php echo $u_id; ?>';
+	var user_id = '<?php //echo $u_id; ?>';
 </script>

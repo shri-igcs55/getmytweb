@@ -105,7 +105,7 @@
 							<div class="signUpAs_each">
 								<div class="LEft">
 									<img src="<?php echo base_url('assets/');?>images/mover.png" alt="">
-									<p>Transporter & Logistics</p>
+									<p>Transporter &amp; Logistics</p>
 								</div>
 								<div class="MIdle">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -121,7 +121,7 @@
 							<div class="signUpAs_each">
 								<div class="LEft">
 									<img src="<?php echo base_url('assets/');?>images/pack.png" alt="">
-									<p>Packers & Movers</p>
+									<p>Packers &amp; Movers</p>
 								</div>
 								<div class="MIdle">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>

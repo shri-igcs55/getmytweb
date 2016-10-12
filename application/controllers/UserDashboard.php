@@ -64,4 +64,17 @@ class UserDashboard extends CI_Controller
 		}
 	}
 
+	// Search order for transporter
+	public function search_transporter_order(){
+		if(isset($this->session->userdata['logged_in_user'])){
+
+			$this->load->view('comman/header');
+			$this->load->view('search_order_trans');
+			$this->load->view('comman/footer');
+			
+		}else{
+			redirect(site_url('user/signin'));
+		}
+	}
+
 }

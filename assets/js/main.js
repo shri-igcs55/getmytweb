@@ -36,23 +36,23 @@ $(document).ready(function(){
 	// ===== 
 	// Search order date picker
 	$(function(){
-	    $("#datepicker").datepicker();
+	    $("#datepicker,#schedule_date,#pm_schedule_date,#crane_schedule_date").datepicker();
 	});
 
 	// Search order date picker
-	$(function(){
-	    $("#schedule_date").datepicker();
-	});
+	// $(function(){
+	//     $("#schedule_date").datepicker();
+	// });
 
 	// date picker for packer and mover place order
-	$(function(){
-		$("#pm_schedule_date").datepicker();
-	});
+	// $(function(){
+	// 	$("#pm_schedule_date").datepicker();
+	// });
 	
 	// date picker for crane provider
-	$(function(){
-		$("#crane_schedule_date").datepicker();
-	});
+	// $(function(){
+	// 	$("#crane_schedule_date").datepicker();
+	// });
 
 	// sign up as tabs
 
@@ -445,16 +445,16 @@ $(document).ready(function(){
         
         if(first_name == '' || user_mob == '' || user_pass == '' || address1 == '' || 
         	state == '' || district == '' || city == '' || pin == '' || captcha == '' ){
-        	$('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
         else if(designation == '' || firm_name == '' || company_type == '' || company_pan == ''){
-        	$('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
 		else if(captcha !== captcha_word){
-			$('<p><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');
+			$('<p style="color:#ed4343;"><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');
         }
         else if(objCurrentSection.find("input[name=check1]").prop('checked') === false){
-        	$('<p><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
+        	$('<p style="color:#ed4343;"><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
 		}else{
 			var cust_comp_reg = objCurrentSection.closest('.active').find('form').serialize();
 			$.ajax({
@@ -465,12 +465,73 @@ $(document).ready(function(){
 		            if (res.status_code == 200)
 		            {
 		              	$('#form_validation_msg').empty();
-			            $('<p><strong>Registered Successfully.</strong></p>').appendTo('#form_validation_msg');
+			            $('<p style="color:#00ff00;"><strong>Registered Successfully.</strong></p>').appendTo('#form_validation_msg');
 		              	$('.reg_form')[0].reset();
 		            }else{
 			            $('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
-			            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+		            }
+	          	},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+	        });
+	    }
+    });
+
+
+    /* update user profile cust_up_prof trans_update update_user_profile */
+    $(".update_user_profile").click(function(event) {
+   		
+   		var objCurrentSection = $('.update_my_info div.active');       		
+   		$('#form_validation_msg').empty();
+   		
+   		var first_name		= objCurrentSection.find("#e_F_name").val();
+		var last_name 		= objCurrentSection.find("#e_L_name").val();
+        var address1		= objCurrentSection.find("#c_c_addrss").val();
+        var address2		= objCurrentSection.find("#c_c_addrss_2").val();
+        var state			= objCurrentSection.find("#e_state").val();
+        var district		= objCurrentSection.find("#e_district").val();
+        var city			= objCurrentSection.find("#e_city").val();
+        var pin				= objCurrentSection.find("#e_pincode").val();
+        var tin				= objCurrentSection.find("#TinNo").val();
+        var stax			= objCurrentSection.find("#sTAX").val();
+        
+        // This four field are in company customer form
+        var designation		= objCurrentSection.find("#e_designatn").val();
+        var firm_name 		= objCurrentSection.find("#FirmName").val();
+        var company_type	= objCurrentSection.find("#e_company_type").val();
+        var pan				= objCurrentSection.find("#e_pan_no").val();
+        
+        if(first_name == '' || address1 == '' || state == '' || district == '' || city == '' || 
+        	pin == '' || tin == '' || stax == '' || address2 == '' || last_name == ''){
+        	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        }
+        else if(designation == '' || firm_name == '' || company_type == '' || pan == ''){
+        	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        }
+        else{
+        	var cust_comp_reg = objCurrentSection.closest('.update_my_info div.active').find('form').serialize();
+			alert(JSON.stringify(cust_comp_reg));
+			$.ajax({
+		        type: "POST",
+		        url : "/gmt/User/user_update_profile",
+		        data: cust_comp_reg,
+		        success: function(res) {
+		            if (res.status_code == 200)
+		            {
+		              	$('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('<p style="color:#00FF00;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	}
+			            });
+		            }else{
+			            $('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 			            });
 		            }
 	          	},
@@ -483,11 +544,10 @@ $(document).ready(function(){
     
    	/* ================Individual (cus-reg-sbmit) END========================== */
 
-   	// update profile view only
+   	// View profile view only
    	// $("#left_sidebar").load(function(){
    	if($("#edit_profile").is(':visible')){
-   		// alert('test');
-		jQuery.ajax({
+   		jQuery.ajax({
 			type 	: "POST",
 			url  	: "/gmt/View_profile/view_profile",
 			dataType: "json",
@@ -501,11 +561,19 @@ $(document).ready(function(){
 						$.each(val, function(k, v){
 							if(k=='c_id'){
 								$('#e_state').append($("<option selected value='"+val['state']+"'>"+val['state']+"</option>"));
-								$('#e_district').append($("<option selected value='"+val['dstrt']+"'>"+val['dstrt']+"</option>"));
+								$('#e_district').append($("<option selected value='"+val['district']+"'>"+val['district']+"</option>"));
 								$('#e_city').append($("<option selected value='"+val['c_id']+"'>"+val['city']+"</option>"));
 							}else if(k=='designation_id'){
-								$('#e_designatn').append($("<option selected value='"+val['designation_id']+"'>"+val['designation']+"</option>"));
-								$('#e_company_type').append($("<option selected value='"+val['ctype_id']+"'>"+val['company_type']+"</option>"));
+								if(val['designation_id'] != 0){
+									$('#e_designatn').append($("<option selected value='"+val['designation_id']+"'>"+val['designation']+"</option>"));
+								}else{
+									$('#e_designatn').append($("<option selected value=''>Select Designation</option>"));
+								}
+								if(val['ctype_id'] != 0){
+									$('#e_company_type').append($("<option selected value='"+val['ctype_id']+"'>"+val['company_type']+"</option>"));
+								}else{
+									$('#e_company_type').append($("<option selected value=''>Select Company Type</option>"));
+								}
 							}
 							$("input[name$='"+k+"']").val(v);
 		                });
@@ -521,8 +589,8 @@ $(document).ready(function(){
 			}
 		}); // ajax
 	} // section load
-	
-   	// PROFILE HIDE AND SHOW
+
+   	// PROFILE Menu HIDE AND SHOW
    	$('#myProfile').click(function(){
    		$('.myProfileMenu').slideToggle();
    	});

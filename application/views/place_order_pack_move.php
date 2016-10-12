@@ -15,7 +15,7 @@
 				    			<div class="row">
 				    				<article class="col-md-12">
 				    					<div class="section_head">
-											<h1>Place Order for <span>Packers & Movers</span></h1>
+											<h1>Place Order for <span>Packers &amp; Movers</span></h1>
 
 											<div class="radio_grp row">
 												<div class="col-sm-4">
@@ -43,7 +43,7 @@
 				    					<div class="tab-content packer">
 											<!-- tab two starts -->
 										    <div id="place_packer" class="fade in mover">
-										    	<form action="" class="pace_order_crn_form plc_ord_pm">
+										    	<form id="pm_order" name="pm_order" action="" class="pace_order_crn_form plc_ord_pm">
 										    		<input type="hidden" name="uid" id="uid" value="<?php echo $logged_in_user['user_id']; ?>">
 											    	<div class="row">
 														<article class="col-md-4">
@@ -218,7 +218,6 @@
 														<!-- color:#37b1d8; -->
 														<span id="form_validation_msg" style="color:red;"></span>
 													</div>
-
 										    	</form>
 										    </div>
 										    <!-- tab two ends -->
@@ -480,7 +479,7 @@
 	        
 	        if(user_id == '' || odr_by_fname == '' || odr_by_lname == '' || odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || to_state == '' || to_city == '' || to_location == '' || detailed_from_address == '' || shift_floor_from == '' || from_lift_facility == '' || detailed_to_address == '' || shift_floor_to == '' || to_lift_facility == '' || service_for == '' || sechdule_date == '' || desc_of_goods == '' ){
 	        	$('#form_validation_msg').empty();
-			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+			    $('<p style="color:#ed4343;><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
 	        else{
 
@@ -515,7 +514,7 @@
 			            if (res.status_code == 200)
 			            {
 			              	$('#form_validation_msg').empty();
-				            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+				            $('<p style="color:#00ff00;><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
 			              	$('.plc_ord_pm')[0].reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
@@ -525,7 +524,7 @@
 			            }else{
 				            $('#form_validation_msg').empty();
 				            $.each(res.data, function(key, val) {
-				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 			            }
 		          	},

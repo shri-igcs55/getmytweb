@@ -5,7 +5,7 @@
 				<article class="col-md-9">
 					<div class="form_wrp tab-content">
 						<div class="active">
-							<form class="crane-providr-form reg_form" action="">
+							<form id="crane_reg" name="crane_reg" class="crane-providr-form reg_form" action="">
 								<div class="section_head">
 									<h1>Crane Provider <span>Registration</span></h1>
 								</div>
@@ -175,11 +175,11 @@
 							</form>
 						</div>
 						<!-- color:#37b1d8; -->
-						<span id="form_validation_msg" style="color:red;"></span>
+						<span id="form_validation_msg"></span>
 					</div>
 				</article>
 				<article class="col-md-3 pad-0">
-					<?php include_once('comman/right_sidebar.php'); ?>
+					<?php include_once('comman/signup_right_sidebar.php'); ?>
 				</article>
 			</div>
 		</div>

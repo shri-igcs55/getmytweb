@@ -42,7 +42,7 @@
 				    				<article class="col-md-12">
 				    					<div class="transporter">
 										    <div id="" class="logestic_form">
-										    	<form action="" class="plc_ord_frm pace_order_crn_form">
+										    	<form id="trans_ordr" name="trans_ordr" action="" class="plc_ord_frm pace_order_crn_form">
 										    		<div class="addmore_wrp">
 										    			<ul>
 										    				<li>
@@ -199,7 +199,7 @@
 														</article>
 													</div>
 													<!-- color:#37b1d8; -->
-													<span id="form_validation_msg" style="color:red;"></span>
+													<span id="form_validation_msg"></span>
 										    	</form>
 										    </div>
 										</div>
@@ -418,7 +418,7 @@
 		});
 		// to get state list
 		$('.addmore_wrp').on('change','.from-state',function(event){
-		//$(".from-state").change(function(event){
+			//$(".from-state").change(function(event){
 			//alert('test');
 	        var state = $(this).find("option:selected").text();
 	        var obj = $(this).closest('.row');
