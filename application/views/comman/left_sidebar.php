@@ -17,9 +17,14 @@
 		    <li><a href="#">Select Station</a></li>
 		    
 	    <?php } ?>
+		
+		<?php if($logged_in_user['user_type'] == 3 || $logged_in_user['user_type'] == 4):?>
+			<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
+		<?php endif;?>
+		 
 	    <li><a href="#">Subscription &amp; Package</a></li>
 	    <li><a href="#">Save Contact</a></li>
-	    <li><a href="#">Booked History</a></li>
+	    <li><a href="#">Confirmed Order</a></li>
 	    <li id="myProfile"><a href="#">My Profile</a>
 		    <ul class="list-unstyled myProfileMenu">
 		    	<li><a href="<?php echo site_url('user/edit'); ?>">Edit Profile</a></li>
