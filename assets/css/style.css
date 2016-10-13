@@ -1322,3 +1322,87 @@ a.remove_more_btn{
 .myProfileMenu{
 	display: none;
 }
+.find-order-page select{
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	background: #FFF url('../images/down.png') no-repeat 97% 50%;
+}
+.find-order-page .calander_bgimage{
+	background: #FFF url('../images/calander_icon.png') no-repeat 97% 50%;
+}
+.select_station_list > li{
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	border: 1px solid #CCC;
+	border-radius: 3px;
+	padding: 2%;
+	margin: 0 0 2%;
+}
+.custom_select{
+	appearance:none;
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-o-appearance:none;
+	-ms-appearance:none;
+}
+.select_down_trianle{
+	background: #FFF url('../images/down.png') no-repeat 97% 50%;
+}
+.termsAndConditionBanner{
+	background: #FFF url('../images/terms-and-condition.jpg') no-repeat left 5% / cover;
+	min-height: 400px;
+}
+.termsAndConditionContent .white_bg_content{
+	background: #FFF;
+	padding: 3% 7%;
+	margin:0 0 3%;
+	color: #545454;
+	box-shadow: 0px 0 1px 0px rgba(0, 0, 0, 0.26) inset;
+}
+.subCondition p{
+	margin-bottom: 15px;
+	font-size: 105%;
+	text-align: justify;
+}
+.subCondition > p:first-child{
+	font-size: 145%;
+	font-weight: 500;
+}
+.commonHeadingTitle{
+	position: relative;
+	margin: 0 0 20px;
+	padding: 0 0 5px;
+}
+.commonHeadingTitle:after{
+	content: '';
+	position: absolute;
+	height: 1px;
+	background: #545454;
+	left: 0;
+	top: 100%;
+	width: 135px;
+}
+.btn_cmmn_red, .btn_cmmn_red:hover, .btn_cmmn_red:focus{
+	background: rgba(237,67,67,1.0);
+	color: #FFF;
+	border-radius: 5px;
+	outline: 0px !important;
+	padding: 8px 30px;
+	font-weight: 500;
+	transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+}
+.btn_cmmn_red:hover{
+	background: rgba(237,67,67,0.9);
+	transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+}
+.btn-list{
+	margin: 5% 0 2%;
+}
