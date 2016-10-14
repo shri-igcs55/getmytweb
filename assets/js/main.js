@@ -541,9 +541,7 @@ $(document).ready(function(){
 	        });
 	    }
     });
-    
    	/* ================Individual (cus-reg-sbmit) END========================== */
-
 
    	// View profile view only
    	// $("#left_sidebar").load(function(){

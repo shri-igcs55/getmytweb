@@ -9,7 +9,7 @@
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="edit_tab1">
 						<div class="form_wrp">
-							<form class="transporter-form cust_doc_up" action="" id="cust_docup" name="cust_docup">
+							<form method="post" class="transporter-form cust_doc_up" action="" id="cust_docup" name="cust_docup" enctype="multipart/form-data" accept-charset="utf-8" >
 								<div class="section_head">
 									<h1>Update Your <span>Info</span></h1>
 								</div>
@@ -20,21 +20,20 @@
 									<article class="col-md-6">
 										<div class="form-group">
 											<label>Document Name<sup>*</sup></label>
-										    <input type="text" class="form-control" id="e_file_name" required>
+										    <input type="text" name="doc_name" class="form-control" id="e_file_name" required>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-											<label>Document File<sup>*</sup><span style="color:orange;">&nbsp;&nbsp;(PDF, JPEG, JPG, PNG Format Only)</span></label>
-										    <input type="file" class="form-control" id="e_File" required>
+											<label>Document File<sup>*</sup><span style="color:orange;">&nbsp;&nbsp;(JPEG, JPG, PNG Format Only)</span></label>
+										    <input type="file" name="user_doc" class="form-control file" id="e_File" required>
 										</div>
 									</article>
-									
 								</div>
 								<div class="row">
 									<article class="col-md-8">
 										<div class="form-group">
-										    <input type="button" id="upload_doc" class="form-control" value="Upload">
+										    <input type="button" id="upload_doc" class="upload_doc form-control" value="Upload">
 										</div>
 									</article>
 								</div>
@@ -42,12 +41,39 @@
 						</div>
 					</div>
 				</div>
+				<div class="tab-content">
+					
+				</div>
 			</article>
-			
 		</div>
 	</div>
 </section>
-<!-- 	CUSTOMER REGISTRATION ENDS-->
+<!-- CUSTOMER REGISTRATION ENDS-->
 <script type="text/javascript">
-	var user_id = '<?php //echo $u_id; ?>';
+	$(document).ready(function(){
+		$('.upload_doc').click(function(){
+			// var doc_name = $('#e_file_name').val();
+			// var user_doc = $('input:file').val();
+			//var uploaddoc = $('form#cust_docup').serialize();
+			 var uploaddoc = new FormData($("form#cust_docup")[0]);
+			
+			jQuery.ajax({
+				type: "POST",             // Type of request to be send, called as method
+				url: "/gmt/Document_upload/add_document", // Url to which the request is send
+				dataType: 'json',	
+	        	data: uploaddoc, 
+	        	mimeType: "multipart/form-data",
+                contentType: false,
+                cache: false,
+                processData: false,
+				success: function(data)   // A function to be called if request succeeds
+				{
+					alert(data);
+				},
+				error: function(){
+					console.log();
+				}
+			});
+		}); // on click submit
+	}); // document close
 </script>
