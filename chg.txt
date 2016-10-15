@@ -1,0 +1,7 @@
+order expiration limit
+msg box
+main sheet last page
+
+customer view of rated ordered
+rating
+booked ordered history replace order button
