@@ -66,9 +66,13 @@ class UserDashboard extends CI_Controller
 
 	// Save transporter work station
 	public function save_working_station(){
+		
+		$arrayParameter = array('user_id'=>2);
+		$objData = $this->getData('view_station','view_station',$arrayParameter);
+
 		if (isset($this->session->userdata['logged_in_user'])) {
 			$this->load->view('comman/header');
-			$this->load->view('selectStation');
+			$this->load->view('selectStation',$objData);
 			$this->load->view('comman/footer');
 		} else {
 			redirect(site_url('user/signin'));
@@ -113,6 +117,19 @@ class UserDashboard extends CI_Controller
 			redirect(site_url('user/signin'));
 		}
 		
+	}
+	
+	public function getData($class,$method,$arrayField)
+	{
+		$ch = curl_init();
+		curl_setopt($ch,CURLOPT_URL, 'http://localhost/gmt/'.$class.'/'.$method);
+		curl_setopt($ch,CURLOPT_POST, count($arrayField));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $arrayField);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		$result = curl_exec($ch);
+		$obj = json_decode($result);
+		curl_close($ch);
+		return $obj;
 	}
 
 	

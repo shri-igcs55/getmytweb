@@ -1112,10 +1112,22 @@ a.remove_more_btn{
 	padding: 3px 7px;
 	margin: 3px;
 }
+a.remove_more_station{
+	
+	float: right;
+	background-color: #ddd;
+	color: #000;
+	border: none;
+	cursor: pointer;
+	padding: 3px 7px;
+	margin: 3px;
+}
 .addmore_wrp ul li{
 	list-style: none;
 }
-
+.error{
+	color:red;
+}
 /*=================================*/
 
 

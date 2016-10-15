@@ -451,7 +451,6 @@
 		        	console.log('Somthing went wrong');
 		        }
 			});
-			
 		});
 
 		// Ajax post for submiting registration form
