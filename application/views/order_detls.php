@@ -38,7 +38,7 @@
 				    						<p class="vehicle_type">-</p>
 				    					</article>
 				    					<article class="col-sm-4 ">
-				    						<label>Quantity</label>
+				    						<label>Item Quantity</label>
 				    						<p class="item_qty">-</p>
 				    					</article>
 				    					<article class="col-sm-4">
@@ -179,7 +179,7 @@
 										<div class="row">	
 				    					<article class="col-md-2">
 											<label>Status</label>
-											<h4>-</h6>
+											<p class="order_status">-</p>
 				    					</article>
 										<article class="col-md-2">
 				    						
