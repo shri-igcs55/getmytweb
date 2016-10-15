@@ -6,7 +6,28 @@
 			<article class="col-md-3">
 				<?php include_once('comman/left_sidebar.php'); $u_id = $logged_in_user['user_id']; ?>
 			</article>
-			<?php // print_r($logged_in_user); ?>
+			<?php echo $u_id; 
+			if ($logged_in_user['user_type'] == 3) {
+				echo "Individual Customer";
+			} elseif($logged_in_user['user_type'] == 4){
+				echo "Company as Customer";
+			} elseif($logged_in_user['user_type'] == 5){
+				echo "Packers and Movers";
+			} elseif($logged_in_user['user_type'] == 6){
+				echo "Crane Provider";
+			} elseif($logged_in_user['user_type'] == 8){
+				echo "Container Suppliers";
+			} elseif($logged_in_user['user_type'] == 9){
+				echo "Commission Agent";
+			} elseif($logged_in_user['user_type'] == 10){
+				echo "Fleet Owners";
+			} elseif ($logged_in_user['user_type'] == 11) {
+				echo "Transporter and Logistics Provider";
+			} elseif ($logged_in_user['user_type'] == 12) {
+				echo "Trolley and Tanker Provider";
+			}
+			
+			?>
 
 			<article class="col-md-9">
 				<div class="tab-content update_my_info">

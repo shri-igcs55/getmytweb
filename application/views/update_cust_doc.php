@@ -41,9 +41,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="tab-content">
-					
-				</div>
 			</article>
 		</div>
 	</div>
