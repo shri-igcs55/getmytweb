@@ -9,7 +9,6 @@
 	}else if($logged_in_user['user_type'] == 8 || $logged_in_user['user_type'] == 9 || $logged_in_user['user_type'] == 10 || $logged_in_user['user_type'] == 11 || $logged_in_user['user_type'] == 12 ){
 		$findOrder = site_url('userdashboard/search_transporter_order');
 	}
-
 ?>
 <section class="place_order_sidebar" >
 	<div id="left_sidebar">
@@ -23,17 +22,13 @@
 		    		 $logged_in_user['user_type'] == 10 ||
 		    		 $logged_in_user['user_type'] == 11 ||
 		    		 $logged_in_user['user_type'] == 12 ){ ?>
-
 			    <li><a href="<?php echo $findOrder; ?>">Find Order</a></li>
 			    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">View &amp; Rate Order</a></li>
 			    <li><a href="<?php echo site_url('userdashboard/save_working_station'); ?>">Select Station</a></li>
-			    
 		    <?php } ?>
-			
 			<?php if($logged_in_user['user_type'] == 3 || $logged_in_user['user_type'] == 4):?>
 				<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
 			<?php endif;?>
-			 
 		    <li><a href="#">Subscription &amp; Package</a></li>
 		    <li><a href="#">Save Contact</a></li>
 		    <li><a href="#">Confirmed Order</a></li>
