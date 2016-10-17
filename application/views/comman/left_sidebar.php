@@ -54,7 +54,7 @@
 		    </li>
 		    <li><a href="#">Subscription &amp; Package</a></li>
 		    <li><a href="#">Customer Care</a></li>
-		    <li><a href="#">Terms &amp; Conditions</a></li>
+		    <li><a href="<?php echo site_url('termandcondition'); ?>">Terms &amp; Conditions</a></li>
 		    <li><a href="<?php echo site_url('user/signout'); ?>">Sign out</a></li>
 		</ul>
 	</div>

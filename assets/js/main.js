@@ -596,4 +596,46 @@ $(document).ready(function(){
    		$('.myProfileMenu').slideToggle();
    	});
 
+	$(".submit_contact").click(function(event) {
+   		
+   		$('#form_validation_msg').empty();
+   		
+   		var full_name	= $("#name").val();
+		var user_email 	= $("#emailid").val();
+        var user_mob	= $("#user_mob").val();
+        var contact_msg	= $("#contact_msg").val();
+        
+        if(full_name == '' || user_email == '' || user_mob == '' || contact_msg == ''){
+        	$('<p style="color:#ed4343; font-size:14px;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        }
+        else{
+        	var cust_contact_msg = $('#contactus').serialize();
+			$.ajax({
+		        type: "POST",
+		        url : "/gmt/contact_us/contact_us",
+		        data: cust_contact_msg,
+		        success: function(res) {
+		            if (res.status_code == 200)
+		            {
+		              	$.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('<p style="color:#00ff00; font-size:14px;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	}
+			            });
+			            $('.contactus')[0].reset();
+		            }else{
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('<p style="color:#ed4343; font-size:14px;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	}
+			            });
+			            $('.contactus')[0].reset();
+		            }
+	          	},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+	        });
+	    }
+    });
 }); // Document ready close

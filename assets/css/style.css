@@ -480,7 +480,7 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 
 .custmr_type label {
   position: relative;
-  padding: 0 20px;	\
+  padding: 0 20px;	
   margin-bottom: 0;
 }
 .custmr_type span::before,
@@ -1334,6 +1334,7 @@ a.remove_more_station{
 .myProfileMenu{
 	display: none;
 }
+/* ### SANTHOSH CODE ### */
 .find-order-page select{
 	appearance:none;
 	-webkit-appearance:none;
@@ -1417,4 +1418,236 @@ a.remove_more_station{
 }
 .btn-list{
 	margin: 5% 0 2%;
+}
+#contactusBanner{
+	background: #FFF url('../images/contactBanner.jpg') no-repeat left 6% / cover;
+}
+.staticPageBannerSection h1{
+	font-weight: 700;
+	font-size: 300%;
+	margin: 0 0 15px;
+}
+.staticPageBannerSection span{
+	font-size: 180%;
+	display: block;
+}
+section.contactUsForm{
+	padding: 20px 0;
+	background: #FFF;
+}
+section.contactUsForm{
+	padding: 20px 0 0;
+}
+section.contactUsForm h1{
+	font-size: 240%;
+	margin: 0 0 15px;
+	font-weight: 700;
+}
+section.contactUsForm p{
+	font-size: 200%;
+	margin: 0 0 10px;
+}
+section.contactUsForm .contactForm{
+	padding: 20px;
+}
+section.contactUsForm .contactForm .form-group{
+	margin: 0 0 20px;
+}
+section.contactUsForm .contactForm .form-control{
+	border-radius: 0px;
+	box-shadow: none;
+	border-color: #ed4343;
+	border-width: 2px;
+}
+section.contactUsForm .contactForm textarea.form-control{
+	margin: 25px 0 0;
+}
+section.contactUsForm .contactForm input.form-control{
+	border-width: 0 0 2px 0;
+}
+section.contactUsForm .contactForm button.btn_cmmn_red{
+	border-radius: 0px;
+	font-weight: 600;
+	font-size: 110%;
+}
+#aboutBanner{
+	background: #FFF url('../images/aboutBanner.jpg') no-repeat left 6% / cover;
+}
+.staticPageBannerSection{
+	min-height: 375px;
+	color: #FFF;
+	padding: 8% 0 4%;
+	position: relative;
+}
+.aboutTruckContent p{
+	text-align: justify;
+	text-align-last: center;
+	font-size: 130%;
+	-moz-text-align-last:center;
+}
+#aboutGetmyTrunk{
+	padding: 20px 0;
+	background: #fff url("../images/small-reverse-logo.png") no-repeat scroll 85% 100% / 200px auto;
+	min-height: 320px;
+	height: auto;
+	border-bottom: 2px solid #ed4343;
+}
+.aboutTruckContent h1{
+	font-weight: 700;
+	margin: 0 0 20px;
+	font-style: italic;
+	font-size: 230%;
+}
+.aboutTruckContent h1 span{
+	color: #ed4343;
+	font-style: normal;
+}
+.GetmyTruckManagement{
+	background: #FFF url('../images/managementBanner.jpg') no-repeat left 4% / cover;
+	min-height: 500px;
+	padding: 2% 0;
+}
+.directorCarouselSection h1{
+	color: #FFF;
+	margin: 0 0 20px;
+	font-weight: 700;
+	font-size: 230%;
+}
+.directorCarousel .whiteCarouselBgcolor{
+	width: 80%;
+	margin: 0 auto;
+	background: #FFF;
+	text-align: center;
+	padding: 3% 5%;
+	border-radius: 5px;
+}
+.whiteCarouselBgcolor .postion{
+	color: #ed4343;
+	margin: 5px 0 5px;
+	font-size: 150%;
+}
+.whiteCarouselBgcolor .name{
+	font-weight: 700;
+	font-size: 120%;
+	margin: 5px 0 15px;
+}
+.whiteCarouselBgcolor p{
+	text-align: justify;
+	text-align-last: center;
+	-moz-text-align-last: center;
+	-ms-text-align-last: center;
+	-o-text-align-last: center;
+	-webkit-text-align-last: center;
+}
+.whiteCarouselBgcolor img{
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+	border-radius: 100%;
+}
+.directorCarousel .owl-controls .owl-buttons div{
+	position: absolute;
+	top: 45%;
+	background: none;
+}
+.directorCarousel .owl-controls .owl-buttons div.owl-prev{
+	left: -10px;
+}
+.directorCarousel .owl-controls .owl-buttons div.owl-next{
+	right: -10px;
+}
+#vision_mision_content{
+	padding: 2% 0 1%;
+}
+.white_row{
+	background: #FFF;
+	margin-bottom: 2%;
+}
+.white_row > div{
+	padding: 0;
+}
+.width_80_per{
+	width: 80%;
+	margin: 0 auto;
+}
+.vision_mision_content_para{
+	padding: 2% 4% 0;
+}
+.vision_mision_content_para h2{
+	font-weight: 700;
+	margin: 10px 0 15px;
+}
+.vision_mision_content_para {
+	padding: 3% 4%;
+}
+.vision_mision_content_para p{
+	text-align: justify;
+	font-size: 100%;
+	letter-spacing: 0.3px;
+}
+.one_bgimage{
+	background: #FFF url('../images/our-vision.jpg') no-repeat 0 0 / cover;
+}
+#vision_mision_content ul li:last-child div.white_row{
+	margin: 0 -15px;
+}
+#servicesBannerImage{
+	background: #FFF url('../images/serivceBanner.jpg') no-repeat left 2% / cover;
+}
+.seviceComnContent{
+	padding: 2% 0;
+	background: #FFF;
+}
+.seviceComnContent h1{
+	margin: 5px 0 20px;
+	font-weight: 600;
+	font-size: 210%;
+}
+.seviceComnContent p{
+	text-align: justify;
+	text-align-last: center;
+	-moz-text-align-last: center;
+	-ms-text-align-last: center;
+	-webkit-text-align-last: center;
+	-o-text-align-last: center;
+	font-size: 120%;
+	margin: 0 0 10px;
+}
+.no-margin-list .row > div{
+	padding: 0;
+}
+.no-margin-list .img-place-content{
+	margin-top: 40px;
+}
+.no-margin-list .img-place-content h3{
+	font-weight: 700;
+	font-size: 180%;
+	margin: 10px 0 15px;
+}
+.no-margin-list .img-place-content p{
+	margin: 0 0 10px;
+	font-size: 110%;
+	text-align: justify;
+}
+.breifContent{
+	background: #FFF;
+	padding: 3% 0;
+}
+.breifContent .right-content{
+	padding:5%;
+	text-align: justify;
+}
+.breifContent img{
+	width: 300px;
+	max-width: 100%;
+	height: auto;
+}
+.breifContent .right-content h3{
+	margin: 0 0 15px;
+	font-weight: 700;
+	font-size: 180%;
+}
+.breifContent .right-content p{
+	margin: 0 0 10px;
+	font-size: 105%;
 }

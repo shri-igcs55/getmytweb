@@ -61,7 +61,6 @@
 							<ul class="mid-foot-1">
 								<li>
 									<p><span>Know More</span></p>
-									<p>Blog</p>
 									<p>About us</p>
 									<p>Offers</p>
 									<p>Payment policy</p>

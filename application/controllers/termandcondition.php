@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
-* All Home related things
+* All Contact us
 */
-class Welcome extends CI_Controller {
+class termandcondition extends CI_Controller {
 
 	public function __construct()
 	{
@@ -13,8 +13,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('comman/header');
-		$this->load->view('index');
+		$this->load->view('termsAndCondition');
 		$this->load->view('comman/footer');
 	}
-
 }
+?>
