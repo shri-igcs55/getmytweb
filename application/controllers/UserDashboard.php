@@ -57,14 +57,14 @@ class UserDashboard extends CI_Controller
 			
 			$logged_in_user = $this->session->userdata('logged_in_user');			
 			$arrayParameter = array('user_id'=>$logged_in_user['user_id']);
-			$objData = $this->getData('book_history','book_history',$arrayParameter);
+			$orderObj = $this->getData('book_history','book_history',$arrayParameter);
 
 			//echo '<pre>';
-			//print_r($objData);
+			//print_r($orderObj);
 			//exit;
 		
 			$this->load->view('comman/header');
-			$this->load->view('order_detls');
+			$this->load->view('order_detls',array('orderObj'=>$orderObj));
 			$this->load->view('comman/footer');
 			
 		}else{
