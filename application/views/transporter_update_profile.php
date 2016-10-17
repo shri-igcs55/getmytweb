@@ -6,8 +6,7 @@
 			<article class="col-md-3">
 				<?php include_once('comman/left_sidebar.php'); $u_id = $logged_in_user['user_id']; ?>
 			</article>
-			<?php // print_r($logged_in_user); ?>
-
+			
 			<article class="col-md-9">
 				<div class="tab-content update_my_info">
 					<div class="tab-pane fade in active" id="edit_profile">

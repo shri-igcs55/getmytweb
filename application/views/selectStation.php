@@ -101,150 +101,147 @@
 
 <!-- place order transporter starts -->
 <script>
-
-// this code is for auto complete in place order page after login
-  $( function() {
-    $.widget( "custom.combobox", {
-      _create: function() {
-        this.wrapper = $( "<span>" )
-          .addClass( "custom-combobox" )
-          .insertAfter( this.element );
- 
-        this.element.hide();
-        this._createAutocomplete();
-        this._createShowAllButton();
-      },
- 
-      _createAutocomplete: function() {
-        var selected = this.element.children( ":selected" ),
-          value = selected.val() ? selected.text() : "";
- 
-        this.input = $( "<input>" )
-          .appendTo( this.wrapper )
-          .val( value )
-          .attr( "title", "" )
-          .attr( "disabled", true)
-          .addClass( "form-control custom-combobox-input ui-corner-left" )
-          .autocomplete({
-            delay: 0,
-            minLength: 0,
-            source: $.proxy( this, "_source" )
-          })
-          .tooltip({
-            classes: {
-              "ui-tooltip": "ui-state-highlight"
-            }
-          });
- 
-        this._on( this.input, {
-          autocompleteselect: function( event, ui ) {
-            ui.item.option.selected = true;
-            this._trigger( "select", event, {
-              item: ui.item.option
-            });
-          },
- 
-          autocompletechange: "_removeIfInvalid"
-        });
-      },
- 
-      _createShowAllButton: function() {
-        var input = this.input,
-          wasOpen = false;
- 
-        $( "<a>" )
-          .attr( "tabIndex", -1 )
-          .attr( "title", "Show All Items" )
-          .tooltip()
-          .appendTo( this.wrapper )
-          .button({
-            icons: {
-              primary: "ui-icon-triangle-1-s"
-            },
-            text: false
-          })
-          .removeClass( "ui-corner-all" )
-          .addClass( "custom-combobox-toggle ui-corner-right" )
-          .on( "mousedown", function() {
-            wasOpen = input.autocomplete( "widget" ).is( ":none" );
-          })
-          .on( "click", function() {
-            input.trigger( "focus" );
- 
-            // Close if already visible
-            if ( wasOpen ) {
-              return;
-            }
- 
-            // Pass empty string as value to search for, displaying all results
-            input.autocomplete( "search", "" );
-          });
-      },
- 
-      _source: function( request, response ) {
-        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
-        response( this.element.children( "option" ).map(function() {
-          var text = $( this ).text();
-          if ( this.value && ( !request.term || matcher.test(text) ) )
-            return {
-              label: text,
-              value: text,
-              option: this
-            };
-        }) );
-      },
- 
-      _removeIfInvalid: function( event, ui ) {
- 
-        // Selected an item, nothing to do
-        if ( ui.item ) {
-          return;
-        }
- 
-        // Search for a match (case-insensitive)
-        var value = this.input.val(),
-          valueLowerCase = value.toLowerCase(),
-          valid = false;
-        this.element.children( "option" ).each(function() {
-          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
-            this.selected = valid = true;
-            return false;
-          }
-        });
- 
-        // Found a match, nothing to do
-        if ( valid ) {
-          return;
-        }
- 
-        // Remove invalid value
-        this.input
-          .val( "" )
-          .attr( "title", value + " didn't match any item" )
-          .tooltip( "open" );
-        this.element.val( "" );
-        this._delay(function() {
-          this.input.tooltip( "close" ).attr( "title", "" );
-        }, 2500 );
-        this.input.autocomplete( "instance" ).term = "";
-      },
- 
-      _destroy: function() {
-        this.wrapper.remove();
-        this.element.show();
-      }
-    });
- 
-	$( ".From_city" ).combobox();
-	$( ".To_city" ).combobox();
-    
-  } );
+	// this code is for auto complete in place order page after login
+	$( function() {
+	    $.widget( "custom.combobox", {
+	      _create: function() {
+	        this.wrapper = $( "<span>" )
+	          .addClass( "custom-combobox" )
+	          .insertAfter( this.element );
+	 
+	        this.element.hide();
+	        this._createAutocomplete();
+	        this._createShowAllButton();
+	      },
+	 
+	      _createAutocomplete: function() {
+	        var selected = this.element.children( ":selected" ),
+	          value = selected.val() ? selected.text() : "";
+	 
+	        this.input = $( "<input>" )
+	          .appendTo( this.wrapper )
+	          .val( value )
+	          .attr( "title", "" )
+	          .attr( "disabled", true)
+	          .addClass( "form-control custom-combobox-input ui-corner-left" )
+	          .autocomplete({
+	            delay: 0,
+	            minLength: 0,
+	            source: $.proxy( this, "_source" )
+	          })
+	          .tooltip({
+	            classes: {
+	              "ui-tooltip": "ui-state-highlight"
+	            }
+	          });
+	 
+	        this._on( this.input, {
+	          autocompleteselect: function( event, ui ) {
+	            ui.item.option.selected = true;
+	            this._trigger( "select", event, {
+	              item: ui.item.option
+	            });
+	          },
+	 
+	          autocompletechange: "_removeIfInvalid"
+	        });
+	      },
+	 
+	      _createShowAllButton: function() {
+	        var input = this.input,
+	          wasOpen = false;
+	 
+	        $( "<a>" )
+	          .attr( "tabIndex", -1 )
+	          .attr( "title", "Show All Items" )
+	          .tooltip()
+	          .appendTo( this.wrapper )
+	          .button({
+	            icons: {
+	              primary: "ui-icon-triangle-1-s"
+	            },
+	            text: false
+	          })
+	          .removeClass( "ui-corner-all" )
+	          .addClass( "custom-combobox-toggle ui-corner-right" )
+	          .on( "mousedown", function() {
+	            wasOpen = input.autocomplete( "widget" ).is( ":none" );
+	          })
+	          .on( "click", function() {
+	            input.trigger( "focus" );
+	 
+	            // Close if already visible
+	            if ( wasOpen ) {
+	              return;
+	            }
+	 
+	            // Pass empty string as value to search for, displaying all results
+	            input.autocomplete( "search", "" );
+	          });
+	      },
+	 
+	      _source: function( request, response ) {
+	        var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+	        response( this.element.children( "option" ).map(function() {
+	          var text = $( this ).text();
+	          if ( this.value && ( !request.term || matcher.test(text) ) )
+	            return {
+	              label: text,
+	              value: text,
+	              option: this
+	            };
+	        }) );
+	      },
+	 
+	      _removeIfInvalid: function( event, ui ) {
+	 
+	        // Selected an item, nothing to do
+	        if ( ui.item ) {
+	          return;
+	        }
+	 
+	        // Search for a match (case-insensitive)
+	        var value = this.input.val(),
+	          valueLowerCase = value.toLowerCase(),
+	          valid = false;
+	        this.element.children( "option" ).each(function() {
+	          if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+	            this.selected = valid = true;
+	            return false;
+	          }
+	        });
+	 
+	        // Found a match, nothing to do
+	        if ( valid ) {
+	          return;
+	        }
+	 
+	        // Remove invalid value
+	        this.input
+	          .val( "" )
+	          .attr( "title", value + " didn't match any item" )
+	          .tooltip( "open" );
+	        this.element.val( "" );
+	        this._delay(function() {
+	          this.input.tooltip( "close" ).attr( "title", "" );
+	        }, 2500 );
+	        this.input.autocomplete( "instance" ).term = "";
+	      },
+	 
+	      _destroy: function() {
+	        this.wrapper.remove();
+	        this.element.show();
+	      }
+	    });
+	 
+		$( ".From_city" ).combobox();
+		$( ".To_city" ).combobox();  
+	});
 </script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.addmore_wrp').on('click','.from-state',function(){						 		
-			
+		$('.addmore_wrp').on('click','.from-state',function(){
 			if(!$(this).hasClass('clicked'))
 				$(this).addClass('clicked');
 			else
@@ -332,8 +329,8 @@
 			$( ".To_city" ).combobox();
 			$('input[name=station_count]').val(parseInt($('input[name=station_count]').val())+1);
 		});
-		
-		 $("a.remove_more_station").click(function(){
+
+		$("a.remove_more_station").click(function(){
 			$('.error').html(' ');
 			$(".addmore_wrp ul li:last-child").not(".addmore_wrp ul li:first-child").remove();
 			if($('input[name=station_count]').val()!=1){
@@ -345,16 +342,15 @@
 			//e.preventDefault(); // avoid to execute the actual submit of the form.
 			alert('test');
 			$.ajax({
-			type: "POST",
-			url: "/gmt/select_station/select_station",
-			data: $(this).serialize(), // serializes the form's elements.
-			success: function(data)
-			{
-				alert(data); // show response from the php script.
-			}
+				type: "POST",
+				url: "/gmt/select_station/select_station",
+				data: $(this).serialize(), // serializes the form's elements.
+				success: function(data)
+				{
+					alert(data); // show response from the php script.
+				}
 			});
 			ev.preventDefault();
-		})
-		
+		});
 	});
 </script>

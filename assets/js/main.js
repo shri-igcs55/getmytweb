@@ -553,7 +553,7 @@ $(document).ready(function(){
 			url  	: "/gmt/View_profile/view_profile",
 			dataType: "json",
 			data	: {
-				user_id : user_id
+				user_id : ''
 			},
 			success: function(res){
 				if(res.status_code == 200){
