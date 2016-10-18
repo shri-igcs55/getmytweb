@@ -43,7 +43,8 @@ class User extends CI_Controller
 				$this->load->view('cust_comp_update_profile');	// for company customer
 			}else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] == 6
 				  || $logged_in_user['user_type'] == 8 || $logged_in_user['user_type'] == 9
-				  || $logged_in_user['user_type'] == 10){
+				  || $logged_in_user['user_type'] == 10 || $logged_in_user['user_type'] == 11
+				  || $logged_in_user['user_type'] == 12){
 				$this->load->view('transporter_update_profile');
 			}/*else if($logged_in_user['user_type'] == 5){
 				$this->load->view('');

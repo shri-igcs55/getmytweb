@@ -20,6 +20,7 @@
 
 				<?php //print_r($orderObj->data->msg);
 				//exit;
+				//echo $logged_in_user['user_type_parent_id'];
 			if(!isset($orderObj->data->message)):
 				foreach($orderObj->data as $orderObj):?>
 						<div class="tab-content order_wrpr">
@@ -222,7 +223,7 @@
 	</section>
 </section>
 <!-- place order crane starts -->
-<!--<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$.ajax({
 			type: "POST",
@@ -232,7 +233,8 @@
 			success:function(result){
 					if (result.status_code == 200)
 					{
-						var orderData = result.data;
+						console.log(result.data);
+						/*var orderData = result.data;
 						//alert(orderData[0]['first_name']);
 						
 						var orderObj = $('.place_order_main');
@@ -253,18 +255,19 @@
 							})
 							//alert(multipleCities);
 							$('.cities').append(multipleCities);							
-						})
+						})*/
 						
 					}else{
-						$('#form_validation_msg').empty();
+						console.log(result.data);
+						/*$('#form_validation_msg').empty();
 						$.each(result.data, function(key, val) {
 							$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
-						});
+						});*/
 					}
 			},
 		})
 	});
-</script>-->
+</script> -->
 <script>
 $(document).ready(function(){
 	$('input[name="cancel_order"]').click(function(){		
