@@ -164,12 +164,23 @@
 </section>
 <script>
 	$(document).ready(function(){
-		// OWL CAROUSEL
-		$('.directorCarousel').owlCarousel({
-			items:3,
-			pagination:false,
-			navigation:true,
-			navigationText: ["<img src='<?php echo base_url('assets/'); ?>images/left-arrow.png' width='20' height='30'>","<img src='<?php echo base_url('assets/'); ?>images/right-arrow.png' width='20' height='30'>"]
-		});
-	});
+        // OWL CAROUSEL
+        $('.directorCarousel').owlCarousel({
+
+            items:3,
+            nav:true,
+            navText: ["<img src='<?php echo base_url('assets/'); ?>images/left-arrow.png' width='20' height='30'>","<img src='<?php echo base_url('assets/'); ?>images/right-arrow.png' width='20' height='30'>"],
+            responsiveClass:true,
+            responsive:{
+                320:{
+                    items:1,
+                    nav:true,
+                },
+                760:{
+                    items:3,
+                    nav:true,
+                },
+            }
+        });
+    });
 </script>

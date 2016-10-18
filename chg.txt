@@ -2,6 +2,6 @@ order expiration limit
 msg box
 main sheet last page
 
-customer view of rated ordered
+customer view of quotated ordered
 rating
 booked ordered history replace order button

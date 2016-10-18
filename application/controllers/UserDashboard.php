@@ -49,9 +49,9 @@ class UserDashboard extends CI_Controller
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id']);
 		$objData = $this->getData('book_history','book_history',$arrayParameter);
 
-		//echo '<pre>';
-		//print_r($objData);
-		//exit;
+		echo '<pre>';
+		print_r($objData->data);
+		exit;
 	
 		$this->load->view('comman/header');
 		$this->load->view('order_detls',array('orderObj'=>$objData));

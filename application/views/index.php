@@ -113,7 +113,7 @@
 									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></span></p>
-									<a href="#">Read more ...</a>
+									<a href="<?php echo site_url('aboutus'); ?>">Read more ...</a>
 								</div>
 							</article>
 						</div>

@@ -1545,15 +1545,15 @@ section.contactUsForm .contactForm button.btn_cmmn_red{
 	height: auto;
 	border-radius: 100%;
 }
-.directorCarousel .owl-controls .owl-buttons div{
+.directorCarousel .owl-controls .owl-nav div{
 	position: absolute;
 	top: 45%;
 	background: none;
 }
-.directorCarousel .owl-controls .owl-buttons div.owl-prev{
+.directorCarousel .owl-controls .owl-nav div.owl-prev{
 	left: -10px;
 }
-.directorCarousel .owl-controls .owl-buttons div.owl-next{
+.directorCarousel .owl-controls .owl-nav div.owl-next{
 	right: -10px;
 }
 #vision_mision_content{

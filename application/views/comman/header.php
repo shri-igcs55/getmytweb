@@ -78,6 +78,7 @@
 								</a>
 							</div>
 						</article>
+						<?php print_r($logged_in_user); ?>
 						<article class="col-sm-10 col-xs-6">
 							<div class="menu-wrp">
 								<?php if($logged_in_user){ ?>
