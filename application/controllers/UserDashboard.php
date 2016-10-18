@@ -54,7 +54,7 @@ class UserDashboard extends CI_Controller
 		//exit;
 	
 		$this->load->view('comman/header');
-		$this->load->view('order_detls');
+		$this->load->view('order_detls',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
 		
 	}
