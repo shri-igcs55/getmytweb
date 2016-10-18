@@ -17,10 +17,13 @@
 								</div>
 		    				</article>
 		    			</div>
-							
-						<?php foreach($orderObj->data as $orderObj):?>
-							<div class="tab-content order_wrpr">
-								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
+
+				<?php //print_r($orderObj->data->msg);
+				//exit;
+			if(!isset($orderObj->data->message)):
+				foreach($orderObj->data as $orderObj):?>
+						<div class="tab-content order_wrpr">
+							<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
 
 				    				<div class="order_row">
 					    				<div class="row">
@@ -206,7 +209,12 @@
 						    	</div>
 							</div>	
 							<br/>
-						<?php endforeach;?>
+						<?php endforeach;
+						else:
+						echo '<h5>'.$orderObj->data->message.'</h5>';
+						endif;
+						?>
+					
 					</section>
 				</article>
 			</div>
