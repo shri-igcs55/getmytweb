@@ -67,7 +67,7 @@
 													<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_State">State<sup>*</sup></label>
+															    <label for="From_State">From State<sup>*</sup></label>
 															    <select id="From_State" class="from-state form-control trans_plc_ord" required>
 															    	<option value="">Select State</option>
 															    	<option value="">Loading...</option>
@@ -76,7 +76,7 @@
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_City">City, District<sup>*</sup></label>
+															    <label for="From_City">From City, District<sup>*</sup></label>
 														     	<select id="From_city" name="from_city" class="from-city form-control">
 																    <option value="">Select City District</option>
 																</select>
@@ -84,7 +84,7 @@
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_location">Where in City (Area)<sup>*</sup></label>
+															    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
 															    <input type="text" name="from_location" id="from_location" class="where-in-city form-control" required disabled="" value="">
 															</div>
 														</article>

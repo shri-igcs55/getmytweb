@@ -1,0 +1,51 @@
+						From State
+						From City, District
+						From Where in City (Area)
+						To State
+						To City, District
+						To Where in City (Area)
+
+						Material Type
+						Length ( In Feet )
+						Nag (Quantity)
+						Weight
+						
+						Vehicle type
+						No. of Vehicle
+						Pickup Points
+						Drop Points
+						Schedule Date
+
+
+-----------------
+
+						From State
+						From City, District
+						From Where in City (Area)
+						To State
+						To City, District
+						To Where in City (Area)
+						Detail Address from Where Service is required
+From Floor
+Lift Facility
+						Detail Address to Where Service is required
+To Floor
+Lift Facility
+						Service required for
+						Schedule Date
+						Description of Goods
+
+
+--------------------
+
+State
+City, District
+Where in City (Area)
+To State
+To City, District
+To Where in City (Area)
+From Address (Where Service is required)
+To Address (Where Service is required)
+						Description of Work
+						Weight (Estimate)
+						Schedule Date

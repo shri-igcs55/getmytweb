@@ -18,68 +18,18 @@
 		    				</article>
 		    			</div>
 
-				<?php //print_r($orderObj->data->msg);
-				//exit;
-				//echo $logged_in_user['user_type_parent_id'];
-			if(!isset($orderObj->data->message)):
-				foreach($orderObj->data as $orderObj):?>
-						<div class="tab-content order_wrpr">
-							<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
-
+						<?php 
+						if(!isset($orderObj->data->message)):
+							foreach($orderObj->data as $orderObj):?>
+								<div class="tab-content order_wrpr">
+								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
 				    				<div class="order_row">
 					    				<div class="row">
 					    					<article class="col-sm-6">
 					    						<h4>Order ID: <span class="order_no"><?php echo $orderObj->order_id?></span></h4>
 					    					</article>
 					    					<article class="col-sm-6 text-right">
-					    						<h4>Date: <span class="order_date"><?php echo $orderObj->plc_odr_schedule_date?></span></h4>
-					    					</article>
-					    				</div>
-					    			</div>
-					    			<div class="order_row">
-					    				<div class="row">
-					    					<article class="col-sm-4">
-					    						<label>Vehicle Type</label>
-					    						<p><?php echo $orderObj->vehicle_type?></p>
-					    					</article>
-					    					<article class="col-sm-4 ">
-					    						<label>Item Quantity</label>
-					    						<p><?php echo $orderObj->item_qty?></p>
-					    					</article>
-					    					<article class="col-sm-4">
-					    						<label>No. Vehicle</label>
-					    						<p><?php echo $orderObj->vehicle_qty?></p>
-					    					</article>
-					    				</div>
-
-					    				<div class="gat_vertcl"></div>
-					    				<div class="row">
-					    					<article class="col-sm-4">
-					    						<label>Address form where service required</label>
-					    						<p>-</p>
-					    					</article>
-					    					<article class="col-sm-4">
-					    						<label>Address form where service required</label>
-					    						<p>-</p>
-					    					</article>
-					    					<article class="col-sm-4">
-					    						<label>-</label>
-					    						<p>-</p>
-					    						
-					    					</article>
-					    				</div>
-
-					    				<div class="gat_vertcl"></div>
-					    				<div class="row">
-					    					<article class="col-sm-4">
-					    						<label>Service require for </label>
-					    						<p>-</p>
-					    					</article>
-					    					<article class="col-sm-4">
-					    						
-					    					</article>
-					    					<article class="col-sm-4">
-					    						
+					    						<h4>Schedule Date: <span class="order_date"><?php echo $orderObj->order_schedule_date?></span></h4>
 					    					</article>
 					    				</div>
 					    			</div>
@@ -99,7 +49,101 @@
 					    						<p><?php echo $orderObj->mobile?></p>
 					    					</article>
 					    				</div>
-					    								    				
+					    			</div>
+					    			<div class="order_row">
+					    				<center><h4><span>Pickup-Drop Details</span></h4></center>
+					    				<div class="row cities">
+											<?php $intLoop = 0; $city_index = 1;
+												foreach($orderObj->from_city as $fromCity):?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>From City(<?php echo $city_index?>)</label>
+														<p><?php echo $fromCity?></p>
+													</article>
+												<?php $city_index++; endforeach;
+										echo '</div><div class="row cities">';
+												foreach($orderObj->from_city as $fromCity):?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>To City(<?php echo $city_index?>)</label>
+														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
+													</article>
+											<?php $city_index++; endforeach;?>
+										</div>
+										<?php if($orderObj->order_place_for_id == 5){?>
+											<div class="gat_vertcl"></div>
+						    				<div class="row cities">
+												<article class="col-sm-4">
+						    						<label>Address form where service required</label>
+						    						<p>-</p>
+						    					</article>
+						    					<article class="col-sm-4">
+						    						<label>Address to where service required</label>
+						    						<p>-</p>
+						    					</article>
+						    					<article class="col-sm-3">
+						    						<label>Service require for </label>
+						    						<p>-</p>
+						    					</article>
+											</div>
+										<?php }?>
+										<div class="gat_vertcl"></div>
+					    				<div class="row cities">
+											<?php $intLoopArea = 0; $city_area_index = 1;
+											foreach($orderObj->pickup_area_location as $pickup_area_location):?>
+												<article class="col-sm-4" style="height: 60px;">
+						    						<label>From Where in City area(<?php echo $city_area_index?>)</label>
+						    						<p><?php echo $pickup_area_location?></p>
+						    					</article>
+						    					<?php $city_area_index++; endforeach;
+										echo '</div><div class="row cities">';
+												foreach($orderObj->pickup_area_location as $pickup_area_location):?>
+						    					<article class="col-sm-4" style="height: 60px;">
+						    						<label>To Where in City area(<?php echo $city_area_index?>)</label>
+						    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
+						    					</article>
+						    				<?php $city_area_index++; endforeach;?>
+										</div>
+					    			</div>
+					    			<div class="order_row">
+					    				<center><h4><span>Vehicle Details</span></h4></center>
+					    				<div class="row">
+					    					<article class="col-sm-3">
+					    						<label>Vehicle Type</label>
+					    						<p><?php echo $orderObj->vehicle_type?></p>
+					    					</article>
+					    					<article class="col-sm-4">
+					    						<label>No. of Vehicle</label>
+					    						<p><?php echo $orderObj->vehicle_qty?></p>
+					    					</article>
+					    					<article class="col-sm-4">
+						    					<label>Order Pickup Points</label>
+						    					<p><?php echo $orderObj->order_pickup_points ?></p>
+						    				</article>
+					    				</div>
+					    				<div class="gat_vertcl"></div>
+					    				<div class="row">
+						    				<article class="col-sm-3">
+						    					<label>Order Drop Points</label>
+						    					<p><?php echo $orderObj->order_drop_points ?></p>
+						    				</article>
+					    					
+					    				</div>
+					    				<!-- <div class="gat_vertcl"></div>
+					    				<div class="row">
+					    					
+					    				</div> -->
+					    				<!-- <div class="gat_vertcl"></div>
+					    				<div class="row">
+					    					<article class="col-sm-4">
+					    						<label></label>
+					    						<p></p>
+					    					</article>
+					    					<article class="col-sm-4">
+					    						
+					    					</article>
+					    					<article class="col-sm-4">
+					    						
+					    					</article>
+					    				</div> -->
 					    			</div>
 					    			<div class="order_row">
 					    				<center><h4><span>Material Details</span></h4></center>
@@ -119,10 +163,24 @@
 					    				</div>
 					    				<div class="gat_vertcl"></div>
 					    				<div class="row">
+					    					<article class="col-sm-4 ">
+					    						<label>Item Quantity (Nag)</label>
+					    						<p><?php echo $orderObj->item_qty?></p>
+					    					</article>
+					    				</div>
+					    				<div class="gat_vertcl"></div>
+					    				<div class="row">
+					    					<?php if($orderObj->order_place_for_id == 6){?>
 					    					<article class="col-sm-12">
 					    						<label>Material Description</label>
-					    						<p><?php echo $orderObj->work_type?></p>
+					    						<p><?php echo $orderObj->crane_work_type?></p>
 					    					</article>
+					    					<?php }elseif($orderObj->order_place_for_id == 5){?>
+					    					<article class="col-sm-12">
+					    						<label>Material Description</label>
+					    						<p><?php echo $orderObj->pm_goods_description?></p>
+					    					</article>
+					    					<?php }?>
 					    				</div>
 					    			</div>
 					    			<div class="row">
@@ -144,52 +202,51 @@
 					    						<div class="row">
 								    				<article class="col-sm-3">
 								    					<label>Order ID</label>
-								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h6>
+								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h4>
+								    				</article>
+								    				<article class="col-sm-3">
+								    					<label>Schedule Date</label>
+								    					<h4><?php echo $orderObj->order_schedule_date?></h4>
 								    				</article>
 								    				<article class="col-sm-3">
 								    					<label>Material Type</label>
 								    					<h4><?php echo $orderObj->material_type?></h4>
 								    				</article>
 								    				<article class="col-sm-3">
-								    					<label>Vehicle Type</label>
-								    					<h4><?php echo $orderObj->vehicle_type?></h4>
-								    				</article>
-								    				<article class="col-sm-3">
-								    					<label>Quantity</label>
-								    					<h4><?php echo $orderObj->item_qty?></h6>
+								    					<label>Item Quantity</label>
+								    					<h4><?php echo $orderObj->item_qty?></h4>
 								    				</article>
 								    			</div>
 								    			<br>
-								    			<div class="row">							    				
-								    				<article class="col-sm-3">
-								    					<label>From City</label>
-								    					<h4>-</h6>
+								    			<div class="row">							    		<article class="col-sm-3">
+								    					<label>Order Pickup Points</label>
+								    					<h4><?php echo $orderObj->order_pickup_points ?></h4>
 								    				</article>
 								    				<article class="col-sm-3">
-								    					<label>To City</label>
-								    					<h4>-</h6>
+								    					<label>Order Drop Points</label>
+								    					<h4><?php echo $orderObj->order_drop_points ?></h4>
+								    				</article>
+								    				<article class="col-sm-3">
+								    					<label>Vehicle Type</label>
+								    					<h4><?php echo $orderObj->vehicle_type?></h4>
 								    				</article>
 													<article class="col-sm-3">
-								    					<label>Date</label>
-								    					<h4><?php echo $orderObj->plc_odr_schedule_date?></h6>
-								    				</article>
-								    				<article class="col-sm-3">
 								    					<label>No. of Vehicles</label>
-								    					<h4><?php echo $orderObj->vehicle_qty?></h6>
+								    					<h4><?php echo $orderObj->vehicle_qty?></h4>
 								    				</article>
 								    			</div>
 												<div class="row cities">
-													<?php $intLoop = 0;
+													<?php $intLoop = 0; $city_index = 1;
 														foreach($orderObj->from_city as $fromCity):?>
-															<article class="col-sm-3">
-																<label>From City</label>
-																<h4><?php echo $fromCity?></h6>
+															<article class="col-sm-3" style="height: 60px;">
+																<label>From City(<?php echo $city_index?>)</label>
+																<h4><?php echo $fromCity?></h4>
 															</article>
-															<article class="col-sm-3">
-																<label>To City</label>
-																<h4><?php echo $orderObj->to_city[$intLoop++]?></h6>
+															<article class="col-sm-3" style="height: 60px;">
+																<label>To City(<?php echo $city_index?>)</label>
+																<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
 															</article>
-													<?php endforeach;?>
+													<?php $city_index++; endforeach;?>
 												</div>
 					    					</article>
 											<div class="row">	
@@ -200,19 +257,19 @@
 												<article class="col-md-2">
 						    						<?php if($logged_in_user['user_type'] <= 4):?>
 														<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View</a>
-													<?php else: ?>
-														<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Rate</a>
-													<?php endif;?>
-						    					</article>
-											</div>
-					    				</div>
-					    			</div>
-						    	</div>
-							</div>	
-							<br/>
-						<?php endforeach;
+														<?php else: ?>
+															<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Rate</a>
+														<?php endif;?>
+							    					</article>
+												</div>
+						    				</div>
+						    			</div>
+							    	</div>
+								</div>	
+								<br/>
+							<?php endforeach;
 						else:
-						echo '<h5>'.$orderObj->data->message.'</h5>';
+							echo '<h5>'.$orderObj->data->message.'</h5>';
 						endif;
 						?>
 					
