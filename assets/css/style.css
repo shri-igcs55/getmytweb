@@ -1651,3 +1651,147 @@ section.contactUsForm .contactForm button.btn_cmmn_red{
 	margin: 0 0 10px;
 	font-size: 105%;
 }
+
+/* HOW IT WORKS */
+
+#howitworksBanner{
+    background: #FFF url('../images/how-it-works.jpg') no-repeat 0 0 / cover;
+}
+#howitTimeline{
+    padding: 2% 0;
+    background: #FFF;
+}
+.howitTimelineContent h3{
+    font-weight: 700;
+    margin: 0 0 20px;
+}
+.howitTimelineContent .rightBorder, .howitTimelineContent .rightBorderOnly{
+    border-right: 2px solid #ebebeb;
+    margin-left: 2px;
+    min-height: 50px;
+    position: relative;
+    text-align: right;
+}
+.howitTimelineContent .leftBorder{
+    border-left: 2px solid #ebebeb;
+    min-height: 50px;
+    text-align: left;
+    position: relative;
+}
+.timelinerows h5{
+    font-weight: 700;
+    color: #ed4343;
+    text-transform: uppercase;
+    font-size: 140%;
+}
+.timelinerows h2{
+    font-weight: 600;
+    margin: 4px 0 10px;
+}
+.timelinerows .width_80_per{
+    text-align: justify;
+    margin-top: 15%;    
+}
+.timelinerows h1{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: #ebebeb;
+    text-align: center;
+    line-height: 60px;
+}
+.timelinerows .rightBorder h1{
+    right: -30px;
+    position: absolute;
+    top: 0;
+}
+.timelinerows .leftBorder h1{
+    left: -30px;
+    position: absolute;
+    top: 0;
+}
+.timelinerows .rightBorder:before, .timelinerows .leftBorder:after{
+    background: #ebebeb;
+    content: "";
+    height: 2px;
+    position: absolute;
+    top: 25px;
+    width: 300px;
+}
+.timelinerows .rightBorder:before{
+    left: 45%;
+}
+.timelinerows .leftBorder:after{
+    right: 45%;
+}
+.timelinerows .leftBorder h1:after{
+    background: #ebebeb;
+    border-radius: 100%;
+    content: "";
+    height: 8px;
+    position: absolute;
+    right: -293px;
+    top: 23px;
+    width: 8px;
+}
+.timelinerows .rightBorder h1:before{
+    background: #ebebeb;
+    border-radius: 100%;
+    content: "";
+    height: 8px;
+    position: absolute;
+    left: -293px;
+    top: 23px;
+    width: 8px;
+}
+.timelinerows .first_row{
+    background: #fff url("../images/mouse_bg.png") no-repeat scroll 60% 45% / 100px auto;
+}
+.timelinerows .second_row{
+    background: #fff url("../images/quotation_bg.png") no-repeat scroll 30% 45% / 100px auto;
+}
+.timelinerows .third_row{
+    background: #fff url("../images/truck_bg.png") no-repeat scroll 60% 45% / 100px auto;
+}
+.timelinerows .fourth_row{
+    background: #fff url("../images/track_bg.png") no-repeat scroll 30% 45% / 100px auto;
+}
+.timelinerows .rightBorder img{
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    left: 65%;
+}
+.timelinerows .leftBorder img{
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    left: 25%;
+}
+.rightBorderOnly:before{
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: #ebebeb;
+    position: absolute;
+    top: -5px;
+    right: -4px;
+    content: '';
+}
+.timelinerows .fourth_row .width_80_per:after{
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background: #ebebeb;
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    content: '';
+}
+.order_small_head{
+	border-bottom: 1px solid;
+	padding:0 0 5px;
+	margin: 5px 0 5px; 
+}

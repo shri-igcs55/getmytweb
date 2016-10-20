@@ -38,14 +38,41 @@ Lift Facility
 
 --------------------
 
-State
-City, District
-Where in City (Area)
-To State
-To City, District
-To Where in City (Area)
-From Address (Where Service is required)
-To Address (Where Service is required)
+						State
+						City, District
+						Where in City (Area)
+						To State
+						To City, District
+						To Where in City (Area)
+						From Address (Where Service is required)
+						To Address (Where Service is required)
 						Description of Work
 						Weight (Estimate)
 						Schedule Date
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if($orderObj->order_place_for_id == 5){
+							$material_work_goods_description = $orderObj->pm_goods_description;
+						}elseif ($orderObj->order_place_for_id == 6) {
+							$material_work_goods_description = $orderObj->crane_work_type;
+						}elseif ($orderObj->order_place_for_id == 7) {
+							$material_work_goods_description = $orderObj->material_type;
+						}

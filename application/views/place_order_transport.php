@@ -381,8 +381,7 @@
 		    return false;
 		});
 
-		$('.addmore_wrp').on('click','.from-state',function(){						 		
-			
+		$('.addmore_wrp').on('click','.from-state',function(){
 			if(!$(this).hasClass('clicked'))
 				$(this).addClass('clicked');
 			else

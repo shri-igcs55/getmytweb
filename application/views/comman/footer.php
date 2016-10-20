@@ -61,10 +61,13 @@
 							<ul class="mid-foot-1">
 								<li>
 									<p><span>Know More</span></p>
-									<p>About us</p>
-									<p>Offers</p>
-									<p>Payment policy</p>
-									<p>Contact us</p>
+									<p><a href="<?php echo site_url('/aboutus'); ?>">About us</a></p>
+									<!-- <p>Offers</p>
+									<p>Payment policy</p> -->
+									<p><a href="<?php echo site_url('/ourservice'); ?>">Our Services</a></p>
+									<p><a href="<?php echo site_url('/howitworks'); ?>">How it works ?</a></p>
+									<p><a href="<?php echo site_url('#'); ?>">Membership</a></p>
+									<p><a href="<?php echo site_url('/contactUs'); ?>">Contact us</a></p>
 								</li>
 
 								<li>
@@ -91,12 +94,9 @@
 
 								<li>
 									<p><span>More Services</span></p>
-									<p>How it works ?</p>
-									<p>Terms and Conditions</p>
-									<p>Privacy Policy</p>
-									<p></p>
-									<p></p>
-
+									<p><a href="<?php echo site_url('termandcondition'); ?>">Terms and Conditions</a></p>
+									<p><a href="<?php echo site_url('termandcondition'); ?>">Privacy Policy</a></p>
+									
 								</li>
 
 								<li>

@@ -118,7 +118,7 @@
 									<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('/'); ?>">Home</a></li>
 									<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('aboutus'); ?>">About Us</a></li>
 									<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('ourservice'); ?>">Our Services</a></li>
-									<li><a class="hvr-shutter-out-horizontal" href="#<?php //echo site_url('how-it-works'); ?>">How it works</a></li>
+									<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('howitworks'); ?>">How it works</a></li>
 									<li><a class="hvr-shutter-out-horizontal" href="#<?php //echo site_url('membership'); ?>">Membership</a></li>
 									<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('contactUs'); ?>">Contact Us</a></li>
 								</ul>
@@ -144,7 +144,7 @@
 						<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('/'); ?>">Home</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('aboutus'); ?>">About Us</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('ourservices'); ?>">Our Services</a></li>
-						<li><a class="hvr-shutter-out-horizontal" href="#<?php //echo site_url('welcome/how-it-works'); ?>">How it works</a></li>
+						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('howitworks'); ?>">How it works</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="#<?php //echo site_url('welcome/membership'); ?>">Membership</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('contactus'); ?>">Contact Us</a></li>
 					</ul>
