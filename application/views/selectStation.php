@@ -22,15 +22,54 @@
 				    					<div class="">
 				    						<div id="" class="">
 				    							<form action="" method="post" class="save_stations" id="save_stations">
-												<input type="hidden" name="station_limit" value="3">
-												<input type="hidden" name="station_count" value="1">
+												<?php $station_limit = 3; // set it dynamic only, Assign here only?>												
+												<input type="hidden" name="station_limit" value="<?php echo $station_limit?>">
+												<input type="hidden" name="station_count" value="<?php echo ((count($ObjStation->data)==0 ? 1 : count($ObjStation->data)+1)>$station_limit ? $station_limit : count($ObjStation->data)+1);?>">
 					    							
 													
 													
 													
 													<div class="addmore_wrp">
 										    			<ul class="list-unstyled select_station_list">
-										    				<li>
+														<?php foreach($ObjStation->data as $station):?>
+																
+															<li>
+										    					<div class="row">
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="From_State">From State<sup>*</sup></label>
+																		    <label><?php echo $station->from_state?></label>
+																		</div>
+																	</article>
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="From_City">From City, District<sup>*</sup></label>
+																	     	 <label><?php echo $station->from_city?></label>
+																		</div>
+																	</article>																	
+																</div>
+																<div class="row">
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="To_State">To State<sup>*</sup></label>
+																		     <label><?php echo $station->to_state?></label>
+																		</div>
+																	</article>
+																	<article class="col-md-4">
+																		<div class="form-group">
+																		    <label for="To_City">To City, District<sup>*</sup></label>
+																	     	 <label><?php echo $station->to_city?></label>
+																		</div>
+																	</article>
+																</div>
+										    				</li>
+															
+														
+														<?php endforeach;?>
+														
+														<?php
+														if($station_limit != count($ObjStation->data)):?>
+										    				<li class="default">
 										    					<div class="row">
 																	<article class="col-md-4">
 																		<div class="form-group">
@@ -70,10 +109,12 @@
 																	</article>
 																</div>
 										    				</li>
+														<?php endif;?>
+															
+															
 										    			</ul>
 														<span class="error"></span>
-														<a class="add_more_btn add_more_station">+ add more</a>
-														<a id="remove_more" class="remove_more_station">remove</a>
+														<a class="add_more_btn add_more_station">+ add more</a>														
 										    		</div><br><br>
 													
 								
@@ -320,7 +361,7 @@
 				return false;
 			}
 				
-			var ddd = $(".addmore_wrp ul li:first-child").clone();
+			var ddd = $(".addmore_wrp ul li:last-child").clone();			
 			ddd.find('.custom-combobox').remove();
 			ddd.find('input[type="text"]').val(' ');
 			
@@ -329,25 +370,26 @@
 			$( ".To_city" ).combobox();
 			$('input[name=station_count]').val(parseInt($('input[name=station_count]').val())+1);
 		});
-
+		
+		/*
 		$("a.remove_more_station").click(function(){
 			$('.error').html(' ');
-			$(".addmore_wrp ul li:last-child").not(".addmore_wrp ul li:first-child").remove();
+			$(".addmore_wrp ul li.default:last-child").not(".addmore_wrp ul li.default:first-child").remove();
 			if($('input[name=station_count]').val()!=1){
 				$('input[name=station_count]').val(parseInt($('input[name=station_count]').val())-1);
 			}
 		});
+		*/
 		
 		$('form#save_stations').submit(function(ev){
-			//e.preventDefault(); // avoid to execute the actual submit of the form.
-			alert('test');
+			//e.preventDefault(); // avoid to execute the actual submit of the form.			
 			$.ajax({
 				type: "POST",
 				url: "/gmt/select_station/select_station",
 				data: $(this).serialize(), // serializes the form's elements.
 				success: function(data)
-				{
-					alert(data); // show response from the php script.
+				{					
+					location.reload();
 				}
 			});
 			ev.preventDefault();
