@@ -21,12 +21,12 @@
 				    				<article class="col-md-12">
 				    					<div class="find-order-page">
 				    						<div id="" class="">
-				    							<form action="" class="pace_order_crn_form">
+				    							<form method="POST" action="<?php echo site_url('/UserDashboard/view_search_result');?>" class="pace_order_crn_form">
 				    								<div class="row">
 														<article class="col-md-6 from_state_article">
 															<div class="form-group select_from_state">
 															    <label for="From_State">From State<sup>*</sup></label>
-															    <select id="From_State" class="from-state form-control trans_plc_ord" required>
+															    <select id="From_State" name="From_State" class="from-state form-control trans_plc_ord">
 															    	<option value="">Select State</option>
 															    	<option value="">Loading...</option>
 															    </select>
@@ -35,7 +35,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="From_City">From City, District<sup>*</sup></label>
-														     	<select id="From_city" name="from_city[]" class="from-city From_city form-control">
+														     	<select id="From_city" name="From_city" class="from-city From_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -45,7 +45,7 @@
 														<article class="col-md-6 from_state_article">
 															<div class="form-group select_from_state">
 															    <label for="To_State">To State<sup>*</sup></label>
-															    <select id="To_State" class="from-state trans_plc_ord form-control" required>
+															    <select id="To_State" name="To_State" class="from-state trans_plc_ord form-control">
 															    	<option value="">Select State</option>
 															    	<option value="">Loading...</option>
 															    </select>
@@ -54,7 +54,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="To_City">To City, District<sup>*</sup></label>
-														     	<select id="To_city" name="to_city[]" class="from-city To_city form-control">
+														     	<select id="To_city" name="To_city" class="from-city To_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -65,18 +65,16 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="vehicle_type">Vehicle Type</label>
-															    <select name="" id="vehicle_type" class="form-control">
-															    	<option>ABCDEF</option>
-															    	<option>GHIJKL</option>
-															    	<option>MNOPQR</option>
-															    	<option>STUVWXYZ</option>
+															    <select id="vehicle_type" name="vehicle_type" class="vehicle form-control" title="Select Vehicle Type">
+															    	<option value="">Select Vehicle Type</option>
+															    	<option value="">Loading...</option>
 															    </select>
 															</div>
 														</article>
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="weight">Weight</label>
-															    <input type="text" class="form-control" id="weight">
+															    <input type="text" class="form-control" id="weight" name="weight">
 															</div>
 														</article>
 													</div>
@@ -84,13 +82,13 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="feet_in_length">Feet(in Length)</label>
-															    <input type="text" class="form-control" id="feet_in_length">
+															    <input type="text" class="form-control" id="feet_in_length" name="feet_in_length">
 															</div>
 														</article>
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="pickup_date">Date</label>
-															    <input type="text" class="form-control calander_bgimage" id="pickup_date">
+															    <input type="text" class="form-control calander_bgimage" name="pickup_date" id="pickup_date">
 															</div>
 														</article>
 													</div>
@@ -322,4 +320,5 @@ $( function() {
 	        }
 		});
 	});
+
 </script>

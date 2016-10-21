@@ -99,12 +99,12 @@
 				success: function(res){
 					if(res.status_code == 200){
 						$('#form_validation_msg').empty();
-			    		$('<p style="color:#00ff00;><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
+			    		$('<p style="color:#00ff00"><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
 			    		window.location ='<?php echo site_url('user/edit'); ?>';
 					}else{
 						$('#form_validation_msg').empty();
 			        	$.each(res.data, function(key, val) {
-			            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 			            });
 					}
 				},
