@@ -421,7 +421,7 @@ $(document).ready(function(){
    		var captcha 		= objCurrentSection.find('#captcha').val();
         var captcha_word 	= $('input:hidden[name=hidden_captcha]').val();
         
-        var first_name		= objCurrentSection.find("#F_name").val();
+        var first_name		= objCurrentSection.find("#F_name").val();		
 		var last_name 		= objCurrentSection.find("#L_name").val();
         var user_mob		= objCurrentSection.find("#M_number").val();
         var user_email 		= objCurrentSection.find("#E_mail").val();
@@ -488,7 +488,7 @@ $(document).ready(function(){
    		var objCurrentSection = $('.update_my_info div.active');       		
    		$('#form_validation_msg').empty();
    		
-   		var first_name		= objCurrentSection.find("#e_F_name").val();
+   		var first_name		= objCurrentSection.find("#e_F_name").val();		
 		var last_name 		= objCurrentSection.find("#e_L_name").val();
         var address1		= objCurrentSection.find("#c_c_addrss").val();
         var address2		= objCurrentSection.find("#c_c_addrss_2").val();
