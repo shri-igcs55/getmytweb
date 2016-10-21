@@ -251,7 +251,8 @@
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
 											<?php if($logged_in_user['user_type'] > 4):?>
-												<input type="button" name="rate_order" id="rate_butn" value="Rate it Now">											
+												<input type="button" name="rate_order" id="rate_butn" value="Give Quotation" data-toggle="modal" data-target="#getQuotationModal">
+												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
 											<?php endif;?>
 					    				</article>
 					    			</div>
@@ -333,11 +334,11 @@
 													<p><?php echo $orderObj->order_status?></p>
 						    					</article>
 												<article class="col-md-2">
-						    						<?php if($logged_in_user['user_type'] <= 4):?>
+						    						<?php //if($logged_in_user['user_type'] <= 4):?>
 														<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View</a>
-														<?php else: ?>
-															<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Rate</a>
-														<?php endif;?>
+														<?php /* else: ?>
+															<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Quote</a>
+														<?php endif;*/?>
 							    					</article>
 												</div>
 						    				</div>
@@ -357,6 +358,117 @@
 	</section>
 </section>
 <!-- place order crane starts -->
+<!-- #### SAVE CONTACT MODAL ### -->
+<div class="modal fade" id="saveContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title text-center" id="myModalLabel">Save Contact</h2>
+			</div>
+			<div class="modal-body">
+				<table class="table save_contact_table">
+					<tr>
+						<td>Name</td>
+						<td>Santhosh</td>
+					</tr>
+					<tr>
+						<td>Phone No.</td>
+						<td>9876543210</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>santhosh@gmail.com</td>
+					</tr>
+					<tr>
+						<td>Group</td>
+						<td>
+							<select name="" id="" class="form-control">
+								<option value="">Transport</option>
+								<option value="">Truck</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<div class="form-group text-center">
+					<button class="btn btn_cmmn_red" type="submit">Save Contact</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- #### GET QUOTATION MODAL ### -->
+<div class="modal fade" id="getQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title text-center" id="myModalLabel">Quotation Format</h2>
+			</div>
+			<div class="modal-body">
+				<form action="javascript:void(0);">
+					<div class="first_form">
+						<table class="table">
+							<tr>
+								<td>
+									<div class="radio">
+										<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
+										<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
+									</div>
+								</td>
+								<td>
+									<ul class="list-inline">
+										<li><input type="text" class="form-control" placeholder="Min Value"></li>
+										<li><input type="text" class="form-control" placeholder="Max Value"></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="radio">
+										<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
+										<label for="per_day" class="custom_radio_label">Per Day Basis</label>
+									</div>
+								</td>
+								<td>
+									<ul class="list-inline">
+										<li><input type="text" class="form-control" placeholder="Min Value"></li>
+										<li><input type="text" class="form-control" placeholder="Max Value"></li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<div class="radio">
+										<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
+										<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="second_form">
+						<table class="table">
+							<tr>
+								<td>
+									<label for="min_amnt" class="control-label">Minimum Amount</label>
+									<input type="text" id=min_amnt class="form-control" placeholder="100">
+								</td>
+								<td>
+									<label for="max_amnt" class="control-label">Maximum Amount</label>
+									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="form-group text-center">
+						<button class="btn btn_cmmn_red" type="submit">OK</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 <!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$.ajax({

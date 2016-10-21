@@ -1,0 +1,24 @@
+crane form fields
+
+From_city		From_city
+crane_work_description	crane_work_description
+weight			weight
+pickup_date		pickup_date
+
+==============================================
+transporter form fields
+
+From_city		From_city
+To_city			To_city
+vehicle_type		vehicle_type
+weight			weight
+feet_in_length		feet_in_length
+pickup_date		pickup_date
+
+==============================================
+packer form fields
+
+From_city		From_city
+To_city			To_city
+service			service
+pickup_date		pickup_date

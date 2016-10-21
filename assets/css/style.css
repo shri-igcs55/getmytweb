@@ -1211,6 +1211,23 @@ a.remove_more_station{
 }
 
 /*===============================*/
+#cancel_butn{
+	background-color: #fff;
+	color: #ED4344;
+}
+#rate_butn, .save_contact{
+	background-color: #ED4344;
+	color: #fff;
+}
+#cancel_butn,
+#rate_butn, .save_contact{
+	padding: 5px 10px;
+	border: 1px solid #ED4344;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 20px 10px;
+	margin-bottom: 10px;
+}
 /*===============================*/
 #cancel_butn{
     background-color: #fff;
@@ -1794,4 +1811,134 @@ section.contactUsForm .contactForm button.btn_cmmn_red{
 	border-bottom: 1px solid;
 	padding:0 0 5px;
 	margin: 5px 0 5px; 
+}
+#saveContactModal .modal-dialog{
+	width: 400px;
+}
+#saveContactModal .modal-header, #getQuotationModal .modal-header{
+	padding: 10px;
+	color: #ed4343;
+}
+#saveContactModal .modal-header h2{
+	font-weight: 700;
+}
+.save_contact_table tr td:last-child, .save_contact_table select{
+	color: #ed4343;
+}
+.save_contact_table tr td:first-child{
+	color: #646464;
+}
+.table.save_contact_table td{
+	vertical-align: middle;
+	font-size: 115%;
+}
+.save_contact_table tr td:last-child:before{
+	content: ":";
+	margin-right: 4px;
+	color: #000;
+}
+.save_contact_table tr:last-child td:last-child:before{
+	display: none;
+}
+.table.save_contact_table > tbody > tr > td, #getQuotationModal .table > tbody > tr > td{
+	border:none;
+}
+#saveContactModal .btn_cmmn_red{
+	font-size: 115%;
+}
+#getQuotationModal .custom_radio{
+	display: none;
+}
+#getQuotationModal label{
+	font-weight: 600;
+	font-size: 110%;
+	color: #EE4F4F;
+}
+#getQuotationModal .custom_radio_label{
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding-left: 25px;
+}
+#getQuotationModal .custom_radio_label:before{
+	content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ebebeb;
+    border: 1px solid #CCC;
+    margin-right: 5px;
+    position: absolute;
+    left: 0;
+    line-height: 12px;
+    margin-top: 3px;
+}
+#getQuotationModal .custom_radio:checked + .custom_radio_label:before{
+    content: "\2022";
+    color: #EE4F4F;
+    border-color: #EE4F4F;
+    background-color: #FFF;
+    font-size: 200%;
+    text-align: center;
+    line-height: 12px;
+}
+.cmn_edit_delete_btn{
+    background-color: #fff;
+    color: #ED4344;
+}
+.cmn_edit_delete_btn:visited{
+	color: #ED4344; 
+}
+.cmn_edit_delete_btn{
+	padding: 5px 10px;
+	border: 1px solid #ED4344;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 20px 10px;
+	margin-bottom: 10px;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+.custmer_reg .save_edit_delete_table .checkbox label{
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding: 0;
+}
+.custmer_reg .save_edit_delete_table .checkbox label:before{
+	content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    background: #FFF;
+    border: 1px solid #CCC;
+    margin-right: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.custmer_reg .save_edit_delete_table .checkbox input[type="checkbox"]:checked + label:before{
+	content: "\2713";
+	padding: 0;
+	line-height: 14px;
+	color: #EE4F4F;
+	background-color: #FFF;
+	text-align: center;
+}
+.custmer_reg .save_edit_delete_table > thead{
+	color: #FFF;
+	background: #EE4F4F;
+}
+.custmer_reg .table.save_edit_delete_table > thead > tr > th,
+.custmer_reg .table.save_edit_delete_table > tbody > tr > td{
+	border:none;
+	vertical-align: middle;
+}
+.custmer_reg .table.save_edit_delete_table > tbody > tr > td{
+	color: #888888;
 }

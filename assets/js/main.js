@@ -36,7 +36,10 @@ $(document).ready(function(){
 	// ===== 
 	// Search order date picker
 	$(function(){
-	    $("#datepicker,#schedule_date,#pm_schedule_date,#crane_schedule_date").datepicker();
+	    $("#datepicker,#schedule_date,#pm_schedule_date,#crane_schedule_date,#pickup_date").datepicker(
+	    	{
+	    		dateFormat: 'dd-mm-yy'
+	    	}).val();
 	});
 
 	// Search order date picker

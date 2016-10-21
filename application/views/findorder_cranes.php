@@ -21,31 +21,47 @@
 				    				<article class="col-md-12">
 				    					<div class="find-order-page">
 				    						<div id="" class="">
-				    							<form action="javascript:void(0);" class="pace_order_crn_form">
+				    							<form method="POST" action="<?php echo site_url('/UserDashboard/view_search_result');?>" class="pace_order_crn_form">
 				    								<div class="row">
-														<article class="col-md-6">
-															<div class="form-group">
-															    <label for="select_city">Select City</label>
-															    <select name="" id="select_city" class="form-control">
-															    	<option>Rajajinagar</option>
-															    	<option>Rajajinagar</option>
-															    	<option>Rajajinagar</option>
-															    	<option>Rajajinagar</option>
+				    									<input type="hidden" id="user_type" name="user_type" value="<?php echo $logged_in_user['user_type']; ?>">
+														<article class="col-md-6 from_state_article">
+															<div class="form-group select_from_state">
+															    <label for="From_State">State<sup>*</sup></label>
+															    <select name="From_State" id="From_State" class="from-state form-control trans_plc_ord">
+															    	<option value="">Select State</option>
+															    	<option value="">Loading...</option>
 															    </select>
 															</div>
 														</article>
 														<article class="col-md-6">
 															<div class="form-group">
-															    <label for="weight">Weight</label>
-															    <input type="text" class="form-control" id="weight">
+															    <label for="From_City">City, District<sup>*</sup></label>
+														     	<select id="From_city" name="From_city" class="from-city From_city form-control">
+																    <option value="">Select City District</option>
+																</select>
 															</div>
 														</article>
 													</div>
 													<div class="row">
-														<article class="col-md-6">
+														<article class="col-md-6 work">
 															<div class="form-group">
-															    <label for="descrip_work">Description Of Work</label>
-															    <input type="text" class="form-control" id="descrip_work">
+															    <label for="crane_work_description">Description Of Work</label>
+															    <select name="crane_work_description" id="crane_work_description" class="crane_work_description form-control">
+															    	<option value="">Select Work type</option>
+															    	<option>Loading...</option>
+															    </select>
+															</div>
+														</article>
+														<article class="col-md-3">
+															<div class="form-group">
+															    <label for="weight">Weight</label>
+															    <input type="text" name="weight" class="form-control" id="weight">
+															</div>
+														</article>
+														<article class="col-md-3">
+															<div class="form-group">
+															    <label for="pickup_date">Date</label>
+															    <input type="text" class="form-control calander_bgimage" name="pickup_date" id="pickup_date">
 															</div>
 														</article>
 													</div>
@@ -67,3 +83,239 @@
 		</div>
 	</section>
 </section>
+<script>
+// this code is for auto complete in place order page after login
+$( function() {
+	$.widget( "custom.combobox", {
+	  _create: function() {
+	    this.wrapper = $( "<span>" )
+	      .addClass( "custom-combobox" )
+	      .insertAfter( this.element );
+
+	    this.element.hide();
+	    this._createAutocomplete();
+	    this._createShowAllButton();
+	  },
+
+	  _createAutocomplete: function() {
+	    var selected = this.element.children( ":selected" ),
+	      value = selected.val() ? selected.text() : "";
+
+	    this.input = $( "<input>" )
+	      .appendTo( this.wrapper )
+	      .val( value )
+	      .attr( "title", "" )
+	      .attr( "disabled", true)
+	      .addClass( "form-control custom-combobox-input ui-corner-left" )
+	      .autocomplete({
+	        delay: 0,
+	        minLength: 0,
+	        source: $.proxy( this, "_source" )
+	      })
+	      .tooltip({
+	        classes: {
+	          "ui-tooltip": "ui-state-highlight"
+	        }
+	      });
+
+	    this._on( this.input, {
+	      autocompleteselect: function( event, ui ) {
+	        ui.item.option.selected = true;
+	        this._trigger( "select", event, {
+	          item: ui.item.option
+	        });
+	      },
+
+	      autocompletechange: "_removeIfInvalid"
+	    });
+	  },
+
+	  _createShowAllButton: function() {
+	    var input = this.input,
+	      wasOpen = false;
+
+	    $( "<a>" )
+	      .attr( "tabIndex", -1 )
+	      .attr( "title", "Show All Items" )
+	      .tooltip()
+	      .appendTo( this.wrapper )
+	      .button({
+	        icons: {
+	          primary: "ui-icon-triangle-1-s"
+	        },
+	        text: false
+	      })
+	      .removeClass( "ui-corner-all" )
+	      .addClass( "custom-combobox-toggle ui-corner-right" )
+	      .on( "mousedown", function() {
+	        wasOpen = input.autocomplete( "widget" ).is( ":none" );
+	      })
+	      .on( "click", function() {
+	        input.trigger( "focus" );
+
+	        // Close if already visible
+	        if ( wasOpen ) {
+	          return;
+	        }
+
+	        // Pass empty string as value to search for, displaying all results
+	        input.autocomplete( "search", "" );
+	      });
+	  },
+
+	  _source: function( request, response ) {
+	    var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+	    response( this.element.children( "option" ).map(function() {
+	      var text = $( this ).text();
+	      if ( this.value && ( !request.term || matcher.test(text) ) )
+	        return {
+	          label: text,
+	          value: text,
+	          option: this
+	        };
+	    }) );
+	  },
+
+	  _removeIfInvalid: function( event, ui ) {
+
+	    // Selected an item, nothing to do
+	    if ( ui.item ) {
+	      return;
+	    }
+
+	    // Search for a match (case-insensitive)
+	    var value = this.input.val(),
+	      valueLowerCase = value.toLowerCase(),
+	      valid = false;
+	    this.element.children( "option" ).each(function() {
+	      if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+	        this.selected = valid = true;
+	        return false;
+	      }
+	    });
+
+	    // Found a match, nothing to do
+	    if ( valid ) {
+	      return;
+	    }
+
+	    // Remove invalid value
+	    this.input
+	      .val( "" )
+	      .attr( "title", value + " didn't match any item" )
+	      .tooltip( "open" );
+	    this.element.val( "" );
+	    this._delay(function() {
+	      this.input.tooltip( "close" ).attr( "title", "" );
+	    }, 2500 );
+	    this.input.autocomplete( "instance" ).term = "";
+	  },
+
+	  _destroy: function() {
+	    this.wrapper.remove();
+	    this.element.show();
+	  }
+	});
+
+	$( ".From_city" ).combobox();
+	$( ".To_city" ).combobox();
+});
+</script>
+<script type="text/javascript">
+	$('.pace_order_crn_form').on('click','.from-state',function(){
+		if(!$(this).hasClass('clicked'))
+				$(this).addClass('clicked');
+			else
+				return false;
+		var obj = $(this).closest('.row');
+		jQuery.ajax({
+			type:"GET",
+			url: "/gmt/Indian_city_dropdown/state_dropdown",
+			success: function(res){
+				if(res.status_code == 200){
+					obj.find('.custom-combobox-input').empty();
+					obj.find('.custom-combobox-input').val('');
+					obj.find('.custom-combobox-input').removeAttr('disabled');					
+					obj.find('.from-city').empty();
+					obj.find('.from-city').val('');
+					obj.find('.from-state').empty();
+					$('<option value="">Select State</option>').appendTo(obj.find('.from-state'));
+					$.each(res.data, function(key, val) {
+		            	$.each(val, function(k, v){
+		                    $('<option value="'+v+'">'+v+'</option>').appendTo(obj.find('.from-state'));
+		                });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+	        error: function(){
+	        	console.log('Somthing went wrong');
+	        }
+		});
+	});
+
+	// to get state list
+	$('.pace_order_crn_form').on('change','.from-state',function(event){
+		//$(".from-state").change(function(event){
+		//alert('test');
+        var state = $(this).find("option:selected").text();
+        var obj = $(this).closest('.row');
+        jQuery.ajax({
+	    	type:"POST",
+			url: "/gmt/Indian_city_dropdown/city_district_list",
+			dataType: 'json',
+	        data: { state: state },
+			success: function(res){
+				if(res.status_code == 200){
+					obj.find('.custom-combobox-input').empty();
+					obj.find('.custom-combobox-input').val('');
+					obj.find('.custom-combobox-input').removeAttr('disabled');					
+					obj.find('.where-in-city').removeAttr('disabled');
+					obj.find('.from-city').empty();
+					obj.find('.from-city').val('');
+					var option ='<option value="">Select District City</option>';
+		            $.each(res.data, function(key, val) {
+		            	// $.each(val, function(k, v){
+		                    option +='<option value="'+val['id']+'">'+val['city']+', '+val['district']+'</option>';
+		                // });
+		            });
+		            $('.tab-content div.active').find(obj.find('.from-city')).html(option);
+		            // $('.form_wrp').find('.district').html(option);
+				}else{
+					console.log('No response.');
+				}
+			},
+	        error: function(){
+	        	console.log('Somthing went wrong');
+	        }
+		});
+	});
+
+	// to get description of work gmt/User/work_desc_list
+	$(".crane_work_description").one('click',function(){
+		var objDescWork = $(this).closest('.work');
+		jQuery.ajax({
+			type: "GET",
+			url: '/gmt/User/work_desc_list',
+			success: function(res){
+				if(res.status_code == 200){
+					objDescWork.find('.crane_work_description').empty();
+					objDescWork.find('.crane_work_description').val('');
+					$('<option value="">Select Work type</option>').appendTo(objDescWork.find('.crane_work_description'));
+					$.each(res.data, function(key, val){
+						// $.each(val, function(k, v){
+							$('<option value="'+val['wdid']+'">'+val['wdtype']+'</option>').appendTo(objDescWork.find('.crane_work_description'));
+						// });
+					});
+				}else{
+					console.log('Somthing went wrong.');
+				}
+			},
+			error: function(){
+				console.log('Somthing went wrong.');
+			}
+		});
+	});
+
+</script>

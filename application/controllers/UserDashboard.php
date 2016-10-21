@@ -85,7 +85,19 @@ class UserDashboard extends CI_Controller
 		$this->load->view('comman/footer');
 	}
 
+	public function view_search_result(){
+		$logged_in_user = $this->session->userdata('logged_in_user');			
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
 
+		$arrayParameter = array_merge($_POST,$arrayParameter);
+		
+		$objData = $this->getData('search_order','search_order',$arrayParameter);
+
+		$this->load->view('comman/header');
+		$this->load->view('order_detls',array('orderObj'=>$objData));
+		$this->load->view('comman/footer');
+		
+	}
 	// Find order for crane
 	public function search_cranes_order(){
 		$this->load->view('comman/header');
