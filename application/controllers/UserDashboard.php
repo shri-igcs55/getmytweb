@@ -32,6 +32,15 @@ class UserDashboard extends CI_Controller
 
 	}
 
+	// save contact
+	public function save_contact(){
+
+		$this->load->view('comman/header');
+		$this->load->view('save-contact');
+		$this->load->view('comman/footer');
+
+	}
+
 	// place order for crane
 	public function place_crane_order(){
 		
@@ -90,7 +99,7 @@ class UserDashboard extends CI_Controller
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
 
 		$arrayParameter = array_merge($_POST,$arrayParameter);
-		
+
 		$objData = $this->getData('search_order','search_order',$arrayParameter);
 
 		$this->load->view('comman/header');

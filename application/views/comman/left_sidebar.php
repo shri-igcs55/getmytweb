@@ -35,7 +35,7 @@
 			    <li><a href="<?php echo site_url('userdashboard/save_working_station'); ?>">Select Station</a></li>
 		    <?php } ?>
 			<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
-			<li><a href="#">Save Contact</a></li>
+			<li><a href="<?php echo site_url('userdashboard/save_contact'); ?>">Save Contact</a></li>
 		    <li><a href="#">Confirmed Order</a></li>
 		    <li id="myProfile"><a href="#">My Profile</a>
 			    <ul class="list-unstyled myProfileMenu">
