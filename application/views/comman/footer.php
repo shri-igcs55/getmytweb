@@ -108,12 +108,10 @@
 										<a><i class="fa fa-camera-retro" aria-hidden="true"></i></a>
 										<a><i class="fa fa-youtube" aria-hidden="true"></i></a>
 									</p>
-									<p>No. 60, and 61 1st floor,</p>
-									<p>Dr. Rajkumar Road,</p>
-									<p>Prakash Nagar,</p>
-									<p>Bengaluru.</p>
-									<p>Ph: +0123 456789</p>
-
+									<p style="font-size:12px;">81-A, Janak Puri 1<sup>st</sup>,<br>
+									Imli wala Phatak,<br> near vidhan sabha,<br>
+									Jaipur - 302015</p>
+									<p style="font-size:12px;">Mobile: +91 9400000000</p>
 								</li>
 
 							</ul>

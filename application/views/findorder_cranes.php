@@ -21,7 +21,7 @@
 				    				<article class="col-md-12">
 				    					<div class="find-order-page">
 				    						<div id="" class="">
-				    							<form method="POST" action="<?php echo site_url('/UserDashboard/view_search_result');?>" class="pace_order_crn_form">
+				    							<form method="POST" action="<?php echo site_url('/userdashboard/view_search_result');?>" class="pace_order_crn_form">
 				    								<div class="row">
 				    									<input type="hidden" id="user_type" name="user_type" value="<?php echo $logged_in_user['user_type']; ?>">
 														<article class="col-md-6 from_state_article">
@@ -36,7 +36,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="From_City">City, District<sup>*</sup></label>
-														     	<select id="From_city" name="From_city" class="from-city From_city form-control">
+														     	<select id="From_city" name="from_city" class="from-city From_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -46,7 +46,7 @@
 														<article class="col-md-6 work">
 															<div class="form-group">
 															    <label for="crane_work_description">Description Of Work</label>
-															    <select name="crane_work_description" id="crane_work_description" class="crane_work_description form-control">
+															    <select name="crane_work_desc" id="crane_work_description" class="crane_work_description form-control">
 															    	<option value="">Select Work type</option>
 															    	<option>Loading...</option>
 															    </select>
@@ -61,13 +61,13 @@
 														<article class="col-md-3">
 															<div class="form-group">
 															    <label for="pickup_date">Date</label>
-															    <input type="text" class="form-control calander_bgimage" name="pickup_date" id="pickup_date">
+															    <input type="text" class="form-control calander_bgimage" name="schedule_date" id="pickup_date">
 															</div>
 														</article>
 													</div>
 													<div class="row">
 														<article class="col-md-12 text-center">
-															<input type="submit" id="cus-reg-sbmit" class="form-control" value="Search Order" required>
+															<input type="submit" id="cus-reg-sbmit" class="form-control" value="Search Order">
 														</article>
 													</div>
 				    							</form>

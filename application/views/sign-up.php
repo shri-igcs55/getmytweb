@@ -20,9 +20,7 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud. incididunt ut labore et dolore magna aliqua. Ut enim. </p>
+									<p>Getmytruck.co is an online portal where customers can post their requirements and can get best solutions for their requirements.</p>
 								</div>
 							</article>
 						</div>
@@ -41,9 +39,8 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud. incididunt ut labore et dolore magna aliqua. Ut enim. </p>
+									<p>we provide a platform where goods transporters
+									 (transporters &amp; logistics, container providers, trolley or tankers providers, fleet owner, commission agents) and service provider(packers movers &amp; crane provider) can grow their business by satisfying most number of customers.</p>
 								</div>
 							</article>
 						</div>
@@ -62,9 +59,7 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-									tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-									quis nostrud. incididunt ut labore et dolore magna aliqua. Ut enim.</p>
+									<p>We provide the information about availability of goods or requirement of services  to registered users.</p>
 								</div>
 							</article>
 						</div>
@@ -91,7 +86,7 @@
 									<p>Customer</p>
 								</div>
 								<div class="MIdle">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<p>Register, place order and get quotes from many vendors.</p>
 								</div>
 								<div class="RIght">
 									<a href="<?php echo site_url('user/customer/'); ?>"><button>Register Now</button></a>
@@ -108,7 +103,7 @@
 									<p>Transporter &amp; Logistics</p>
 								</div>
 								<div class="MIdle">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<p>Register to grow business by finding more customers.</p>
 								</div>
 								<div class="RIght">
 									<a href="<?php echo site_url('user/transporter_logistic/'); ?>"><button>Register Now</button></a>
@@ -124,7 +119,7 @@
 									<p>Packers &amp; Movers</p>
 								</div>
 								<div class="MIdle">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<p>Register to grow business by finding more customers.</p>
 								</div>
 								<div class="RIght">
 									<a href="<?php echo site_url('user/packer_mover/'); ?>"><button>Register Now</button></a>
@@ -140,7 +135,7 @@
 									<p>Crane Providers</p>
 								</div>
 								<div class="MIdle">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<p>Register to grow business by finding more customers.</p>
 								</div>
 								<div class="RIght">
 									<a href="<?php echo site_url('user/crane_provider/'); ?>"><button>Register Now</button></a>

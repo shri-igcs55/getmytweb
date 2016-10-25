@@ -5,8 +5,7 @@
 			<article class="col-md-12">
 				<div class="contactContent">
 					<h1>Contact Us</h1>
-					<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					<span>Lorem Ipsum industry's.</span>
+					<span>You can call us or meet us at our office address or write to us at the email address provided.</span>
 				</div>
 			</article>
 		</div>
@@ -23,7 +22,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-9">
 				<div class="contactForm">
 					<form action="" class="contactus" id="contactus" name="contactus" autocomplete="off">
 						<div class="row">
@@ -63,6 +62,18 @@
 						</div>
 					</form>
 				</div>
+			</div>
+			<div class="col-md-3">
+				<h3>Office Address</h3><br>
+				<p style="font-size:18px;">81-A, Janak Puri 1<sup>st</sup>,<br>
+				Imli wala Phatak,<br> near vidhan sabha,<br>
+				Jaipur - 302015</p>
+				<p style="font-size:14px;"><b>Office hours 10am-6pm (Sunday and holidays are off)</b></p><br>
+				<h4>Contact Number</h4>
+				<p style="font-size:14px;">Mobile: +91 9400000000</p><br>
+				<h4>Email Address</h4>
+				<p style="font-size:14px;">Customer care: <br>support@getmytruck.in</p>
+				<p style="font-size:14px; color:blue;">Business purpose: <span style="color:black">business@getmytruck.in</span></p>
 			</div>
 		</div>
 	</div>

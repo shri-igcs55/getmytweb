@@ -21,7 +21,7 @@
 				    				<article class="col-md-12">
 				    					<div class="find-order-page">
 				    						<div id="" class="">
-				    							<form method="POST" action="<?php echo site_url('/UserDashboard/view_search_result');?>" class="pace_order_crn_form">
+				    							<form method="POST" action="<?php echo site_url('/userdashboard/view_search_result');?>" class="pace_order_crn_form">
 				    								<div class="row">
 														<article class="col-md-6 from_state_article">
 															<div class="form-group select_from_state">
@@ -35,7 +35,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="From_City">From City, District<sup>*</sup></label>
-														     	<select id="From_city" name="From_city" class="from-city From_city form-control">
+														     	<select id="From_city" name="from_city" class="from-city From_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -54,18 +54,18 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="To_City">To City, District<sup>*</sup></label>
-														     	<select id="To_city" name="To_city" class="from-city To_city form-control">
+														     	<select id="To_city" name="to_city" class="from-city To_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
 														</article>
 													</div>
-				    								
+
 													<div class="row">
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="vehicle_type">Vehicle Type</label>
-															    <select id="vehicle_type" name="vehicle_type" class="vehicle form-control" title="Select Vehicle Type">
+															    <select id="vehicle_type" name="trans_vehicle_type" class="vehicle form-control" title="Select Vehicle Type">
 															    	<option value="">Select Vehicle Type</option>
 															    	<option value="">Loading...</option>
 															    </select>
@@ -82,19 +82,19 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="feet_in_length">Feet(in Length)</label>
-															    <input type="text" class="form-control" id="feet_in_length" name="feet_in_length">
+															    <input type="text" class="form-control" id="feet_in_length" name="trans_feet_in_length">
 															</div>
 														</article>
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="pickup_date">Date</label>
-															    <input type="text" class="form-control calander_bgimage" name="pickup_date" id="pickup_date">
+															    <input type="text" class="form-control calander_bgimage" name="schedule_date" id="pickup_date">
 															</div>
 														</article>
 													</div>
 													<div class="row">
 														<article class="col-md-12 text-center">
-															<input type="submit" id="cus-reg-sbmit" class="form-control" value="Search Order" required>
+															<input type="submit" id="cus-reg-sbmit" class="form-control" value="Search Order">
 														</article>
 													</div>
 				    							</form>

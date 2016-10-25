@@ -21,7 +21,7 @@
 				    				<article class="col-md-12">
 				    					<div class="find-order-page">
 				    						<div id="" class="">
-				    							<form method="POST" action="<?php echo site_url('/UserDashboard/view_search_result');?>" class="pace_order_crn_form">
+				    							<form method="POST" action="<?php echo site_url('/userdashboard/view_search_result');?>" class="pace_order_crn_form">
 				    								<div class="row">
 														<article class="col-md-6 from_state_article">
 															<div class="form-group select_from_state">
@@ -35,7 +35,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="From_City">From City, District<sup>*</sup></label>
-														     	<select id="From_city" name="From_city" class="from-city From_city form-control">
+														     	<select id="From_city" name="from_city" class="from-city From_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -54,7 +54,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="To_City">To City, District<sup>*</sup></label>
-														     	<select id="To_city" name="To_city" class="from-city To_city form-control">
+														     	<select id="To_city" name="to_city" class="from-city To_city form-control">
 																    <option value="">Select City District</option>
 																</select>
 															</div>
@@ -65,7 +65,7 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="service_for">Service Required For</label>
-															   	<select id="service" name="service" class="form-control service" required>
+															   	<select id="service" name="pm_service_type_name" class="form-control service">
 															    	<option value="">Select Service Type</option>
 															    	<option value="">Loading...</option>
 															    </select>
@@ -74,13 +74,13 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="pickup_date">Date</label>
-															    <input type="text" class="form-control calander_bgimage" id="pickup_date">
+															    <input type="text" class="form-control calander_bgimage" id="pickup_date" name="schedule_date">
 															</div>
 														</article>
 													</div>
 													<div class="row">
 														<article class="col-md-12 text-center">
-															<input type="submit" id="cus-reg-sbmit" class="form-control" value="Search Order" required>
+															<input type="submit" id="cus-reg-sbmit" class="form-control" value="Search Order">
 														</article>
 													</div>
 				    							</form>

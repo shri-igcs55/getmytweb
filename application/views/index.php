@@ -254,8 +254,8 @@
 						<div class="reg_each">
 							<img src="<?php echo base_url('assets/');?>images/reg_2.jpg" class="img-responsive">
 							<div class="overlay_r">
-								<h4>for Transporter</h4>
-								<img src="<?php echo base_url('assets/');?>images/reg_truck.png" class="img-responsive">
+								<h4>for Transporter &amp; logistics</h4>
+								<img style="padding-top: 5px;" src="<?php echo base_url('assets/');?>images/reg_truck.png" class="img-responsive">
 								<a href="<?php echo site_url('user/transporter_logistic'); ?>">Register</a>
 							</div>
 						</div>
@@ -456,7 +456,7 @@
 				success: function(res){
 					if(res.status_code == 200){
 						obj.find('.drop-state').empty();
-						$('<option value="">Select Pickup Location</option>').appendTo(obj.find('.drop-state'));
+						$('<option value="">Select Drop Location</option>').appendTo(obj.find('.drop-state'));
 						$.each(res.data, function(key, val) {
 			            	$.each(val, function(k, v){
 			                    $('<option value="'+v+'">'+v+'</option>').appendTo(obj.find('.drop-state'));

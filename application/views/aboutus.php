@@ -19,7 +19,10 @@
 				<div class="aboutTruckContent">
 					<h1 class="text-center">About Getmy<span>TRUCK</span></h1>
 					<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five.
+						<h3>Who we are ?</h3>
+						Getmytruck.co is an online goods transport service  portal offering On-demand Transportation solutions that connects transporters, packers movers , crane providers, customers and other related entities across India with the objective of making the material transportation simpler, quicker and efficient by providing better vehicle at affordable rates. We help entities associated with us to achieve better profitability in their own business.
+						<h3>What We Do?</h3>
+						We provide a bridge of communication between customer &amp; vehicle or service provider to help in movement of goods  from one place to another at the quickest time and at best rates.
 					</p>
 				</div>
 			</div>
@@ -114,7 +117,7 @@
 							<div class="width_80_per">
 								<h2>Our Vision</h2>
 								<p>
-									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page.
+									To provide a platform where no one will face shortage of resources. If a customer wants to deliver goods from one place to other then he would have many choices of vehicle providers and if vehicle provider wants to provide services then he would have many choices of customers to select.
 								</p>
 							</div>
 						</div>
@@ -128,7 +131,11 @@
 							<div class="width_80_per">
 								<h2>Our Mission</h2>
 								<p>
-									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing pactent here.
+									<ul>
+										<li>Standardized logistics experience.</li>
+										<li>Best services at best rates.</li>
+										<li>Increase profitability by increasing customer base.</li>
+									</ul>
 								</p>
 							</div>
 						</div>

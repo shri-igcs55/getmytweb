@@ -30,9 +30,11 @@
 		    		 $logged_in_user['user_type'] == 10 ||
 		    		 $logged_in_user['user_type'] == 11 ||
 		    		 $logged_in_user['user_type'] == 12 ){ ?>
+
 			    <li><a href="<?php echo $findOrder; ?>">Find Order</a></li>
 			    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">View &amp; Rate Order</a></li>
 			    <li><a href="<?php echo site_url('userdashboard/save_working_station'); ?>">Select Station</a></li>
+
 		    <?php } ?>
 			<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
 			<li><a href="<?php echo site_url('userdashboard/save_contact'); ?>">Save Contact</a></li>

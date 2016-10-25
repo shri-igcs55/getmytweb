@@ -3,7 +3,7 @@
 /**
 * this controller is for dashboad
 */
-class UserDashboard extends CI_Controller
+class Userdashboard extends CI_Controller
 {
 	
 	public function __construct()
@@ -94,19 +94,6 @@ class UserDashboard extends CI_Controller
 		$this->load->view('comman/footer');
 	}
 
-	public function view_search_result(){
-		$logged_in_user = $this->session->userdata('logged_in_user');			
-		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
-
-		$arrayParameter = array_merge($_POST,$arrayParameter);
-
-		$objData = $this->getData('search_order','search_order',$arrayParameter);
-
-		$this->load->view('comman/header');
-		$this->load->view('order_detls',array('orderObj'=>$objData));
-		$this->load->view('comman/footer');
-		
-	}
 	// Find order for crane
 	public function search_cranes_order(){
 		$this->load->view('comman/header');
@@ -121,7 +108,23 @@ class UserDashboard extends CI_Controller
 		$this->load->view('findorder_packers');
 		$this->load->view('comman/footer');
 	}
+
+    // this is one for all above search order function
+	public function view_search_result(){
+		$logged_in_user = $this->session->userdata('logged_in_user');			
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
+
+		$arrayParameter = array_merge($_POST,$arrayParameter);
+		// print_r($arrayParameter);exit();
+		$objData = $this->getData('search_order','search_order',$arrayParameter);
+
+		$this->load->view('comman/header');
+		$this->load->view('order_detls',array('orderObj'=>$objData));
+		$this->load->view('comman/footer');
+		
+	}
 	
+
 	public function getData($class,$method,$arrayField){		
 		$ch = curl_init();
 		curl_setopt($ch,CURLOPT_URL, 'http://localhost/gmt/'.$class.'/'.$method);
