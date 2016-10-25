@@ -96,7 +96,7 @@ class UserDashboard extends CI_Controller
 
 	public function view_search_result(){
 		$logged_in_user = $this->session->userdata('logged_in_user');			
-		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
 
 		$arrayParameter = array_merge($_POST,$arrayParameter);
 
