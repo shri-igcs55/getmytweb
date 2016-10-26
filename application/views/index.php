@@ -70,8 +70,11 @@
 									    	<option value="pm-5">Packers and Movers</option>
 									    	<option value="cp-6">Crane Provider</option>
 									    	<option value="cs-8">Container Suppliers</option>
-											<option value="tnls-11">Transport and Logistics</option>
-									    	<option value="tp-12">Trolley and Tanker</option>
+											<option value="ca-9">Commission Agent</option>
+											<option value="fo-10">Fleet Owners</option>
+											<option value="tnls-11">Transporter and Logistics</option>
+											<option value="trop-12">Trolley Provider</option>
+											<option value="tanp-13">Tanker Provider</option>
 									    </select>
 								    </span>
 								</div>
