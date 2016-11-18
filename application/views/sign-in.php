@@ -9,12 +9,12 @@
 					<center><h1>Sign in to your account</h1></center>
 
 					<form class="user_signin" action="" id="signin_form" name="signin_form">
-						<div class="form-group">
+						<!-- <div class="form-group">
 						    <label for="text">Role<sup>*</sup></label>
 						    <select id="role" class="role form-control" required>
 						    	<option value="">Select Role</option>
 						    </select>
-						</div>
+						</div> -->
 						<div class="form-group">
 						    <label for="text">Email/Mobile Number<sup>*</sup></label>
 						    <input type="text" class="form-control" id="email_phn" required>
@@ -86,15 +86,15 @@
 	   		
 	   		var email_mob 	= objCurrentSection.find("#email_phn").val();
 			var password 	= objCurrentSection.find("#paswrd").val();
-			var role 		= objCurrentSection.find("#role").val();
+			// var role	= objCurrentSection.find("#role").val();
 	        jQuery.ajax({
 		    	type:"POST",
 				url: "/gmt/User/user_signin",
 				dataType: 'json',
 		        data: { 
 		        	email_mob: email_mob,
-		        	password : password,
-		        	utype_id : role
+		        	password : password
+		        	// utype_id : role
 		        },
 				success: function(res){
 					if(res.status_code == 200){

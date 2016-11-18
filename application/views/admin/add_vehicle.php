@@ -24,10 +24,10 @@
                   <label>Vehicle Type</label>
                   <input required="" class="form-control" placeholder="Vehicle Type (Ex. Tata Pickup 407)" name="vehicle_type" id="vehicle_type" type="text" autofocus/>
                 </div>
-                <div class="form-group col-md-4">
+                <!-- <div class="form-group col-md-4">
                   <label>Vehicle Image</label>
-                  <input required="" class="form-control" name="vehicle_img" id="vehicle_img" type="file" autofocus/>
-                </div><br><br><br><br>
+                  <input required="" class="form-control" name="vehicle_img" id="vehicle_img" type="file" autofocus value="" />
+                </div> --><br><br><br><br>
                 <div class="form-group col-md-4">
                   <button class="btn btn-primary">Submit</button>
                 </div>

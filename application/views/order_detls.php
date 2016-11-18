@@ -7,7 +7,7 @@
 				<article class="col-md-3">
 					<?php include_once('comman/left_sidebar.php'); 
 						$u_id=$logged_in_user['user_id']; 
-						
+						// print_r($logged_in_user);exit();
 					?>
 				</article>
 
@@ -16,11 +16,11 @@
 						<div class="row">
 		    				<article class="col-md-12">
 		    					<div class="section_head">
-									<h1>View Order </h1>
+									<h1>View Pending Order </h1>
 								</div>
 		    				</article>
 		    			</div>
-
+		    			<span id="form_validation_msg"></span>
 						<?php 
 						if(!isset($orderObj->data->message)):
 							foreach($orderObj->data as $orderObj):
@@ -40,6 +40,7 @@
 	    					 	elseif($orderObj->order_to_lift == 3): 	$to_lift_status = "Don't Know";
 	    						endif;
 	    						?>
+
 								<div class="tab-content order_wrpr">
 								<div class="row">
 									<div class="col-sm-12">
@@ -57,7 +58,7 @@
 					    					</article>
 					    				</div>
 					    			</div>
-					    			<div class="order_row">
+					    			<!-- <div class="order_row">
 					    				<center><h4><span>Customer Details</span></h4></center>
 					    				<div class="row">
 					    					<article class="col-sm-4">
@@ -73,7 +74,7 @@
 					    						<p><?php echo $orderObj->mobile?></p>
 					    					</article>
 					    				</div>
-					    			</div>
+					    			</div> -->
 					    			<div class="order_row">
 					    				<center><h4><span>Pickup-Drop Details</span></h4></center>
 					    				<div class="row cities">
@@ -195,18 +196,18 @@
 						    						<label>No. of Vehicle</label>
 						    						<p><?php echo $orderObj->vehicle_qty?></p>
 						    					</article>
-						    					<article class="col-sm-4">
+						    					<?php /*<article class="col-sm-4">
 							    					<label>Order Pickup Points</label>
 							    					<p><?php echo $orderObj->order_pickup_points ?></p>
-							    				</article>
+							    				</article>*/ ?>
 						    				</div>
 						    				<div class="gat_vertcl"></div>
-						    				<div class="row">
+						    				<?php /*<div class="row">
 							    				<article class="col-sm-3">
 							    					<label>Order Drop Points</label>
 							    					<p><?php echo $orderObj->order_drop_points ?></p>
 							    				</article>
-						    				</div>
+						    				</div>*/ ?>
 						    			</div>
 						    			<div class="order_row">
 						    				<center><h4><span>Material / Goods Details</span></h4></center>
@@ -265,6 +266,7 @@
 								    				<article class="col-sm-3">
 								    					<label>Order ID</label>
 								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h4>
+								    					<input type="hidden" name="del_order_text" value="<?php echo $orderObj->order_id; ?>">
 								    				</article>
 								    				<article class="col-sm-3">
 								    					<label>Schedule Date</label>
@@ -296,14 +298,14 @@
 								    			<br>
 								    			<?php if($orderObj->order_place_for_id == 7){ ?>
 									    			<div class="row">
-									    				<article class="col-sm-3">
+									    				<?php /*<article class="col-sm-3">
 									    					<label>Order Pickup Points</label>
 									    					<h4><?php echo $orderObj->order_pickup_points ?></h4>
 									    				</article>
 									    				<article class="col-sm-3">
 									    					<label>Order Drop Points</label>
 									    					<h4><?php echo $orderObj->order_drop_points ?></h4>
-									    				</article>
+									    				</article>*/ ?>
 									    				<article class="col-sm-3">
 									    					<label>Vehicle Type</label>
 									    					<h4><?php echo $orderObj->vehicle_type?></h4>
@@ -336,9 +338,12 @@
 												<article class="col-md-2">
 						    						<?php //if($logged_in_user['user_type'] <= 4):?>
 														<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View</a>
-														<?php /* else: ?>
+														<?php if($logged_in_user['user_type'] < 4):?>
+														<a id="del_order_btn_<?php echo $orderObj->order_id?>" class="del_order_btn" data-toggle="tab" href="<?php echo $orderObj->order_id ?>">Remove</a>
+														<?php endif; /* else: ?>
 															<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Quote</a>
 														<?php endif;*/?>
+														
 							    					</article>
 												</div>
 						    				</div>
@@ -358,6 +363,7 @@
 	</section>
 </section>
 <!-- place order crane starts -->
+
 <!-- #### SAVE CONTACT MODAL ### -->
 <div class="modal fade" id="saveContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
@@ -514,11 +520,53 @@
 		})
 	});
 </script> -->
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
 	$('input[name="cancel_order"]').click(function(){		
 		$(this).closest('.tab-pane').removeClass('active in');
 		$(this).closest('.tab-content').find('.order_listing_wp').addClass('active in');
+	})
+
+	$('.del_order_btn').click(function(){
+		
+		if(confirm('Are you sure you want to delete this order?')){
+			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
+		
+			$.ajax({
+				type: "POST",
+		        url : "/gmt/Delete_document/delete_order",
+		        data: {
+		        	order_id: order_id
+		        },
+
+		        success: function(res) {
+		        	
+		        	if (res.status_code == 200)
+		            {
+		              	
+		              	$('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('<p style="color:#00FF00;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            		alert(val);
+			            		location.reload();
+			            	}
+			            });
+		            }else{
+			            
+			            $('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	}
+			            });
+		            }
+	          	},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+	        });
+		}
 	})
 })
 </script>			

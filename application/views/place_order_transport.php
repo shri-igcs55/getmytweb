@@ -118,7 +118,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="mobile">Mobile<sup>*</sup></label>
-															    <input type="number" class="form-control" id="mobile" required>
+															    <input type="text" class="form-control" id="mobile" required>
 															</div>
 														</article>
 										    		</div>
@@ -144,13 +144,13 @@
 														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="nag">Nag (Quantity)</label>
-															    <input maxlength="5" type="text" class="form-control" id="nag" pattern="[0-9]*" required>
+															    <input maxlength="5" type="text" class="form-control" id="nag" pattern="[0-9]*">
 															</div>
 														</article>
 														<article class="col-md-6">
 															<div class="form-group">
-															    <label for="weight">Weight</label>
-															    <input type="text" class="form-control" id="weight" required>
+															    <label for="weight">Weight (Estimate in Tons)</label>
+															    <input type="text" class="form-control" id="weight">
 															</div>
 														</article>
 													</div>
@@ -165,16 +165,22 @@
 															    </select>
 															</div>
 														</article>
-														<article class="col-md-6">
+														<article class="col-md-3">
 															<div class="form-group">
 															    <label for="vehicle_no">No. of Vehicle<sup>*</sup></label>
-															    <input type="number" class="form-control" id="vehicle_no" required>
+															    <input type="text" class="form-control" id="vehicle_no" required pattern="[1-9]*" value="1">
+															</div>
+														</article>
+														<article class="col-md-3">
+															<div class="form-group">
+															    <label for="schedule_date">Schedule Date<sup>*</sup></label>
+															    <input type="text" class="form-control" id="schedule_date" required>
 															</div>
 														</article>
 													</div>
 
 													<div class="row">
-														<article class="col-md-3">
+														<!-- <article class="col-md-3">
 															<div class="form-group">
 															    <label for="pick_point">Pickup Points<sup>*</sup></label>
 															    <input type="number" class="form-control" id="pick_point" required>
@@ -185,13 +191,8 @@
 															    <label for="drop_point">Drop Points<sup>*</sup></label>
 															    <input type="number" class="form-control" id="drop_point" required>
 															</div>
-														</article>
-														<article class="col-md-6">
-															<div class="form-group">
-															    <label for="schedule_date">Schedule Date<sup>*</sup></label>
-															    <input type="text" class="form-control" id="schedule_date" required>
-															</div>
-														</article>
+														</article> -->
+														
 													</div>
 													<div class="row">
 														<article class="col-md-12 text-center">
@@ -467,8 +468,10 @@
 	        var to_city 			= objCurrentSection.find("select[name='to_city[]']");
 	        var to_location 		= objCurrentSection.find("input[name='to_location[]']");
 	        var material_type 		= objCurrentSection.find("#material").val();
+	        
 	        var no_of_quantity 		= objCurrentSection.find("#length").val();
 	        var weight 				= objCurrentSection.find("#nag").val();
+	        
 	        var feet 				= objCurrentSection.find("#weight").val();
 	        var vehicle_type 		= objCurrentSection.find("#vehicle_type").val();
 	        var no_of_vehicle 		= objCurrentSection.find("#vehicle_no").val();
@@ -484,7 +487,7 @@
 			
 			from_city.each(function(index,val1){
 				if($(this).val()=='' || from_location.eq(index).val()=='' || to_city.eq(index).val()=='' || to_location.eq(index).val()==''){	
-					$('<p><strong>Select City and Locations</strong></p>').appendTo('#form_validation_msg');
+					$('<p style="color:red"><strong>Select City and Locations</strong></p>').appendTo('#form_validation_msg');
 					return false;
 				}
 				else
@@ -496,8 +499,11 @@
 				}
 			});
 			
-	        if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || pickup_points == '' || destination_points == '' || sechdule_date == '' ){
-			    $('<p><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+			if(no_of_quantity == '' && weight == ''){
+				$('<p style="color:red"><strong>Any one field must not be empty from Nag & Weight.</strong></p>').appendTo('#form_validation_msg');
+			}
+	        else if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || sechdule_date == '' ){
+			    $('<p style="color:red"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
 	        else{
 
@@ -529,7 +535,7 @@
 			            if (res.status_code == 200)
 			            {
 			              	$('#form_validation_msg').empty();
-				            $('<p><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+				            $('<p style="color:#00ff00"><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
 			              	$('.plc_ord_frm')[0].reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
@@ -539,7 +545,7 @@
 			            }else{
 				            $('#form_validation_msg').empty();
 				            $.each(res.data, function(key, val) {
-				            	$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            	$('<p style="color:red"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 			            }
 		          	},

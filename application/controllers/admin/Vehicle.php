@@ -16,26 +16,30 @@ class Vehicle extends CI_Controller
 
 	public function add_vehicle(){
 		if($_POST){
-
+			/*print_r($_FILES['vehicle_img']);exit();
+			Array ( [name] => vehicle.png [type] => image/png [tmp_name] => D:\xamppwork\tmp\php3432.tmp [error] => 0 [size] => 9455 )*/
 			$this->form_validation->set_rules('vehicle_type', 'Vehicle Type', 'trim|required');
 			$base_path1 = "uploads/vehicle/";
 			
 			$config['upload_path'] = $base_path1;
 	        $config['allowed_types'] = 'png|PNG|JPG|jpg|JPEG|jpeg';
 	        $config['max_size'] = '512';
-	        $config['file_name'] = $_FILES['vehicle_img']['name'];
+	        // $config['file_name'] = $_FILES['vehicle_img']['name']; -----------------
+	        $config['file_name'] = 'vehicle.png';
 	        $config['remove_spaces'] = TRUE;
 	        
 	        $this->load->library('upload', $config);
 
 			if ($this->form_validation->run() == TRUE) {
-				if($_FILES['vehicle_img']['name']){
+				if($config['file_name']){
+				// if($_FILES['vehicle_img']['name']){ --------------------------------
 	                //echo 'upload';
 	                $this->upload->do_upload('vehicle_img');
 	                $data = $this->upload->data();
-	                //print_r($data);exit();
-	                $imgdata = $data['file_name'];
-	                
+	               
+	                // $imgdata = $data['file_name']; ---------------------------------
+	                $imgdata = $config['file_name'];
+
 	                $ret = $this->Model_vehicle->add_vehicle($imgdata);
 	            
 	                if($ret=='true'){

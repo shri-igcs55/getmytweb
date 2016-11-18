@@ -85,7 +85,8 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAV4frNkjH7z30dvOfruJRK3KkYoJ_wOHw&callback=initMap"></script>
 <script>
 	function initMap() {
-		var location = {lat: 12.989348, lng: 77.559105};
+		// var location = {lat: 12.989348, lng: 77.559105};
+		var location = {lat: 26.887786, lng: 75.792769};
 		var map = new google.maps.Map(document.getElementById('mapSHow'), {
 			zoom: 13,
 			center: location,
@@ -94,7 +95,7 @@
 		var marker = new google.maps.Marker({
 			position: location,
 			map: map,
-			title: 'INDGLOBAL CONSULTING SOLUTIONS'
+			title: 'Get My Truck'
 		});
 	}
 

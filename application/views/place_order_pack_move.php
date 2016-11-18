@@ -61,7 +61,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="mobile">Mobile<sup>*</sup></label>
-															    <input type="number" class="form-control" id="mobile" required>
+															    <input type="text" class="form-control" id="mobile" required>
 															</div>
 														</article>
 													</div>

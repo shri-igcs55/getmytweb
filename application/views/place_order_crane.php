@@ -59,7 +59,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="mobile">Mobile<sup>*</sup></label>
-															    <input type="number" class="form-control" id="mobile" required value="">
+															    <input type="text" class="form-control" id="mobile" required value="">
 															</div>
 														</article>
 													</div>
@@ -67,7 +67,7 @@
 													<div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_State">From State<sup>*</sup></label>
+															    <label for="From_State">State<sup>*</sup></label>
 															    <select id="From_State" class="from-state form-control trans_plc_ord" required>
 															    	<option value="">Select State</option>
 															    	<option value="">Loading...</option>
@@ -76,7 +76,7 @@
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_City">From City, District<sup>*</sup></label>
+															    <label for="From_City">City, District<sup>*</sup></label>
 														     	<select id="From_city" name="from_city" class="from-city form-control">
 																    <option value="">Select City District</option>
 																</select>
@@ -84,13 +84,13 @@
 														</article>
 														<article class="col-md-4">
 															<div class="form-group">
-															    <label for="From_location">From Where in City (Area)<sup>*</sup></label>
+															    <label for="From_location">Where in City (Area)<sup>*</sup></label>
 															    <input type="text" name="from_location" id="from_location" class="where-in-city form-control" required disabled="" value="">
 															</div>
 														</article>
 													</div>
 
-													<div class="row">
+													<!-- <div class="row">
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="To_State">To State<sup>*</sup></label>
@@ -114,38 +114,39 @@
 															    <input type="text" id="to_location"  name="to_location"  class="where-in-city form-control" required disabled="">
 															</div>
 														</article>
-													</div>
+													</div> -->
 
 													<div class="row">
 														<article class="col-md-6">
 															<div class="form-group">
-															    <label for="crane_service_from_location">From Address (Where Service is required)<sup>*</sup></label>
+															    <label for="crane_service_from_location">Detailed Address (Where Service is required)<sup>*</sup></label>
 															    <input type="text" class="form-control" id="crane_service_from_location" required value="">
 															</div>
 														</article>
-														<article class="col-md-6">
+														<!-- <article class="col-md-6">
 															<div class="form-group">
 															    <label for="crane_service_to_location">To Address (Where Service is required)<sup>*</sup></label>
 															    <input type="text" class="form-control" id="crane_service_to_location" required value="">
 															</div>
-														</article>
-													</div>
-													<div class="row">
-														<article class="col-md-4 work">
+														</article> -->
+														<article class="col-md-6 work">
 															<div class="form-group">
 															    <label for="crane_work_description">Description of Work<sup>*</sup></label>
 															    <select id="crane_work_description" class="crane_work_description form-control" required>
 															    	<option value="">Select Work type</option>
+															    	<option>Loading...</option>
 															    </select>
 															</div>
 														</article>
-														<article class="col-md-4">
+													</div>
+													<div class="row">
+														<article class="col-md-6">
 															<div class="form-group">
-															    <label for="weight">Weight (Estimate) <sup>*</sup></label>
+															    <label for="weight">Weight (Estimate in Tons) <sup>*</sup></label>
 															    <input type="text" class="form-control" id="weight" required value="">
 															</div>
 														</article>
-														<article class="col-md-4">
+														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="crane_schedule_date">Schedule Date<sup>*</sup></label>
 															    <input type="text" class="form-control crane_schedule_date" id="crane_schedule_date" required value="">
@@ -436,10 +437,14 @@
 			var from_location	= objCraneProvider.find("#from_location").val();
 			var from_address	= objCraneProvider.find("#crane_service_from_location").val();
 			
-			var to_state		= objCraneProvider.find("#To_State").val();
+			var to_state		= objCraneProvider.find("#From_State").val();
+			var to_city			= objCraneProvider.find("#From_city").val();
+			var to_location		= objCraneProvider.find("#from_location").val();
+			var to_address		= objCraneProvider.find("#crane_service_from_location").val();
+			/*var to_state		= objCraneProvider.find("#To_State").val();
 			var to_city			= objCraneProvider.find("#To_city").val();
 			var to_location		= objCraneProvider.find("#to_location").val();
-			var to_address		= objCraneProvider.find("#crane_service_to_location").val();
+			var to_address		= objCraneProvider.find("#crane_service_to_location").val();*/
 
 			var weight			= objCraneProvider.find("#weight").val();
 			var desc_of_work	= objCraneProvider.find("#crane_work_description").val();
