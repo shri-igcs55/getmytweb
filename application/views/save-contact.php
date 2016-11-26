@@ -5,7 +5,7 @@
 		<div class="container">
 			<div class="row">
 				<article class="col-md-3">
-					<?php include_once('comman/left_sidebar.php'); $u_id= $logged_in_user['user_id']; ?>
+					<?php include_once('comman/left_sidebar.php'); $u_id=$logged_in_user['user_id']; ?>
 				</article>
 				<article class="col-md-9">
 					<section class="place_order_main">
@@ -30,7 +30,7 @@
 				    				<article class="col-md-12">
 				    					<div class="find-order-page">
 				    						<div id="" class="">
-				    							<table class="table table-hover save_edit_delete_table">
+				    							<table id="contact_list_table" class="table table-hover save_edit_delete_table">
 				    								<thead>
 				    									<tr>
 				    										<th>
@@ -45,79 +45,8 @@
 				    										<th>Group</th>
 				    									</tr>
 				    								</thead>
-				    								<tbody>
-				    									<tr>
-				    										<td>
-				    											<div class="checkbox">
-				    												<input type="checkbox" id="add2">
-				    												<label for="add2"></label>
-				    											</div>
-				    										</td>
-				    										<td>Sreekanth</td>
-				    										<td>9876543210</td>
-				    										<td>sreee5248@gmail.com</td>
-				    										<td>Transport</td>
-				    									</tr>
-				    									<tr>
-				    										<td>
-				    											<div class="checkbox">
-				    												<input type="checkbox" id="add3">
-				    												<label for="add3"></label>
-				    											</div>
-				    										</td>
-				    										<td>Sreekanth</td>
-				    										<td>9876543210</td>
-				    										<td>sreee52648@gmail.com</td>
-				    										<td>Transport</td>
-				    									</tr>
-				    									<tr>
-				    										<td>
-				    											<div class="checkbox">
-				    												<input type="checkbox" id="add4">
-				    												<label for="add4"></label>
-				    											</div>
-				    										</td>
-				    										<td>Sreekanth</td>
-				    										<td>9876543210</td>
-				    										<td>sreee52648@gmail.com</td>
-				    										<td>Transport</td>
-				    									</tr>
-				    									<tr>
-				    										<td>
-				    											<div class="checkbox">
-				    												<input type="checkbox" id="add5">
-				    												<label for="add5"></label>
-				    											</div>
-				    										</td>
-				    										<td>Sreekanth</td>
-				    										<td>9876543210</td>
-				    										<td>sreee52648@gmail.com</td>
-				    										<td>Transport</td>
-				    									</tr>
-				    									<tr>
-				    										<td>
-				    											<div class="checkbox">
-				    												<input type="checkbox" id="add6">
-				    												<label for="add6"></label>
-				    											</div>
-				    										</td>
-				    										<td>Sreekanth</td>
-				    										<td>9876543210</td>
-				    										<td>sreee52648@gmail.com</td>
-				    										<td>Transport</td>
-				    									</tr>
-				    									<tr>
-				    										<td>
-				    											<div class="checkbox">
-				    												<input type="checkbox" id="add7">
-				    												<label for="add7"></label>
-				    											</div>
-				    										</td>
-				    										<td>Sreekanth</td>
-				    										<td>9876543210</td>
-				    										<td>sreee52648@gmail.com</td>
-				    										<td>Transport</td>
-				    									</tr>
+				    								<tbody class="contactlisthead">
+				    									
 				    								</tbody>
 				    							</table>
 				    						</div>
@@ -170,9 +99,37 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/gmt/assets/js/dataTables/jquery.dataTables.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		// to get group list
+		$("#view_clist").one('click',function(){
+		// $("#contact_list_table").load(function(){
+	        var user_id = <?php echo $logged_in_user['user_id']; ?>;
+	        alert(user_id);
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/Save_contact/listGroup",
+				dataType: 'json',
+		        data: { user_id: user_id },
+				success: function(res){
+					if(res.status_code == 200){
+						alert(res.data);
+						// var option = '<tr><td colspan="5"> No Data</td></tr>';
+			   //          $.each(res.data, function(key, val) {
+			   //          	option +='<tr><td><div class="checkbox"><input type="checkbox" id="add6"><label for="add6"></label></div></td><td>Sreekanth</td><td>9876543210</td><td>sreee52648@gmail.com</td><td>Transport</td></tr>';
+			   //          });
+			   //          $('tbody.contactlisthead').append(option);
+					}else{
+						console.log('No response.');
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
+
 		$('.select_all_box').click(function(event){
 			if(this.checked) {
 				$(this).closest('.find-order-page').find('.save_edit_delete_table :checkbox').each(function() {
@@ -192,5 +149,7 @@
 				$(this).closest('tr').remove();
 			});
 		});
+
+
 	});
 </script>

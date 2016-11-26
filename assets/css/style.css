@@ -1366,6 +1366,9 @@ a.remove_more_station{
 .myProfileMenu{
 	display: none;
 }
+.myContactMenu{
+	display: none;
+}
 /* ### SANTHOSH CODE ### */
 .find-order-page select{
 	appearance:none;
@@ -1956,4 +1959,125 @@ section.contactUsForm .contactForm button.btn_cmmn_red{
 }
 .custmer_reg .table.save_edit_delete_table > tbody > tr > td{
 	color: #888888;
+}
+
+/* membership page santhosha*/
+
+#packageBanner{
+    background: #FFF url('../images/package-banner.jpg') no-repeat 0 0 / cover;
+}
+section#packageDescription{
+    padding: 20px 0;
+}
+.nav.nav-tabs.packageTabs{
+    background: #EBEBEB;
+    margin: 1% 0 2%;
+}
+.nav.nav-tabs.packageTabs > li, .nav.nav-tabs.packageTabs > li:hover,
+.nav.nav-tabs.packageTabs > li:focus{
+    position: relative;
+    background: #EBEBEB;
+    margin-left: 1%;
+}
+.packageTabs > li:before{
+    content:"\f10c";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    left: -15px;
+    font-size: 130%;
+    z-index: 1;
+}
+.packageTabs > li.active:before{
+    color: #ec4343;
+    content: "\f192";
+}
+.nav.nav-tabs.packageTabs > li > a{
+    font-size: 130%;
+    color: #545454;
+    margin: 0 10% 0 2%;
+}
+.nav.nav-tabs.packageTabs > li.active > a{
+    font-size: 130%;
+    color: #545454;
+    margin: 0 10% 0 2%;
+}
+.nav.nav-tabs.packageTabs > li.active > a, .nav.nav-tabs.packageTabs > li.active > a:hover,
+.nav.nav-tabs.packageTabs > li > a{
+    background: #EBEBEB;
+}
+.packageTabsContent{
+    background: #FFF;
+}
+.packageTabsContent .table > tbody > tr > td{
+    font-size: 110%;
+    color: #545454;
+}
+.packageTabsContent .table span{
+    display: block;
+    padding:2px 0;
+}
+.packageTabsContent .table i{
+    color: #ED4343;
+}
+.packageTabsContent .table > tbody > tr > td + td{
+    border-left: 1px solid #efefef;
+    text-align: center;
+}
+.margin-top-class{
+    margin-top:30px;
+}
+.packageTabsContent tr td > p{
+    border-bottom:1px solid #DDD;
+    padding:0 0 2px;
+    margin:0 0 10px;
+    display:inline-block;
+}
+
+.packageTabsContent .table .no-row-colspan{
+    background: #EBEBEB;
+}
+.packageTabsContent .table a{
+    background: #ED4343;
+    color: #FFF;
+    display: inline-block;
+    margin-top: 1%;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+.packageTabsContent .table > thead{
+    background: #ED4343;
+    color: #FFF;
+    
+}
+.packageTabsContent .table > thead > tr > th{
+    vertical-align: top;
+    border:none;
+    font-size:120%;
+}
+.packageTabsContent .table.transporterPackage > thead > tr > th{
+    font-size:100%;
+}
+.packageDescriptionSection > p{
+    color: #545454;
+    text-align:center;
+    font-size:130%;
+    padding:15px 0;
+}
+.form_sections ul li{
+display: inline-block;
+width:30%;
+height: 175px;
+border: 1px solid #000;
+margin: 0px 10px;
+}
+.form_sections ul li input:hover{
+	background-color: rgb(237,67,67);
+	color: #fff;
+	font-weight: 600;
+
+}
+.form_sections ul li input{
+	 margin: 0 auto;
+    max-width: 175px;
 }

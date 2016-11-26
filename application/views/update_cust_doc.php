@@ -4,6 +4,7 @@
 		<div class="row">
 			<article class="col-md-3">
 				<?php include_once('comman/left_sidebar.php'); $u_id = $logged_in_user['user_id']; ?>
+				<input type="hidden" id="user_id" value="<?php echo $u_id; ?>">
 			</article>
 			<article class="col-md-9">
 				<div class="tab-content">
@@ -36,8 +37,22 @@
 										    <input type="button" id="upload_doc" class="upload_doc form-control" value="Upload">
 										</div>
 									</article>
-								</div>
+								</div>								
+								<!-- color:#37b1d8; -->
+								<span id="form_validation_msg"></span>
 							</form>
+						</div>
+						<div class="form_wrp">
+							<div class="form_sections">
+								<ul id="up_doc">
+									<!-- <li><img src="/gmt/uploads/10/document/thumbs/42971479982098.png">
+									<input class="upload_doc form-control" type="button" name="del_doc" id="del_doc" value="Delete"></li>
+									<li><img src="/gmt/uploads/10/document/thumbs/42971479982098.png">
+									<input class="upload_doc form-control" type="button" name="del_doc" id="del_doc" value="Delete"></li>
+									<li><img src="/gmt/uploads/10/document/thumbs/42971479982098.png">
+									<input class="upload_doc form-control" type="button" name="del_doc" id="del_doc" value="Delete"></li> -->
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -48,11 +63,34 @@
 <!-- CUSTOMER REGISTRATION ENDS-->
 <script type="text/javascript">
 	$(document).ready(function(){
+		jQuery.ajax({
+			type:"POST",
+			url: "/gmt/Document_upload/document",
+			dataType: 'json',	
+	        data: $('#user_id').val(),
+			success: function(res){
+				if(res.status_code == 200){
+					
+					$.each(res.data, function(key, val) {
+						$('<li><img style="margin: auto 15px; max-width: 175px;" id="'+val.trans_doc_name+'_'+val.trans_doc_id+'" src="/gmt/'+val.trans_doc_thumb_url+'"><input class="del_doc form-control" type="button" name="del_doc_'+val.trans_doc_id+'" id="del_doc_'+val.trans_doc_id+'" value="Delete"><input type="hidden" class="del_img_id" value="'+val.trans_doc_id+'" id="'+val.trans_doc_id+'" name="del_img"></li>').appendTo('#up_doc');
+		            	$.each(val, function(k, v){
+		            		
+		                });
+		            });
+				}else{
+					console.log('No response.');
+				}
+			},
+	        error: function(){
+	        	console.log('Somthing went wrong');
+	        }
+		});
+
 		$('.upload_doc').click(function(){
 			// var doc_name = $('#e_file_name').val();
 			// var user_doc = $('input:file').val();
 			//var uploaddoc = $('form#cust_docup').serialize();
-			 var uploaddoc = new FormData($("form#cust_docup")[0]);
+			var uploaddoc = new FormData($("form#cust_docup")[0]);
 			
 			jQuery.ajax({
 				type: "POST",             // Type of request to be send, called as method
@@ -63,14 +101,55 @@
                 contentType: false,
                 cache: false,
                 processData: false,
-				success: function(data)   // A function to be called if request succeeds
+				success: function(res)   // A function to be called if request succeeds
 				{
-					alert(data);
+					if(res.status_code == 200){
+						// console.log('Successfully');
+		        		$('#form_validation_msg').empty();
+			            $('<p style="color:#00ff00;"><strong>Document Uploaded Successfully.</strong></p>').appendTo('#form_validation_msg');
+		              	// $('.cust_doc_up')[0].reset();
+		              	location.reload();
+		              	
+		            }else{
+		            	// console.log('fail');
+			            $('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+		        	}
 				},
-				error: function(){
-					console.log();
-				}
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
 			});
 		}); // on click submit
+
+		$('#up_doc').on('click','.del_doc',function(){
+			var currentObj = $(this);
+			var doc_id = currentObj.closest('li').find("input[name=del_img]").val();
+			if(!confirm('Are you sure you want to delete this doument?'))
+				return false;
+			jQuery.ajax({
+				type: "POST",             // Type of request to be send, called as method
+				url: "/gmt/Delete_document/delete_document", // Url to which the request is send
+				dataType: 'json',	
+	        	data: {trans_doc_id:doc_id},
+				success: function(res)   // A function to be called if request succeeds
+				{
+					if(res.status_code == 200){
+						currentObj.closest('li').hide();
+		            }else{
+		            	// console.log('fail');
+			            $('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+		        	}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		}); // on click delete
 	}); // document close
 </script>

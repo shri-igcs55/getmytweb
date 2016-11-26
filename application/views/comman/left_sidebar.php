@@ -59,8 +59,14 @@ Transporter 							= 7
 
 		    <?php } ?>
 			<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
-			<li><a href="<?php echo site_url('userdashboard/save_contact'); ?>">Save Contact</a></li>
 		    <li><a href="#">Confirmed Order</a></li>
+			<li id="myContact"><a href="#">My Contact</a>
+				<ul class="list-unstyled myContactMenu">
+					<li><a href="<?php echo site_url('userdashboard/add_contact'); ?>">Add Contact</a></li>
+			    	<li><a href="<?php echo site_url('userdashboard/add_contact_group'); ?>">Create Group</a></li>
+			    	<li id="view_clist"><a href="<?php echo site_url('userdashboard/save_contact'); ?>">View Contact</a></li>
+			    </ul>
+			</li>
 		    <li id="myProfile"><a href="#">My Profile</a>
 			    <ul class="list-unstyled myProfileMenu">
 			    	<li><a href="<?php echo site_url('user/edit'); ?>">Edit Profile</a></li>

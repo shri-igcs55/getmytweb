@@ -14,6 +14,10 @@ class Userdashboard extends CI_Controller
 		}
 	}
 
+	public function index(){
+
+		redirect('user/edit');
+	}
 	// after login dashboard
 	public function place_transporter_order(){
 	
@@ -37,6 +41,24 @@ class Userdashboard extends CI_Controller
 
 		$this->load->view('comman/header');
 		$this->load->view('save-contact');
+		$this->load->view('comman/footer');
+
+	}
+
+	// Add contact
+	public function add_contact()
+	{
+		$this->load->view('comman/header');
+		$this->load->view('add_contact');
+		$this->load->view('comman/footer');
+
+	}
+
+	// Add contact
+	public function add_contact_group()
+	{
+		$this->load->view('comman/header');
+		$this->load->view('add_contact_group');
 		$this->load->view('comman/footer');
 
 	}

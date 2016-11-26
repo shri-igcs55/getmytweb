@@ -398,6 +398,34 @@ $(document).ready(function(){
 		});
 	});
 
+	// to get group list
+	$("#contact_list_table").load(function(){
+        var user_id = $('#u_id').val();
+        
+        jQuery.ajax({
+	    	type:"POST",
+			url: "/gmt/Save_contact/listGroup",
+			dataType: 'json',
+	        data: { user_id: user_id },
+			success: function(res){
+				if(res.status_code == 200){
+					
+					var option = '<tr><td colspan="5"> No Data</td></tr>';
+		            $.each(res.data, function(key, val) {
+		            	option +='<tr><td><div class="checkbox"><input type="checkbox" id="add6"><label for="add6"></label></div></td><td>Sreekanth</td><td>9876543210</td><td>sreee52648@gmail.com</td><td>Transport</td></tr>';
+		            });
+		            $('.contactlisthead').html(option);
+				}else{
+					console.log('No response.');
+				}
+			},
+	        error: function(){
+	        	console.log('Somthing went wrong');
+	        }
+		});
+	});
+
+
 	// Ajax post for refresh captcha image.
    	$(".captcha_img").click(function() {
     	jQuery.ajax({
@@ -597,6 +625,10 @@ $(document).ready(function(){
    	// PROFILE Menu HIDE AND SHOW
    	$('#myProfile').click(function(){
    		$('.myProfileMenu').slideToggle();
+   	});
+   	// Contact Menu HIDE AND SHOW
+   	$('#myContact').click(function(){
+   		$('.myContactMenu').slideToggle();
    	});
 
 	$(".submit_contact").click(function(event) {

@@ -7,7 +7,7 @@
 				<article class="col-md-3">
 					<?php include_once('comman/left_sidebar.php'); 
 						$u_id=$logged_in_user['user_id']; 
-						// print_r($logged_in_user);exit();
+						print_r($logged_in_user);
 					?>
 				</article>
 
@@ -411,69 +411,83 @@
 			</div>
 			<div class="modal-body">
 				<form action="javascript:void(0);">
+					<?php if($logged_in_user['user_type'] == 6){ ?>
 					<div class="first_form">
 						<table class="table">
 							<tr>
-								<td>
+								<td class="col-md-3">
 									<div class="radio">
 										<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
 										<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
 									</div>
 								</td>
-								<td>
-									<ul class="list-inline">
-										<li><input type="text" class="form-control" placeholder="Min Value"></li>
-										<li><input type="text" class="form-control" placeholder="Max Value"></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td>
+								<td class="col-md-3">
 									<div class="radio">
 										<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
 										<label for="per_day" class="custom_radio_label">Per Day Basis</label>
 									</div>
 								</td>
-								<td>
-									<ul class="list-inline">
-										<li><input type="text" class="form-control" placeholder="Min Value"></li>
-										<li><input type="text" class="form-control" placeholder="Max Value"></li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
+								<td class="col-md-3">
 									<div class="radio">
 										<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
 										<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
 									</div>
 								</td>
 							</tr>
-						</table>
-					</div>
-					<div class="second_form">
-						<table class="table">
 							<tr>
 								<td>
-									<label for="min_amnt" class="control-label">Minimum Amount</label>
-									<input type="text" id=min_amnt class="form-control" placeholder="100">
-								</td>
-								<td>
-									<label for="max_amnt" class="control-label">Maximum Amount</label>
-									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
+									<ul class="list-inline">
+										<li><input type="text" class="form-control" placeholder="Amount"></li>
+									</ul>
 								</td>
 							</tr>
 						</table>
 					</div>
+					<?php }else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] > 7){ ?>
+					<div class="second_form">
+						<table class="table">
+							<tr>
+								<td class="col-md-6">
+									<div class="radio">
+										<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
+										<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
+									</div>
+								</td>
+								<td class="col-md-6">
+									<div class="radio">
+										<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
+										<label for="beetween_range" class="custom_radio_label">Between Range</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
+									<input type="text" id=est_range_amnt class="form-control" placeholder="Amount">
+								</td>
+								<?php /*<td>
+									<label for="max_amnt" class="control-label">Maximum Amount</label>
+									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
+								</td>*/ ?>
+							</tr>
+						</table>
+					</div>
+					<?php } 	?>
 					<div class="form-group text-center">
-						<button class="btn btn_cmmn_red" type="submit">OK</button>
+						<button class="btn btn_cmmn_red" type="submit">Submit</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- $re = '/^([0-9-]+)$/m';
+$str = '159-951-66';
 
+preg_match_all($re, $str, $matches);
+
+// Print the entire match result
+print_r($matches); -->
 
 <!-- <script type="text/javascript">
 	$(document).ready(function(){
@@ -521,7 +535,22 @@
 	});
 </script> -->
 <script type="text/javascript">
+$('input[type=radio][name=rate_trans]').on('change', function(){
+    var str = "";
+    if (this.value == 'er') {
+        var str = "Estimated Rate (Ex. 8000)";
+        $( "#amt_label" ).text( str );
+    }
+    else if (this.value == 'br') {
+    	var str = "Beetween Rage (Ex. 8000-8500)";
+        $( "#amt_label" ).text( str );
+    }
+});
+
+</script>
+<script type="text/javascript">
 $(document).ready(function(){
+
 	$('input[name="cancel_order"]').click(function(){		
 		$(this).closest('.tab-pane').removeClass('active in');
 		$(this).closest('.tab-content').find('.order_listing_wp').addClass('active in');
