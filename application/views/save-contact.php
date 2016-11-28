@@ -105,28 +105,28 @@
 		// to get group list
 		$("#view_clist").one('click',function(){
 		// $("#contact_list_table").load(function(){
-	        var user_id = <?php echo $logged_in_user['user_id']; ?>;
-	        alert(user_id);
-	        jQuery.ajax({
-		    	type:"POST",
+			var user_id = <?php echo $logged_in_user['user_id']; ?>;
+			alert(user_id);
+			jQuery.ajax({
+				type:"POST",
 				url: "/gmt/Save_contact/listGroup",
 				dataType: 'json',
-		        data: { user_id: user_id },
+				data: { user_id: user_id },
 				success: function(res){
 					if(res.status_code == 200){
 						alert(res.data);
-						// var option = '<tr><td colspan="5"> No Data</td></tr>';
-			   //          $.each(res.data, function(key, val) {
-			   //          	option +='<tr><td><div class="checkbox"><input type="checkbox" id="add6"><label for="add6"></label></div></td><td>Sreekanth</td><td>9876543210</td><td>sreee52648@gmail.com</td><td>Transport</td></tr>';
-			   //          });
-			   //          $('tbody.contactlisthead').append(option);
+						var option = '<tr><td colspan="5"> No Data</td></tr>';
+						$.each(res.data, function(key, val) {
+							option +='<tr><td><div class="checkbox"><input type="checkbox" id="add6"><label for="add6"></label></div></td><td>Sreekanth</td><td>9876543210</td><td>sreee52648@gmail.com</td><td>Transport</td></tr>';
+						});
+						$('tbody.contactlisthead').append(option);
 					}else{
 						console.log('No response.');
 					}
 				},
-		        error: function(){
-		        	console.log('Somthing went wrong');
-		        }
+				error: function(){
+					console.log('Somthing went wrong');
+				}
 			});
 		});
 
