@@ -23,7 +23,6 @@
 		    			<span id="form_validation_msg"></span>
 						<?php 
 						if(!isset($orderObj->data->message)):
-						   if(isset($orderObj->data)):
 							foreach($orderObj->data as $orderObj):
 								if($orderObj->order_place_for_id == 5){
 									$material_work_goods_description = $orderObj->pm_goods_description;
@@ -253,7 +252,7 @@
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
 											<?php if($logged_in_user['user_type'] > 4):?>
-												<input type="button" name="rate_order" id="rate_butn" value="Give Quotation" data-toggle="modal" data-target="#getQuotationModal">
+												
 												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
 											<?php endif;?>
 					    				</article>
@@ -358,9 +357,7 @@
 					
 								</div>	
 								<br/>
-							<?php 
-								endforeach;
-							endif;
+							<?php endforeach;
 						else:
 							echo '<h5>'.$orderObj->data->message.'</h5>';
 						endif;
