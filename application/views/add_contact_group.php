@@ -11,30 +11,81 @@
 					
 					<div id="edit_tab10">
 						<div class="form_wrp" style="padding: 40px 75px 271px;">
-							<form id="chg_pass" name="chg_pass" class="transporter-form pass_form" action="">
-								<div class="section_head">
-									<h1>Add New<span> Contact Group</span></h1>
-								</div>
-								<input type="hidden" name="u_id" id="u_id" value="<?php echo $logged_in_user['user_id']; ?>">
-								<br>
-								<br>
-								<div class="row">
-									<article class="col-md-6">
-										<div class="form-group">
-										    <label for="old_pass">Group Name<sup>*</sup></label>
-										    <input name="old_pass" type="text" class="form-control" id="old_pass" required>
-										</div>
-									</article>
-									<article class="col-md-4">
-										<div class="form-group">
-											<label for="old_pass">&nbsp;</label>
-										    <input type="button" class="form-control chg_pass" id="e_sub_paswrd" value="Save">
-										</div>
-									</article>
-								</div>
-								<span id='form_validation_msg'></span>
-
-							</form>
+							<div class="row">
+								<form id="creat_group" name="creat_group" class="transporter-form group_form" action="">
+									<div class="section_head">
+										<h1>Add New<span> Contact Group</span></h1>
+									</div>
+									<input type="hidden" name="u_id" id="u_id" value="<?php echo $logged_in_user['user_id']; ?>">
+									<br>
+									<br>
+									<div class="row">
+										<article class="col-md-6">
+											<div class="form-group">
+											    <label for="cont_group_name">Group Name<sup>*</sup></label>
+											    <input name="cont_group_name" type="text" class="form-control" id="cont_group_name" required>
+											</div>
+										</article>
+										<article class="col-md-4">
+											<div class="form-group">
+												<label for="cont_group_name">&nbsp;</label>
+											    <input type="button" class="form-control creat_group" id="e_sub_paswrd" value="Save">
+											</div>
+										</article>
+									</div>
+									<span id='form_validation_msg'></span>
+								</form>
+							</div>
+							<br/>
+							<br/>
+							<div class="row">
+		    					<div class="find-order-page">
+		    						<div id="" class="">
+		    							<table id="contact_list_table" class="table table-hover save_edit_delete_table">
+		    								<thead>
+		    									<tr>
+		    										<th>
+		    											<!-- <div class="checkbox">
+		    												<input type="checkbox" id="add1" class="select_all_box">
+		    												<label for="add1"></label>
+		    											</div> -->
+		    										</th>
+		    										<th>Group Name</th>
+		    										<th>Number of Contact</th>
+		    									</tr>
+		    								</thead>
+		    								<tbody class="contactlisthead">
+		    									<?php 
+		    										//print_r($orderObj);exit();
+		    										if(!isset($orderObj->data->message)):
+														foreach($orderObj->data as $orderObj): 
+												?>
+													<tr>
+														<td>
+															<div class="checkbox">
+																<input type="checkbox" id="add<?php echo $orderObj->group_id; ?>">
+																<input type="hidden" name="groupid_<?php echo $orderObj->group_id; ?>" id="groupid_<?php echo $orderObj->group_id; ?>" value="<?php echo $orderObj->group_id; ?>">
+																<label for="add<?php echo $orderObj->group_id; ?>"><?php echo $orderObj->group_id; ?></label>
+															</div>
+														</td>
+														<td>
+															<?php echo $orderObj->group_name; ?>
+														</td>
+														<td>
+															<?php echo $orderObj->contact_in_group; ?>
+														</td>
+													</tr>
+												<?php 
+														endforeach;
+													else:
+														echo '<h5>'.$orderObj->data->message.'</h5>';
+													endif;
+												?>
+		    								</tbody>
+		    							</table>
+		    						</div>
+		    					</div>
+			    			</div>
 						</div>
 					</div>
 				</div>
@@ -46,38 +97,51 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-		$('.chg_pass').click(function()
+		$('.select_all_box').click(function(event){
+			if(this.checked) {
+				$(this).closest('.find-order-page').find('.save_edit_delete_table :checkbox').each(function() {
+					this.checked = true;                        
+				});
+			}
+			else{
+				$(this).closest('.find-order-page').find('.save_edit_delete_table :checkbox').each(function() {
+					this.checked = false;                        
+				});
+			}
+		});
+
+		$('.save_edit_delete_table').DataTable();
+		// DELETE FUNCTION
+		$('#delete_row').on('click',function(){
+			$(this).closest('.place_order_main').find('.save_edit_delete_table tbody  :checkbox:checked').each(function() {
+				$(this).closest('tr').remove();
+			});
+		});
+
+		$('.creat_group').on('click',function()
 		{
 			var user_id  = $('#u_id').val();
-			var old_pass = $('#old_pass').val();
-			var new_pass = $('#new_pass').val();
-			var c_pass   = $('#conf_pass').val();
-
-			/*{
-				old_pass: old_pass,
-				user_id : user_id,
-				new_pass: new_pass,
-				c_pass  : c_pass
-			}*/
-
-			if(user_id == '' || old_pass == '' || new_pass == '' || c_pass == ''){
+			var cont_group_name = $('#cont_group_name').val();
+			
+			if(user_id == '' || cont_group_name == ''){
 				$('#form_validation_msg').empty();
-				$('<p style="color:#ed4343;><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
+				$('<p style="color:#ed4343;"><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
 			}else{
-				var change_pass = $('#chg_pass').serialize();
+				var add_grp = $('#creat_group').serialize();
 				jQuery.ajax({
 					type 	: "POST",
-					url  	: "/gmt/User/chng_pass",
-					data	: change_pass,
+					url  	: "/gmt/Save_contact/save_group",
+					data	: add_grp,
 					success: function(res){
 						if(res.status_code == 200){
 							$('#form_validation_msg').empty();
-							$('<p style="color:#00ff00;><strong>Paasword Changed  Successfully.</strong></p>').appendTo('#form_validation_msg');
-							$('.pass_form')[0].reset();
+							$('<p style="color:#00ff00;"><strong>Group created Successfully.</strong></p>').appendTo('#form_validation_msg');
+							$('.group_form')[0].reset();
+							location.reload();
 						}else{
 							$('#form_validation_msg').empty();
 							$.each(res.data, function(key, val) {
-				            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 						}
 					},

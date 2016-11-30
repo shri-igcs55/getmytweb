@@ -46,6 +46,8 @@
 
 	<!-- jQuery js -->
 	<script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery-2.1.4.js"></script>
+	<!-- datatable js -->
+	<script type="text/javascript" src="/gmt/assets/js/dataTables/jquery.dataTables.js"></script>
 
 	<!-- home page js -->
 	

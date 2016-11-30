@@ -5,7 +5,9 @@
 		<div class="container">
 			<div class="row">
 				<article class="col-md-3">
-					<?php include_once('comman/left_sidebar.php'); $u_id=$logged_in_user['user_id']; ?>
+					<?php 
+						include_once('comman/left_sidebar.php'); $u_id =$logged_in_user['user_id'];
+					?>
 				</article>
 				<article class="col-md-9">
 					<section class="place_order_main">
@@ -17,10 +19,10 @@
 											<h1>Save <span>Contacts</span></h1>
 											<ul class="list-inline text-right edit_delete_list">
 												<li>
-													<a href="javascript:void(0);" class="cmn_edit_delete_btn" data-toggle="modal" data-target="#saveContactModal">EDIT</a>
+													<a href="javascript:void(0);" class="cmn_edit_delete_btn" data-toggle="modal" data-target="#saveContactModal" id="edit_cont">EDIT</a>
 												</li>
 												<li>
-													<a href="javascript:void(0);" class="cmn_edit_delete_btn" id="delete_row">DELETE</a>
+													<a href="javascript:void(0);" class="cmn_edit_delete_btn" name="delete_row" id="delete_row">DELETE</a>
 												</li>
 											</ul>
 										</div>
@@ -34,10 +36,10 @@
 				    								<thead>
 				    									<tr>
 				    										<th>
-				    											<div class="checkbox">
+				    											<!-- <div class="checkbox">
 				    												<input type="checkbox" id="add1" class="select_all_box">
 				    												<label for="add1"></label>
-				    											</div>
+				    											</div> -->
 				    										</th>
 				    										<th>Name</th>
 				    										<th>Phone No.</th>
@@ -46,7 +48,31 @@
 				    									</tr>
 				    								</thead>
 				    								<tbody class="contactlisthead">
-				    									
+				    									<?php 
+				    										//print_r($orderObj);exit();
+				    										if(!isset($orderObj->data->message)):
+																foreach($orderObj->data as $orderObj): 
+														?>
+															<tr>
+																<td>
+																	<div class="checkbox">
+																		<input class="checked_cont_edit" type="checkbox" id="add<?php echo $orderObj->cont_id; ?>" name="checked_cont_id" value="<?php echo $orderObj->cont_id; ?>">
+																		<input class="edit_val_checked" type="hidden" name="contactid_<?php echo $orderObj->cont_id; ?>" id="contactid_<?php echo $orderObj->cont_id; ?>" value="<?php echo $orderObj->cont_id; ?>">
+																		<input class="edit_val_checked_id" type="hidden" name="contactid_<?php echo $orderObj->group_id; ?>" id="contactid_<?php echo $orderObj->group_id; ?>" value="<?php echo $orderObj->group_id; ?>">
+																		<label for="add<?php echo $orderObj->cont_id; ?>"></label>
+																	</div>
+																</td>
+																<td><?php echo $orderObj->cont_name; ?></td>
+																<td><?php echo $orderObj->cont_mob; ?></td>
+																<td><?php echo $orderObj->cont_email; ?></td>
+																<td><?php echo $orderObj->group_name; ?></td>
+															</tr>
+														<?php 
+																endforeach;
+															else:
+																echo '<h5>'.$orderObj->data->message.'</h5>';
+															endif;
+														?>
 				    								</tbody>
 				    							</table>
 				    						</div>
@@ -99,35 +125,79 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript" src="/gmt/assets/js/dataTables/jquery.dataTables.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
-		// to get group list
-		$("#view_clist").one('click',function(){
+
+		// to Edit contact
+		$("#edit_cont").on('click',function(){
 		// $("#contact_list_table").load(function(){
 			var user_id = <?php echo $logged_in_user['user_id']; ?>;
-			alert(user_id);
-			jQuery.ajax({
-				type:"POST",
-				url: "/gmt/Save_contact/listGroup",
-				dataType: 'json',
-				data: { user_id: user_id },
-				success: function(res){
-					if(res.status_code == 200){
-						alert(res.data);
-						var option = '<tr><td colspan="5"> No Data</td></tr>';
-						$.each(res.data, function(key, val) {
-							option +='<tr><td><div class="checkbox"><input type="checkbox" id="add6"><label for="add6"></label></div></td><td>Sreekanth</td><td>9876543210</td><td>sreee52648@gmail.com</td><td>Transport</td></tr>';
-						});
-						$('tbody.contactlisthead').append(option);
-					}else{
-						console.log('No response.');
-					}
-				},
-				error: function(){
-					console.log('Somthing went wrong');
+			var contact_length = $("input[name=checked_cont_id]:checked").length();
+			if(contact_length > 1){
+				alert('Please select one contact.');
+			}else{
+
+				var contact_id = $("input[name=checked_cont_id]:checked").val();
+				// var cont_group_id = $('.');
+				
+				if(confirm('Are you sure you want to delete this Contact?')){
+					jQuery.ajax({
+						type:"POST",
+						url: "/gmt/Save_contact/delete_contact",
+						dataType: 'json',
+						data: { user_id: user_id,
+								contact_id: contact_id
+								},
+						success: function(res){
+							if(res.status_code == 200){
+								$.each(res.data, function(key, val) {
+					            	alert(val);
+					            });
+							}else{
+								$.each(res.data, function(key, val) {
+					            	alert(val);
+					            });
+							}
+						},
+						error: function(){
+							console.log('Somthing went wrong');
+						}
+					});
 				}
-			});
+			}
+		});
+
+		// to Delete contact
+		$("#delete_row").on('click',function(){
+		// $("#contact_list_table").load(function(){
+			var user_id = <?php echo $logged_in_user['user_id']; ?>;
+			var contact_id = $("input[name=checked_cont_id]:checked").map(function() {return this.value;}).get().join(',');
+			
+			if(confirm('Are you sure you want to delete this Contact?')){
+				jQuery.ajax({
+					type:"POST",
+					url: "/gmt/Save_contact/delete_contact",
+					dataType: 'json',
+					data: { user_id: user_id,
+							contact_id: contact_id
+							},
+					success: function(res){
+						if(res.status_code == 200){
+							$.each(res.data, function(key, val) {
+				            	alert(val);
+				            });
+						}else{
+							$.each(res.data, function(key, val) {
+				            	alert(val);
+				            });
+						}
+					},
+					error: function(){
+						console.log('Somthing went wrong');
+					}
+				});
+			}
 		});
 
 		$('.select_all_box').click(function(event){
