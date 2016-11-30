@@ -59,6 +59,7 @@ Transporter 							= 7
 
 		    <?php } ?>
 			<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
+			<li><a href="<?php echo site_url('userdashboard/rated_orders'); ?>">Rated Order</a></li>
 		    <li><a href="#">Confirmed Order</a></li>
 			<li id="myContact"><a href="#">My Contact</a>
 				<ul class="list-unstyled myContactMenu">

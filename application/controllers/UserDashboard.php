@@ -89,7 +89,26 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/footer');
 		
 	}
+	
+	//Add by Bhavesh
+	public function rated_orders(){
+			
+		$logged_in_user = $this->session->userdata('logged_in_user');			
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
+		$objData = $this->getData('book_history','rated_orders',$arrayParameter);
 
+		/*echo '<pre>';
+		print_r($objData->data);
+		exit;*/
+	
+		$this->load->view('comman/header');
+		$this->load->view('rated_orders',array('orderObj'=>$objData));
+		$this->load->view('comman/footer');
+		
+	}
+	//End by Bhavesh
+	
+	
 	// Save transporter work station
 	public function save_working_station(){
 		$logged_in_user = $this->session->userdata('logged_in_user');
