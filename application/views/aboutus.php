@@ -20,7 +20,7 @@
 					<h1 class="text-center">About Getmy<span>TRUCK</span></h1>
 					<p>
 						<h3>Who we are ?</h3>
-						Getmytruck.co is an online goods transport service  portal offering On-demand Transportation solutions that connects transporters, packers movers , crane providers, customers and other related entities across India with the objective of making the material transportation simpler, quicker and efficient by providing better vehicle at affordable rates. We help entities associated with us to achieve better profitability in their own business.
+						getmytruck.in is an online goods transport service  portal offering On-demand Transportation solutions that connects transporters, packers movers , crane providers, customers and other related entities across India with the objective of making the material transportation simpler, quicker and efficient by providing better vehicle at affordable rates. We help entities associated with us to achieve better profitability in their own business.
 						<h3>What We Do?</h3>
 						We provide a bridge of communication between customer &amp; vehicle or service provider to help in movement of goods  from one place to another at the quickest time and at best rates.
 					</p>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 </section>
-<section class="GetmyTruckManagement">
+<!-- <section class="GetmyTruckManagement">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -101,7 +101,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 <section id="vision_mision_content">
 	<div class="container-fluid">
 		<ul class="list-unstyled">
@@ -147,7 +147,7 @@
 					</div>
 				</div>
 			</li>
-			<li>
+			<!-- <li>
 				<div class="row white_row">
 					<div class="col-md-4">
 						<div class="vision_mision_content_img commonHeight">
@@ -165,7 +165,7 @@
 						</div>
 					</div>
 				</div>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 </section>

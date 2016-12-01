@@ -13,7 +13,7 @@
 								</article>
 								<article class="col-xs-9">
 									<p>Connect with us</p>
-									<a href="mailto:indgobal@gmail.com">indgobal@gmail.com</a>
+									<a href="mailto:info@getmytruck.in">info@getmytruck.in</a>
 								</article>
 							</div>
 						</div>
@@ -115,7 +115,7 @@
 								</li>
 
 							</ul>
-							<ul class="mid-foot-2">
+							<!-- <ul class="mid-foot-2">
 								<li>
 									<p><a>Pickers and Movers in Bangalore</a></p>
 									<p><a>Pickers and Movers in Bangalore</a></p>
@@ -135,7 +135,7 @@
 								<li>
 									<a href="#"><img class="img-responsive" src="<?php echo base_url('assets/');?>images/android-app.png" alt="App"></a>
 								</li>
-							</ul>
+							</ul> -->
 						</div>
 					</article>
 				</div>

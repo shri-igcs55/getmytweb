@@ -72,8 +72,8 @@
 				<h4>Contact Number</h4>
 				<p style="font-size:14px;">Mobile: +91 9400000000</p><br>
 				<h4>Email Address</h4>
-				<p style="font-size:14px;">Customer care: <br>support@getmytruck.in</p>
-				<p style="font-size:14px; color:blue;">Business purpose: <span style="color:black">business@getmytruck.in</span></p>
+				<p style="font-size:14px; color:blue;">Customer care: <br><span style="color:black"><a href="mailto:support@getmytruck.in">support@getmytruck.in</a></span></p>
+				<p style="font-size:14px; color:blue;">Business purpose: <br><span style="color:black"><a href="mailto:business@getmytruck.in">business@getmytruck.in</a></span></p>
 			</div>
 		</div>
 	</div>

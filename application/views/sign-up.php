@@ -20,7 +20,7 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
-									<p>Getmytruck.co is an online portal where customers can post their requirements and can get best solutions for their requirements.</p>
+									<p>getmytruck.in is an online portal where customers can post their requirements and can get best solutions for their requirements.</p>
 								</div>
 							</article>
 						</div>

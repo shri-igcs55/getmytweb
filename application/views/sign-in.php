@@ -43,7 +43,7 @@
 
 				<div class="register-wrp">
 
-					<center><h1>New to <a href="#">GetmyTruck.com</a></h1></center>
+					<center><h1>New to <a href="#">getmytruck.in</a></h1></center>
 
 					<div class="form-group text-center">
 					    <a href="<?php echo site_url('user/signup/'); ?>" type="submit" class="register-btn ">Register Now</a>

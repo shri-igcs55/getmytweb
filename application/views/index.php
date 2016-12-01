@@ -291,7 +291,7 @@
 	<!-- how it works slider -->
 
 	<!-- Happy Customers starts -->
-	<section id="happy_cusmr" class="happy_cusmr-wrp">
+	<!-- <section id="happy_cusmr" class="happy_cusmr-wrp">
 		<div class="container">
 			<div class="row">
 				<article class="col-md-12">
@@ -379,7 +379,7 @@
 				</article>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- Happy Customers ends -->
 
 
@@ -398,7 +398,7 @@
 							<div class="row">
 								<article class="col-sm-6">
 									<div class="form-group my_app_input">
-									    <span><input type="number" class="form-control" id="my_app" required></span>
+									    <span><input type="text" class="form-control" id="my_app" required></span>
 									</div>
 								</article>
 
