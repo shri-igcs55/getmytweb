@@ -184,6 +184,38 @@
 						    				</div>
 						    			</div>
 					    			<?php }?>
+									<?php if($logged_in_user['user_type_parent_id'] == 2){
+											if(isset($orderObj->quotation)){
+											?>
+				    					<div class="order_row">
+						    				<center><h4><span>Quotation Details</span></h4></center>
+											<?php
+												$disabled = '';
+												foreach($orderObj->quotation as $quation_details):													
+													if(5==$quation_details->order_status){
+														$disabled = 'disabled'; break;														
+													}
+												endforeach;
+												foreach($orderObj->quotation as $quation_details):
+												$buttonLable = 'Accept';
+													if(5==$quation_details->order_status){													
+														$buttonLable = 'Sent';
+													}
+												?>
+												<div class="row">
+													<article class="col-sm-12">
+														<p class="col-sm-4">RS. <?php echo $quation_details->order_amount?></p>
+														
+														<p class="col-sm-8">
+															
+															<input type="button" class="form-control accept_order" <?php echo $disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
+														</p>
+													</article>
+												</div>
+											<?php endforeach;?>
+						    			</div>
+											<?php }
+										}?>
 					    			<?php if($orderObj->order_place_for_id == 7){ ?>
 						    			<div class="order_row">
 						    				<center><h4><span>Vehicle Details</span></h4></center>
@@ -609,38 +641,15 @@ $(document).ready(function(){
 	})
 	
 	
-	<!-- Added by Bhavesh -->
-	$('input[name=rate_order]').click(function(){
-		$('input[name=quoted_order_id]').val($(this).closest('.order_wrpr').find('span.order_no').html());
-	})
-	$('#quote_order_btn').click(function(){
-		
-			var priceSlab = $('input[type=radio][name=rate_trans]:checked').val();			
-			var quoted_rate = $('input[name=quoted_rate]').val();
-			$('.form_message span').html('');
-			var number = new RegExp(/^[0-9\-]+$/);			
-			if(priceSlab=='er'){				
-				if(!number.test(quoted_rate)){
-					$('.form_message span').html('Price should contain only number.');
-					return false;
-				}
-			}
-			if(priceSlab=='br'){
-				//var number_dash = new RegExp(/^(?=.*\d)$/);
-				if(!number.test(quoted_rate))
-				{   
-					$('.form_message span').html('Price Range should contain number and desh.');
-					return false;
-				}							
-			}
-			
-			var order_id = $('input[name=quoted_order_id]').val();			
-		
+	<!-- Added by Bhavesh -->	
+	$('.accept_order').click(function(){
+			var transpoter_id = $('data-quoted_user_id').val();
+			var order_id = $(this).closest('.order_wrpr').find('order_no').text();
 			$.ajax({
 				type: "POST",
-		        url : "/gmt/Quotation/rateToOrder",
+		        url : "/gmt/Quotation/acceptOrder",
 		        data: {
-		        	order_id: order_id,quoted_rate: quoted_rate
+		        	order_id: order_id,transpoter_id: transpoter_id
 		        },
 
 		        success: function(res) {
