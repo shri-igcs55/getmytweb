@@ -70,7 +70,9 @@
                               ?>
                             </td>
                             <td>
-                              <a onclick="javascript: return confirm('Are you sure to delete this?');" class="btn btn-warning" href="<?php echo site_url('admin/ServiceType/remove_service_type/').$value['sf_id']; ?>">Delete</a>
+                              <?php if($value['sf_id'] != 1){ ?>
+                                <a onclick="javascript: return confirm('Are you sure to delete this?');" class="btn btn-warning" href="<?php echo site_url('admin/ServiceType/remove_service_type/').$value['sf_id']; ?>">Delete</a>
+                              <?php } ?>
                             </td>
                         </tr>
                       <?php

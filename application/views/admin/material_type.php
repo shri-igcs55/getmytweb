@@ -70,7 +70,9 @@
                               ?>
                             </td>
                             <td>
-                              <a onclick="javascript: return confirm('Are you sure to delete this?');" class="btn btn-warning" href="<?php echo site_url('admin/MaterialType/remove_material_type/').$value['mat_id']; ?>">Delete</a>
+                              <?php if($value['mat_id'] != 1){ ?>
+                                <a onclick="javascript: return confirm('Are you sure to delete this?');" class="btn btn-warning" href="<?php echo site_url('admin/MaterialType/remove_material_type/').$value['mat_id']; ?>">Delete</a>
+                              <?php } ?>
                             </td>
                         </tr>
                       <?php

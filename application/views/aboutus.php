@@ -5,8 +5,7 @@
 			<article class="col-md-12">
 				<div class="contactContent">
 					<h1>About Us</h1>
-					<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-					<span>Lorem Ipsum industry's.</span>
+					<span>We are the leaders in online goods transport services by connecting customers and transporters across India.</span>
 				</div>
 			</article>
 		</div>

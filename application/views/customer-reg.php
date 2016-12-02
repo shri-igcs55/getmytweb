@@ -198,18 +198,24 @@
 								</div>
 
 								<div class="row">
-									<article class="col-md-6">
+									<article id="dt" class="col-md-6">
 										<div class="form-group">
 										    <label for="Designatn">Designation<sup>*</sup></label>
 										    <select name="designation" id="Designatn" class="form-control">
 										    	<option>Select Designation</option>
-										    	<option>Owner</option>
-										    	<option>Manager</option>
-										    	<option>Partner</option>
-										    	<option>Director</option>
 										    	<option>Agent</option>
+										    	<option>Director</option>
+										    	<option>Manager</option>
 										    	<option>Other</option>
+										    	<option>Owner</option>
+										    	<option>Partner</option>
 										    </select>
+										</div>
+									</article>
+									<article id="othr_desg" hidden="" class="col-md-3">
+										<div class="form-group">
+										    <label for="dsg_typ">&nbsp;</label>
+										    <input name="dsg_typ" type="text" class="form-control" id="dsg_typ" placeholder="Other Designation" required>
 										</div>
 									</article>
 									<article class="col-md-6">
@@ -317,13 +323,19 @@
 								</div>
 
 							 	<div class="row">
-									<article class="col-md-6">
+									<article id="ct" class="col-md-6">
 										<div class="form-group">
 										    <label for="C_type">Company Type<sup>*</sup></label>
 										    <select name="company_type" id="C_type" class="ctype form-control" required>
 										    	<option value="">Select Company Type</option>
 										    	<option value="">Loading...</option>
 										    </select>
+										</div>
+									</article>
+									<article id="othr_comp" hidden="" class="col-md-3">
+										<div class="form-group">
+										    <label for="cmp_typ">&nbsp;</label>
+										    <input name="cmp_typ" type="text" class="form-control" id="cmp_typ" placeholder="Other Company Type" required>
 										</div>
 									</article>
 									<article class="col-md-6">
@@ -387,3 +399,27 @@
 	</div>
 </section>
 <!-- main CUSTOMER REGISTRATION ENDS-->
+<script type="text/javascript">
+	$('#C_type').change(function() {
+	    var selected = $(this).val();
+	    if(selected == '1'){
+	    	$('#ct').attr('class', 'col-md-3');
+	    	$('#othr_comp').show();
+	    }
+	    else{
+	    	$('#ct').attr('class', 'col-md-6');
+	    	$('#othr_comp').hide();
+	    }
+	});
+	$('#Designatn').change(function() {
+	    var selected = $(this).val();
+	    if(selected == 'Other'){
+	    	$('#dt').attr('class', 'col-md-3');
+	    	$('#othr_desg').show();
+	    }
+	    else{
+	    	$('#dt').attr('class', 'col-md-6');
+	    	$('#othr_desg').hide();
+	    }
+	});
+</script>

@@ -79,8 +79,10 @@
                               <a target="blank" href="<?php echo base_url('uploads/vehicle/').$value['vehicle_img'];?>"><img style="width:20%;height:20%;" src="<?php echo base_url('uploads/vehicle/').$value['vehicle_img'];?>"></a>                         
                             </td>*/ ?>
                             <td>
+                            <?php if($value['vehicle_id'] != 1){ ?>
                             <a class="btn btn-warning" 
             onclick="javascript: return confirm('Are you sure to delete this?');" href="<?php echo site_url('admin/vehicle/remove_vehicle/').$value['vehicle_id']; ?>">Delete</a>
+                            <?php } ?>
                             </td>
                         </tr>
                       <?php

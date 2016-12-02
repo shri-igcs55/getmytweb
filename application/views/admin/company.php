@@ -55,6 +55,7 @@
                     </tfoot>
                     <tbody>
                       <?php 
+                        
                         $v = 1;
                         foreach ($view_data as $key => $value) {
                       ?>
@@ -70,7 +71,9 @@
                               ?>
                             </td>
                             <td>
+                              <?php if($value['comp_type_id'] != 1){ ?>
                               <a onclick="javascript: return confirm('Are you sure to delete this?');" class="btn btn-warning" href="<?php echo site_url('admin/company/remove_company/').$value['comp_type_id']; ?>">Delete</a>
+                              <?php } ?>
                             </td>
                         </tr>
                       <?php

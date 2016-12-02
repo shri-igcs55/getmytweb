@@ -186,13 +186,19 @@
 														</article>
 													</div>
 													<div class="row">
-														<article class="col-md-8">
+														<article id="srt" class="col-md-8">
 															<div class="form-group">
 															    <label for="service">Service required for<sup>*</sup></label>
 															    <select id="service" class="form-control service" required>
 															    	<option value="">Select Service Type</option>
 															    	<option value="">Loading...</option>
 															    </select>
+															</div>
+														</article>
+														<article id="othr_serv" hidden="" class="col-md-4">
+															<div class="form-group">
+															    <label for="srv_typ">&nbsp;</label>
+															    <input name="srv_typ" type="text" class="form-control" id="srv_typ" placeholder="Other Service Type" required>
 															</div>
 														</article>
 														<article class="col-md-4">
@@ -232,7 +238,18 @@
 		</div>
 	</section>
 </section>
-<script>
+<script type="text/javascript">
+	$('#service').change(function() {
+	    var selected = $(this).val();
+	    if(selected == '1'){
+	    	$('#srt').attr('class', 'col-md-4');
+	    	$('#othr_serv').show();
+	    }
+	    else{
+	    	$('#srt').attr('class', 'col-md-8');
+	    	$('#othr_serv').hide();
+	    }
+	});
 	$( function() {
 	    $.widget( "custom.combobox", {
 	      	_create: function() {

@@ -123,13 +123,19 @@
 														</article>
 										    		</div>
 											    	<div class="row">
-														<article class="col-md-6">
+														<article id="mt" class="col-md-6">
 															<div class="form-group">
 															    <label for="material">Material Type<sup>*</sup></label>
 															    <select id="material" class="material form-control" required title="Select Material Type">
 															    	<option value="">Select Material Type</option>
 															    	<option value="">Loading...</option>
 															    </select>
+															</div>
+														</article>
+														<article id="othr_mt" hidden="" class="col-md-3">
+															<div class="form-group">
+																<label for="mtr_typ">&nbsp;</label>
+															    <input name="mtr_typ" type="text" class="form-control" id="mtr_typ" placeholder="Other Material Type" required>
 															</div>
 														</article>
 														<article class="col-md-6">
@@ -156,13 +162,19 @@
 													</div>
 
 													<div class="row">
-														<article class="col-md-6">
+														<article id="vt" class="col-md-6">
 															<div class="form-group">
 															    <label for="vehicle_type">Vehicle Type<sup>*</sup></label>
 															    <select id="vehicle_type" class="vehicle form-control" required title="Select Vehicle Type">
 															    	<option value="">Select Vehicle Type</option>
 															    	<option value="">Loading...</option>
 															    </select>
+															</div>
+														</article>
+														<article id="othr_vt" hidden="" class="col-md-3">
+															<div class="form-group">
+																<label for="vhl_typ">&nbsp;</label>
+															    <input name="vhl_typ" type="text" class="form-control" id="vhl_typ" placeholder="Other Vehicle Type" required>
 															</div>
 														</article>
 														<article class="col-md-3">
@@ -224,7 +236,30 @@
 </style>
 
 <!-- place order transporter starts -->
-<script>
+
+<script type="text/javascript">
+	$('#material').change(function() {
+	    var selected = $(this).val();
+	    if(selected == '1'){
+	    	$('#mt').attr('class', 'col-md-3');
+	    	$('#othr_mt').show();
+	    }
+	    else{
+	    	$('#mt').attr('class', 'col-md-6');
+	    	$('#othr_mt').hide();
+	    }
+	});
+	$('#vehicle_type').change(function() {
+	    var selected = $(this).val();
+	    if(selected == '1'){
+	    	$('#vt').attr('class', 'col-md-3');
+	    	$('#othr_vt').show();
+	    }
+	    else{
+	    	$('#vt').attr('class', 'col-md-6');
+	    	$('#othr_vt').hide();
+	    }
+	});
 
 // this code is for auto complete in place order page after login
   $( function() {

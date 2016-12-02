@@ -5,8 +5,9 @@
 				<div class="col-md-12">
 					<div class="howItHead">
 						<h1>How it works</h1>
-						<span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span>
-						<span>Lorem Ipsum has been the industry's.</span>
+						<span>
+							Book Online => Get Quotation => Pick Up &amp; Deliver => Track Anytime
+						</span>
 					</div>
 				</div>
 			</div>
@@ -31,7 +32,7 @@
 											<h5>Book Online</h5>
 											<h2>Just a few Clicks on your computer or mobile</h2>
 											<p>
-												It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.
+												Just a few clicks on your computer or mobile to book your truck with our highly responsive and user friendly website to get an instant quote, you can also book through your mobile app.
 											</p>
 										</div>
 									</div>
@@ -44,7 +45,7 @@
 											<h5>Get Quotation</h5>
 											<h2>Choose location, Date &amp; Time to get best discount in priority</h2>
 											<p>
-												It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.
+												After placing your order you will get quotation message or mailed instantly to your registered email address ,quotation will provided by different vendors, select the best as per your requirement.
 											</p>
 										</div>
 									</div>
@@ -54,10 +55,10 @@
 										<h1>3</h1>
 										<img src="<?php echo base_url('assets/');?>images/truck_red.png" alt="">
 										<div class="width_80_per">
-											<h5>PICK UP &amp; DELIVER</h5>
-											<h2>Do what you love to do &amp; leave thepick up &amp; delivery to us</h2>
+											<h5>Pick Up &amp; Deliver</h5>
+											<h2>Do what you love to do &amp; leave the pick up &amp; delivery to us</h2>
 											<p>
-												It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.
+												Our pickup and delivery is so easy and efficient that literally you don’t have to worry about it because each and every movement is informed to the customer via messages and emails so that you can have the privilege to do what you love and leave pick-up and delivery to us.
 											</p>
 										</div>
 									</div>
@@ -67,10 +68,10 @@
 										<h1>4</h1>
 										<img src="<?php echo base_url('assets/');?>images/track_red.png" alt="">
 										<div class="width_80_per">
-											<h5>TRACK ANYTIME</h5>
-											<h2>With realtime tracking, never lose sight of your goods</h2>
+											<h5>Track Anytime</h5>
+											<h2>With real time tracking system using advanced technology</h2>
 											<p>
-												It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here &amp; making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum.
+												With real time tracking system using advanced technology like GPS, you will never lose your sight on your goods by tracking the location of your truck displayed in the Google map.
 											</p>
 										</div>
 									</div>

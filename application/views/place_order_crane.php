@@ -129,13 +129,19 @@
 															    <input type="text" class="form-control" id="crane_service_to_location" required value="">
 															</div>
 														</article> -->
-														<article class="col-md-6 work">
+														<article id="dw" class="col-md-6 work">
 															<div class="form-group">
 															    <label for="crane_work_description">Description of Work<sup>*</sup></label>
 															    <select id="crane_work_description" class="crane_work_description form-control" required>
 															    	<option value="">Select Work type</option>
 															    	<option>Loading...</option>
 															    </select>
+															</div>
+														</article>
+														<article id="othr_dswr" hidden="" class="col-md-3">
+															<div class="form-group">
+										    					<label for="dswr_typ">&nbsp;</label>
+										    					<input name="dswr_typ" type="text" class="form-control" id="dswr_typ" placeholder="Other Work Type" required>
 															</div>
 														</article>
 													</div>
@@ -176,7 +182,18 @@
 		</div>
 	</section>
 </section>
-<script>
+<script type="text/javascript">
+	$('#crane_work_description').change(function() {
+	    var selected = $(this).val();
+	    if(selected == '1'){
+	    	$('#dw').attr('class', 'col-md-3');
+	    	$('#othr_dswr').show();
+	    }
+	    else{
+	    	$('#dw').attr('class', 'col-md-6');
+	    	$('#othr_dswr').hide();
+	    }
+	});
 	$( function() {
 	    $.widget( "custom.combobox", {
 	      	_create: function() {

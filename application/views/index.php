@@ -110,12 +110,7 @@
 							<article class="col-sm-6 col-xs-7">
 								<div class="about-content">
 									<h1>About <i>Getmy</i><span>TRUCK</span></h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, <span>sed do eiusmod
-									tempor incididunt ut labore et<span> dolore magna aliqua. Ut enim ad minim veniam,
-									quis ullamco laboris nisi ut aliquip ex ea commodo
-									consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-									proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></span></p>
+									<p>We are the leaders in online goods transport services by connecting customers and transporters across India. Our objective is to make the transportation of your goods simple and efficient by providing cutting edge technology that is secure, economical and user friendly.</p>
 									<a href="<?php echo site_url('aboutus'); ?>">Read more ...</a>
 								</div>
 							</article>
@@ -148,28 +143,28 @@
 									<img src="<?php echo base_url('assets/');?>images/mouse.png" class="img-responsive">
 								</div>
 								<h5>BOOK ONLINE</h5>
-								<p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,</p>
+								<p>Submit the details of pickup and drop from  mobile app or in website.</p><p>&nbsp;</p>
 							</li>
 							<li>
 								<div>
 									<img src="<?php echo base_url('assets/');?>images/board.png" class="img-responsive">
 								</div>
 								<h5>GET QUATATION</h5>
-								<p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,</p>
+								<p>Get quotations from available vendors, select the best of the rates &amp; services.</p><p>&nbsp;</p>
 							</li>
 							<li>
 								<div>
 									<img src="<?php echo base_url('assets/');?>images/trck.png" class="img-responsive truck">
 								</div>
 								<h5>PICKUP &amp; DELIVER</h5>
-								<p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,</p>
+								<p>Super-fast pickup and delivery by the trusted transporter or service providers with minimum waiting time.</p><br>
 							</li>
 							<li>
 								<div>
 									<img src="<?php echo base_url('assets/');?>images/search.png" class="img-responsive">
 								</div>
 								<h5>TRACK ANYTIME</h5>
-								<p>Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet,</p>
+								<p>You can track any time of your drivers with our GPS technology while your product is on road.</p><br>
 							</li>
 						</ul>
 					</div>
@@ -189,40 +184,28 @@
 			    	<img src="<?php echo base_url('assets/');?>images/slide_3.jpg">
 			    	<div class="slide_content">
 			    		<h1><i>Getmy</i><span>TRUCK</span> How it Works</h1>
-			    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			    		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			    		quis ullamco laboris nisi ut aliquip ex ea commodo
-			    		consequat.</p>
+			    		<p>First you need to submit pickup and drop location and also dimensions of your preferred cargo, once the vehicle  is confirmed vendor details are shared. You can track your driver through the GPS while they do the delivery of your product.</p>
 			    	</div>
 			    </div>
 			    <div class="item">
 			    	<img src="<?php echo base_url('assets/');?>images/slide_4.jpg">
 			    	<div class="slide_content">
 			    		<h1><i>Getmy</i><span>TRUCK</span> How it Works</h1>
-			    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			    		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			    		quis ullamco laboris nisi ut aliquip ex ea commodo
-			    		consequat.</p>
+			    		<p>First you need to submit pickup and drop location and also dimensions of your preferred cargo, once the vehicle  is confirmed vendor details are shared. You can track your driver through the GPS while they do the delivery of your product.</p>
 			    	</div>
 			    </div>
 			    <div class="item">
 			    	<img src="<?php echo base_url('assets/');?>images/slide_3.jpg">
 			    	<div class="slide_content">
 			    		<h1><i>Getmy</i><span>TRUCK</span> How it Works</h1>
-			    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			    		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			    		quis ullamco laboris nisi ut aliquip ex ea commodo
-			    		consequat.</p>
+			    		<p>First you need to submit pickup and drop location and also dimensions of your preferred cargo, once the vehicle  is confirmed vendor details are shared. You can track your driver through the GPS while they do the delivery of your product.</p>
 			    	</div>
 			    </div>
 			    <div class="item">
 			    	<img src="<?php echo base_url('assets/');?>images/slide_4.jpg">
 			    	<div class="slide_content">
 			    		<h1><i>Getmy</i><span>TRUCK</span> How it Works</h1>
-			    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			    		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			    		quis ullamco laboris nisi ut aliquip ex ea commodo
-			    		consequat.</p>
+			    		<p>First you need to submit pickup and drop location and also dimensions of your preferred cargo, once the vehicle  is confirmed vendor details are shared. You can track your driver through the GPS while they do the delivery of your product.</p>
 			    	</div>
 			    </div>
 
@@ -393,8 +376,7 @@
 					<article class="col-md-6 col-sm-8">
 						<div class="app_content_wrp">
 							<h1>Use <i>Getmy</i><span>TRUCK</span>on the go!</h1>
-							<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor.</h4>
+							<h4>Enter your mobile number details to get our android app link in SMS.</h4>
 							<div class="row">
 								<article class="col-sm-6">
 									<div class="form-group my_app_input">

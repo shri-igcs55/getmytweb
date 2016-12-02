@@ -5,8 +5,7 @@
 				<article class="col-md-12">
 					<div class="packagebannerHead">
 						<h1>Subscription &amp; Packages</h1>
-						<span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque</span>
-						<span>nec vulputate ex. Praesent nunc</span>
+						<span>We have packages according your needs, so select one and increase your business.</span>
 					</div>
 				</article>
 			</div>
