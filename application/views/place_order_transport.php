@@ -502,13 +502,18 @@
 	        var from_location 		= objCurrentSection.find("input[name='from_location[]']");
 	        var to_city 			= objCurrentSection.find("select[name='to_city[]']");
 	        var to_location 		= objCurrentSection.find("input[name='to_location[]']");
+
 	        var material_type 		= objCurrentSection.find("#material").val();
-	        
+	        var other_material_type = objCurrentSection.find("#mtr_typ").val();
+
 	        var no_of_quantity 		= objCurrentSection.find("#length").val();
 	        var weight 				= objCurrentSection.find("#nag").val();
 	        
 	        var feet 				= objCurrentSection.find("#weight").val();
+
 	        var vehicle_type 		= objCurrentSection.find("#vehicle_type").val();
+	        var other_vehicle_type 	= objCurrentSection.find("#vhl_typ").val();
+
 	        var no_of_vehicle 		= objCurrentSection.find("#vehicle_no").val();
 	        var pickup_points 		= objCurrentSection.find("#pick_point").val();
 			var destination_points 	= objCurrentSection.find("#drop_point").val();
@@ -557,10 +562,12 @@
 						to_city				: array_to_city,
 						to_location			: array_to_location,
 						material_type		: material_type,
+						other_material_type	: other_material_type,
 						no_of_quantity		: no_of_quantity,
 						weight				: weight,
 						feet				: feet,
 						vehicle_type		: vehicle_type,
+						other_vehicle_type	: other_vehicle_type,
 						no_of_vehicle		: no_of_vehicle,
 						pickup_points		: pickup_points,
 						destination_points	: destination_points,

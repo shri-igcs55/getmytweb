@@ -327,7 +327,7 @@
 	 
 	    $( "#From_city" ).combobox();
 	    $( "#To_city" ).combobox();
-});
+	});
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -465,6 +465,7 @@
 
 			var weight			= objCraneProvider.find("#weight").val();
 			var desc_of_work	= objCraneProvider.find("#crane_work_description").val();
+			var other_desc_of_work = objCraneProvider.find("#dswr_typ").val();
 			var sechdule_date	= objCraneProvider.find("#crane_schedule_date").val();
 			        	
 			if(user_id == '' || user_type_id == '' || odr_by_fname == '' || odr_by_lname == '' ||
@@ -497,6 +498,7 @@
 							to_address	 	: to_address,
 							weight 			: weight,
 							desc_of_work	: desc_of_work,
+							other_desc_of_work:other_desc_of_work,
 							sechdule_date	: sechdule_date
 			        	},
 			        success: function(res){

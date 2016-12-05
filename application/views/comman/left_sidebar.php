@@ -37,12 +37,14 @@ Transporter 							= 7
 		<ul class="nav nav-tabs"><!-- 'tabs-right' for right tabs -->
 		    <!-- <li class="active"><a href="<?php //echo site_url('/'); ?>">Home</a></li> -->
 		    <?php if($logged_in_user['user_type'] == 3 || 
-		    		 $logged_in_user['user_type'] == 4 /*||
+		    		 $logged_in_user['user_type'] == 4 ||
 		    		 $logged_in_user['user_type'] == 8 ||
 		    		 $logged_in_user['user_type'] == 9 ||
 		    		 $logged_in_user['user_type'] == 10 ||
 		    		 $logged_in_user['user_type'] == 11 ||
-		    		 $logged_in_user['user_type'] == 12 */):?>
+		    		 $logged_in_user['user_type'] == 12 ||
+		    		 $logged_in_user['user_type'] == 5 ||
+		    		 $logged_in_user['user_type'] == 6 ):?>
 				<li><a href="<?php echo site_url('userdashboard/place_transporter_order'); ?>">Book Order</a></li>
 		    <?php endif;?>
 		    <?php if($logged_in_user['user_type'] == 5 ||

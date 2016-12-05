@@ -473,13 +473,31 @@ $(document).ready(function(){
         var firm_name 		= objCurrentSection.find("#FirmName").val();
         var company_type	= objCurrentSection.find("#C_type").val();
         var company_pan		= objCurrentSection.find("#email_phn").val();
+
+        if(designation = 'Other'){
+        	var other_designation_new = objCurrentSection.find("#dsg_typ").val();
+        }else{
+        	var designation_new	= objCurrentSection.find("#Designatn").val();
+        }
+        
+        if(company_type == 1){
+        	var other_company_type_new = objCurrentSection.find("#cmp_typ").val();
+        }else{
+        	var company_type_new = objCurrentSection.find("#C_type").val();
+        }
         
         if(first_name == '' || user_mob == '' || user_pass == '' || address1 == '' || 
         	state == '' || district == '' || city == '' || pin == '' || captcha == '' ){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(designation == '' || firm_name == '' || company_type == '' || company_pan == ''){
+        else if(firm_name == '' || company_pan == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        }
+        else if(other_designation_new == '' || designation_new == ''){
+        	$('<p style="color:#ed4343;"><strong>Designation field must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        }
+        else if(other_company_type_new == '' || company_type_new == ''){
+        	$('<p style="color:#ed4343;"><strong>Company Type field must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
 		else if(captcha !== captcha_word){
 			$('<p style="color:#ed4343;"><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');

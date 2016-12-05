@@ -383,7 +383,7 @@
 	 
 	    $( "#From_city" ).combobox();
 	    $( "#To_city" ).combobox();
-});
+	});
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -493,6 +493,7 @@
 	        var shift_floor_to 			= objPMSection.find("#t_floor").val();
 	        var to_lift_facility 		= $("input[name=check1-1]:checked").val();
 			var service_for 			= objPMSection.find("#service").val();
+			var other_service_for		= objPMSection.find("#srv_typ").val();
 	        var sechdule_date	 		= objPMSection.find("#pm_schedule_date").val();
 	        var desc_of_goods			= objPMSection.find("#work_description_pm").val();
 	        
@@ -525,6 +526,7 @@
 						shift_floor_to			: shift_floor_to,
 						to_lift_facility		: to_lift_facility,
 						service_for				: service_for,
+						other_service_for		: other_service_for,
 						sechdule_date			: sechdule_date,
 						desc_of_goods			: desc_of_goods
 			       	},
