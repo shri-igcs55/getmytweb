@@ -3,7 +3,7 @@
 /**
 * this controller is for dashboad
 */
-class UserDashboard extends CI_Controller
+class Userdashboard extends CI_Controller
 {
 	
 	public function __construct()
