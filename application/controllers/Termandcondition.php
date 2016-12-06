@@ -3,7 +3,7 @@
 /**
 * All Contact us
 */
-class termandcondition extends CI_Controller {
+class Termandcondition extends CI_Controller {
 
 	public function __construct()
 	{

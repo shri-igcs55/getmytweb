@@ -1,11 +1,11 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
-* All Contact us
+* All Home related things
 */
-class membership extends CI_Controller {
+class Howitworks extends CI_Controller {
 
-	public function membership()
+	public function __construct()
 	{
 		parent::__construct();
 	}
@@ -13,8 +13,8 @@ class membership extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('comman/header');
-		$this->load->view('membership');
+		$this->load->view('how-it-works');
 		$this->load->view('comman/footer');
 	}
+
 }
-?>

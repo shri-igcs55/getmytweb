@@ -3,7 +3,7 @@
 /**
 * All Contact us
 */
-class contactUs extends CI_Controller {
+class Aboutus extends CI_Controller {
 
 	public function __construct()
 	{
@@ -13,7 +13,7 @@ class contactUs extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('comman/header');
-		$this->load->view('contactUs');
+		$this->load->view('aboutus');
 		$this->load->view('comman/footer');
 	}
 }

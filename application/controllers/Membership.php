@@ -3,9 +3,9 @@
 /**
 * All Contact us
 */
-class ourservice extends CI_Controller {
+class Membership extends CI_Controller {
 
-	public function __construct()
+	public function membership()
 	{
 		parent::__construct();
 	}
@@ -13,7 +13,7 @@ class ourservice extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('comman/header');
-		$this->load->view('our-services');
+		$this->load->view('membership');
 		$this->load->view('comman/footer');
 	}
 }
