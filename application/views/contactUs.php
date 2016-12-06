@@ -68,10 +68,13 @@
 				<p style="font-size:18px;">81-A, Janak Puri 1<sup>st</sup>,<br>
 				Imli wala Phatak,<br> near vidhan sabha,<br>
 				Jaipur - 302015</p>
-				<p style="font-size:14px;"><b>Office hours 10am-6pm (Sunday and holidays are off)</b></p><br>
-				<h4>Contact Number</h4>
-				<p style="font-size:14px;">Mobile: +91 9400000000</p><br>
-				<h4>Email Address</h4>
+				<br>
+				<h4><b>Contact Number</b></h4>
+				<p style="font-size:14px;">
+				WhatsApp: <a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">+91 94145 56951</a><br>
+				Call: <a href="tel:+919461117851">+91 94611 17851</a><br>
+				<b>Office hours 10am-6pm (Sunday &amp; holidays are off)</b></p><br>
+				<h4><b>Email Address</b></h4>
 				<p style="font-size:14px; color:blue;">Customer care: <br><span style="color:black"><a href="mailto:support@getmytruck.in">support@getmytruck.in</a></span></p>
 				<p style="font-size:14px; color:blue;">Business purpose: <br><span style="color:black"><a href="mailto:business@getmytruck.in">business@getmytruck.in</a></span></p>
 			</div>

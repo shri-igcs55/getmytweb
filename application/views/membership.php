@@ -17,8 +17,7 @@
 				<div class="col-md-12">
 					<div class="packageDescriptionSection">
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec interdum augue, vel tempor felis. Vestibulum tempor mollis
-                            massa in tempor. Nam luctus nisl ut sollicitudin mollis. Donec interdum vehicula ex viverra imperdiet. 
+							Following packages for subscription are available kindly go through it to get high quality services through verified operators.
 						</p>
 						<ul class="nav nav-tabs packageTabs" role="tablist">
 							<li role="presentation" class="active">
@@ -36,15 +35,15 @@
 										<thead>
 											<tr>
 												<th>Package Feature</th>
-												<th>Packers &amp; Movers</th>
-												<th>For Tanker Provider</th>
+												<th style="text-align: center;">Packers &amp; Movers</th>
+												<th style="text-align: center;">For Tanker Provider</th>
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td><span>Registartion</span></td>
-												<td><span>40 days trail free</span></td>
-												<td><span>40 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
 											</tr>
 											<tr>
 												<td>
@@ -145,12 +144,12 @@
 										<tbody>
 											<tr>
 												<td><span>Registration</span></td>
-												<td><span>40 days trail free</span></td>
-												<td><span>40 days trail free</span></td>
-												<td><span>40 days trail free</span></td>
-												<td><span>40 days trail free</span></td>
-												<td><span>40 days trail free</span></td>
-												<td><span>40 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
+												<td><span>21 days trail free</span></td>
 											</tr>
 											<tr>
 												<td>

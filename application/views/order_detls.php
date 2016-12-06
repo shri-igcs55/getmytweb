@@ -7,7 +7,7 @@
 				<article class="col-md-3">
 					<?php include_once('comman/left_sidebar.php'); 
 						$u_id=$logged_in_user['user_id']; 
-						print_r($logged_in_user);
+						//print_r($logged_in_user);
 					?>
 				</article>
 
@@ -34,11 +34,11 @@
 								}
 								if($orderObj->order_from_lift == 2):	$lift_status = "Yes";
 	    					 	elseif($orderObj->order_from_lift == 1):$lift_status = "No";
-	    					 	elseif($orderObj->order_from_lift == 3):$lift_status = "Don't Know";
+	    					 	elseif($orderObj->order_from_lift == 3):$lift_status ="Don't Know";
 	    					 	endif;
-	    					 	if($orderObj->order_to_lift == 2): 		$to_lift_status = "Yes";
-	    					 	elseif($orderObj->order_to_lift == 1): 	$to_lift_status = "No";
-	    					 	elseif($orderObj->order_to_lift == 3): 	$to_lift_status = "Don't Know";
+	    					 	if($orderObj->order_to_lift == 2): 	  $to_lift_status= "Yes";
+	    					 	elseif($orderObj->order_to_lift == 1):$to_lift_status= "No";
+	    					 	elseif($orderObj->order_to_lift == 3):$to_lift_status="Don't Know";
 	    						endif;
 	    						?>
 
@@ -80,28 +80,28 @@
 					    				<center><h4><span>Pickup-Drop Details</span></h4></center>
 					    				<div class="row cities">
 											<?php if($orderObj->order_place_for_id == 7){
-											$intLoop = 0; $city_index = 1;
+												$intLoop = 0; $city_index = 1;
 												foreach($orderObj->from_city as $fromCity):?>
 													<article class="col-sm-4" style="height: 60px;">
 														<label>From City(<?php echo $city_index?>)</label>
 														<p><?php echo $fromCity?></p>
 													</article>
 												<?php $city_index++; endforeach;
-											echo '</div><div class="row cities">';
+													echo '</div><div class="row cities">';
 												foreach($orderObj->from_city as $fromCity):?>
 													<article class="col-sm-4" style="height: 60px;">
 														<label>To City(<?php echo $city_index?>)</label>
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
-											<?php $city_index++; endforeach;
+												<?php $city_index++; endforeach;
 											}else{?>
-											<?php $intLoop = 0;
+												<?php $intLoop = 0;
 												foreach($orderObj->from_city as $fromCity):?>
 													<?php if($orderObj->order_place_for_id == 5){?>
-													<article class="col-sm-4">
-										    			<label>Service require for </label>
-									    				<p><?php echo $orderObj->service_type_name?></p>
-									    			</article>
+														<article class="col-sm-4">
+											    			<label>Service require for </label>
+										    				<p><?php if(!empty($orderObj->service_type_name)) echo $orderObj->service_type_name; if(!empty($orderObj->other_service_for)) echo " - ".$orderObj->other_service_for ?></p>
+										    			</article>
 									    			<?php }?>
 													<article class="col-sm-4" style="height: 60px;">
 														<label>From City</label>
@@ -111,7 +111,7 @@
 														<label>To City</label>
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
-											<?php endforeach;?>
+												<?php endforeach;?>
 											<?php }?>
 										</div>
 										<?php if($orderObj->order_place_for_id == 5 || $orderObj->order_place_for_id == 6){?>
@@ -134,29 +134,29 @@
 										<div class="gat_vertcl"></div>
 					    				<div class="row cities">
 											<?php if($orderObj->order_place_for_id == 7){
-											$intLoopArea = 0; $city_area_index = 1;
-											foreach($orderObj->pickup_area_location as $pickup_area_location):?>
-												<article class="col-sm-4" style="height: 60px;">
-						    						<label>From Where in City area(<?php echo $city_area_index?>)</label>
-						    						<p><?php echo $pickup_area_location?></p>
-						    					</article>
-						    					<article class="col-sm-4" style="height: 60px;">
-						    						<label>To Where in City area(<?php echo $city_area_index?>)</label>
-						    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
-						    					</article>
-						    				<?php $city_area_index++; endforeach;
+												$intLoopArea = 0; $city_area_index = 1;
+												foreach($orderObj->pickup_area_location as $pickup_area_location):?>
+													<article class="col-sm-4" style="height: 60px;">
+							    						<label>From Where in City area(<?php echo $city_area_index?>)</label>
+							    						<p><?php echo $pickup_area_location?></p>
+							    					</article>
+							    					<article class="col-sm-4" style="height: 60px;">
+							    						<label>To Where in City area(<?php echo $city_area_index?>)</label>
+							    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
+							    					</article>
+							    				<?php $city_area_index++; endforeach;
 						    				}else{?>
-											<?php $intLoopArea = 0;
-											foreach($orderObj->pickup_area_location as $pickup_area_location):?>
-												<article class="col-sm-4" style="height: 60px;">
-						    						<label>From Where in City area</label>
-						    						<p><?php echo $pickup_area_location?></p>
-						    					</article>
-						    					<article class="col-sm-4" style="height: 60px;">
-						    						<label>To Where in City area</label>
-						    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
-						    					</article>
-						    				<?php endforeach;?>
+												<?php $intLoopArea = 0;
+												foreach($orderObj->pickup_area_location as $pickup_area_location):?>
+													<article class="col-sm-4" style="height: 60px;">
+							    						<label>From Where in City area</label>
+							    						<p><?php echo $pickup_area_location?></p>
+							    					</article>
+							    					<article class="col-sm-4" style="height: 60px;">
+							    						<label>To Where in City area</label>
+							    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
+							    					</article>
+							    				<?php endforeach;?>
 											<?php }?>
 										</div>
 										<div class="row cities">
@@ -180,7 +180,7 @@
 					    					<div class="row">
 						    					<article class="col-sm-12">
 						    						<label>Material / Goods Description</label>
-						    						<p><?php echo $material_work_goods_description;?></p>
+						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
 						    					</article>
 						    				</div>
 						    			</div>
@@ -191,7 +191,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-3">
 						    						<label>Vehicle Type</label>
-						    						<p><?php echo $orderObj->vehicle_type?></p>
+						    						<p><?php echo $orderObj->vehicle_type; if(!empty($orderObj->other_vehicle)) echo " - ".$orderObj->other_vehicle;?></p>
 						    					</article>
 						    					<article class="col-sm-4">
 						    						<label>No. of Vehicle</label>
@@ -215,7 +215,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-4">
 						    						<label>Material / Goods Type</label>
-						    						<p><?php echo $orderObj->material_type?></p>
+						    						<p><?php echo $orderObj->material_type; if(!empty($orderObj->other_material)) echo " - ".$orderObj->other_material;?></p>
 						    					</article>
 						    					<article class="col-sm-4 ">
 						    						<label>Length (in Feet)</label>
@@ -236,15 +236,15 @@
 						    				<div class="gat_vertcl"></div>
 						    				<div class="row">
 						    					<?php if($orderObj->order_place_for_id == 6){?>
-						    					<article class="col-sm-12">
-						    						<label>Material / Goods Description</label>
-						    						<p><?php echo $orderObj->crane_work_type?></p>
-						    					</article>
+							    					<article class="col-sm-12">
+							    						<label>Material / Goods Description</label>
+							    						<p><?php echo $orderObj->crane_work_type ?></p>
+							    					</article>
 						    					<?php }elseif($orderObj->order_place_for_id == 5){?>
-						    					<article class="col-sm-12">
-						    						<label>Material / Goods Description</label>
-						    						<p><?php echo $orderObj->pm_goods_description?></p>
-						    					</article>
+							    					<article class="col-sm-12">
+							    						<label>Material / Goods Description</label>
+							    						<p><?php echo $orderObj->pm_goods_description?></p>
+							    					</article>
 						    					<?php }?>
 						    				</div>
 						    			</div>

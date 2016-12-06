@@ -13,7 +13,7 @@
 								</article>
 								<article class="col-xs-9">
 									<p>Connect with us</p>
-									<a href="mailto:info@getmytruck.in">info@getmytruck.in</a>
+									<a href="mailto:us-info@getmytruck.in">us-info@getmytruck.in</a>
 								</article>
 							</div>
 						</div>
@@ -27,7 +27,8 @@
 								</article>
 								<article class="col-xs-9">
 									<p>Chat with us</p>
-									<a href="tel:0123456789">+0123 456789</a>
+									<!-- <a href="tel:0123456789">+0123 456789</a> -->
+									<a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">+91 94145 56951</a>
 								</article>
 							</div>
 						</div>
@@ -41,7 +42,7 @@
 								</article>
 								<article class="col-xs-9">
 									<p>Talk with us</p>
-									<a href="tel:0123456789">+0123 456789</a>
+									<a href="tel:0123456789">+91 94611 17851</a>
 								</article>
 							</div>
 						</div>
@@ -66,8 +67,8 @@
 									<p>Payment policy</p> -->
 									<p><a href="<?php echo site_url('/ourservice'); ?>">Our Services</a></p>
 									<p><a href="<?php echo site_url('/howitworks'); ?>">How it works ?</a></p>
-									<p><a href="<?php echo site_url('#'); ?>">Membership</a></p>
-									<p><a href="<?php echo site_url('/contactUs'); ?>">Contact us</a></p>
+									<p><a href="<?php echo site_url('/membership'); ?>">Membership</a></p>
+									<p><a href="<?php echo site_url('/contactus'); ?>">Contact us</a></p>
 								</li>
 
 								<li>
@@ -111,7 +112,11 @@
 									<p style="font-size:12px;">81-A, Janak Puri 1<sup>st</sup>,<br>
 									Imli wala Phatak,<br> near vidhan sabha,<br>
 									Jaipur - 302015</p>
-									<p style="font-size:12px;">Mobile: +91 9400000000</p>
+									<p style="font-size:12px;">
+										<a><i class="fa fa-whatsapp"></i></a> <a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">+91 94145 56951</a><br>
+										<a><i class="fa fa-phone"></i></a> <a href="tel:+919461117851">+91 94611 17851</a><br>
+										<b>Office hours 10am-6pm (Sunday &amp; Holidays off)</b>
+									</p>
 								</li>
 
 							</ul>
