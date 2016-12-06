@@ -3,7 +3,7 @@
 /**
 * All Contact us
 */
-class ContactUs extends CI_Controller {
+class Contactus extends CI_Controller {
 
 	public function __construct()
 	{
