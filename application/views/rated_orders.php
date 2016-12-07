@@ -7,7 +7,7 @@
 				<article class="col-md-3">
 					<?php include_once('comman/left_sidebar.php'); 
 						$u_id=$logged_in_user['user_id']; 
-						print_r($logged_in_user);
+						// print_r($logged_in_user);
 					?>
 				</article>
 
@@ -22,7 +22,7 @@
 		    			</div>
 		    			<span id="form_validation_msg"></span>
 						<?php 
-						if(!isset($orderObj->data->message)):
+						if(isset($orderObj->data->message)):
 							foreach($orderObj->data as $orderObj):
 								if($orderObj->order_place_for_id == 5){
 									$material_work_goods_description = $orderObj->pm_goods_description;
