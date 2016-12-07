@@ -49,8 +49,8 @@
 				    								</thead>
 				    								<tbody class="contactlisthead">
 				    									<?php 
-				    										//print_r($orderObj);exit();
-				    										if(!isset($orderObj->data->message)):
+				    										// print_r($orderObj);exit();
+				    										if(!isset($orderObj->data->message)){
 																foreach($orderObj->data as $orderObj): 
 														?>
 															<tr>
@@ -69,9 +69,9 @@
 															</tr>
 														<?php 
 																endforeach;
-															else:
+															}else{
 																echo '<h5>'.$orderObj->data->message.'</h5>';
-															endif;
+															}
 														?>
 				    								</tbody>
 				    							</table>
