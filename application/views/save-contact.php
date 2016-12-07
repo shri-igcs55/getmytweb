@@ -69,7 +69,7 @@
 															</tr>
 														<?php 
 																endforeach;
-															}else{
+															}elseif(isset($orderObj->data->message)){
 																echo '<h5>'.$orderObj->data->message.'</h5>';
 															}
 														?>
