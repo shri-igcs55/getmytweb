@@ -277,19 +277,19 @@
 												<td><span>Price</span></td>
 												<td><span>7500</span></td>
 												<td><span>4500</span></td>
-												<td><span>5500</span></td>
 												<td><span>4500</span></td>
-												<td><span>5000</span></td>
-												<td><span>5000</span></td>
+												<td><span>4500</span></td>
+												<td><span>4500</span></td>
+												<td><span>4500</span></td>
 											</tr>
 											<tr>
 												<td><span>Discount</span></td>
 												<td><span>600</span></td>
-												<td><span>200</span></td>
 												<td><span>600</span></td>
-												<td><span>200</span></td>
-												<td><span>500</span></td>
-												<td><span>500</span></td>
+												<td><span>600</span></td>
+												<td><span>600</span></td>
+												<td><span>600</span></td>
+												<td><span>600</span></td>
 											</tr>
 											<tr>
 												<td>
@@ -300,23 +300,23 @@
 													<a href="javascript:void(0);">Pay Now</a>
 												</td>
 												<td>
-													<span>4300</span>
+													<span>3900</span>
 													<a href="javascript:void(0);">Pay Now</a>
 												</td>
 												<td>
-													<span>4900</span>
+													<span>3900</span>
 													<a href="javascript:void(0);">Pay Now</a>
 												</td>
 												<td>
-													<span>4300</span>
+													<span>3900</span>
 													<a href="javascript:void(0);">Pay Now</a>
 												</td>
 												<td>
-													<span>4500</span>
+													<span>3900</span>
 													<a href="javascript:void(0);">Pay Now</a>
 												</td>
 												<td>
-													<span>4500</span>
+													<span>3900</span>
 													<a href="javascript:void(0);">Pay Now</a>
 												</td>
 											</tr>
