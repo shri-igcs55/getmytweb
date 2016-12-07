@@ -3,10 +3,10 @@
 /**
 * this controller is for dashboad
 */
-class UserDashboard extends CI_Controller
+class Userdashboard extends CI_Controller
 {
 	
-	public function __construct()
+	public function Userdashboard()
 	{
 		parent:: __construct();
 		if (!isset($this->session->userdata['logged_in_user'])) {
