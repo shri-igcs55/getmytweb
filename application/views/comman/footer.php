@@ -199,6 +199,7 @@
             });
 </script>
 </body>
+<?php print_r($logged_in_user); ?>
 </html>
 
 
