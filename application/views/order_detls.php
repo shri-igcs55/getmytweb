@@ -22,7 +22,7 @@
 		    			</div>
 		    			<span id="form_validation_msg"></span>
 						<?php 
-						if(!isset($orderObj->data->message)):
+						if(!isset($orderObj->data->message)){
 						   if(isset($orderObj->data)):
 							foreach($orderObj->data as $orderObj):
 								if($orderObj->order_place_for_id == 5){
@@ -361,9 +361,9 @@
 							<?php 
 								endforeach;
 							endif;
-						else:
+						}else{
 							echo '<h5>'.$orderObj->data->message.'</h5>';
-						endif;
+						}
 						?>
 					</section>
 				</article>

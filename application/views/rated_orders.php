@@ -16,13 +16,14 @@
 						<div class="row">
 		    				<article class="col-md-12">
 		    					<div class="section_head">
-									<h1>View Pending Order </h1>
+									<h1>View Rated Order </h1>
 								</div>
 		    				</article>
 		    			</div>
 		    			<span id="form_validation_msg"></span>
 						<?php 
-						if(isset($orderObj->data->message)):
+						if(!isset($orderObj->data->message)){
+							if(isset($orderObj->data)):
 							foreach($orderObj->data as $orderObj):
 								if($orderObj->order_place_for_id == 5){
 									$material_work_goods_description = $orderObj->pm_goods_description;
@@ -390,9 +391,10 @@
 								</div>	
 								<br/>
 							<?php endforeach;
-						else:
+								endif;
+						}else{
 							echo '<h5>'.$orderObj->data->message.'</h5>';
-						endif;
+						}
 						?>
 					</section>
 				</article>
