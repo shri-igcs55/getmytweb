@@ -42,7 +42,7 @@
 										<div class="form-group">
 										    <label for="M_number">Mobile Number<sup>*</sup></label>
 										    <span class="M_number_befr">
-										    	<input name="user_mob" minlength="10" maxlength="10" type="number" class="form-control" id="M_number" required>
+										    	<input name="user_mob" min="10" max="10" minlength="10" maxlength="10" type="text" class="form-control" id="M_number" required>
 										    </span>
 										</div>
 									</article>
@@ -121,7 +121,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="Pincode">Pin code<sup>*</sup></label>
-										    <input name="pin" maxlength="6" type="number" class="form-control" id="Pincode" required>
+										    <input name="pin" min="6" max="6" minlength="6" maxlength="6" type="text" class="form-control" id="Pincode" required>
 										</div>
 									</article>
 									<article class="col-md-6">
@@ -231,13 +231,13 @@
 										<div class="form-group">
 										    <label for="M_number">Mobile Number<sup>*</sup></label>
 										    <span class="M_number_befr">
-										    	<input name="user_mob" maxlength="10" type="number" class="form-control" id="M_number" required>
+										    	<input name="user_mob" min="10" max="10" minlength="10" maxlength="10" type="text" class="form-control" id="M_number" required>
 										    </span>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="E_mail">Email</label>
+										    <label for="E_mail">Email<sup>*</sup></label>
 										    <input name="user_email" type="email" class="form-control" id="E_mail" required>
 										</div>
 									</article>
@@ -308,7 +308,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="Pincode">Pin code<sup>*</sup></label>
-										    <input name="pin" maxlength="6" type="number" class="form-control" id="Pincode" required>
+										    <input name="pin" min="6" max="6" minlength="6" maxlength="6" type="text" class="form-control" id="Pincode" required>
 										</div>
 									</article>
 									<article class="col-md-6">
@@ -341,7 +341,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="email_phn">Pan No</label>
-										    <input name="pan" type="text" class="form-control" id="email_phn" required>
+										    <input name="pan" min="10" max="10" minlength="10" maxlength="10" type="text" class="form-control" id="email_phn" required>
 										</div>
 									</article>
 								</div>

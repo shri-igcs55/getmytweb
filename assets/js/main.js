@@ -515,8 +515,32 @@ $(document).ready(function(){
 		            if (res.status_code == 200)
 		            {
 		              	$('#form_validation_msg').empty();
-			            $('<p style="color:#00ff00;"><strong>Registered Successfully.</strong></p>').appendTo('#form_validation_msg');
+			            $('<p style="color:#00ff00;"><strong>Registered Successfully</strong></p>').appendTo('#form_validation_msg');
 		              	$('.reg_form')[0].reset();
+		              	
+		              	jQuery.ajax({
+					    	type:"POST",
+							url: "/gmt/User/user_signin",
+							dataType: 'json',
+					        data: { 
+					        	email_mob: user_email,
+					        	password : user_pass
+					        	// utype_id : role
+					        },
+							success: function(res){
+								if(res.status_code == 200){
+									window.location = site_url+'userdashboard/place_transporter_order';
+								}else{
+									$.each(res.data, function(key, val) {
+						            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+						            });
+								}
+							},
+					        error: function(){
+					        	console.log('Somthing went wrong while login.');
+					        }
+						});
+
 		            }else{
 			            $('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
@@ -525,7 +549,7 @@ $(document).ready(function(){
 		            }
 	          	},
 		        error: function(){
-		        	console.log('Somthing went wrong');
+		        	console.log('Somthing went wrong while registration.');
 		        }
 	        });
 	    }

@@ -97,7 +97,8 @@
 					if(res.status_code == 200){
 						$('#form_validation_msg').empty();
 			    		$('<p style="color:#00ff00"><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
-			    		window.location ='<?php echo site_url('user/edit'); ?>';
+			    		// window.location ='<?php //echo site_url('user/edit'); ?>';
+			    		window.location = '<?php echo site_url('userdashboard/place_transporter_order'); ?>';
 					}else{
 						$('#form_validation_msg').empty();
 			        	$.each(res.data, function(key, val) {
