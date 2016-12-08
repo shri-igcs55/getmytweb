@@ -477,13 +477,13 @@ $(document).ready(function(){
         if(designation = 'Other'){
         	var other_designation_new = objCurrentSection.find("#dsg_typ").val();
         }else{
-        	var designation_new	= objCurrentSection.find("#Designatn").val();
+        	var designation	= objCurrentSection.find("#Designatn").val();
         }
         
         if(company_type == 1){
         	var other_company_type_new = objCurrentSection.find("#cmp_typ").val();
         }else{
-        	var company_type_new = objCurrentSection.find("#C_type").val();
+        	var company_type = objCurrentSection.find("#C_type").val();
         }
         
         if(first_name == '' || user_mob == '' || user_pass == '' || address1 == '' || 

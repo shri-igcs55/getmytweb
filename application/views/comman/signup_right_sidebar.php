@@ -2,7 +2,7 @@
 
 	<div class="usr_login">
 		<div class="section_sub">
-			<h3>Already <span>Details</span></h3>
+			<h3>Already <span>Registered</span></h3>
 			<h4><a href="<?php echo site_url('user/signin/'); ?>">Click here to Login</a></h4>
 		</div>
 	</div>

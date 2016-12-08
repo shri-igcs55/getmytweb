@@ -20,6 +20,7 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
+									<br>
 									<p>getmytruck.in is an online portal where customers can post their requirements and can get best solutions for their requirements.</p>
 								</div>
 							</article>
@@ -39,6 +40,7 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
+									<br>
 									<p>we provide a platform where goods transporters
 									 (transporters &amp; logistics, container providers, trolley or tankers providers, fleet owner, commission agents) and service provider(packers movers &amp; crane provider) can grow their business by satisfying most number of customers.</p>
 								</div>
@@ -59,6 +61,7 @@
 							</article>
 							<article class="col-xs-9">
 								<div class="">
+									<br>
 									<p>We provide the information about availability of goods or requirement of services  to registered users.</p>
 								</div>
 							</article>
