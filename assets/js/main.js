@@ -493,10 +493,10 @@ $(document).ready(function(){
         else if(firm_name == '' || company_pan == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(other_designation_new == '' || designation_new == ''){
+        else if(other_designation_new == '' || designation == ''){
         	$('<p style="color:#ed4343;"><strong>Designation field must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(other_company_type_new == '' || company_type_new == ''){
+        else if(other_company_type_new == '' || company_type == ''){
         	$('<p style="color:#ed4343;"><strong>Company Type field must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
 		else if(captcha !== captcha_word){
