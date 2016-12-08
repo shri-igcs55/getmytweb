@@ -42,13 +42,13 @@
 										<div class="form-group">
 										    <label for="M_number">Mobile Number<sup>*</sup></label>
 										    <span class="M_number_befr">
-										    	<input name="user_mob" maxlength="10" type="number" class="form-control" id="M_number" required>
+										    	<input name="user_mob" minlength="10" maxlength="10" type="number" class="form-control" id="M_number" required>
 										    </span>
 										</div>
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="E_mail">Email</label>
+										    <label for="E_mail">Email<sup>*</sup></label>
 										    <input name="user_email" type="email" class="form-control" id="E_mail" required>
 										</div>
 									</article>

@@ -506,7 +506,7 @@ $(document).ready(function(){
         	$('<p style="color:#ed4343;"><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
 		}else{
 			var cust_comp_reg = objCurrentSection.closest('.active').find('form').serialize();
-			alert(cust_comp_reg);
+			// alert(cust_comp_reg);
 			$.ajax({
 		        type: "POST",
 		        url : "/gmt/User/user_signup",
