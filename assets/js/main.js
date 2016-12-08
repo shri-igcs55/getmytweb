@@ -474,7 +474,7 @@ $(document).ready(function(){
         var company_type	= objCurrentSection.find("#C_type").val();
         var company_pan		= objCurrentSection.find("#email_phn").val();
 
-        if(designation = 'Other'){
+        if(designation == 'Other'){
         	var other_designation_new = objCurrentSection.find("#dsg_typ").val();
         }else{
         	var designation	= objCurrentSection.find("#Designatn").val();
@@ -506,6 +506,7 @@ $(document).ready(function(){
         	$('<p style="color:#ed4343;"><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
 		}else{
 			var cust_comp_reg = objCurrentSection.closest('.active').find('form').serialize();
+			alert(cust_comp_reg);
 			$.ajax({
 		        type: "POST",
 		        url : "/gmt/User/user_signup",
