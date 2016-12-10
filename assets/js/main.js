@@ -474,16 +474,16 @@ $(document).ready(function(){
         var company_type	= objCurrentSection.find("#C_type").val();
         var company_pan		= objCurrentSection.find("#email_phn").val();
 
-        if(designation = 'Other'){
+        if(designation == 'Other'){
         	var other_designation_new = objCurrentSection.find("#dsg_typ").val();
         }else{
-        	var designation_new	= objCurrentSection.find("#Designatn").val();
+        	var designation	= objCurrentSection.find("#Designatn").val();
         }
         
         if(company_type == 1){
         	var other_company_type_new = objCurrentSection.find("#cmp_typ").val();
         }else{
-        	var company_type_new = objCurrentSection.find("#C_type").val();
+        	var company_type = objCurrentSection.find("#C_type").val();
         }
         
         if(first_name == '' || user_mob == '' || user_pass == '' || address1 == '' || 
@@ -493,10 +493,10 @@ $(document).ready(function(){
         else if(firm_name == '' || company_pan == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(other_designation_new == '' || designation_new == ''){
+        else if(other_designation_new == '' || designation == ''){
         	$('<p style="color:#ed4343;"><strong>Designation field must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(other_company_type_new == '' || company_type_new == ''){
+        else if(other_company_type_new == '' || company_type == ''){
         	$('<p style="color:#ed4343;"><strong>Company Type field must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
 		else if(captcha !== captcha_word){
@@ -506,6 +506,7 @@ $(document).ready(function(){
         	$('<p style="color:#ed4343;"><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
 		}else{
 			var cust_comp_reg = objCurrentSection.closest('.active').find('form').serialize();
+			// alert(cust_comp_reg);
 			$.ajax({
 		        type: "POST",
 		        url : "/gmt/User/user_signup",
@@ -514,8 +515,32 @@ $(document).ready(function(){
 		            if (res.status_code == 200)
 		            {
 		              	$('#form_validation_msg').empty();
-			            $('<p style="color:#00ff00;"><strong>Registered Successfully.</strong></p>').appendTo('#form_validation_msg');
+			            $('<p style="color:#00ff00;"><strong>Registered Successfully</strong></p>').appendTo('#form_validation_msg');
 		              	$('.reg_form')[0].reset();
+		              	
+		              	jQuery.ajax({
+					    	type:"POST",
+							url: "/gmt/User/user_signin",
+							dataType: 'json',
+					        data: { 
+					        	email_mob: user_email,
+					        	password : user_pass
+					        	// utype_id : role
+					        },
+							success: function(res){
+								if(res.status_code == 200){
+									window.location = site_url+'userdashboard/place_transporter_order';
+								}else{
+									$.each(res.data, function(key, val) {
+						            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+						            });
+								}
+							},
+					        error: function(){
+					        	console.log('Somthing went wrong while login.');
+					        }
+						});
+
 		            }else{
 			            $('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
@@ -524,7 +549,7 @@ $(document).ready(function(){
 		            }
 	          	},
 		        error: function(){
-		        	console.log('Somthing went wrong');
+		        	console.log('Somthing went wrong while registration.');
 		        }
 	        });
 	    }

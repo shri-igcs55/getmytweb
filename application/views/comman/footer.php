@@ -13,7 +13,7 @@
 								</article>
 								<article class="col-xs-9">
 									<p>Connect with us</p>
-									<a href="mailto:us-info@getmytruck.in">us-info@getmytruck.in</a>
+									<a href="mailto:us-info@getmytruck.in">info@getmytruck.in</a>
 								</article>
 							</div>
 						</div>

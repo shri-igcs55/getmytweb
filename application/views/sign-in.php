@@ -50,10 +50,7 @@
 					</div>
 
 					<div class="register-btm">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						nostrud ullamco laboris nisi ut aliquip ea commodo
-						consequat.</p>
+						<p>Don't have an account? Register today and join thousands of peoples who are using our service to deliver their products in a easy and convenient way.</p>
 					</div>
 
 				</div>
@@ -100,7 +97,8 @@
 					if(res.status_code == 200){
 						$('#form_validation_msg').empty();
 			    		$('<p style="color:#00ff00"><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
-			    		window.location ='<?php echo site_url('user/edit'); ?>';
+			    		// window.location ='<?php //echo site_url('user/edit'); ?>';
+			    		window.location = '<?php echo site_url('userdashboard/place_transporter_order'); ?>';
 					}else{
 						$('#form_validation_msg').empty();
 			        	$.each(res.data, function(key, val) {

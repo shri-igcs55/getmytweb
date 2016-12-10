@@ -422,67 +422,69 @@
 				<form action="javascript:void(0);">
 					<input type="hidden" name="quoted_order_id" value="0">
 					<?php if($logged_in_user['user_type'] == 6){ ?>
-					<div class="first_form">
-						<table class="table">
-							<tr>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
-										<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
-									</div>
-								</td>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
-										<label for="per_day" class="custom_radio_label">Per Day Basis</label>
-									</div>
-								</td>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
-										<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ul class="list-inline">
-										<li><input type="text" class="form-control" placeholder="Amount"></li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-					</div>
+						<!-- FOR CRANE -->
+						<div class="first_form">
+							<table class="table">
+								<tr>
+									<td class="col-md-3">
+										<div class="radio">
+											<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
+											<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
+										</div>
+									</td>
+									<td class="col-md-3">
+										<div class="radio">
+											<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
+											<label for="per_day" class="custom_radio_label">Per Day Basis</label>
+										</div>
+									</td>
+									<td class="col-md-3">
+										<div class="radio">
+											<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
+											<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<ul class="list-inline">
+											<li><input type="text" class="form-control" placeholder="Amount"></li>
+										</ul>
+									</td>
+								</tr>
+							</table>
+						</div>
 					<?php }else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] > 7){ ?>
-					<div class="second_form">
-						<table class="table">
-							<tr>
-								<td class="col-md-6">
-									<div class="radio">
-										<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
-										<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
-									</div>
-								</td>
-								<td class="col-md-6">
-									<div class="radio">
-										<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
-										<label for="beetween_range" class="custom_radio_label">Between Range</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
-									<input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate">
-								</td>
-								<?php /*<td>
-									<label for="max_amnt" class="control-label">Maximum Amount</label>
-									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
-								</td>*/ ?>
-							</tr>
-						</table>
-					</div>
-					<?php } 	?>
+						<!-- FOR PACKER AND MOVER / TRANSPORTER -->
+						<div class="second_form">
+							<table class="table">
+								<tr>
+									<td class="col-md-6">
+										<div class="radio">
+											<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
+											<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
+										</div>
+									</td>
+									<td class="col-md-6">
+										<div class="radio">
+											<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
+											<label for="beetween_range" class="custom_radio_label">Between Range</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
+										<input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate">
+									</td>
+									<?php /*<td>
+										<label for="max_amnt" class="control-label">Maximum Amount</label>
+										<input type="text" id="max_amnt" class="form-control" placeholder="10000">
+									</td>*/ ?>
+								</tr>
+							</table>
+						</div>
+					<?php } ?>
 					<div class="form-group text-center form_message">
 						<span></span>
 					</div>
@@ -612,7 +614,7 @@ $(document).ready(function(){
 	})
 	
 	
-	<!-- Added by Bhavesh -->
+	//<!-- Added by Bhavesh -->
 	$('input[name=rate_order]').click(function(){
 		$('input[name=quoted_order_id]').val($(this).closest('.order_wrpr').find('span.order_no').html());
 	})
@@ -643,7 +645,8 @@ $(document).ready(function(){
 				type: "POST",
 		        url : "/gmt/Quotation/rateToOrder",
 		        data: {
-		        	order_id: order_id,quoted_rate: quoted_rate
+		        	order_id: order_id,
+		        	quoted_rate: quoted_rate
 		        },
 
 		        success: function(res) {
@@ -675,7 +678,7 @@ $(document).ready(function(){
 	        });
 		});
 	
-	<!-- End by Bhavesh -->
+	//<!-- End by Bhavesh -->
 	
 	
 	

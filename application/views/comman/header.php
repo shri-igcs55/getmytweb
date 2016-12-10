@@ -87,28 +87,29 @@
 									<ul class="top-menu text-right">
 										<li>Welcome <span style="color:#ed4343;"><a href="<?php echo site_url('user/edit'); ?>"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></a></span></li>
 										<li><span style="color:#ed4343;"><a href="<?php echo site_url('user/signout'); ?>">Logout</a></span></li>
-									<input type="hidden" value="<?php echo $logged_in_user['user_id']; 
-			if ($logged_in_user['user_type'] == 3) {
-				echo "Individual Customer";
-			} elseif($logged_in_user['user_type'] == 4){
-				echo "Company as Customer";
-			} elseif($logged_in_user['user_type'] == 5){
-				echo "Packers and Movers";
-			} elseif($logged_in_user['user_type'] == 6){
-				echo "Crane Provider";
-			} elseif($logged_in_user['user_type'] == 8){
-				echo "Container Suppliers";
-			} elseif($logged_in_user['user_type'] == 9){
-				echo "Commission Agent";
-			} elseif($logged_in_user['user_type'] == 10){
-				echo "Fleet Owners";
-			} elseif ($logged_in_user['user_type'] == 11) {
-				echo "Transporter and Logistics Provider";
-			} elseif ($logged_in_user['user_type'] == 12) {
-				echo "Trolley and Tanker Provider";
-			}
-			
-			?>"></ul>
+										<input type="hidden" value="<?php echo $logged_in_user['user_id']; 
+											if ($logged_in_user['user_type'] == 3) {
+												echo "Individual Customer";
+											} elseif($logged_in_user['user_type'] == 4){
+												echo "Company as Customer";
+											} elseif($logged_in_user['user_type'] == 5){
+												echo "Packers and Movers";
+											} elseif($logged_in_user['user_type'] == 6){
+												echo "Crane Provider";
+											} elseif($logged_in_user['user_type'] == 8){
+												echo "Container Suppliers";
+											} elseif($logged_in_user['user_type'] == 9){
+												echo "Commission Agent";
+											} elseif($logged_in_user['user_type'] == 10){
+												echo "Fleet Owners";
+											} elseif ($logged_in_user['user_type'] == 11) {
+												echo "Transporter and Logistics Provider";
+											} elseif ($logged_in_user['user_type'] == 12) {
+												echo "Trolley and Tanker Provider";
+											}
+											
+											?>">
+									</ul>
 									
 								<?php }else{ ?>
 									<ul class="top-menu text-right">
@@ -137,15 +138,28 @@
 			<div class="mobile-menu">
 				<div class="mobile-menu-wrp">
 
-					<ul class="top-menu text-right">
-						<li><a href="<?php echo site_url('user/signin/'); ?>">Sign In</a></li>
-						<li><a href="<?php echo site_url('user/signup/'); ?>">Sign Up</a></li>
-					</ul>
+					<?php if($logged_in_user){ ?>
+						<ul class="top-menu text-right">
+							<li>Welcome <span style="color:#ed4343;">
+								<a href="<?php echo site_url('user/edit'); ?>"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?>
+								</a></span>
+							</li>
+							<li><span style="color:#ed4343;">
+								<a href="<?php echo site_url('user/signout'); ?>">Logout
+								</a></span>
+							</li>
+						</ul>
+					<?php }else{ ?>
+						<ul class="top-menu text-right">
+							<li><a href="<?php echo site_url('user/signin/'); ?>">Sign In</a></li>
+							<li><a href="<?php echo site_url('user/signup/'); ?>">Sign Up</a></li>
+						</ul>
+					<?php } ?>
 
 					<ul class="bottom-menu text-center">
 						<li><a class="active hvr-shutter-out-horizontal" href="<?php echo site_url('/'); ?>">Home</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('aboutus'); ?>">About Us</a></li>
-						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('ourservices'); ?>">Our Services</a></li>
+						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('ourservice'); ?>">Our Services</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('howitworks'); ?>">How it works</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('membership'); ?>">Membership</a></li>
 						<li><a class="hvr-shutter-out-horizontal" href="<?php echo site_url('contactus'); ?>">Contact Us</a></li>
