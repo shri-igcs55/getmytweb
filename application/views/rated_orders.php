@@ -7,6 +7,7 @@
 				<article class="col-md-3">
 					<?php include_once('comman/left_sidebar.php'); 
 						$u_id=$logged_in_user['user_id']; 
+						$logged_in_user_parent_id = $logged_in_user['user_type_parent_id'];
 						// print_r($logged_in_user);
 					?>
 				</article>
@@ -51,6 +52,18 @@
 								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
 				    				<div class="order_row">
 					    				<div class="row">
+										
+												<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+													<article class="col-sm-6">
+													<h4>Request from Customer:</h4>
+													</article>
+													<article class="col-sm-6 text-right">
+													<h4>Do you have vehicle available or not?</h4>
+													<input name="order_confirm" type="button" value="Yes">
+													<input name="order_decline" type="button" value="No">
+													</article>
+												<?php }?>
+									
 					    					<article class="col-sm-6">
 					    						<h4>Order ID: <span class="order_no"><?php echo $orderObj->order_id?></span></h4>
 					    					</article>
@@ -59,6 +72,8 @@
 					    					</article>
 					    				</div>
 					    			</div>
+									
+									
 					    			<!-- <div class="order_row">
 					    				<center><h4><span>Customer Details</span></h4></center>
 					    				<div class="row">
@@ -185,38 +200,7 @@
 						    				</div>
 						    			</div>
 					    			<?php }?>
-									<?php if($logged_in_user['user_type_parent_id'] == 2){
-											if(isset($orderObj->quotation)){
-											?>
-				    					<div class="order_row">
-						    				<center><h4><span>Quotation Details</span></h4></center>
-											<?php
-												$disabled = '';
-												foreach($orderObj->quotation as $quation_details):													
-													if(5==$quation_details->order_status){
-														$disabled = 'disabled'; break;														
-													}
-												endforeach;
-												foreach($orderObj->quotation as $quation_details):
-												$buttonLable = 'Accept';
-													if(5==$quation_details->order_status){													
-														$buttonLable = 'Sent';
-													}
-												?>
-												<div class="row">
-													<article class="col-sm-12">
-														<p class="col-sm-4">RS. <?php echo $quation_details->order_amount?></p>
-														
-														<p class="col-sm-8">
-															
-															<input type="button" class="form-control accept_order" <?php echo $disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
-														</p>
-													</article>
-												</div>
-											<?php endforeach;?>
-						    			</div>
-											<?php }
-										}?>
+									
 					    			<?php if($orderObj->order_place_for_id == 7){ ?>
 						    			<div class="order_row">
 						    				<center><h4><span>Vehicle Details</span></h4></center>
@@ -281,6 +265,54 @@
 						    				</div>
 						    			</div>
 					    			<?php }?>
+									
+									<?php if($logged_in_user['user_type_parent_id'] == 2){
+											if(isset($orderObj->quotation)){
+											?>
+				    					<div class="order_row">
+						    				<center><h4><span>Quotation Details</span></h4></center>
+											<?php
+												$disabled = '';
+												foreach($orderObj->quotation as $quation_details):													
+													if(5==$quation_details->order_status){
+														$disabled = 'disabled'; break;														
+													}
+												endforeach;
+												foreach($orderObj->quotation as $quation_details):
+												$buttonLable = 'Accept';
+													if(5==$quation_details->order_status){													
+														$buttonLable = 'Sent';
+													}
+												?>
+												<div class="row">
+													<article class="col-sm-12">
+														<p class="col-sm-4">RS. <?php echo $quation_details->order_amount?></p>
+														
+														<p class="col-sm-8">
+															
+															<input type="button" class="form-control accept_order" <?php echo $disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
+														</p>
+													</article>
+												</div>
+											<?php endforeach;?>
+						    			</div>
+											<?php }
+										}?>
+									<?php if($logged_in_user_parent_id != 2){ ?>
+						    			<div class="order_row">
+						    				<center><h4><span>Given Quotation</span></h4></center>
+						    				<div class="row">
+						    					<article class="col-sm-3">
+						    						<label>Quatation Price</label>						    						
+						    					</article>
+												<article class="col-sm-3">
+						    						<p><?php echo $orderObj->odr_qtn_amount?></p>						    						
+						    					</article>
+												
+						    				</div>
+										</div>
+									<?php }?>
+										
 					    			<div class="row">
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
@@ -296,6 +328,18 @@
 					    				<div class="row">
 					    					<article class="col-md-10">
 					    						<div class="row">
+													
+													<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+														<article class="col-sm-6">
+														<h4>Request from Customer:</h4>
+														</article>
+														<article class="col-sm-6 text-right">
+														<h4>Do you have vehicle available or not?</h4>
+														<input name="order_confirm" type="button" value="Yes">
+														<input name="order_decline" type="button" value="No">
+														</article>
+													<?php }?>
+											
 								    				<article class="col-sm-3">
 								    					<label>Order ID</label>
 								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h4>
@@ -644,9 +688,15 @@ $(document).ready(function(){
 	
 	
 	<!-- Added by Bhavesh -->	
+	<!-- this function for the customer -->
 	$('.accept_order').click(function(){
-			var transpoter_id = $('data-quoted_user_id').val();
-			var order_id = $(this).closest('.order_wrpr').find('order_no').text();
+		
+			if(!confirm('Are you sure you want to sent request?'))
+				return false;
+			var currentObj = $(this);
+			var transpoter_id = $(this).attr('data-quoted_user_id');
+			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
+			
 			$.ajax({
 				type: "POST",
 		        url : "/gmt/Quotation/acceptOrder",
@@ -661,9 +711,9 @@ $(document).ready(function(){
 		              	$('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
 			            	if(key == 'message'){
-								$('.form_message span').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
-								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');			
-								setTimeout(function(){ $('.order_id_'+order_id).slideUp(); }, 4000);
+								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
+								currentObj.val('Sent');
+								currentObj.closest('.order_row').find('input[type=button]').attr('disabled','disabled');
 							}
 			            });
 		            }else{
@@ -672,7 +722,6 @@ $(document).ready(function(){
 			            $.each(res.data, function(key, val) {
 			            	if(key == 'message'){
 			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
-								$('.order_id_'+order_id).find('.form_message_orderwise').show();
 			            	}
 			            });
 		            }
@@ -682,6 +731,53 @@ $(document).ready(function(){
 		        }
 	        });
 		});
+		
+		<!-- This function is for transportor -->
+		$('input[name=order_confirm]').click(function(){
+		
+			if(!confirm('Are you sure you want to perform this action?'))
+				return false;
+			var currentObj = $(this);
+			var transpoter_id = '<?php echo $logged_in_user['user_id']?>';
+			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
+			if($(this).val()=='Yes')
+				var order_status = 9; //Vehicle Available and Order Confirm
+			else
+				var order_status = 7; //Vehicle Not Available
+			
+			$.ajax({
+				type: "POST",
+		        url : "/gmt/Quotation/confirmOrder",
+		        data: {
+		        	order_id: order_id,transpoter_id: transpoter_id,order_status: order_status
+		        },
+
+		        success: function(res) {
+		        	
+		        	if (res.status_code == 200)
+		            {		              	
+		              	$('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
+							}
+			            });
+		            }else{
+			            
+			            $('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
+			            	}
+			            });
+		            }
+	          	},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+	        });
+		});
+		
 	
 	<!-- End by Bhavesh -->
 	

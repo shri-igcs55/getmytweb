@@ -84,7 +84,6 @@ class Userdashboard extends CI_Controller
 	// place order for crane
 	public function booked_orders(){
 			
-
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
 		$objData = $this->getData('book_history','book_history',$arrayParameter);
