@@ -98,15 +98,15 @@
 				<table class="table save_contact_table">
 					<tr>
 						<td>Name</td>
-						<td>Santhosh</td>
+						<td><input type="text" name="contact_name" id="contact_name" value="" /></td>
 					</tr>
 					<tr>
 						<td>Phone No.</td>
-						<td>9876543210</td>
+						<td><input type="text" minlength="10" name="contact_phone" id="contact_phone" value="" /></td>
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td>santhosh@gmail.com</td>
+						<td><input type="text" name="contact_email" id="contact_email" value="" /></td>
 					</tr>
 					<tr>
 						<td>Group</td>
