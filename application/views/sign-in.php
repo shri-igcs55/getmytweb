@@ -23,7 +23,7 @@
 						    <label for="password">Password<sup>*</sup></label>
 						    <input type="password" class="form-control" id="paswrd" required>
 						</div>
-						<p class="text-right forgot-paswrd"><a href="#">Forgot Password?</a></p>
+						<p class="text-right forgot-paswrd"><a href="#" data-toggle="modal" data-target="#forgotModal">Forgot Password?</a></p>
 
 						<div class="form-group text-center">
 						    <!-- <a type="submit" class="signin hvr-shutter-out-vertical">Sign In</a> -->
@@ -59,6 +59,36 @@
 		</div>
 	</div>
 </section>
+<!-- #### FORGOT PASSWORD MODAL ### -->
+<div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title text-center" id="myModalLabel">Forgot Password</h2>
+			</div>
+			<div class="modal-body">
+				<form class="user_forgot_pass" action="" id="forgotpass_form" name="forgotpass_form">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="text">Email/Mobile Number<sup>*</sup></label>
+								<input type="text" class="form-control" id="email_phn" name="email_phn" required />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group" style="float:right;">
+								<input id="forgotpassword" class="forgotpass" value="SUBMIT" type="button" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- #### FORGOT PASSWORD MODAL ### -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		// to get user type list
