@@ -72,14 +72,14 @@
 						<div class="col-md-12">
 							<div class="form-group">
 								<label for="text">Email/Mobile Number<sup>*</sup></label>
-								<input type="text" class="form-control" id="email_phn" name="email_phn" required />
+								<input type="text" class="form-control" id="forgot_email_phn" name="forgot_email_phn" required />
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group" style="float:right;">
-								<input id="forgotpassword" class="forgotpass" value="SUBMIT" type="button" />
+								<input id="forgotpassword" class="forgotpass form-control" value="SUBMIT" type="button" />
 							</div>
 						</div>
 					</div>
@@ -129,6 +129,38 @@
 			    		$('<p style="color:#00ff00"><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
 			    		// window.location ='<?php //echo site_url('user/edit'); ?>';
 			    		window.location = '<?php echo site_url('userdashboard/place_transporter_order'); ?>';
+					}else{
+						$('#form_validation_msg').empty();
+			        	$.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
+
+		// to login
+		$(".forgotpass").click(function(event){
+			var objCurrentSection = $('.user_forgot_pass');       		
+	   		
+	   		var forgot_email_phn = objCurrentSection.find("#forgot_email_phn").val();
+			// var password = objCurrentSection.find("#paswrd").val();
+			// var role	= objCurrentSection.find("#role").val();
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/User/recover",
+				dataType: 'json',
+		        data: { email_mob: forgot_email_phn },
+				success: function(res){
+					if(res.status_code == 200){
+						$('#form_validation_msg').empty();
+			    		$.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            });
+			    		location.reload();
 					}else{
 						$('#form_validation_msg').empty();
 			        	$.each(res.data, function(key, val) {
