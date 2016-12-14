@@ -25,11 +25,23 @@
 													    <label for="text">One Time Password (OTP)<sup>*</sup></label>
 													    <input type="text" class="form-control" id="email_phn_otp" name="email_phn_otp" required placeholder="One Time Password (OTP)">
 													</div>
-													<div class="form-group text-center">
+													<div class="form-group">
 													    <div class="form-group row">
-													    	<input id="reverify" class="reverify form-control" value="Resend OTP" type="button" disabled="" style="width:48%;" />
-													    	<input id="verify" class="verify form-control" value="Submit" type="button" style="width:48%;" />
+													    	<div class="col-md-6">
+													    		<input id="reverify" class="reverify form-control" value="Resend OTP" type="button" disabled=""  />
+													    	</div>
+													    	<div class="col-md-6">
+													    		<input id="verify" class="verify form-control" value="Submit" type="button"  />
+													    	</div>
 													    </div>
+													   <!--  <ul class="list-inline">
+													   	<li>
+													   		<input id="reverify" class="reverify" value="Resend OTP" type="button" disabled=""  />
+													   	</li>
+													   	<li>
+													   		<input id="verify" class="verify" value="Submit" type="button"  />
+													   	</li>
+													   </ul> -->
 													    <!-- color:#37b1d8; -->
 														<span id="form_validation_msg"></span>
 													</div>

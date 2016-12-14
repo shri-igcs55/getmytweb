@@ -359,7 +359,7 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 }
 
 /* forgot password model */
-.forgotpass .forgotpass_resend{
+.forgotpass, .forgotpass_resend{
 	color: #FFF;
 	background: #ED4343;
 	display: inline-block;
@@ -369,7 +369,7 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 	border-radius: 5px;
 }
 
-.verify .reverify{
+.verify, .reverify{
 	color: #FFF;
 	background: #ED4343;
 	display: inline-block;

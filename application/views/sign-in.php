@@ -72,8 +72,12 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
-								<input id="forgotpassword_resend" name="forgotpassword_resend" class="forgotpass_resend form-control" value="RESUBMIT" type="button" disabled="" style="width:48%; float:left;" />
-								<input id="forgotpassword" name="forgotpassword" class="forgotpass form-control" value="SUBMIT" type="button" style="width:48%; float:right;" />
+								<div class="col-md-6">
+									<input id="forgotpassword_resend" name="forgotpassword_resend" class="forgotpass_resend form-control" value="RESUBMIT" type="button" disabled="" />
+								</div>
+								<div class="col-md-6">
+									<input id="forgotpassword" name="forgotpassword" class="forgotpass form-control" value="SUBMIT" type="button" />
+								</div>
 							</div>
 						    <!-- color:#37b1d8; -->
 							<span id="form_validation_msg_forgot"></span>
