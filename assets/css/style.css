@@ -1,7 +1,4 @@
 /*MAIN STYLE SHEET*/
-
-
-
 body{
 	font-family: 'PT Sans', sans-serif;
 	background-color: #EBEBEB;
@@ -362,7 +359,17 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 }
 
 /* forgot password model */
-.forgotpass{
+.forgotpass, .forgotpass_resend{
+	color: #FFF;
+	background: #ED4343;
+	display: inline-block;
+	padding: 6px 20px;
+	border: none;
+	font-weight: 700;
+	border-radius: 5px;
+}
+
+.verify, .reverify{
 	color: #FFF;
 	background: #ED4343;
 	display: inline-block;

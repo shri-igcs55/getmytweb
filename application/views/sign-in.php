@@ -9,12 +9,6 @@
 					<center><h1>Sign in to your account</h1></center>
 
 					<form class="user_signin" action="" id="signin_form" name="signin_form">
-						<!-- <div class="form-group">
-						    <label for="text">Role<sup>*</sup></label>
-						    <select id="role" class="role form-control" required>
-						    	<option value="">Select Role</option>
-						    </select>
-						</div> -->
 						<div class="form-group">
 						    <label for="text">Email/Mobile Number<sup>*</sup></label>
 						    <input type="text" class="form-control" id="email_phn" required>
@@ -26,7 +20,6 @@
 						<p class="text-right forgot-paswrd"><a href="#" data-toggle="modal" data-target="#forgotModal">Forgot Password?</a></p>
 
 						<div class="form-group text-center">
-						    <!-- <a type="submit" class="signin hvr-shutter-out-vertical">Sign In</a> -->
 						    <div class="form-group">
 						    	<input id="signin" class="signin form-control" value="Sign In" type="button" />
 						    </div>
@@ -67,7 +60,7 @@
 				<h2 class="modal-title text-center" id="myModalLabel">Forgot Password</h2>
 			</div>
 			<div class="modal-body">
-				<form class="user_forgot_pass" action="" id="forgotpass_form" name="forgotpass_form">
+				<form class="user_forgot_pass" action="" id="forgotpass_form" name="forgotpass_form" method="POST">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group">
@@ -78,9 +71,12 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="form-group" style="float:right;">
-								<input id="forgotpassword" class="forgotpass form-control" value="SUBMIT" type="button" />
+							<div class="form-group">
+								<input id="forgotpassword_resend" name="forgotpassword_resend" class="forgotpass_resend form-control" value="RESUBMIT" type="button" disabled="" style="width:48%; float:left;" />
+								<input id="forgotpassword" name="forgotpassword" class="forgotpass form-control" value="SUBMIT" type="button" style="width:48%; float:right;" />
 							</div>
+						    <!-- color:#37b1d8; -->
+							<span id="form_validation_msg_forgot"></span>
 						</div>
 					</div>
 				</form>
@@ -142,7 +138,7 @@
 			});
 		});
 
-		// to login
+		// to forgot
 		$(".forgotpass").click(function(event){
 			var objCurrentSection = $('.user_forgot_pass');       		
 	   		
@@ -156,16 +152,55 @@
 		        data: { email_mob: forgot_email_phn },
 				success: function(res){
 					if(res.status_code == 200){
-						$('#form_validation_msg').empty();
+						$('#form_validation_msg_forgot').empty();
 			    		$.each(res.data, function(key, val) {
-			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg_forgot');
 			            });
-			    		location.reload();
+			            window.location ='<?php echo site_url('user/signin'); ?>';
 					}else{
-						$('#form_validation_msg').empty();
+						$('#form_validation_msg_forgot').empty();
 			        	$.each(res.data, function(key, val) {
-			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg_forgot');
 			            });
+			            $("#forgotpassword").attr("disabled", true);
+			            $("#forgotpassword_resend").show();
+			    		setTimeout(function(){$("#forgotpassword_resend").removeAttr("disabled")},10000);
+						// $("#forgotpassword_resend").show(30000);
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
+
+		// Resend OTP
+		$(".forgotpass_resend").click(function(event){
+			var objCurrentSection = $('.user_forgot_pass');       		
+	   		
+	   		var forgot_email_phn = objCurrentSection.find("#forgot_email_phn").val();
+			// var password = objCurrentSection.find("#paswrd").val();
+			// var role	= objCurrentSection.find("#role").val();
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/User/resend",
+				dataType: 'json',
+		        data: { email_mob: forgot_email_phn },
+				success: function(res){
+					if(res.status_code == 200){
+						$('#form_validation_msg_forgot').empty();
+			    		$.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg_forgot');
+			            });
+			            window.location ='<?php echo site_url('user/signin'); ?>';
+					}else{
+						$('#form_validation_msg_forgot').empty();
+			        	$.each(res.data, function(key, val) {
+			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg_forgot');
+			            });
+			            $("#forgotpassword_resend").attr("disabled", true);
+			            setTimeout(function(){$("#forgotpassword_resend").removeAttr("disabled")},10000);
+						// $("#forgotpassword_resend").show(30000);
 					}
 				},
 		        error: function(){

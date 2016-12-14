@@ -529,7 +529,7 @@ $(document).ready(function(){
 					        },
 							success: function(res){
 								if(res.status_code == 200){
-									window.location = site_url+'userdashboard/place_transporter_order';
+									window.location = site_url+'userdashboard';
 								}else{
 									$.each(res.data, function(key, val) {
 						            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');

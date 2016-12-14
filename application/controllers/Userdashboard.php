@@ -9,22 +9,37 @@ class Userdashboard extends CI_Controller
 	public function Userdashboard()
 	{
 		parent:: __construct();
-		if (!isset($this->session->userdata['logged_in_user'])) {
+		$logged_in_user = $this->session->userdata('logged_in_user');
+		if (!isset($logged_in_user)) {
 			redirect(site_url('user/signin'));
 		}
 	}
 
 	public function index(){
 
-		redirect('user/edit');
+		$logged_in_user = $this->session->userdata('logged_in_user');
+		if($logged_in_user['user_status'] == '1'){
+			$this->load->view('comman/header');
+			$this->load->view('user_verification');
+			$this->load->view('comman/footer');
+		}else{
+			redirect('user/edit');
+		}
+		
 	}
 	// after login dashboard
 	public function place_transporter_order(){
-	
-   		$this->load->view('comman/header');
-		$this->load->view('place_order_transport');
+		
+		$logged_in_user = $this->session->userdata('logged_in_user');
+		$this->load->view('comman/header');	
+		
+		if($logged_in_user['user_status'] != '1'){
+	   		$this->load->view('place_order_transport');
+		}else{
+			$this->load->view('user_verification');
+		}
+		
 		$this->load->view('comman/footer');
-
 	}
 
 	// place order for packer mover

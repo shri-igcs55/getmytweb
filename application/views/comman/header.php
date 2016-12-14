@@ -85,30 +85,15 @@
 							<div class="menu-wrp">
 								<?php if($logged_in_user){ ?>
 									<ul class="top-menu text-right">
-										<li>Welcome <span style="color:#ed4343;"><a href="<?php echo site_url('user/edit'); ?>"><?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?></a></span></li>
-										<li><span style="color:#ed4343;"><a href="<?php echo site_url('user/signout'); ?>">Logout</a></span></li>
-										<input type="hidden" value="<?php echo $logged_in_user['user_id']; 
-											if ($logged_in_user['user_type'] == 3) {
-												echo "Individual Customer";
-											} elseif($logged_in_user['user_type'] == 4){
-												echo "Company as Customer";
-											} elseif($logged_in_user['user_type'] == 5){
-												echo "Packers and Movers";
-											} elseif($logged_in_user['user_type'] == 6){
-												echo "Crane Provider";
-											} elseif($logged_in_user['user_type'] == 8){
-												echo "Container Suppliers";
-											} elseif($logged_in_user['user_type'] == 9){
-												echo "Commission Agent";
-											} elseif($logged_in_user['user_type'] == 10){
-												echo "Fleet Owners";
-											} elseif ($logged_in_user['user_type'] == 11) {
-												echo "Transporter and Logistics Provider";
-											} elseif ($logged_in_user['user_type'] == 12) {
-												echo "Trolley and Tanker Provider";
-											}
-											
-											?>">
+										<li>Welcome <span style="color:#ed4343;">
+											<a href="<?php if($logged_in_user['user_status'] == '1') echo site_url('userdashboard'); else echo site_url('user/edit'); ?>">
+												<?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?>
+											</a></span>
+										</li>
+										<li><span style="color:#ed4343;">
+											<a href="<?php echo site_url('user/signout'); ?>">Logout
+											</a></span>
+										</li>
 									</ul>
 									
 								<?php }else{ ?>
