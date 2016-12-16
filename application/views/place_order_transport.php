@@ -506,10 +506,10 @@
 	        var material_type 		= objCurrentSection.find("#material").val();
 	        var other_material_type = objCurrentSection.find("#mtr_typ").val();
 
-	        var no_of_quantity 		= objCurrentSection.find("#length").val();
-	        var weight 				= objCurrentSection.find("#nag").val();
+	        var no_of_quantity 		= objCurrentSection.find("#nag").val();
+	        var weight 				= objCurrentSection.find("#weight").val();
 	        
-	        var feet 				= objCurrentSection.find("#weight").val();
+	        var feet 				= objCurrentSection.find("#length").val();
 
 	        var vehicle_type 		= objCurrentSection.find("#vehicle_type").val();
 	        var other_vehicle_type 	= objCurrentSection.find("#vhl_typ").val();
