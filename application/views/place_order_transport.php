@@ -249,7 +249,7 @@
 	    	$('#othr_mt').hide();
 	    }
 	});
-	$('#vehicle_type').change(function() {
+	/*$('#vehicle_type').change(function() {
 	    var selected = $(this).val();
 	    if(selected == '1'){
 	    	$('#vt').attr('class', 'col-md-3');
@@ -259,9 +259,9 @@
 	    	$('#vt').attr('class', 'col-md-6');
 	    	$('#othr_vt').hide();
 	    }
-	});
+	});*/
 
-// this code is for auto complete in place order page after login
+	// this code is for auto complete in place order page after login
   $( function() {
     $.widget( "custom.combobox", {
       _create: function() {

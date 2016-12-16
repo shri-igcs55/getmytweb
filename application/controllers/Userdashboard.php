@@ -100,7 +100,7 @@ class Userdashboard extends CI_Controller
 	public function booked_orders(){
 			
 		$logged_in_user = $this->session->userdata('logged_in_user');			
-		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
 		$objData = $this->getData('book_history','book_history',$arrayParameter);
 
 		/*echo '<pre>';
@@ -117,7 +117,7 @@ class Userdashboard extends CI_Controller
 	public function rated_orders(){
 			
 		$logged_in_user = $this->session->userdata('logged_in_user');			
-		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
 		$objData = $this->getData('book_history','rated_orders',$arrayParameter);
 
 		/*echo '<pre>';
@@ -135,7 +135,7 @@ class Userdashboard extends CI_Controller
 	// Save transporter work station
 	public function save_working_station(){
 		$logged_in_user = $this->session->userdata('logged_in_user');
-		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id']);
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
 		$objData = $this->getData('view_station','view_station',$arrayParameter);
 		
 		/*
@@ -191,7 +191,8 @@ class Userdashboard extends CI_Controller
 
 	public function getData($class,$method,$arrayField){		
 		$ch = curl_init();
-		curl_setopt($ch,CURLOPT_URL, 'http://getmytruck.tk/gmt/'.$class.'/'.$method);
+		// curl_setopt($ch,CURLOPT_URL, 'http://getmytruck.tk/gmt/'.$class.'/'.$method);
+		curl_setopt($ch,CURLOPT_URL, 'http://localhost/gmt/'.$class.'/'.$method);
 		curl_setopt($ch,CURLOPT_POST, count($arrayField));
 		curl_setopt($ch,CURLOPT_POSTFIELDS, $arrayField);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);

@@ -1,0 +1,17 @@
+
+"4">Container< container > 8
+
+"7">Car Container< container > 8
+
+"8">Tanker< tanker > 13
+
+"5">Trolly< troll > 12
+
+"6">Tata 407< trans & logistic > 11
+
+"9">Tata Ace< trans & logistic > 11
+
+"2">Truck< trans & logistic > 11
+
+"2">Truck< commission & fleet > 9 - 10
+

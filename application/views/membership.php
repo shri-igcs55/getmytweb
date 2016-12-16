@@ -229,27 +229,27 @@
 												<td><span>Select Station</span></td>
 												<td>
 													<span>3 Station Free</span>
-													<span>Rs.500 add</span>
+													<span>Rs.500 for addition of station</span>
 												</td>
 												<td>
 													<span>3 Station Free</span>
-													<span>Rs.500 add</span>
+													<span>Rs.500 for addition of station</span>
 												</td>
 												<td>
 													<span>3 Station Free</span>
-													<span>Rs.500 add</span>
+													<span>Rs.500 for addition of station</span>
 												</td>
 												<td>
 													<span>3 Station Free</span>
-													<span>Rs.500 add</span>
+													<span>Rs.500 for addition of station</span>
 												</td>
 												<td>
 													<span>3 Station Free</span>
-													<span>Rs.500 add</span>
+													<span>Rs.500 for addition of station</span>
 												</td>
 												<td>
 													<span>3 Station Free</span>
-													<span>Rs.500 add</span>
+													<span>Rs.500 for addition of station</span>
 												</td>
 											</tr>
 											<tr>

@@ -65,7 +65,7 @@
 													</div>
 
 													<div class="row">
-														<article class="col-md-4">
+														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="From_State">State<sup>*</sup></label>
 															    <select id="From_State" class="from-state form-control trans_plc_ord" required>
@@ -74,7 +74,7 @@
 															    </select>
 															</div>
 														</article>
-														<article class="col-md-4">
+														<article class="col-md-6">
 															<div class="form-group">
 															    <label for="From_City">City, District<sup>*</sup></label>
 														     	<select id="From_city" name="from_city" class="from-city form-control">
@@ -82,12 +82,12 @@
 																</select>
 															</div>
 														</article>
-														<article class="col-md-4">
+														<!-- <article class="col-md-4">
 															<div class="form-group">
 															    <label for="From_location">Where in City (Area)<sup>*</sup></label>
 															    <input type="text" name="from_location" id="from_location" class="where-in-city form-control" required disabled="" value="">
 															</div>
-														</article>
+														</article> -->
 													</div>
 
 													<!-- <div class="row">
@@ -359,7 +359,7 @@
 						obj.find('.custom-combobox-input').empty();
 						obj.find('.custom-combobox-input').val('');
 						obj.find('.custom-combobox-input').removeAttr('disabled');					
-						obj.find('.where-in-city').removeAttr('disabled');
+						// obj.find('.where-in-city').removeAttr('disabled');
 						obj.find('.from-city').empty();
 						obj.find('.from-city').val('');
 						obj.find('.from-state').empty();
@@ -393,7 +393,7 @@
 						obj.find('.custom-combobox-input').empty();
 						obj.find('.custom-combobox-input').val('');
 						obj.find('.custom-combobox-input').removeAttr('disabled');					
-						obj.find('.where-in-city').removeAttr('disabled');
+						// obj.find('.where-in-city').removeAttr('disabled');
 						obj.find('.from-city').empty();
 						obj.find('.from-city').val('');
 						var option ='<option value="">Select District City</option>';
@@ -451,12 +451,14 @@
 			
 			var from_state		= objCraneProvider.find("#From_State").val();
 			var from_city		= objCraneProvider.find("#From_city").val();
-			var from_location	= objCraneProvider.find("#from_location").val();
+			// var from_location	= objCraneProvider.find("#from_location").val();
+			var from_location	= objCraneProvider.find("#From_city").val();
 			var from_address	= objCraneProvider.find("#crane_service_from_location").val();
 			
 			var to_state		= objCraneProvider.find("#From_State").val();
 			var to_city			= objCraneProvider.find("#From_city").val();
-			var to_location		= objCraneProvider.find("#from_location").val();
+			// var to_location		= objCraneProvider.find("#from_location").val();
+			var to_location		= objCraneProvider.find("#From_city").val();
 			var to_address		= objCraneProvider.find("#crane_service_from_location").val();
 			/*var to_state		= objCraneProvider.find("#To_State").val();
 			var to_city			= objCraneProvider.find("#To_city").val();

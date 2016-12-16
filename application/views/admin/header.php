@@ -34,9 +34,9 @@
           <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
               <ul class="nav" id="main-menu">
-                <li>
-                  <a href="<?php echo site_url('admin/vehicle/add_vehicle');?>">Vehicle Types</a>
-                </li>
+                <!-- <li>
+                  <a href="<?php //echo site_url('admin/vehicle/add_vehicle');?>">Vehicle Types</a>
+                </li> -->
                 <li>
                   <a href="<?php echo site_url('admin/company/add_company_type');?>">Company Types</a>
                 </li>

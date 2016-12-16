@@ -23,7 +23,7 @@
 		    			<span id="form_validation_msg"></span>
 						<?php 
 						if(!isset($orderObj->data->message)){
-						   if(isset($orderObj->data)):
+						  if(isset($orderObj->data)):
 							foreach($orderObj->data as $orderObj):
 								if($orderObj->order_place_for_id == 5){
 									$material_work_goods_description = $orderObj->pm_goods_description;
@@ -59,7 +59,7 @@
 					    					</article>
 					    				</div>
 					    			</div>
-					    			<!-- <div class="order_row">
+					    			<?php /*<div class="order_row">
 					    				<center><h4><span>Customer Details</span></h4></center>
 					    				<div class="row">
 					    					<article class="col-sm-4">
@@ -75,7 +75,7 @@
 					    						<p><?php echo $orderObj->mobile?></p>
 					    					</article>
 					    				</div>
-					    			</div> -->
+					    			</div>*/ ?>
 					    			<div class="order_row">
 					    				<center><h4><span>Pickup-Drop Details</span></h4></center>
 					    				<div class="row cities">
@@ -94,7 +94,7 @@
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
 												<?php $city_index++; endforeach;
-											}else{?>
+											}elseif($orderObj->order_place_for_id == 5){?>
 												<?php $intLoop = 0;
 												foreach($orderObj->from_city as $fromCity):?>
 													<?php if($orderObj->order_place_for_id == 5){?>
@@ -112,9 +112,21 @@
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
 												<?php endforeach;?>
-											<?php }?>
+											<?php }elseif($orderObj->order_place_for_id == 6){?>
+												<?php $intLoop = 0;
+												foreach($orderObj->from_city as $fromCity):?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>City</label>
+														<p><?php echo $fromCity?></p>
+													</article>
+													<article class="col-sm-4">
+							    						<label>Address where service required</label>
+							    						<p><?php echo $orderObj->from_address?></p>
+							    					</article>
+												<?php endforeach;?>
+											<?php } ?>
 										</div>
-										<?php if($orderObj->order_place_for_id == 5 || $orderObj->order_place_for_id == 6){?>
+										<?php if($orderObj->order_place_for_id == 5){?>
 											<div class="gat_vertcl"></div>
 						    				<div class="row cities">
 												<article class="col-sm-4">
@@ -130,7 +142,16 @@
 						    						<p><?php echo $orderObj->service_type_name?></p>
 						    					</article>*/ ?>
 											</div>
-										<?php }?>
+										<?php } /*elseif ($orderObj->order_place_for_id == 6) { ?>
+											<!-- This space is for above code if -->
+											<div class="gat_vertcl"></div>
+						    				<div class="row cities">
+												<article class="col-sm-4">
+						    						<label>Address where service required</label>
+						    						<p><?php echo $orderObj->from_address?></p>
+						    					</article>
+											</div>
+										<?php }*/?>
 										<div class="gat_vertcl"></div>
 					    				<div class="row cities">
 											<?php if($orderObj->order_place_for_id == 7){
@@ -145,7 +166,7 @@
 							    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
 							    					</article>
 							    				<?php $city_area_index++; endforeach;
-						    				}else{?>
+						    				}else if($orderObj->order_place_for_id == 5){ ?>
 												<?php $intLoopArea = 0;
 												foreach($orderObj->pickup_area_location as $pickup_area_location):?>
 													<article class="col-sm-4" style="height: 60px;">
@@ -178,9 +199,13 @@
 				    					<div class="order_row">
 						    				<center><h4><span>Other Details</span></h4></center>
 					    					<div class="row">
-						    					<article class="col-sm-12">
+						    					<article class="col-sm-6">
 						    						<label>Material / Goods Description</label>
 						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
+						    					</article>
+						    					<article class="col-sm-6">
+						    						<label>Weight in Tons</label>
+						    						<p><?php echo $orderObj->weight;?></p>
 						    					</article>
 						    				</div>
 						    			</div>
@@ -282,18 +307,30 @@
 									    					<label>Item Quantity</label>
 									    					<h4><?php echo $orderObj->item_qty?></h4>
 									    				</article>
-									    			<?php }else{ ?>
-									    				<?php $intLoop = 0; $city_index = 1;
-														foreach($orderObj->from_city as $fromCity):?>
-															<article class="col-sm-3" style="height: 60px;">
-																<label>From City(<?php echo $city_index?>)</label>
-																<h4><?php echo $fromCity?></h4>
-															</article>
-															<article class="col-sm-3" style="height: 60px;">
-																<label>To City(<?php echo $city_index?>)</label>
-																<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
-															</article>
-														<?php $city_index++; endforeach;?>
+									    			<?php }elseif($orderObj->order_place_for_id == 5){ ?>
+										    				<?php $intLoop = 0; $city_index = 1;
+															foreach($orderObj->from_city as $fromCity):?>
+																<article class="col-sm-3" style="height: 60px;">
+																	<label>From City(<?php echo $city_index?>)</label>
+																	<h4><?php echo $fromCity?></h4>
+																</article>
+																<article class="col-sm-3" style="height: 60px;">
+																	<label>To City(<?php echo $city_index?>)</label>
+																	<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
+																</article>
+															<?php $city_index++; endforeach;?>
+													<?php }elseif($orderObj->order_place_for_id == 6){ ?>
+										    				<?php $intLoop = 0; $city_index = 1;
+															foreach($orderObj->from_city as $fromCity):?>
+																<article class="col-sm-6" style="height: 60px;">
+																	<label>City(<?php echo $city_index?>)</label>
+																	<h4><?php echo $fromCity?></h4>
+																</article>
+																<?php /*<article class="col-sm-3" style="height: 60px;">
+																	<label>To City(<?php echo $city_index?>)</label>
+																	<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
+																</article>*/ ?>
+															<?php $city_index++; endforeach;?>
 													<?php } ?>
 								    			</div>
 								    			<br>
@@ -359,8 +396,8 @@
 								</div>	
 								<br/>
 							<?php 
-								endforeach;
-							  endif;
+							endforeach;
+						  endif;
 						}else{
 							echo '<h5>'.$orderObj->data->message.'</h5>';
 						}
