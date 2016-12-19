@@ -504,11 +504,9 @@
 							sechdule_date	: sechdule_date
 			        	},
 			        success: function(res){
-			        	if(res.status_code == 200){
-							alert('test');
-			        		$('#form_validation_msg').val('test');				            
+			        	if(res.status_code == 200){			        		
 							$('<p style="color:red"><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
-			              	//$('.plc_ord_crane')[0].reset();
+			              	$('.plc_ord_crane')[0].reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
 				                    $('<li>'+v+'</li>').appendTo('#test');

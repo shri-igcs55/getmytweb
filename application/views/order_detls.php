@@ -661,10 +661,10 @@ $(document).ready(function(){
 			var priceSlab = $('input[type=radio][name=rate_trans]:checked').val();			
 			var quoted_rate = $('input[name=quoted_rate]').val();
 			$('.form_message span').html('');
-			var number = new RegExp(/^[0-9\-]+$/);			
+			var number = new RegExp(/^[0-9.,-]+$/);	
 							
 			if(!number.test(quoted_rate)){
-				$('.form_message span').html('<p style="color:red"><strong>Price should contain only number</strong></p>');
+				$('.form_message span').html('<p style="color:red"><strong>Price should contain only number, dash </strong></p>');
 				return false;
 			}
 			
