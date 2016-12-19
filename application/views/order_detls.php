@@ -279,8 +279,9 @@
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
 											<?php if($logged_in_user['user_type'] > 4):?>
 												<input type="button" name="rate_order" id="rate_butn" value="Give Quotation" data-toggle="modal" data-target="#getQuotationModal">
+											<?php endif; /*if(9==$quation_details->order_status): ?>
 												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
-											<?php endif;?>
+											<?php endif;*/?>
 					    				</article>
 					    			</div>
 						    	</div>
@@ -376,9 +377,9 @@
 												<article class="col-md-2">
 						    						<?php //if($logged_in_user['user_type'] <= 4):?>
 														<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View</a>
-														<?php if($logged_in_user['user_type'] < 4):?>
+														<?php /*if($logged_in_user['user_type'] < 4):?>
 														<a id="del_order_btn_<?php echo $orderObj->order_id?>" class="del_order_btn" data-toggle="tab" href="<?php echo $orderObj->order_id ?>">Remove</a>
-														<?php endif; /* else: ?>
+														<?php endif;*/ /* else: ?>
 															<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Quote</a>
 														<?php endif;*/?>
 														

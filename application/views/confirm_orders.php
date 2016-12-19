@@ -17,7 +17,7 @@
 						<div class="row">
 		    				<article class="col-md-12">
 		    					<div class="section_head">
-									<h1>View Rated Order </h1>
+									<h1>View Confirmed Order </h1>
 								</div>
 		    				</article>
 		    			</div>
@@ -266,48 +266,20 @@
 						    			</div>
 					    			<?php }?>
 									
-									<?php if($logged_in_user['user_type_parent_id'] == 2){
-											if(isset($orderObj->quotation)){
-											?>
-				    					<div class="order_row">
-						    				<center><h4><span>Quotation Details</span></h4></center>
-											<?php
-												$disabled = '';
-												foreach($orderObj->quotation as $quation_details):													
-													if(5==$quation_details->order_status){
-														$disabled = 'disabled'; break;			
-													}
-
-												endforeach;
-												foreach($orderObj->quotation as $quation_details):
-													$canceled_disabled = '';
-												$buttonLable = 'Accept';
-													if(5==$quation_details->order_status){													
-														$buttonLable = 'Sent';
-													}
-													if(7==$quation_details->order_status){		
-														$canceled_disabled = 'disabled';
-														$buttonLable = 'Transporter canceled';
-													}
-													if(8==$quation_details->order_status){		
-														$canceled_disabled = 'disabled';
-														$buttonLable = 'Transporter\'s Time out';
-													}
-												?>
-												<div class="row">
-													<article class="col-sm-12">
-														<p class="col-sm-4">RS. <?php echo $quation_details->order_amount?></p>
-														
-														<p class="col-sm-8">
-															
-															<input type="button" class="form-control accept_order" <?php echo $disabled.$canceled_disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
-														</p>
-													</article>
-												</div>
-											<?php endforeach;?>
-						    			</div>
-											<?php }
-										}?>
+									<?php if($logged_in_user_parent_id == 2){ ?>
+						    			<div class="order_row">
+						    				<center><h4><span>Order Price</span></h4></center>
+						    				<div class="row">
+						    					<article class="col-sm-3">
+						    						<label>Price</label>						    						
+						    					</article>
+												<article class="col-sm-3">
+						    						<p><?php echo $orderObj->odr_qtn_amount?></p>						    						
+						    					</article>
+												
+						    				</div>
+										</div>
+									<?php }?>
 									<?php if($logged_in_user_parent_id != 2){ ?>
 						    			<div class="order_row">
 						    				<center><h4><span>Given Quotation</span></h4></center>
