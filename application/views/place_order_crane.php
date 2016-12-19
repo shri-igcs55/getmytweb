@@ -473,9 +473,9 @@
 			if(user_id == '' || user_type_id == '' || odr_by_fname == '' || odr_by_lname == '' ||
 				odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || 
 				weight == '' ||	desc_of_work == '' || sechdule_date == '' || to_state == '' || 
-				to_city == '' || to_location == '' || to_address == '' ){
-				$('#form_validation_msg').empty();
-			    $('<p style="color:#ed4343;><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+				to_city == '' || to_location == '' || to_address == '' ){					
+				$('#form_validation_msg').empty();			   
+				$('<p style="color:red"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
 	        else{
 
@@ -504,9 +504,8 @@
 							sechdule_date	: sechdule_date
 			        	},
 			        success: function(res){
-			        	if(res.status_code == 200){
-			        		$('#form_validation_msg').empty();
-				            $('<p style="color:#00ff00;><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+			        	if(res.status_code == 200){			        		
+							$('<p style="color:red"><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
 			              	$('.plc_ord_crane')[0].reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
@@ -515,8 +514,8 @@
 				            });*/
 			            }else{
 				            $('#form_validation_msg').empty();
-				            $.each(res.data, function(key, val) {
-				            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            $.each(res.data, function(key, val) {				            	
+								$('<p style="color:red"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 			        	}
 			        },

@@ -312,7 +312,7 @@
 						    						<label>Price</label>						    						
 						    					</article>
 												<article class="col-sm-3">
-						    						<p><?php echo $orderObj->odr_qtn_amount?></p>						    						
+						    						<p><?php echo $orderObj->odr_qtn_amount?> - (<?php echo $orderObj->odr_amt_basis?>)</p>						    						
 						    					</article>
 												
 						    				</div>
@@ -326,7 +326,7 @@
 						    						<label>Quatation Price</label>						    						
 						    					</article>
 												<article class="col-sm-3">
-						    						<p><?php echo $orderObj->odr_qtn_amount?></p>						    						
+						    						<p><?php echo $orderObj->odr_qtn_amount?> - (<?php echo $orderObj->odr_amt_basis?>)</p>						    						
 						    					</article>
 												
 						    				</div>
@@ -336,10 +336,10 @@
 					    			<div class="row">
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
-											<?php if(9==$quation_details->order_status):?>
+											
 												
 												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
-											<?php endif;?>
+											
 					    				</article>
 					    			</div>
 						    	</div>
