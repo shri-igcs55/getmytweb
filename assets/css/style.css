@@ -2103,3 +2103,48 @@ margin: 0px 10px;
 	 margin: 0 auto;
     max-width: 175px;
 }
+.rated-row-button{
+	margin-top: 25px;
+}
+.rated-row-button .order_confirm_cancle{
+    background-color: #ed4344;
+    border-radius: 5px;
+    color: #fff;
+    border:none;
+    display: inline-block;
+    padding: 5px 20px;
+    font-weight: 700;
+}
+.rated-row-button .order_confirm_cancle.green-btn{
+	background-color: green;
+}
+.rated-row-button{
+	border: 1px solid #ED4344;
+	padding: 8px;
+	border-radius: 4px;
+}
+.rated-row-button h4{
+	margin-top: 5px;
+}
+.accept_order.form-control{
+	background: green;
+	color: #FFF;
+	font-weight: 600;
+	display: inline-block;
+	padding: 6px 30px;
+	border:none;
+	border-radius: 5px;
+	max-width: 150px;
+	width: 150px;
+}
+.accept_order.form-control[disabled]{
+	background: #ED4343;
+	color: #FFF;
+	font-weight: 600;
+	display: inline-block;
+	padding: 6px 30px;
+	border:none;
+	border-radius: 5px;
+	max-width: 150px;
+	width: 150px;
+}

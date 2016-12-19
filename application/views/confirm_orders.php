@@ -109,7 +109,37 @@
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
 											<?php $city_index++; endforeach;
-											}else{?>
+											}elseif($orderObj->order_place_for_id == 5){?>
+												<?php $intLoop = 0;
+												foreach($orderObj->from_city as $fromCity):?>
+													<?php if($orderObj->order_place_for_id == 5){?>
+														<article class="col-sm-4">
+											    			<label>Service require for </label>
+										    				<p><?php if(!empty($orderObj->service_type_name)) echo $orderObj->service_type_name; if(!empty($orderObj->other_service_for)) echo " - ".$orderObj->other_service_for ?></p>
+										    			</article>
+									    			<?php }?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>From City</label>
+														<p><?php echo $fromCity?></p>
+													</article>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>To City</label>
+														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
+													</article>
+												<?php endforeach;?>
+											<?php }elseif($orderObj->order_place_for_id == 6){?>
+												<?php $intLoop = 0;
+												foreach($orderObj->from_city as $fromCity):?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>City</label>
+														<p><?php echo $fromCity?></p>
+													</article>
+													<article class="col-sm-4">
+							    						<label>Address where service required</label>
+							    						<p><?php echo $orderObj->from_address?></p>
+							    					</article>
+												<?php endforeach;?>
+											<?php } /*else{?>
 											<?php $intLoop = 0;
 												foreach($orderObj->from_city as $fromCity):?>
 													<?php if($orderObj->order_place_for_id == 5){?>
@@ -127,7 +157,7 @@
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
 											<?php endforeach;?>
-											<?php }?>
+											<?php }*/?>
 										</div>
 										<?php if($orderObj->order_place_for_id == 5 || $orderObj->order_place_for_id == 6){?>
 											<div class="gat_vertcl"></div>
@@ -193,9 +223,17 @@
 				    					<div class="order_row">
 						    				<center><h4><span>Other Details</span></h4></center>
 					    					<div class="row">
-						    					<article class="col-sm-12">
+						    					<?php /*<article class="col-sm-12">
 						    						<label>Material / Goods Description</label>
 						    						<p><?php echo $material_work_goods_description;?></p>
+						    					</article>*/ ?>
+						    					<article class="col-sm-6">
+						    						<label>Material / Goods Description</label>
+						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
+						    					</article>
+						    					<article class="col-sm-6">
+						    						<label>Weight in Tons</label>
+						    						<p><?php echo $orderObj->weight;?></p>
 						    					</article>
 						    				</div>
 						    			</div>
@@ -207,7 +245,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-3">
 						    						<label>Vehicle Type</label>
-						    						<p><?php echo $orderObj->vehicle_type?></p>
+						    						<p><?php echo $orderObj->vehicle_type; if(!empty($orderObj->other_vehicle)) echo " - ".$orderObj->other_vehicle;?></p>
 						    					</article>
 						    					<article class="col-sm-4">
 						    						<label>No. of Vehicle</label>
@@ -231,7 +269,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-4">
 						    						<label>Material / Goods Type</label>
-						    						<p><?php echo $orderObj->material_type?></p>
+						    						<p><?php echo $orderObj->material_type; if(!empty($orderObj->other_material)) echo " - ".$orderObj->other_material;?></p>
 						    					</article>
 						    					<article class="col-sm-4 ">
 						    						<label>Length (in Feet)</label>

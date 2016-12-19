@@ -53,17 +53,6 @@
 				    				<div class="order_row">
 					    				<div class="row">
 										
-												<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
-													<article class="col-sm-6">
-													<h4>Request from Customer:</h4>
-													</article>
-													<article class="col-sm-6 text-right">
-													<h4>Do you have vehicle available or not?</h4>
-													<input name="order_confirm" class="order_confirm_cancle" type="button" value="Yes">
-													<input name="order_decline" class="order_confirm_cancle"   type="button" value="No">
-													</article>
-												<?php }?>
-									
 					    					<article class="col-sm-6">
 					    						<h4>Order ID: <span class="order_no"><?php echo $orderObj->order_id?></span></h4>
 					    					</article>
@@ -72,9 +61,27 @@
 					    					</article>
 					    				</div>
 					    			</div>
+					    			<div class="row">
+										<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+											<!--<article class="col-sm-6">
+											<h4>Request from Customer:</h4>
+											</article>-->
+											<div col-md-12>
+												<div class="row rated-row-button">
+													<article class="col-sm-6">
+														<h4>Do you have vehicle available or not?</h4>
+													</article>
+													<article class="col-sm-6 text-right">
+														<input name="order_confirm" class="order_confirm_cancle green-btn" type="button" value="Yes">
+														<input name="order_decline" class="order_confirm_cancle"   type="button" value="No">
+													</article>
+												</div>
+											</div>
+										<?php }?>
+					    			</div>
 									
 									
-					    			<!-- <div class="order_row">
+					    			<?php /*<div class="order_row">
 					    				<center><h4><span>Customer Details</span></h4></center>
 					    				<div class="row">
 					    					<article class="col-sm-4">
@@ -90,7 +97,7 @@
 					    						<p><?php echo $orderObj->mobile?></p>
 					    					</article>
 					    				</div>
-					    			</div> -->
+					    			</div> */?>
 					    			<div class="order_row">
 					    				<center><h4><span>Pickup-Drop Details</span></h4></center>
 					    				<div class="row cities">
@@ -109,7 +116,37 @@
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
 											<?php $city_index++; endforeach;
-											}else{?>
+											}elseif($orderObj->order_place_for_id == 5){?>
+												<?php $intLoop = 0;
+												foreach($orderObj->from_city as $fromCity):?>
+													<?php if($orderObj->order_place_for_id == 5){?>
+														<article class="col-sm-4">
+											    			<label>Service require for </label>
+										    				<p><?php if(!empty($orderObj->service_type_name)) echo $orderObj->service_type_name; if(!empty($orderObj->other_service_for)) echo " - ".$orderObj->other_service_for ?></p>
+										    			</article>
+									    			<?php }?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>From City</label>
+														<p><?php echo $fromCity?></p>
+													</article>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>To City</label>
+														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
+													</article>
+												<?php endforeach;?>
+											<?php }elseif($orderObj->order_place_for_id == 6){?>
+												<?php $intLoop = 0;
+												foreach($orderObj->from_city as $fromCity):?>
+													<article class="col-sm-4" style="height: 60px;">
+														<label>City</label>
+														<p><?php echo $fromCity?></p>
+													</article>
+													<article class="col-sm-4">
+							    						<label>Address where service required</label>
+							    						<p><?php echo $orderObj->from_address?></p>
+							    					</article>
+												<?php endforeach;?>
+											<?php } /*else{?>
 											<?php $intLoop = 0;
 												foreach($orderObj->from_city as $fromCity):?>
 													<?php if($orderObj->order_place_for_id == 5){?>
@@ -127,9 +164,9 @@
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
 											<?php endforeach;?>
-											<?php }?>
+											<?php }*/?>
 										</div>
-										<?php if($orderObj->order_place_for_id == 5 || $orderObj->order_place_for_id == 6){?>
+										<?php if($orderObj->order_place_for_id == 5/* || $orderObj->order_place_for_id == 6*/){?>
 											<div class="gat_vertcl"></div>
 						    				<div class="row cities">
 												<article class="col-sm-4">
@@ -160,7 +197,7 @@
 						    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
 						    					</article>
 						    				<?php $city_area_index++; endforeach;
-						    				}else{?>
+						    				}elseif($orderObj->order_place_for_id == 5){?>
 											<?php $intLoopArea = 0;
 											foreach($orderObj->pickup_area_location as $pickup_area_location):?>
 												<article class="col-sm-4" style="height: 60px;">
@@ -193,9 +230,17 @@
 				    					<div class="order_row">
 						    				<center><h4><span>Other Details</span></h4></center>
 					    					<div class="row">
-						    					<article class="col-sm-12">
+						    					<?php /*<article class="col-sm-12">
 						    						<label>Material / Goods Description</label>
 						    						<p><?php echo $material_work_goods_description;?></p>
+						    					</article>*/ ?>
+						    					<article class="col-sm-6">
+						    						<label>Material / Goods Description</label>
+						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
+						    					</article>
+						    					<article class="col-sm-6">
+						    						<label>Weight in Tons</label>
+						    						<p><?php echo $orderObj->weight;?></p>
 						    					</article>
 						    				</div>
 						    			</div>
@@ -207,7 +252,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-3">
 						    						<label>Vehicle Type</label>
-						    						<p><?php echo $orderObj->vehicle_type?></p>
+						    						<p><?php echo $orderObj->vehicle_type; if(!empty($orderObj->other_vehicle)) echo " - ".$orderObj->other_vehicle;?></p>
 						    					</article>
 						    					<article class="col-sm-4">
 						    						<label>No. of Vehicle</label>
@@ -231,7 +276,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-4">
 						    						<label>Material / Goods Type</label>
-						    						<p><?php echo $orderObj->material_type?></p>
+						    						<p><?php echo $orderObj->material_type; if(!empty($orderObj->other_material)) echo " - ".$orderObj->other_material;?></p>
 						    					</article>
 						    					<article class="col-sm-4 ">
 						    						<label>Length (in Feet)</label>
@@ -300,7 +345,7 @@
 														
 														<p class="col-sm-8">
 															
-															<input type="button" class="form-control accept_order" <?php echo $disabled.$canceled_disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
+															<input type="button" class=" accept_order form-control" <?php echo $disabled.$canceled_disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
 														</p>
 													</article>
 												</div>
@@ -339,17 +384,6 @@
 					    					<article class="col-md-10">
 					    						<div class="row">
 													
-													<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
-														<article class="col-sm-6">
-														<h4>Request from Customer:</h4>
-														</article>
-														<article class="col-sm-6 text-right">
-														<h4>Do you have vehicle available or not?</h4>
-														<input name="order_confirm" class="order_confirm_cancle"  type="button" value="Yes">
-														<input name="order_decline" class="order_confirm_cancle"  type="button" value="No">
-														</article>
-													<?php }?>
-											
 								    				<article class="col-sm-3">
 								    					<label>Order ID</label>
 								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h4>
@@ -416,6 +450,26 @@
 														<?php $city_index++; endforeach;?>
 													</div>
 												<?php } ?>
+
+													<div class="row">
+										<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+											<!--<article class="col-sm-6">
+											<h4>Request from Customer:</h4>
+											</article>-->
+											<div col-md-12>
+												<div class="row rated-row-button">
+													<article class="col-sm-6">
+														<h4>Do you have vehicle available or not?</h4>
+													</article>
+													<article class="col-sm-6 text-right">
+														<input name="order_confirm" class="order_confirm_cancle green-btn" type="button" value="Yes">
+														<input name="order_decline" class="order_confirm_cancle"   type="button" value="No">
+													</article>
+												</div>
+											</div>
+										<?php }?>
+					    			</div>
+											
 					    					</article>
 											<div class="row">	
 						    					<article class="col-md-2">
