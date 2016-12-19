@@ -131,6 +131,23 @@ class Userdashboard extends CI_Controller
 	}
 	//End by Bhavesh
 	
+
+	//Add by Shri
+	public function confirm_orders(){
+			
+		$logged_in_user = $this->session->userdata('logged_in_user');			
+		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
+		$objData = $this->getData('book_history','confirm_orders',$arrayParameter);
+
+		/*echo '<pre>';
+		print_r($objData->data);
+		exit;*/
+	
+		$this->load->view('comman/header');
+		$this->load->view('confirm_orders',array('orderObj'=>$objData));
+		$this->load->view('comman/footer');
+		
+	}
 	
 	// Save transporter work station
 	public function save_working_station(){

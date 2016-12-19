@@ -7,7 +7,8 @@
 				<article class="col-md-3">
 					<?php include_once('comman/left_sidebar.php'); 
 						$u_id=$logged_in_user['user_id']; 
-						//print_r($logged_in_user);
+						$logged_in_user_parent_id = $logged_in_user['user_type_parent_id'];
+						// print_r($logged_in_user);
 					?>
 				</article>
 
@@ -16,14 +17,14 @@
 						<div class="row">
 		    				<article class="col-md-12">
 		    					<div class="section_head">
-									<h1>View Pending Order </h1>
+									<h1>View Confirmed Order </h1>
 								</div>
 		    				</article>
 		    			</div>
 		    			<span id="form_validation_msg"></span>
 						<?php 
 						if(!isset($orderObj->data->message)){
-						  if(isset($orderObj->data)):
+							if(isset($orderObj->data)):
 							foreach($orderObj->data as $orderObj):
 								if($orderObj->order_place_for_id == 5){
 									$material_work_goods_description = $orderObj->pm_goods_description;
@@ -34,11 +35,11 @@
 								}
 								if($orderObj->order_from_lift == 2):	$lift_status = "Yes";
 	    					 	elseif($orderObj->order_from_lift == 1):$lift_status = "No";
-	    					 	elseif($orderObj->order_from_lift == 3):$lift_status ="Don't Know";
+	    					 	elseif($orderObj->order_from_lift == 3):$lift_status = "Don't Know";
 	    					 	endif;
-	    					 	if($orderObj->order_to_lift == 2): 	  $to_lift_status= "Yes";
-	    					 	elseif($orderObj->order_to_lift == 1):$to_lift_status= "No";
-	    					 	elseif($orderObj->order_to_lift == 3):$to_lift_status="Don't Know";
+	    					 	if($orderObj->order_to_lift == 2): 		$to_lift_status = "Yes";
+	    					 	elseif($orderObj->order_to_lift == 1): 	$to_lift_status = "No";
+	    					 	elseif($orderObj->order_to_lift == 3): 	$to_lift_status = "Don't Know";
 	    						endif;
 	    						?>
 
@@ -51,6 +52,18 @@
 								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
 				    				<div class="order_row">
 					    				<div class="row">
+										
+												<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+													<article class="col-sm-6">
+													<h4>Request from Customer:</h4>
+													</article>
+													<article class="col-sm-6 text-right">
+													<h4>Do you have vehicle available or not?</h4>
+													<input name="order_confirm" class="order_confirm_cancle" type="button" value="Yes">
+													<input name="order_decline" class="order_confirm_cancle"   type="button" value="No">
+													</article>
+												<?php }?>
+									
 					    					<article class="col-sm-6">
 					    						<h4>Order ID: <span class="order_no"><?php echo $orderObj->order_id?></span></h4>
 					    					</article>
@@ -59,7 +72,9 @@
 					    					</article>
 					    				</div>
 					    			</div>
-					    			<?php /*<div class="order_row">
+									
+									
+					    			<!-- <div class="order_row">
 					    				<center><h4><span>Customer Details</span></h4></center>
 					    				<div class="row">
 					    					<article class="col-sm-4">
@@ -75,33 +90,33 @@
 					    						<p><?php echo $orderObj->mobile?></p>
 					    					</article>
 					    				</div>
-					    			</div>*/ ?>
+					    			</div> -->
 					    			<div class="order_row">
 					    				<center><h4><span>Pickup-Drop Details</span></h4></center>
 					    				<div class="row cities">
 											<?php if($orderObj->order_place_for_id == 7){
-												$intLoop = 0; $city_index = 1;
+											$intLoop = 0; $city_index = 1;
 												foreach($orderObj->from_city as $fromCity):?>
 													<article class="col-sm-4" style="height: 60px;">
 														<label>From City(<?php echo $city_index?>)</label>
 														<p><?php echo $fromCity?></p>
 													</article>
 												<?php $city_index++; endforeach;
-													echo '</div><div class="row cities">';
+											echo '</div><div class="row cities">';
 												foreach($orderObj->from_city as $fromCity):?>
 													<article class="col-sm-4" style="height: 60px;">
 														<label>To City(<?php echo $city_index?>)</label>
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
-												<?php $city_index++; endforeach;
-											}elseif($orderObj->order_place_for_id == 5){?>
-												<?php $intLoop = 0;
+											<?php $city_index++; endforeach;
+											}else{?>
+											<?php $intLoop = 0;
 												foreach($orderObj->from_city as $fromCity):?>
 													<?php if($orderObj->order_place_for_id == 5){?>
-														<article class="col-sm-4">
-											    			<label>Service require for </label>
-										    				<p><?php if(!empty($orderObj->service_type_name)) echo $orderObj->service_type_name; if(!empty($orderObj->other_service_for)) echo " - ".$orderObj->other_service_for ?></p>
-										    			</article>
+													<article class="col-sm-4">
+										    			<label>Service require for </label>
+									    				<p><?php echo $orderObj->service_type_name?></p>
+									    			</article>
 									    			<?php }?>
 													<article class="col-sm-4" style="height: 60px;">
 														<label>From City</label>
@@ -111,22 +126,10 @@
 														<label>To City</label>
 														<p><?php echo $orderObj->to_city[$intLoop++]?></p>
 													</article>
-												<?php endforeach;?>
-											<?php }elseif($orderObj->order_place_for_id == 6){?>
-												<?php $intLoop = 0;
-												foreach($orderObj->from_city as $fromCity):?>
-													<article class="col-sm-4" style="height: 60px;">
-														<label>City</label>
-														<p><?php echo $fromCity?></p>
-													</article>
-													<article class="col-sm-4">
-							    						<label>Address where service required</label>
-							    						<p><?php echo $orderObj->from_address?></p>
-							    					</article>
-												<?php endforeach;?>
-											<?php } ?>
+											<?php endforeach;?>
+											<?php }?>
 										</div>
-										<?php if($orderObj->order_place_for_id == 5){?>
+										<?php if($orderObj->order_place_for_id == 5 || $orderObj->order_place_for_id == 6){?>
 											<div class="gat_vertcl"></div>
 						    				<div class="row cities">
 												<article class="col-sm-4">
@@ -142,42 +145,33 @@
 						    						<p><?php echo $orderObj->service_type_name?></p>
 						    					</article>*/ ?>
 											</div>
-										<?php } /*elseif ($orderObj->order_place_for_id == 6) { ?>
-											<!-- This space is for above code if -->
-											<div class="gat_vertcl"></div>
-						    				<div class="row cities">
-												<article class="col-sm-4">
-						    						<label>Address where service required</label>
-						    						<p><?php echo $orderObj->from_address?></p>
-						    					</article>
-											</div>
-										<?php }*/?>
+										<?php }?>
 										<div class="gat_vertcl"></div>
 					    				<div class="row cities">
 											<?php if($orderObj->order_place_for_id == 7){
-												$intLoopArea = 0; $city_area_index = 1;
-												foreach($orderObj->pickup_area_location as $pickup_area_location):?>
-													<article class="col-sm-4" style="height: 60px;">
-							    						<label>From Where in City area(<?php echo $city_area_index?>)</label>
-							    						<p><?php echo $pickup_area_location?></p>
-							    					</article>
-							    					<article class="col-sm-4" style="height: 60px;">
-							    						<label>To Where in City area(<?php echo $city_area_index?>)</label>
-							    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
-							    					</article>
-							    				<?php $city_area_index++; endforeach;
-						    				}else if($orderObj->order_place_for_id == 5){ ?>
-												<?php $intLoopArea = 0;
-												foreach($orderObj->pickup_area_location as $pickup_area_location):?>
-													<article class="col-sm-4" style="height: 60px;">
-							    						<label>From Where in City area</label>
-							    						<p><?php echo $pickup_area_location?></p>
-							    					</article>
-							    					<article class="col-sm-4" style="height: 60px;">
-							    						<label>To Where in City area</label>
-							    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
-							    					</article>
-							    				<?php endforeach;?>
+											$intLoopArea = 0; $city_area_index = 1;
+											foreach($orderObj->pickup_area_location as $pickup_area_location):?>
+												<article class="col-sm-4" style="height: 60px;">
+						    						<label>From Where in City area(<?php echo $city_area_index?>)</label>
+						    						<p><?php echo $pickup_area_location?></p>
+						    					</article>
+						    					<article class="col-sm-4" style="height: 60px;">
+						    						<label>To Where in City area(<?php echo $city_area_index?>)</label>
+						    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
+						    					</article>
+						    				<?php $city_area_index++; endforeach;
+						    				}else{?>
+											<?php $intLoopArea = 0;
+											foreach($orderObj->pickup_area_location as $pickup_area_location):?>
+												<article class="col-sm-4" style="height: 60px;">
+						    						<label>From Where in City area</label>
+						    						<p><?php echo $pickup_area_location?></p>
+						    					</article>
+						    					<article class="col-sm-4" style="height: 60px;">
+						    						<label>To Where in City area</label>
+						    						<p><?php echo $orderObj->drop_area_location[$intLoopArea++]?></p>
+						    					</article>
+						    				<?php endforeach;?>
 											<?php }?>
 										</div>
 										<div class="row cities">
@@ -199,24 +193,21 @@
 				    					<div class="order_row">
 						    				<center><h4><span>Other Details</span></h4></center>
 					    					<div class="row">
-						    					<article class="col-sm-6">
+						    					<article class="col-sm-12">
 						    						<label>Material / Goods Description</label>
-						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
-						    					</article>
-						    					<article class="col-sm-6">
-						    						<label>Weight in Tons</label>
-						    						<p><?php echo $orderObj->weight;?></p>
+						    						<p><?php echo $material_work_goods_description;?></p>
 						    					</article>
 						    				</div>
 						    			</div>
 					    			<?php }?>
+									
 					    			<?php if($orderObj->order_place_for_id == 7){ ?>
 						    			<div class="order_row">
 						    				<center><h4><span>Vehicle Details</span></h4></center>
 						    				<div class="row">
 						    					<article class="col-sm-3">
 						    						<label>Vehicle Type</label>
-						    						<p><?php echo $orderObj->vehicle_type; if(!empty($orderObj->other_vehicle)) echo " - ".$orderObj->other_vehicle;?></p>
+						    						<p><?php echo $orderObj->vehicle_type?></p>
 						    					</article>
 						    					<article class="col-sm-4">
 						    						<label>No. of Vehicle</label>
@@ -240,7 +231,7 @@
 						    				<div class="row">
 						    					<article class="col-sm-4">
 						    						<label>Material / Goods Type</label>
-						    						<p><?php echo $orderObj->material_type; if(!empty($orderObj->other_material)) echo " - ".$orderObj->other_material;?></p>
+						    						<p><?php echo $orderObj->material_type?></p>
 						    					</article>
 						    					<article class="col-sm-4 ">
 						    						<label>Length (in Feet)</label>
@@ -261,27 +252,56 @@
 						    				<div class="gat_vertcl"></div>
 						    				<div class="row">
 						    					<?php if($orderObj->order_place_for_id == 6){?>
-							    					<article class="col-sm-12">
-							    						<label>Material / Goods Description</label>
-							    						<p><?php echo $orderObj->crane_work_type ?></p>
-							    					</article>
+						    					<article class="col-sm-12">
+						    						<label>Material / Goods Description</label>
+						    						<p><?php echo $orderObj->crane_work_type?></p>
+						    					</article>
 						    					<?php }elseif($orderObj->order_place_for_id == 5){?>
-							    					<article class="col-sm-12">
-							    						<label>Material / Goods Description</label>
-							    						<p><?php echo $orderObj->pm_goods_description?></p>
-							    					</article>
+						    					<article class="col-sm-12">
+						    						<label>Material / Goods Description</label>
+						    						<p><?php echo $orderObj->pm_goods_description?></p>
+						    					</article>
 						    					<?php }?>
 						    				</div>
 						    			</div>
 					    			<?php }?>
+									
+									<?php if($logged_in_user_parent_id == 2){ ?>
+						    			<div class="order_row">
+						    				<center><h4><span>Order Price</span></h4></center>
+						    				<div class="row">
+						    					<article class="col-sm-3">
+						    						<label>Price</label>						    						
+						    					</article>
+												<article class="col-sm-3">
+						    						<p><?php echo $orderObj->odr_qtn_amount?></p>						    						
+						    					</article>
+												
+						    				</div>
+										</div>
+									<?php }?>
+									<?php if($logged_in_user_parent_id != 2){ ?>
+						    			<div class="order_row">
+						    				<center><h4><span>Given Quotation</span></h4></center>
+						    				<div class="row">
+						    					<article class="col-sm-3">
+						    						<label>Quatation Price</label>						    						
+						    					</article>
+												<article class="col-sm-3">
+						    						<p><?php echo $orderObj->odr_qtn_amount?></p>						    						
+						    					</article>
+												
+						    				</div>
+										</div>
+									<?php }?>
+										
 					    			<div class="row">
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
-											<?php if($logged_in_user['user_type'] > 4):?>
-												<input type="button" name="rate_order" id="rate_butn" value="Give Quotation" data-toggle="modal" data-target="#getQuotationModal">
-											<?php endif; /*if(9==$quation_details->order_status): ?>
+											<?php if(9==$quation_details->order_status):?>
+												
 												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
-											<?php endif;*/?>
+											<?php endif;?>
 					    				</article>
 					    			</div>
 						    	</div>
@@ -290,6 +310,18 @@
 					    				<div class="row">
 					    					<article class="col-md-10">
 					    						<div class="row">
+													
+													<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+														<article class="col-sm-6">
+														<h4>Request from Customer:</h4>
+														</article>
+														<article class="col-sm-6 text-right">
+														<h4>Do you have vehicle available or not?</h4>
+														<input name="order_confirm" class="order_confirm_cancle"  type="button" value="Yes">
+														<input name="order_decline" class="order_confirm_cancle"  type="button" value="No">
+														</article>
+													<?php }?>
+											
 								    				<article class="col-sm-3">
 								    					<label>Order ID</label>
 								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h4>
@@ -308,30 +340,18 @@
 									    					<label>Item Quantity</label>
 									    					<h4><?php echo $orderObj->item_qty?></h4>
 									    				</article>
-									    			<?php }elseif($orderObj->order_place_for_id == 5){ ?>
-										    				<?php $intLoop = 0; $city_index = 1;
-															foreach($orderObj->from_city as $fromCity):?>
-																<article class="col-sm-3" style="height: 60px;">
-																	<label>From City(<?php echo $city_index?>)</label>
-																	<h4><?php echo $fromCity?></h4>
-																</article>
-																<article class="col-sm-3" style="height: 60px;">
-																	<label>To City(<?php echo $city_index?>)</label>
-																	<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
-																</article>
-															<?php $city_index++; endforeach;?>
-													<?php }elseif($orderObj->order_place_for_id == 6){ ?>
-										    				<?php $intLoop = 0; $city_index = 1;
-															foreach($orderObj->from_city as $fromCity):?>
-																<article class="col-sm-6" style="height: 60px;">
-																	<label>City(<?php echo $city_index?>)</label>
-																	<h4><?php echo $fromCity?></h4>
-																</article>
-																<?php /*<article class="col-sm-3" style="height: 60px;">
-																	<label>To City(<?php echo $city_index?>)</label>
-																	<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
-																</article>*/ ?>
-															<?php $city_index++; endforeach;?>
+									    			<?php }else{ ?>
+									    				<?php $intLoop = 0; $city_index = 1;
+														foreach($orderObj->from_city as $fromCity):?>
+															<article class="col-sm-3" style="height: 60px;">
+																<label>From City(<?php echo $city_index?>)</label>
+																<h4><?php echo $fromCity?></h4>
+															</article>
+															<article class="col-sm-3" style="height: 60px;">
+																<label>To City(<?php echo $city_index?>)</label>
+																<h4><?php echo $orderObj->to_city[$intLoop++]?></h4>
+															</article>
+														<?php $city_index++; endforeach;?>
 													<?php } ?>
 								    			</div>
 								    			<br>
@@ -396,9 +416,8 @@
 					
 								</div>	
 								<br/>
-							<?php 
-							endforeach;
-						  endif;
+							<?php endforeach;
+								endif;
 						}else{
 							echo '<h5>'.$orderObj->data->message.'</h5>';
 						}
@@ -460,69 +479,67 @@
 				<form action="javascript:void(0);">
 					<input type="hidden" name="quoted_order_id" value="0">
 					<?php if($logged_in_user['user_type'] == 6){ ?>
-						<!-- FOR CRANE -->
-						<div class="first_form">
-							<table class="table">
-								<tr>
-									<td class="col-md-3">
-										<div class="radio">
-											<input type="radio" id="per_hour" class="custom_radio" name="rate_trans" value="Per Hour Basis">
-											<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
-										</div>
-									</td>
-									<td class="col-md-3">
-										<div class="radio">
-											<input type="radio" id="per_day" class="custom_radio" name="rate_trans"  value="Per Day Basis">
-											<label for="per_day" class="custom_radio_label">Per Day Basis</label>
-										</div>
-									</td>
-									<td class="col-md-3">
-										<div class="radio">
-											<input type="radio" id="contract_basis" class="custom_radio" name="rate_trans" value="Contract Basis">
-											<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<ul class="list-inline">
-											<li><input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate"></li>
-										</ul>
-									</td>
-								</tr>
-							</table>
-						</div>
+					<div class="first_form">
+						<table class="table">
+							<tr>
+								<td class="col-md-3">
+									<div class="radio">
+										<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
+										<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
+									</div>
+								</td>
+								<td class="col-md-3">
+									<div class="radio">
+										<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
+										<label for="per_day" class="custom_radio_label">Per Day Basis</label>
+									</div>
+								</td>
+								<td class="col-md-3">
+									<div class="radio">
+										<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
+										<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<ul class="list-inline">
+										<li><input type="text" class="form-control" placeholder="Amount"></li>
+									</ul>
+								</td>
+							</tr>
+						</table>
+					</div>
 					<?php }else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] > 7){ ?>
-						<!-- FOR PACKER AND MOVER / TRANSPORTER -->
-						<div class="second_form">
-							<table class="table">
-								<tr>
-									<td class="col-md-6">
-										<div class="radio">
-											<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="Estimated Rate">
-											<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
-										</div>
-									</td>
-									<td class="col-md-6">
-										<div class="radio">
-											<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="Between Range">
-											<label for="beetween_range" class="custom_radio_label">Between Range</label>
-										</div>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
-										<input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate">
-									</td>
-									<?php /*<td>
-										<label for="max_amnt" class="control-label">Maximum Amount</label>
-										<input type="text" id="max_amnt" class="form-control" placeholder="10000">
-									</td>*/ ?>
-								</tr>
-							</table>
-						</div>
-					<?php } ?>
+					<div class="second_form">
+						<table class="table">
+							<tr>
+								<td class="col-md-6">
+									<div class="radio">
+										<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
+										<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
+									</div>
+								</td>
+								<td class="col-md-6">
+									<div class="radio">
+										<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
+										<label for="beetween_range" class="custom_radio_label">Between Range</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
+									<input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate">
+								</td>
+								<?php /*<td>
+									<label for="max_amnt" class="control-label">Maximum Amount</label>
+									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
+								</td>*/ ?>
+							</tr>
+						</table>
+					</div>
+					<?php } 	?>
 					<div class="form-group text-center form_message">
 						<span></span>
 					</div>
@@ -652,31 +669,21 @@ $(document).ready(function(){
 	})
 	
 	
-	//<!-- Added by Bhavesh -->
-	$('input[name=rate_order]').click(function(){
-		$('input[name=quoted_order_id]').val($(this).closest('.order_wrpr').find('span.order_no').html());
-	})
-	$('#quote_order_btn').click(function(){
+	//<!-- Added by Bhavesh -->	
+	//<!-- this function for the customer -->
+	$('.accept_order').click(function(){
 		
-			var priceSlab = $('input[type=radio][name=rate_trans]:checked').val();			
-			var quoted_rate = $('input[name=quoted_rate]').val();
-			$('.form_message span').html('');
-			var number = new RegExp(/^[0-9\-]+$/);			
-							
-			if(!number.test(quoted_rate)){
-				$('.form_message span').html('<p style="color:red"><strong>Price should contain only number</strong></p>');
+			if(!confirm('Are you sure you want to sent request?'))
 				return false;
-			}
+			var currentObj = $(this);
+			var transpoter_id = $(this).attr('data-quoted_user_id');
+			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
 			
-			var order_id = $('input[name=quoted_order_id]').val();			
-		
 			$.ajax({
 				type: "POST",
-		        url : "/gmt/Quotation/rateToOrder",
+		        url : "/gmt/Quotation/acceptOrder",
 		        data: {
-		        	order_id: order_id,
-		        	quoted_rate: quoted_rate,
-					odr_amt_basis:priceSlab
+		        	order_id: order_id,transpoter_id: transpoter_id
 		        },
 
 		        success: function(res) {
@@ -686,9 +693,9 @@ $(document).ready(function(){
 		              	$('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
 			            	if(key == 'message'){
-								$('.form_message span').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
-								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');			
-								setTimeout(function(){ $('.order_id_'+order_id).slideUp(); }, 4000);
+								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
+								currentObj.val('Sent');
+								currentObj.closest('.order_row').find('input[type=button]').attr('disabled','disabled');
 							}
 			            });
 		            }else{
@@ -697,7 +704,6 @@ $(document).ready(function(){
 			            $.each(res.data, function(key, val) {
 			            	if(key == 'message'){
 			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
-								$('.order_id_'+order_id).find('.form_message_orderwise').show();
 			            	}
 			            });
 		            }
@@ -707,8 +713,55 @@ $(document).ready(function(){
 		        }
 	        });
 		});
+		
+		//<!-- This function is for transportor -->
+		$('.order_confirm_cancle').click(function(){
+		
+			if(!confirm('Are you sure you want to perform this action?'))
+				return false;
+			var currentObj = $(this);
+			var transpoter_id = '<?php echo $logged_in_user['user_id']?>';
+			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
+			if($(this).val()=='Yes')
+				var order_status = 9; //Vehicle Available and Order Confirm
+			else
+				var order_status = 7; //Vehicle Not Available
+			
+			$.ajax({
+				type: "POST",
+		        url : "/gmt/Quotation/confirmOrder",
+		        data: {
+		        	order_id: order_id,transpoter_id: transpoter_id,order_status: order_status
+		        },
+
+		        success: function(res) {
+		        	
+		        	if (res.status_code == 200)
+		            {		              	
+		              	$('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
+							}
+			            });
+		            }else{
+			            
+			            $('#form_validation_msg').empty();
+			            $.each(res.data, function(key, val) {
+			            	if(key == 'message'){
+			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
+			            	}
+			            });
+		            }
+	          	},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+	        });
+		});
+		
 	
-	//<!-- End by Bhavesh -->
+	<!-- End by Bhavesh -->
 	
 	
 	

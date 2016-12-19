@@ -59,8 +59,8 @@
 													</article>
 													<article class="col-sm-6 text-right">
 													<h4>Do you have vehicle available or not?</h4>
-													<input name="order_confirm" type="button" value="Yes">
-													<input name="order_decline" type="button" value="No">
+													<input name="order_confirm" class="order_confirm_cancle" type="button" value="Yes">
+													<input name="order_decline" class="order_confirm_cancle"   type="button" value="No">
 													</article>
 												<?php }?>
 									
@@ -275,13 +275,23 @@
 												$disabled = '';
 												foreach($orderObj->quotation as $quation_details):													
 													if(5==$quation_details->order_status){
-														$disabled = 'disabled'; break;														
+														$disabled = 'disabled'; break;			
 													}
+
 												endforeach;
 												foreach($orderObj->quotation as $quation_details):
+													$canceled_disabled = '';
 												$buttonLable = 'Accept';
 													if(5==$quation_details->order_status){													
 														$buttonLable = 'Sent';
+													}
+													if(7==$quation_details->order_status){		
+														$canceled_disabled = 'disabled';
+														$buttonLable = 'Transporter canceled';
+													}
+													if(8==$quation_details->order_status){		
+														$canceled_disabled = 'disabled';
+														$buttonLable = 'Transporter\'s Time out';
 													}
 												?>
 												<div class="row">
@@ -290,7 +300,7 @@
 														
 														<p class="col-sm-8">
 															
-															<input type="button" class="form-control accept_order" <?php echo $disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
+															<input type="button" class="form-control accept_order" <?php echo $disabled.$canceled_disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
 														</p>
 													</article>
 												</div>
@@ -316,7 +326,7 @@
 					    			<div class="row">
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
-											<?php if($logged_in_user['user_type'] > 4):?>
+											<?php if(9==$quation_details->order_status):?>
 												
 												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
 											<?php endif;?>
@@ -335,8 +345,8 @@
 														</article>
 														<article class="col-sm-6 text-right">
 														<h4>Do you have vehicle available or not?</h4>
-														<input name="order_confirm" type="button" value="Yes">
-														<input name="order_decline" type="button" value="No">
+														<input name="order_confirm" class="order_confirm_cancle"  type="button" value="Yes">
+														<input name="order_decline" class="order_confirm_cancle"  type="button" value="No">
 														</article>
 													<?php }?>
 											
@@ -415,9 +425,9 @@
 												<article class="col-md-2">
 						    						<?php //if($logged_in_user['user_type'] <= 4):?>
 														<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View</a>
-														<?php if($logged_in_user['user_type'] < 4):?>
+														<?php /*if($logged_in_user['user_type'] < 4):?>
 														<a id="del_order_btn_<?php echo $orderObj->order_id?>" class="del_order_btn" data-toggle="tab" href="<?php echo $orderObj->order_id ?>">Remove</a>
-														<?php endif; /* else: ?>
+														<?php endif;*/ /* else: ?>
 															<a id="view_rate_btn" data-toggle="tab" href="#order_detailes_<?php echo $orderObj->order_id?>">View &amp; Quote</a>
 														<?php endif;*/?>
 														
@@ -687,8 +697,8 @@ $(document).ready(function(){
 	})
 	
 	
-	<!-- Added by Bhavesh -->	
-	<!-- this function for the customer -->
+	//<!-- Added by Bhavesh -->	
+	//<!-- this function for the customer -->
 	$('.accept_order').click(function(){
 		
 			if(!confirm('Are you sure you want to sent request?'))
@@ -732,8 +742,8 @@ $(document).ready(function(){
 	        });
 		});
 		
-		<!-- This function is for transportor -->
-		$('input[name=order_confirm]').click(function(){
+		//<!-- This function is for transportor -->
+		$('.order_confirm_cancle').click(function(){
 		
 			if(!confirm('Are you sure you want to perform this action?'))
 				return false;
