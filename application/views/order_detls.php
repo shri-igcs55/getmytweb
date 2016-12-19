@@ -465,19 +465,19 @@
 								<tr>
 									<td class="col-md-3">
 										<div class="radio">
-											<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
+											<input type="radio" id="per_hour" class="custom_radio" name="rate_trans" value="Per Hour Basis">
 											<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
 										</div>
 									</td>
 									<td class="col-md-3">
 										<div class="radio">
-											<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
+											<input type="radio" id="per_day" class="custom_radio" name="rate_trans"  value="Per Day Basis">
 											<label for="per_day" class="custom_radio_label">Per Day Basis</label>
 										</div>
 									</td>
 									<td class="col-md-3">
 										<div class="radio">
-											<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
+											<input type="radio" id="contract_basis" class="custom_radio" name="rate_trans" value="Contract Basis">
 											<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
 										</div>
 									</td>
@@ -485,7 +485,7 @@
 								<tr>
 									<td>
 										<ul class="list-inline">
-											<li><input type="text" class="form-control" placeholder="Amount"></li>
+											<li><input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate"></li>
 										</ul>
 									</td>
 								</tr>
@@ -498,13 +498,13 @@
 								<tr>
 									<td class="col-md-6">
 										<div class="radio">
-											<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
+											<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="Estimated Rate">
 											<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
 										</div>
 									</td>
 									<td class="col-md-6">
 										<div class="radio">
-											<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
+											<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="Between Range">
 											<label for="beetween_range" class="custom_radio_label">Between Range</label>
 										</div>
 									</td>
@@ -661,19 +661,10 @@ $(document).ready(function(){
 			var quoted_rate = $('input[name=quoted_rate]').val();
 			$('.form_message span').html('');
 			var number = new RegExp(/^[0-9\-]+$/);			
-			if(priceSlab=='er'){				
-				if(!number.test(quoted_rate)){
-					$('.form_message span').html('Price should contain only number.');
-					return false;
-				}
-			}
-			if(priceSlab=='br'){
-				//var number_dash = new RegExp(/^(?=.*\d)$/);
-				if(!number.test(quoted_rate))
-				{   
-					$('.form_message span').html('Price Range should contain number and desh.');
-					return false;
-				}							
+							
+			if(!number.test(quoted_rate)){
+				$('.form_message span').html('<p style="color:red"><strong>Price should contain only number</strong></p>');
+				return false;
 			}
 			
 			var order_id = $('input[name=quoted_order_id]').val();			
@@ -683,7 +674,8 @@ $(document).ready(function(){
 		        url : "/gmt/Quotation/rateToOrder",
 		        data: {
 		        	order_id: order_id,
-		        	quoted_rate: quoted_rate
+		        	quoted_rate: quoted_rate,
+					odr_amt_basis:priceSlab
 		        },
 
 		        success: function(res) {

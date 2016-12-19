@@ -498,7 +498,7 @@
 	        var desc_of_goods			= objPMSection.find("#work_description_pm").val();
 	        
 	        if(user_id == '' || odr_by_fname == '' || odr_by_lname == '' || odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || to_state == '' || to_city == '' || to_location == '' || detailed_from_address == '' || shift_floor_from == '' || from_lift_facility == '' || detailed_to_address == '' || shift_floor_to == '' || to_lift_facility == '' || service_for == '' || sechdule_date == '' || desc_of_goods == '' ){
-	        	$('<p style="color:#ed4343;><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+	        	$('<p style="color:red"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
 	        else{
 
@@ -533,7 +533,7 @@
 			        success: function(res) {
 			            if (res.status_code == 200)
 			            {
-			              	$('<p style="color:#00ff00;><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
+			              	$('<p style="color:red"><strong>Order placed Successfully.</strong></p>').appendTo('#form_validation_msg');
 			              	$('.plc_ord_pm')[0].reset();
 				            /*$.each(res.data, function(key, val) {
 				            	$.each(val, function(k, v){
@@ -542,7 +542,7 @@
 				            });*/
 			            }else{
 				            $.each(res.data, function(key, val) {
-				            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            	$('<p style="color:red"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 			            }
 		          	},
