@@ -15,12 +15,12 @@
 				    			<div class="row">
 				    				<article class="col-md-12">
 				    					<div class="section_head">
-											<h1>Place Order for <span>Transporter / Logestic Service</span></h1>
+											<h1>Place Order for <span>Transporter / Logistic Service</span></h1>
 
 											<div class="radio_grp row">
 												<div class="col-sm-4">
 													<input type="radio" name="radio" id="radio1" class="radio" checked/>
-													<label for="radio1">Transporter / Logestic</label>
+													<label for="radio1">Transporter / Logistic</label>
 												</div>
 
 												<div class="col-sm-4">
@@ -118,7 +118,7 @@
 														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="mobile">Mobile<sup>*</sup></label>
-															    <input type="text" class="form-control" id="mobile" required>
+															    <input type="text" class="form-control" id="mobile" required min="10" max="10" minlength="10" maxlength="10" >
 															</div>
 														</article>
 										    		</div>

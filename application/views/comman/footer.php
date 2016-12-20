@@ -13,7 +13,7 @@
 								</article>
 								<article class="col-xs-9">
 									<p>Connect with us</p>
-									<a href="mailto:us-info@getmytruck.in">info@getmytruck.in</a>
+									<a href="mailto:info@getmytruck.in">info@getmytruck.in</a>
 								</article>
 							</div>
 						</div>
@@ -156,7 +156,7 @@
 
 
 
-<script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery-ui.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/');?>css/jquery-ui/jquery-ui.js"></script>
 <!-- jQuery js ends -->
 
 <!-- bootstrap js -->

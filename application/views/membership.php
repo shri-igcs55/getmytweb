@@ -39,7 +39,7 @@
 											<tr>
 												<th>Package Feature</th>
 												<th style="text-align: center;">Packers &amp; Movers</th>
-												<th style="text-align: center;">For Tanker Provider</th>
+												<th style="text-align: center;">For Crane Provider</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -54,7 +54,7 @@
 													<ul class="list-unstyled">
 														<li><span>For Packers &amp; Movers service</span></li>
 														<li><span>For Crane Service</span></li>
-														<li><span>For Transport /  Logistic Service</span></li>
+														<li><span>For Transport / Logistics Service</span></li>
 													</ul>
 												</td>
 												<td>
@@ -136,7 +136,7 @@
 										<thead>
 											<tr>
 												<th><span>Package Feature</span></th>
-												<th><span>For Logistic/ Transport</span></th>
+												<th><span>For Logistics/ Transport</span></th>
 												<th><span>For Commission Agent</span></th>
 												<th><span>For Container Supplier</span></th>
 												<th><span>For Fleet Owner</span></th>
@@ -161,7 +161,7 @@
 													<ul class="list-unstyled">
 														<li><span>For Packers &amp; Movers service</span></li>
 														<li><span>For Crane Service</span></li>
-														<li><span>For Transport /  Logistic Service</span></li>
+														<li><span>For Transport / Logistics Service</span></li>
 													</ul>
 												</td>
 												<td>
@@ -343,7 +343,7 @@
 													<ul class="list-unstyled">
 														<li><span>For Packers &amp; Movers service</span></li>
 														<li><span>For Crane Service</span></li>
-														<li><span>For Transport /  Logistic Service</span></li>
+														<li><span>For Transport / Logistics Service</span></li>
 													</ul>
 												</td>
 												<td>

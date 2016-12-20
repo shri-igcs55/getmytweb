@@ -76,7 +76,7 @@
 
 			if(user_id == '' || old_pass == '' || new_pass == '' || c_pass == ''){
 				$('#form_validation_msg').empty();
-				$('<p style="color:#ed4343;><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
+				$('<p style="color:#ed4343;"><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
 			}else{
 				var change_pass = $('#chg_pass').serialize();
 				jQuery.ajax({
@@ -86,12 +86,12 @@
 					success: function(res){
 						if(res.status_code == 200){
 							$('#form_validation_msg').empty();
-							$('<p style="color:#00ff00;><strong>Paasword Changed  Successfully.</strong></p>').appendTo('#form_validation_msg');
+							$('<p style="color:#00ff00;"><strong>Paasword Changed  Successfully.</strong></p>').appendTo('#form_validation_msg');
 							$('.pass_form')[0].reset();
 						}else{
 							$('#form_validation_msg').empty();
 							$.each(res.data, function(key, val) {
-				            	$('<p style="color:#ed4343;><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 				            });
 						}
 					},

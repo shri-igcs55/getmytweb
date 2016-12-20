@@ -31,7 +31,7 @@
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="L_name">Last Name</label>
+										    <label for="L_name">Last Name<sup>*</sup></label>
 										    <input name="last_name" type="text" class="form-control" id="L_name">
 										</div>
 									</article>
@@ -63,7 +63,7 @@
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="confirm_password">Confirm Password</label>
+										    <label for="confirm_password">Confirm Password<sup>*</sup></label>
 										    <input name="c_pass" type="password" class="form-control" id="c_pass" required>
 										</div>
 									</article>
@@ -191,8 +191,8 @@
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="L_name">Last Name</label>
-										    <input name="last_name" type="text" class="form-control" id="L_name">
+										    <label for="L_name">Last Name<sup>*</sup></label>
+										    <input name="last_name" type="text" class="form-control" id="L_name" required="">
 										</div>
 									</article>
 								</div>
@@ -252,7 +252,7 @@
 									</article>
 									<article class="col-md-6">
 										<div class="form-group">
-										    <label for="confirm_password">Confirm Password</label>
+										    <label for="confirm_password">Confirm Password<sup>*</sup></label>
 										    <input name="c_pass" type="password" class="form-control" id="c_pass" required>
 										</div>
 									</article>
@@ -341,7 +341,7 @@
 									<article class="col-md-6">
 										<div class="form-group">
 										    <label for="email_phn">Pan No</label>
-										    <input name="pan" min="10" max="10" minlength="10" maxlength="10" type="text" class="form-control" id="email_phn" required>
+										    <input name="pan" min="10" max="10" minlength="10" maxlength="10" type="text" class="form-control" id="email_phn">
 										</div>
 									</article>
 								</div>

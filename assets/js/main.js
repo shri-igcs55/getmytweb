@@ -36,7 +36,15 @@ $(document).ready(function(){
 	// ===== 
 	// Search order date picker
 	$(function(){
-	    $("#datepicker,#schedule_date,#pm_schedule_date,#crane_schedule_date,#pickup_date").datepicker(
+	    $("#schedule_date,#pm_schedule_date,#crane_schedule_date").datepicker(
+	    	{
+	    		dateFormat: 'dd-mm-yy',
+	    		minDate: 0
+	    	}).val();
+	});
+
+	$(function(){
+	    $("#datepicker,#pickup_date").datepicker(
 	    	{
 	    		dateFormat: 'dd-mm-yy'
 	    	}).val();
@@ -490,7 +498,8 @@ $(document).ready(function(){
         	state == '' || district == '' || city == '' || pin == '' || captcha == '' ){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
-        else if(firm_name == '' || company_pan == ''){
+        else if(firm_name == ''){ // As said by client 20-12-16
+        // else if(firm_name == '' || company_pan == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
         }
         else if(other_designation_new == '' || designation == ''){

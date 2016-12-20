@@ -14,7 +14,8 @@
 	<!-- bootstrap css ends -->
 
 	<!-- jquery UI css -->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/jquery-ui/jquery-ui.min.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/jquery-ui/jquery-ui.theme.min.css">
 	<!-- jquery UI css ends -->
 
 	<!-- owl carousel css -->

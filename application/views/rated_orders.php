@@ -239,7 +239,7 @@
 						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
 						    					</article>
 						    					<article class="col-sm-6">
-						    						<label>Weight in Tons</label>
+						    						<label>Weight (In Tons)</label>
 						    						<p><?php echo $orderObj->weight;?></p>
 						    					</article>
 						    				</div>
@@ -279,11 +279,11 @@
 						    						<p><?php echo $orderObj->material_type; if(!empty($orderObj->other_material)) echo " - ".$orderObj->other_material;?></p>
 						    					</article>
 						    					<article class="col-sm-4 ">
-						    						<label>Length (in Feet)</label>
+						    						<label>Length (In Feet)</label>
 						    						<p><?php echo $orderObj->length?></p>
 						    					</article>
 						    					<article class="col-sm-4">
-						    						<label>Weight (Approx.)</label>
+						    						<label>Weight (In tons)</label>
 						    						<p><?php echo $orderObj->weight?></p>
 						    					</article>
 						    				</div>
