@@ -208,8 +208,8 @@ class Userdashboard extends CI_Controller
 
 	public function getData($class,$method,$arrayField){		
 		$ch = curl_init();
-		// curl_setopt($ch,CURLOPT_URL, 'http://getmytruck.tk/gmt/'.$class.'/'.$method);
-		curl_setopt($ch,CURLOPT_URL, 'http://localhost/gmt/'.$class.'/'.$method);
+		curl_setopt($ch,CURLOPT_URL, 'http://getmytruck.tk/gmt/'.$class.'/'.$method);
+		// curl_setopt($ch,CURLOPT_URL, 'http://localhost/gmt/'.$class.'/'.$method);
 		curl_setopt($ch,CURLOPT_POST, count($arrayField));
 		curl_setopt($ch,CURLOPT_POSTFIELDS, $arrayField);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
