@@ -56,7 +56,7 @@ class Userdashboard extends CI_Controller
 	public function save_contact(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -86,7 +86,7 @@ class Userdashboard extends CI_Controller
 	{
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -115,7 +115,7 @@ class Userdashboard extends CI_Controller
 	public function booked_orders(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -139,7 +139,7 @@ class Userdashboard extends CI_Controller
 	public function rated_orders(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -165,7 +165,7 @@ class Userdashboard extends CI_Controller
 	public function confirm_orders(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -189,7 +189,7 @@ class Userdashboard extends CI_Controller
 	public function save_working_station(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -238,7 +238,7 @@ class Userdashboard extends CI_Controller
 	public function view_search_result(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
