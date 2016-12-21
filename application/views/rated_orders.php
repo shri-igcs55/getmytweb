@@ -238,10 +238,12 @@
 						    						<label>Material / Goods Description</label>
 						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
 						    					</article>
-						    					<article class="col-sm-6">
-						    						<label>Weight (In Tons)</label>
-						    						<p><?php echo $orderObj->weight;?></p>
-						    					</article>
+						    					<?php if($orderObj->order_place_for_id == 6){?>
+							    					<article class="col-sm-6">
+							    						<label>Weight (In Tons)</label>
+							    						<p><?php echo $orderObj->weight;?></p>
+							    					</article>
+							    				<?php }?>
 						    				</div>
 						    			</div>
 					    			<?php }?>
@@ -341,7 +343,7 @@
 												?>
 												<div class="row">
 													<article class="col-sm-12">
-														<p class="col-sm-4">RS. <?php echo $quation_details->order_amount?> - (<?php echo $quation_details->odr_amt_basis?>)</p>
+														<p class="col-sm-4">RS. <?php echo $quation_details->order_amount?> <?php if(!empty($quation_details->odr_amt_basis)){ echo '('.$quation_details->odr_amt_basis.')'; }?></p>
 														
 														<p class="col-sm-8">
 															
@@ -362,8 +364,7 @@
 						    					</article>
 												<article class="col-sm-3">
 						    						<p>
-													<?php echo $orderObj->odr_qtn_amount?> 
-													- (<?php echo $orderObj->odr_amt_basis?>)
+													<?php echo $orderObj->odr_qtn_amount?> <?php if(!empty($orderObj->odr_amt_basis)){ echo '('.$orderObj->odr_amt_basis.')'; }?>
 													</p>						    						
 						    					</article>
 												

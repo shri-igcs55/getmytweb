@@ -203,10 +203,12 @@
 						    						<label>Material / Goods Description</label>
 						    						<p><?php echo $material_work_goods_description; if(!empty($orderObj->other_work_desc)) echo " - ".$orderObj->other_work_desc; ?></p>
 						    					</article>
-						    					<article class="col-sm-6">
-						    						<label>Weight (In Tons)</label>
-						    						<p><?php echo $orderObj->weight;?></p>
-						    					</article>
+						    					<?php if($orderObj->order_place_for_id == 6){?>
+							    					<article class="col-sm-6">
+							    						<label>Weight (In Tons)</label>
+							    						<p><?php echo $orderObj->weight;?></p>
+							    					</article>
+							    				<?php }?>
 						    				</div>
 						    			</div>
 					    			<?php }?>
