@@ -856,14 +856,14 @@ $(document).ready(function(){
 
 <script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-var modified_datetime = "<?php echo date("Y/m/d H:i:s", strtotime($orderObj->modified_datetime."+30 minutes"));?>";
+/*var modified_datetime = "<?php //echo date("Y/m/d H:i:s", strtotime($orderObj->modified_datetime."+30 minutes"));?>";
 //alert(modified_datetime);
   $(".left_time")
   .countdown(modified_datetime, function(event) {
     $(this).text(
       event.strftime('%M:%S')
     );
-  });
+  });*/
 </script>
 
 			
