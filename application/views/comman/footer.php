@@ -194,9 +194,92 @@
 <script type="text/javascript" src="<?php echo base_url('assets/'); ?>js/jquery.gallery.js"></script>
 
 <script type="text/javascript">
-            $(function() {
-                $('#dg-container').gallery();
-            });
+    $(function() {
+        $('#dg-container').gallery();
+    });
+    function validateEmail(sEmail) {
+		// var filter = /^[\w\-\.\_\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+		// var filter = /^[\w\-\.\_\+]+\@[a-zA-Z0-9\.\-]+(\.[a-zA-Z0-9]{2,4})+(\.[a-zA-Z]{2,4})$/;
+		var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (filter.test(sEmail)) {
+			return true;
+		} else {
+			// alert("Email id is not valid.");
+			return false;
+		}
+	}
+	function validatePhoneNumber(inputtxt)  
+	{  
+	  	// var phoneno = /^\d{10}$/;  
+	  	var phoneno = /^([0-9]{10})$/;
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        // alert("Phone number is not valid.");  
+	        return false;
+		}  
+	}
+	function validatePinCode(inputtxt)  
+	{  
+	  	var phoneno = /^([0-9]{6})$/;  
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        return false;
+		}  
+	}
+	function validatePassword(inputtxt)  
+	{  
+	  	var phoneno = /^([a-zA-Z0-9]{6})$/;  
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        return false;
+		}  
+	}
+	function validateNag(inputtxt)  
+	{  
+	  	var phoneno = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;  
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        return false;
+		}  
+	}
+	function validatePan(inputtxt)  
+	{  
+	  	var phoneno = /^([a-zA-Z0-9]{10})$/;  
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        return false;
+		}  
+	}
+	function validateWeight(inputtxt)  
+	{  
+	  	var phoneno = /[+-]?([0-9]*[.])?[0-9]+/;  
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        return false;
+		}  
+	}
+	function validateLength(inputtxt)  
+	{  
+	  	var phoneno = /[+-]?([0-9]*[.])?[0-9]+/;  
+	  	if(phoneno.test(inputtxt))  
+	    {  
+	    	return true;
+	    } else {
+	        return false;
+		}  
+	}
 </script>
 </body>
 <?php print_r($this->session->userdata('logged_in_user')); ?>

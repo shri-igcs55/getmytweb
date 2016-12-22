@@ -519,7 +519,15 @@
 			var destination_points 	= objCurrentSection.find("#drop_point").val();
 	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
 	        
-			
+			if(validatePhoneNumber(user_mob) == false){
+				$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        }else if(validateWeight(weight) == false){
+	        	$('<p style="color:#ed4343;"><strong>Weight is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        }else if(validateNag(no_of_quantity) == false){
+	        	$('<p style="color:#ed4343;"><strong>Nag (Quantity) is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        }else if(validateLength(feet) == false){
+	        	$('<p style="color:#ed4343;"><strong>Length is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        }
 			var array_from_city = new Array();
 			var array_from_location = new Array();
 			var array_to_city = new Array();

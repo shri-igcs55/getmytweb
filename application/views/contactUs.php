@@ -39,7 +39,7 @@
 							<div class="col-md-4 col-lg-4">
 								<div class="form-group">
 									<span class="M_number_befr">
-								    	<input name="user_mob" type="number" class="form-control" id="user_mob" placeholder="PHONE NUMBER" required>
+								    	<input name="user_mob" type="number" class="form-control" id="user_mob" minlength="10" maxlength="10" min="10" max="10" placeholder="PHONE NUMBER" required>
 								    </span>
 								</div>
 							</div>

@@ -62,7 +62,7 @@
 													</div>
 
 													<div class="row">
-														<article class="col-md-6">
+														<!-- <article class="col-md-6">
 															<div class="form-group">
 															    <label for="vehicle_type">Vehicle Type</label>
 															    <select id="vehicle_type" name="trans_vehicle_type" class="vehicle form-control" title="Select Vehicle Type">
@@ -70,22 +70,23 @@
 															    	<option value="">Loading...</option>
 															    </select>
 															</div>
-														</article>
-														<article class="col-md-6">
+														</article> -->
+														
+													</div>
+													<div class="row">
+														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="weight">Weight</label>
 															    <input type="text" class="form-control" id="weight" name="weight">
 															</div>
 														</article>
-													</div>
-													<div class="row">
-														<article class="col-md-6">
+														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="feet_in_length">Feet(in Length)</label>
 															    <input type="text" class="form-control" id="feet_in_length" name="trans_feet_in_length">
 															</div>
 														</article>
-														<article class="col-md-6">
+														<article class="col-md-4">
 															<div class="form-group">
 															    <label for="pickup_date">Date</label>
 															    <input type="text" class="form-control calander_bgimage" name="schedule_date" id="pickup_date">
