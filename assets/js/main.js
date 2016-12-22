@@ -529,7 +529,7 @@ $(document).ready(function(){
 		              	
 		              	jQuery.ajax({
 					    	type:"POST",
-							url: "/gmt/User/user_signin",
+							url: "/gmt/User/user_signin/place_transporter_order",
 							dataType: 'json',
 					        data: { 
 					        	email_mob: user_email,

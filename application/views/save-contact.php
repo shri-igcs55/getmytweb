@@ -58,7 +58,7 @@
 																	<div class="checkbox">
 																		<input class="checked_cont_edit" type="checkbox" id="add<?php echo $orderObj->cont_id; ?>" name="checked_cont_id" value="<?php echo $orderObj->cont_id; ?>">
 																		<input class="edit_val_checked" type="hidden" name="contactid_<?php echo $orderObj->cont_id; ?>" id="contactid_<?php echo $orderObj->cont_id; ?>" value="<?php echo $orderObj->cont_id; ?>">
-																		<input class="edit_val_checked_id" type="hidden" name="contactid_<?php echo $orderObj->group_id; ?>" id="contactid_<?php echo $orderObj->group_id; ?>" value="<?php echo $orderObj->group_id; ?>">
+																		<input class="edit_val_checked_id" type="hidden" name="grpid_<?php echo $orderObj->group_id; ?>" id="contactid_<?php echo $orderObj->group_id; ?>" value="<?php echo $orderObj->group_id; ?>">
 																		<label for="add<?php echo $orderObj->cont_id; ?>"></label>
 																	</div>
 																</td>
@@ -98,15 +98,15 @@
 				<table class="table save_contact_table">
 					<tr>
 						<td>Name</td>
-						<td><input type="text" name="contact_name" id="contact_name" value="" /></td>
+						<td><input class="form-control" type="text" name="contact_name" id="contact_name" value="" placeholder="Name" /></td>
 					</tr>
 					<tr>
 						<td>Phone No.</td>
-						<td><input type="text" minlength="10" name="contact_phone" id="contact_phone" value="" /></td>
+						<td><input class="form-control" type="text" minlength="10" name="contact_phone" id="contact_phone" value="" placeholder="Phone" /></td>
 					</tr>
 					<tr>
 						<td>Email</td>
-						<td><input type="text" name="contact_email" id="contact_email" value="" /></td>
+						<td><input class="form-control" type="text" name="contact_email" id="contact_email" value="" placeholder="Email" /></td>
 					</tr>
 					<tr>
 						<td>Group</td>
@@ -128,23 +128,22 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-
 		// to Edit contact
 		$("#edit_cont").on('click',function(){
-		// $("#contact_list_table").load(function(){
+		 // $("#contact_list_table").load(function(){
 			var user_id = <?php echo $logged_in_user['user_id']; ?>;
 			var contact_length = $("input[name=checked_cont_id]:checked").length();
 			if(contact_length > 1){
-				alert('Please select one contact.');
+				alert('Please select one contact at a time to edit.');
 			}else{
 
 				var contact_id = $("input[name=checked_cont_id]:checked").val();
 				// var cont_group_id = $('.');
 				
-				if(confirm('Are you sure you want to delete this Contact?')){
+				// if(confirm('Are you sure you want to delete this Contact?')){
 					jQuery.ajax({
 						type:"POST",
-						url: "/gmt/Save_contact/delete_contact",
+						url: "/gmt/Save_contact/edit_contact",
 						dataType: 'json',
 						data: { user_id: user_id,
 								contact_id: contact_id
@@ -164,13 +163,13 @@
 							console.log('Somthing went wrong');
 						}
 					});
-				}
+				// }
 			}
 		});
 
 		// to Delete contact
 		$("#delete_row").on('click',function(){
-		// $("#contact_list_table").load(function(){
+		 // $("#contact_list_table").load(function(){
 			var user_id = <?php echo $logged_in_user['user_id']; ?>;
 			var contact_id = $("input[name=checked_cont_id]:checked").map(function() {return this.value;}).get().join(',');
 			
@@ -213,13 +212,12 @@
 			}
 		});
 		$('.save_edit_delete_table').DataTable();
+
 		// DELETE FUNCTION
 		$('#delete_row').on('click',function(){
 			$(this).closest('.place_order_main').find('.save_edit_delete_table tbody  :checkbox:checked').each(function() {
 				$(this).closest('tr').remove();
 			});
 		});
-
-
 	});
 </script>

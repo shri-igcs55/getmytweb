@@ -1873,7 +1873,7 @@ section.contactUsForm .contactForm button.btn_cmmn_red{
 	font-size: 115%;
 }
 .save_contact_table tr td:last-child:before{
-	content: ":";
+	/*content: ":";*/
 	margin-right: 4px;
 	color: #000;
 }

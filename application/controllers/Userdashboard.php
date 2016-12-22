@@ -17,7 +17,6 @@ class Userdashboard extends CI_Controller
 	}
 
 	public function index(){
-
 		$logged_in_user = $this->session->userdata('logged_in_user');
 		if($logged_in_user['user_status'] == '1'){
 			$this->load->view('comman/header');
@@ -26,8 +25,8 @@ class Userdashboard extends CI_Controller
 		}else{
 			redirect('user/edit');
 		}
-		
 	}
+	
 	// after login dashboard
 	public function place_transporter_order(){
 		
@@ -49,7 +48,6 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('place_order_pack_move');
 		$this->load->view('comman/footer');
-
 	}
 
 	// save contact
@@ -69,21 +67,17 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('save-contact',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
-
 	}
 
 	// Add contact
-	public function add_contact()
-	{
+	public function add_contact(){
 		$this->load->view('comman/header');
 		$this->load->view('add_contact');
 		$this->load->view('comman/footer');
-
 	}
 
 	// Add contact
-	public function add_contact_group()
-	{
+	public function add_contact_group(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
 		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
@@ -99,16 +93,13 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('add_contact_group',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
-
 	}
 
 	// place order for crane
 	public function place_crane_order(){
-		
 		$this->load->view('comman/header');
 		$this->load->view('place_order_crane');
 		$this->load->view('comman/footer');
-		
 	}
 
 	// place order for crane
@@ -132,7 +123,6 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('order_detls',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
-		
 	}
 	
 	//Add by Bhavesh
@@ -156,11 +146,9 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('rated_orders',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
-		
 	}
 	//End by Bhavesh
 	
-
 	//Add by Shri
 	public function confirm_orders(){
 		$st_url = site_url('/gmt');
@@ -182,7 +170,6 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('confirm_orders',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
-		
 	}
 	
 	// Save transporter work station
@@ -210,7 +197,6 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/footer');
 	}
 
-	
 	// Search order for transporter
 	public function search_transporter_order(){
 	
@@ -254,10 +240,8 @@ class Userdashboard extends CI_Controller
 		$this->load->view('comman/header');
 		$this->load->view('order_detls',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
-		
 	}
 	
-
 	public function getData($wurl, $class,$method,$arrayField){	
 		$ch = curl_init();
 		// curl_setopt($ch,CURLOPT_URL, 'http://getmytruck.tk/gmt/'.$class.'/'.$method);
