@@ -70,6 +70,7 @@
 												<div class="row rated-row-button">
 													<article class="col-sm-6">
 														<h4>Do you have vehicle available or not?</h4>
+														<h3>Left Time <span class="left_time"><?php echo $orderObj->time_left?></span></h3>
 													</article>
 													<article class="col-sm-6 text-right">
 														<input name="order_confirm" class="order_confirm_cancle green-btn" type="button" value="Yes">
@@ -347,7 +348,7 @@
 														
 														<p class="col-sm-8">
 															
-															<input type="button" class=" accept_order form-control" <?php echo $disabled.$canceled_disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
+															<input type="button" class=" accept_order form-control" <?php echo $disabled.' '.$canceled_disabled?> value="<?=$buttonLable?>" data-quoted_user_id="<?php echo $quation_details->user_id?>"><br/><br/>
 														</p>
 													</article>
 												</div>
@@ -460,6 +461,7 @@
 												<div class="row rated-row-button">
 													<article class="col-sm-6">
 														<h4>Do you have vehicle available or not?</h4>
+														<h3>Left Time <span class="left_time"><?php echo $orderObj->time_left?></span></h3>
 													</article>
 													<article class="col-sm-6 text-right">
 														<input name="order_confirm" class="order_confirm_cancle green-btn" type="button" value="Yes">
@@ -823,6 +825,7 @@ $(document).ready(function(){
 		              	$('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
 			            	if(key == 'message'){
+								alert(val);
 								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
 							}
 			            });
@@ -849,4 +852,18 @@ $(document).ready(function(){
 	
 	
 })
-</script>			
+</script>
+
+<script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery.countdown.min.js"></script>
+<script type="text/javascript">
+var modified_datetime = "<?php echo date("Y/m/d H:i:s", strtotime($orderObj->modified_datetime."+30 minutes"));?>";
+//alert(modified_datetime);
+  $(".left_time")
+  .countdown(modified_datetime, function(event) {
+    $(this).text(
+      event.strftime('%M:%S')
+    );
+  });
+</script>
+
+			

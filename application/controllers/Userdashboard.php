@@ -54,7 +54,7 @@ class Userdashboard extends CI_Controller
 	public function save_contact(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://127.0.0.1/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -80,7 +80,7 @@ class Userdashboard extends CI_Controller
 	public function add_contact_group(){
 		$st_url = site_url('/gmt');
 		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://127.0.0.1/getmytruck/gmt'){
 			$st_url = 'http://127.0.0.1/gmt';
 		}else{
 			$st_url = $st_url;
@@ -103,18 +103,11 @@ class Userdashboard extends CI_Controller
 	}
 
 	// place order for crane
-	public function booked_orders(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
+	public function booked_orders(){		
 		// echo $st_url;
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
-		$objData = $this->getData($st_url,'book_history','book_history',$arrayParameter);
+		$objData = $this->getData('book_history','book_history',$arrayParameter);
 
 		/*echo '<pre>';
 		print_r($objData->data);
@@ -126,18 +119,10 @@ class Userdashboard extends CI_Controller
 	}
 	
 	//Add by Bhavesh
-	public function rated_orders(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
-		// echo $st_url;
+	public function rated_orders(){		
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
-		$objData = $this->getData($st_url,'book_history','rated_orders',$arrayParameter);
+		$objData = $this->getData('book_history','rated_orders',$arrayParameter);
 
 		/*echo '<pre>';
 		print_r($objData->data);
@@ -151,17 +136,10 @@ class Userdashboard extends CI_Controller
 	
 	//Add by Shri
 	public function confirm_orders(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
-		// echo $st_url;
+		
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
-		$objData = $this->getData($st_url,'book_history','confirm_orders',$arrayParameter);
+		$objData = $this->getData('book_history','confirm_orders',$arrayParameter);
 
 		/*echo '<pre>';
 		print_r($objData->data);
@@ -174,17 +152,10 @@ class Userdashboard extends CI_Controller
 	
 	// Save transporter work station
 	public function save_working_station(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
-		// echo $st_url;
+		
 		$logged_in_user = $this->session->userdata('logged_in_user');
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
-		$objData = $this->getData($st_url,'view_station','view_station',$arrayParameter);
+		$objData = $this->getData('view_station','view_station',$arrayParameter);
 		
 		/*
 		echo '<pre>';
@@ -222,29 +193,26 @@ class Userdashboard extends CI_Controller
 
     // this is one for all above search order function
 	public function view_search_result(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://localhost/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
-		// echo $st_url;
+		
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id'], 'user_type_parent_id'=>$logged_in_user['user_type_parent_id'], 'user_type'=>$logged_in_user['user_type']);
 
 		$arrayParameter = array_merge($_POST,$arrayParameter);
 		// print_r($arrayParameter);exit();
-		$objData = $this->getData($st_url,'search_order','search_order',$arrayParameter);
+		$objData = $this->getData('search_order','search_order',$arrayParameter);
 
 		$this->load->view('comman/header');
 		$this->load->view('order_detls',array('orderObj'=>$objData));
 		$this->load->view('comman/footer');
 	}
 	
-	public function getData($wurl, $class,$method,$arrayField){	
-		$ch = curl_init();
-		// curl_setopt($ch,CURLOPT_URL, 'http://getmytruck.tk/gmt/'.$class.'/'.$method);
+	public function getData($class,$method,$arrayField){	
+		$ch = curl_init();		
+		$wurl = $st_url = site_url('/gmt');		
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://127.0.0.1/getmytruck/gmt'){
+			$wurl = $st_url = 'http://127.0.0.1/gmt';
+		}
+		
 		curl_setopt($ch,CURLOPT_URL, $wurl.'/'.$class.'/'.$method);
 		curl_setopt($ch,CURLOPT_POST, count($arrayField));
 		curl_setopt($ch,CURLOPT_POSTFIELDS, $arrayField);
