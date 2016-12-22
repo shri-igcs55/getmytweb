@@ -1,0 +1,34 @@
+validateEmail()
+validatePhoneNumber(10)
+validatePinCode(6)
+validatePassword(6)
+validateNag()
+validatePan(10)
+validateWeight
+validateLength
+
+if(validateEmail(user_email) == false){
+        	$('<p style="color:#ed4343;"><strong>Email id is not valid.</strong></p>').appendTo('#form_validation_msg');
+        }else if(validatePhoneNumber(user_mob) == false){
+			$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
+        }
+
+
+18 - done
+17 - from SEO
+16 - 
+15 - 
+14 - 
+13 - done
+12 - done
+11 - done
+10 - Pay now for station pending
+09 - 
+08 - 
+07 - 
+06 - 
+05 - done
+04 - 
+03 - done
+02 - done
+01 - done

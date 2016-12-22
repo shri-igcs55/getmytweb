@@ -14,6 +14,7 @@
 				    				<article class="col-md-12">
 				    					<div class="section_head">
 											<h1>Select <span>Station</span></h1>
+											<p>Select stations to get instant notification for selected stations.</p>
 										</div>
 				    				</article>
 				    			</div>
@@ -34,34 +35,65 @@
 														<?php foreach($ObjStation->data as $station):?>
 																
 															<li>
-										    					<div class="row">
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="From_State">From State<sup>*</sup></label>
-																		    <label><?php echo $station->from_state?></label>
-																		</div>
-																	</article>
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="From_City">From City, District<sup>*</sup></label>
-																	     	 <label><?php echo $station->from_city?></label>
-																		</div>
-																	</article>																	
-																</div>
-																<div class="row">
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="To_State">To State<sup>*</sup></label>
-																		     <label><?php echo $station->to_state?></label>
-																		</div>
-																	</article>
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="To_City">To City, District<sup>*</sup></label>
-																	     	 <label><?php echo $station->to_city?></label>
-																		</div>
-																	</article>
-																</div>
+																<?php if($logged_in_user['user_type'] == '6'){ ?>
+																	<div class="row">
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="From_State">State<sup>*</sup></label>
+																			    <label><?php echo $station->from_state?></label>
+																			</div>
+																		</article>
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="From_City">City, District<sup>*</sup></label>
+																		     	 <label><?php echo $station->from_city?></label>
+																			</div>
+																		</article>
+																	</div>
+																	<div class="row" style="display:none;">
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="To_State">To State<sup>*</sup></label>
+																			     <label><?php echo $station->to_state?></label>
+																			</div>
+																		</article>
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="To_City">To City, District<sup>*</sup></label>
+																		     	 <label><?php echo $station->to_city?></label>
+																			</div>
+																		</article>
+																	</div>
+																<?php }else{ ?>
+											    					<div class="row">
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="From_State">From State<sup>*</sup></label>
+																			    <label><?php echo $station->from_state?></label>
+																			</div>
+																		</article>
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="From_City">From City, District<sup>*</sup></label>
+																		     	 <label><?php echo $station->from_city?></label>
+																			</div>
+																		</article>																	
+																	</div>
+																	<div class="row">
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="To_State">To State<sup>*</sup></label>
+																			     <label><?php echo $station->to_state?></label>
+																			</div>
+																		</article>
+																		<article class="col-md-6">
+																			<div class="form-group">
+																			    <label for="To_City">To City, District<sup>*</sup></label>
+																		     	 <label><?php echo $station->to_city?></label>
+																			</div>
+																		</article>
+																	</div>
+																<?php } ?>
 										    				</li>
 															
 														
@@ -70,44 +102,85 @@
 														<?php
 														if($station_limit != count($ObjStation->data)):?>
 										    				<li class="default">
-										    					<div class="row">
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="From_State">From State<sup>*</sup></label>
-																		    <select id="From_State" class="from-state form-control trans_plc_ord" required>
-																		    	<option value="">Select State</option>
-																		    	<option value="">Loading...</option>
-																		    </select>
-																		</div>
-																	</article>
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="From_City">From City, District<sup>*</sup></label>
-																	     	<select id="From_city" name="from_city[]" class="from-city From_city form-control">
-																			    <option value="">Select City District</option>
-																			</select>
-																		</div>
-																	</article>																	
-																</div>
-																<div class="row">
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="To_State">To State<sup>*</sup></label>
-																		    <select id="To_State" class="from-state trans_plc_ord form-control" required>
-																		    	<option value="">Select State</option>
-																		    	<option value="">Loading...</option>
-																		    </select>
-																		</div>
-																	</article>
-																	<article class="col-md-4">
-																		<div class="form-group">
-																		    <label for="To_City">To City, District<sup>*</sup></label>
-																	     	<select id="To_city" name="to_city[]" class="from-city To_city form-control">
-																			    <option value="">Select City District</option>
-																			</select>
-																		</div>
-																	</article>
-																</div>
+										    					<?php if($logged_in_user['user_type'] == '6'){ ?>
+										    						<div class="row">
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="From_State">State<sup>*</sup></label>
+																			    <select id="From_State" class="from-state form-control trans_plc_ord" required>
+																			    	<option value="">Select State</option>
+																			    	<option value="">Loading...</option>
+																			    </select>
+																			</div>
+																		</article>
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="From_City">City, District<sup>*</sup></label>
+																		     	<select id="From_city" name="from_city[]" class="from-city From_city form-control">
+																				    <option value="">Select City District</option>
+																				</select>
+																			</div>
+																		</article>
+																	</div>
+																	<?php /*<div class="row">
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="To_State">To State<sup>*</sup></label>
+																			    <select id="To_State" class="from-state trans_plc_ord form-control" required>
+																			    	<option value="">Select State</option>
+																			    	<option value="">Loading...</option>
+																			    </select>
+																			</div>
+																		</article>
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="To_City">To City, District<sup>*</sup></label>
+																		     	<select id="To_city" name="to_city[]" class="from-city To_city form-control">
+																				    <option value="">Select City District</option>
+																				</select>
+																			</div>
+																		</article>
+																	</div> */ ?>
+																<?php }else{ ?>
+																	<div class="row">
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="From_State">From State<sup>*</sup></label>
+																			    <select id="From_State" class="from-state form-control trans_plc_ord" required>
+																			    	<option value="">Select State</option>
+																			    	<option value="">Loading...</option>
+																			    </select>
+																			</div>
+																		</article>
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="From_City">From City, District<sup>*</sup></label>
+																		     	<select id="From_city" name="from_city[]" class="from-city From_city form-control">
+																				    <option value="">Select City District</option>
+																				</select>
+																			</div>
+																		</article>
+																	</div>
+																	<div class="row">
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="To_State">To State<sup>*</sup></label>
+																			    <select id="To_State" class="from-state trans_plc_ord form-control" required>
+																			    	<option value="">Select State</option>
+																			    	<option value="">Loading...</option>
+																			    </select>
+																			</div>
+																		</article>
+																		<article class="col-md-4">
+																			<div class="form-group">
+																			    <label for="To_City">To City, District<sup>*</sup></label>
+																		     	<select id="To_city" name="to_city[]" class="from-city To_city form-control">
+																				    <option value="">Select City District</option>
+																				</select>
+																			</div>
+																		</article>
+																	</div>
+																<?php } ?>
 										    				</li>
 														<?php endif;?>
 															

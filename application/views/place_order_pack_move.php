@@ -165,7 +165,7 @@
 																	    <label for="detail_address_from">To Floor<sup>*</sup></label>
 																	    <select id="t_floor" class="from-city form-control" required>
 																		    <option value="G">Ground</option>
-																		    <?php for($tf=0; $tf<=50;$tf++){ ?><option value="<?php echo $tf; ?>"><?php echo $tf; ?></option><?php }
+																		    <?php for($tf=1; $tf<=50;$tf++){ ?><option value="<?php echo $tf; ?>"><?php echo $tf; ?></option><?php }
 																		    ?>
 																		</select>
 																	</div>
@@ -497,6 +497,10 @@
 	        var sechdule_date	 		= objPMSection.find("#pm_schedule_date").val();
 	        var desc_of_goods			= objPMSection.find("#work_description_pm").val();
 	        
+	        if(validatePhoneNumber(odr_by_mob) == false){
+				$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        }
+
 	        if(user_id == '' || odr_by_fname == '' || odr_by_lname == '' || odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || to_state == '' || to_city == '' || to_location == '' || detailed_from_address == '' || shift_floor_from == '' || from_lift_facility == '' || detailed_to_address == '' || shift_floor_to == '' || to_lift_facility == '' || service_for == '' || sechdule_date == '' || desc_of_goods == '' ){
 	        	$('<p style="color:red"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 	        }
