@@ -521,13 +521,17 @@
 	        
 			if(validatePhoneNumber(user_mob) == false){
 				$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        }else if(validateWeight(weight) == false){
+	        	return false;
+			}else if(validateWeight(weight) == false){
 	        	$('<p style="color:#ed4343;"><strong>Weight is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        }else if(validateNag(no_of_quantity) == false){
+	        	return false;
+			}else if(validateNag(no_of_quantity) == false){
 	        	$('<p style="color:#ed4343;"><strong>Nag (Quantity) is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        }else if(validateLength(feet) == false){
+	        	return false;
+			}else if(validateLength(feet) == false){
 	        	$('<p style="color:#ed4343;"><strong>Length is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        }
+	        	return false;
+			}
 			var array_from_city = new Array();
 			var array_from_location = new Array();
 			var array_to_city = new Array();
@@ -549,10 +553,12 @@
 			
 			if(no_of_quantity == '' && weight == ''){
 				$('<p style="color:red"><strong>Any one field must not be empty from Nag & Weight.</strong></p>').appendTo('#form_validation_msg');
+				return false;
 			}
 	        else if(user_id == '' || first_name == '' || last_name == '' || user_mob == '' || material_type == '' || vehicle_type == '' || no_of_vehicle == '' || sechdule_date == '' ){
 			    $('<p style="color:red"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-	        }
+	        	return false;
+			}
 	        else{
 
 		        $.ajax({

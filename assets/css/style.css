@@ -707,7 +707,7 @@ img.refresh{
     transition: all .5s ease-out;  
 }
 
-.custmer_reg input[type=checkbox],.custmer_reg input[type=radio] {
+.custmer_reg input[type=checkbox], .custmer_reg input[type=radio] {
   display: none;
 }
 .custmer_reg .checkbox label{
@@ -720,7 +720,7 @@ img.refresh{
 }
 .custmer_reg .checkbox label:before {
 	position: absolute;
-  border-radius: 2px;
+  	border-radius: 2px;
     background-color: #fff;
     border:1px solid #ED4343;
     content: "";
@@ -1385,12 +1385,10 @@ a.remove_more_station{
 }
 
 /* ### SANTHOSH CSS */
-.myProfileMenu{
+.myProfileMenu, .myContactMenu, .MyViewOrderMenu{
 	display: none;
 }
-.myContactMenu{
-	display: none;
-}
+
 /* ### SANTHOSH CODE ### */
 .find-order-page select{
 	appearance:none;
@@ -1966,6 +1964,7 @@ section.contactUsForm .contactForm button.btn_cmmn_red{
 	content: "\2713";
 	padding: 0;
 	line-height: 14px;
+	font-family: FontAwesome;
 	color: #EE4F4F;
 	background-color: #FFF;
 	text-align: center;

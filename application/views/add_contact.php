@@ -110,6 +110,7 @@
 			if(user_id == '' || cont_name == '' || cont_number == '' || cont_email == '' || cont_group_id == ''){
 				$('#form_validation_msg').empty();
 				$('<p style="color:#ed4343;"><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
+				return false;
 			}else{
 				var save_contact = $('#sv_cont').serialize();
 				jQuery.ajax({

@@ -900,24 +900,28 @@ $(document).ready(function(){
 
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
 
-        }
+        	return false;
+		}
 
         else if(designation == '' || firm_name == '' || company_type == '' || company_pan == ''){
 
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-
+	return false;
+			
         }
 
 		else if(captcha !== captcha_word){
 
 			$('<p style="color:#ed4343;"><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');
-
+	return false;
+			
         }
 
         else if(objCurrentSection.find("input[name=check1]").prop('checked') === false){
 
         	$('<p style="color:#ed4343;"><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
-
+	return false;
+			
 		}else{
 
 			var cust_comp_reg = objCurrentSection.closest('.active').find('form').serialize();
@@ -1023,13 +1027,15 @@ $(document).ready(function(){
         	pin == '' || tin == '' || stax == '' || address2 == '' || last_name == ''){
 
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-
+	return false;
+			
         }
 
         else if(designation == '' || firm_name == '' || company_type == '' || pan == ''){
 
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-
+	return false;
+			
         }
 
         else{
@@ -1221,7 +1227,8 @@ $(document).ready(function(){
         if(full_name == '' || user_email == '' || user_mob == '' || contact_msg == ''){
 
         	$('<p style="color:#ed4343; font-size:14px;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-
+	return false;
+			
         }
 
         else{
