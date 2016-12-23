@@ -690,7 +690,12 @@ $(document).ready(function(){
 			            	if(key == 'message'){
 								$('.form_message span').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
 								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');			
-								setTimeout(function(){ $('.order_id_'+order_id).slideUp(); }, 4000);
+								setTimeout(function(){ 
+										$('.order_id_'+order_id).slideUp();
+										$('#getQuotationModal').modal('hide');
+										$('.form_message span').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');										
+									}, 4000);
+								
 							}
 			            });
 		            }else{

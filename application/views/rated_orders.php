@@ -1,3 +1,5 @@
+
+<script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery.countdown.min.js"></script>
 <!-- place order crane starts -->
 <section class="place_orderwrp custmer_reg">
 	<section class="place_order_crane">
@@ -461,7 +463,7 @@
 												<div class="row rated-row-button">
 													<article class="col-sm-6">
 														<h4>Do you have vehicle available or not?</h4>
-														<h3>Left Time <span class="left_time"><?php echo $orderObj->time_left?></span></h3>
+														<h3>Left Time <span class="left_time_<?php echo $orderObj->order_id?>"><?php echo $orderObj->time_left?></span></h3>
 													</article>
 													<article class="col-sm-6 text-right">
 														<input name="order_confirm" class="order_confirm_cancle green-btn" type="button" value="Yes">
@@ -469,6 +471,17 @@
 													</article>
 												</div>
 											</div>
+											
+											<script type="text/javascript">
+												var modified_datetime = "<?php echo date("Y/m/d H:i:s", strtotime($orderObj->modified_datetime."+35 minutes"));?>";
+												$(".left_time_"+<?php echo $orderObj->order_id?>)
+													.countdown(modified_datetime, function(event) {		
+													$(this).text(
+														event.strftime('%M:%S')
+													);
+												});
+											</script>
+
 										<?php }?>
 					    			</div>
 											
@@ -854,16 +867,7 @@ $(document).ready(function(){
 })
 </script>
 
-<script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery.countdown.min.js"></script>
-<script type="text/javascript">
-var modified_datetime = "<?php echo date("Y/m/d H:i:s", strtotime($orderObj->modified_datetime."+35 minutes"));?>";
-//alert(modified_datetime);
-  $(".left_time")
-  .countdown(modified_datetime, function(event) {
-    $(this).text(
-      event.strftime('%M:%S')
-    );
-  });
-</script>
+
+
 
 			
