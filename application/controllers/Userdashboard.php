@@ -52,17 +52,10 @@ class Userdashboard extends CI_Controller
 
 	// save contact
 	public function save_contact(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://127.0.0.1/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
-		// echo $st_url;
+		
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id']);
-		$objData = $this->getData($st_url,'Save_contact','view_contact',$arrayParameter);
+		$objData = $this->getData('Save_contact','view_contact',$arrayParameter);
 
 		$this->load->view('comman/header');
 		$this->load->view('save-contact',array('orderObj'=>$objData));
@@ -78,17 +71,10 @@ class Userdashboard extends CI_Controller
 
 	// Add contact
 	public function add_contact_group(){
-		$st_url = site_url('/gmt');
-		// echo $st_url;
-		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://127.0.0.1/getmytruck/gmt'){
-			$st_url = 'http://127.0.0.1/gmt';
-		}else{
-			$st_url = $st_url;
-		}
-		// echo $st_url;
+		
 		$logged_in_user = $this->session->userdata('logged_in_user');			
 		$arrayParameter = array('user_id'=>$logged_in_user['user_id']);
-		$objData = $this->getData($st_url,'Save_contact','listGroup',$arrayParameter);
+		$objData = $this->getData('Save_contact','listGroup',$arrayParameter);
 		
 		$this->load->view('comman/header');
 		$this->load->view('add_contact_group',array('orderObj'=>$objData));
