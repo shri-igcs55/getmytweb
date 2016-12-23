@@ -485,10 +485,13 @@ $(document).ready(function(){
 
         if(validateEmail(user_email) == false){
         	$('<p style="color:#ed4343;"><strong>Email id is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }else if(validatePhoneNumber(user_mob) == false){
 			$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }else if(validatePinCode(pin) == false){
         	$('<p style="color:#ed4343;"><strong>Pincode is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
 
         if(designation == 'Other'){
@@ -507,23 +510,29 @@ $(document).ready(function(){
         	state == '' || district == '' || city == '' || pin == '' || captcha == ''
         	 || user_email ==''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else if(firm_name == ''){ // As said by client 20-12-16
         // else if(firm_name == '' || company_pan == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else if(other_designation_new == '' || designation == ''){
         	$('<p style="color:#ed4343;"><strong>Designation field must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else if(other_company_type_new == '' || company_type == ''){
         	$('<p style="color:#ed4343;"><strong>Company Type field must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
 		else if(captcha !== captcha_word){
 			$('<p style="color:#ed4343;"><strong>Captcha code is wrong.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else if(objCurrentSection.find("input[name=check1]").prop('checked') === false){
         	$('<p style="color:#ed4343;"><strong>Please Read and Accept our Terms of Service and Privacy Policy.</strong></p>').appendTo('#form_validation_msg');
-		}else{
+			return false;
+        }else{
 			var cust_comp_reg = objCurrentSection.closest('.active').find('form').serialize();
 			// alert(cust_comp_reg);
 			$.ajax({
@@ -600,16 +609,20 @@ $(document).ready(function(){
         
         if(validatePan(pan) == false){
 			$('<p style="color:#ed4343;"><strong>PAN Number is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }else if(validatePinCode(pin) == false){
         	$('<p style="color:#ed4343;"><strong>Pincode is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
 
         if(first_name == '' || address1 == '' || state == '' || district == '' || city == '' || 
         	pin == '' || tin == '' || stax == '' || address2 == '' || last_name == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else if(designation == '' || firm_name == '' || company_type == '' || pan == ''){
         	$('<p style="color:#ed4343;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else{
         	var cust_comp_reg = objCurrentSection.closest('.update_my_info div.active').find('form').serialize();
@@ -698,6 +711,10 @@ $(document).ready(function(){
    	$('#myContact').click(function(){
    		$('.myContactMenu').slideToggle();
    	});
+   	// Order menu hide and show
+   	$('#ViewMyOrder').click(function(){
+   		$('.MyViewOrderMenu').slideToggle();
+   	});
 
 	$(".submit_contact").click(function(event) {
    		
@@ -710,12 +727,15 @@ $(document).ready(function(){
         
         if(validateEmail(user_email) == false){
         	$('<p style="color:#ed4343;"><strong>Email id is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }else if(validatePhoneNumber(user_mob) == false){
 			$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
 
         if(full_name == '' || user_email == '' || user_mob == '' || contact_msg == ''){
         	$('<p style="color:#ed4343; font-size:14px;"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
         }
         else{
         	var cust_contact_msg = $('#contactus').serialize();

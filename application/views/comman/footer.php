@@ -106,7 +106,7 @@
 										<a><i class="fa fa-twitter" aria-hidden="true"></i></a>
 										<a><i class="fa fa-facebook" aria-hidden="true"></i></a>
 										<a><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-										<a><i class="fa fa-camera-retro" aria-hidden="true"></i></a>
+										<!-- <a><i class="fa fa-camera-retro" aria-hidden="true"></i></a> -->
 										<a><i class="fa fa-youtube" aria-hidden="true"></i></a>
 									</p>
 									<p style="font-size:12px;">81-A, Janak Puri 1<sup>st</sup>,<br>

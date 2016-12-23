@@ -45,7 +45,7 @@ Transporter 							= 7
 		    		 $logged_in_user['user_type'] == 12 ||
 		    		 $logged_in_user['user_type'] == 5 ||
 		    		 $logged_in_user['user_type'] == 6 ):?>
-				<li><a href="<?php echo site_url('userdashboard/place_transporter_order'); ?>">Book Order</a></li>
+				<li><a href="<?php echo site_url('userdashboard/place_transporter_order'); ?>">Book your Order</a></li>
 		    <?php endif;?>
 		    <?php if($logged_in_user['user_type'] == 5 ||
 		    		 $logged_in_user['user_type'] == 6 ||
@@ -55,22 +55,34 @@ Transporter 							= 7
 		    		 $logged_in_user['user_type'] == 11 ||
 		    		 $logged_in_user['user_type'] == 12 ){ ?>
 
-			    <li><a href="<?php echo $findOrder; ?>">Find Order</a></li>
-			    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">View &amp; Rate Order</a></li>
-			    <li><a href="<?php echo site_url('userdashboard/save_working_station'); ?>">Select Station</a></li>
-
-		    <?php } ?>
-			<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
-			<li><a href="<?php echo site_url('userdashboard/rated_orders'); ?>">Rated Order</a></li>
-		    <li><a href="<?php echo site_url('userdashboard/confirm_orders'); ?>">Confirmed Order</a></li>
-			<li id="myContact"><a href="#">My Contact</a>
+			    	<li><a href="<?php echo $findOrder; ?>">Find Order</a></li>
+			<?php } ?>
+			    <li id="ViewMyOrder" style="color: #545454; cursor: pointer; font-size: 18px;">View Order<span style="float:right;">&or;</span>
+			    	<ul class="list-unstyled MyViewOrderMenu">
+			    	<?php if($logged_in_user['user_type'] == 5 ||
+		    		 $logged_in_user['user_type'] == 6 ||
+		    		 $logged_in_user['user_type'] == 8 ||
+		    		 $logged_in_user['user_type'] == 9 ||
+		    		 $logged_in_user['user_type'] == 10 ||
+		    		 $logged_in_user['user_type'] == 11 ||
+		    		 $logged_in_user['user_type'] == 12 ){ ?>
+					    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Rate Order</a></li>
+				    <?php }else{ ?>
+						<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
+					<?php } ?>
+						<li><a href="<?php echo site_url('userdashboard/rated_orders'); ?>">Rated Order</a></li>
+				    	<li><a href="<?php echo site_url('userdashboard/confirm_orders'); ?>">Confirmed Order</a></li>
+				    </ul>
+				</li>
+			<li><a href="<?php echo site_url('userdashboard/save_working_station'); ?>">Select Station</a></li>
+			<li id="myContact" style="color: #545454; cursor: pointer; font-size: 18px;">My Contact<span style="float:right;">&or;</span>
 				<ul class="list-unstyled myContactMenu">
 					<li><a href="<?php echo site_url('userdashboard/add_contact'); ?>">Add Contact</a></li>
 			    	<li><a href="<?php echo site_url('userdashboard/add_contact_group'); ?>">Create Group</a></li>
 			    	<li id="view_clist"><a href="<?php echo site_url('userdashboard/save_contact'); ?>">View Contact</a></li>
 			    </ul>
 			</li>
-		    <li id="myProfile"><a href="#">My Profile</a>
+		    <li id="myProfile" style="color: #545454; cursor: pointer; font-size: 18px;">My Profile<span style="float:right;">&or;</span>
 			    <ul class="list-unstyled myProfileMenu">
 			    	<li><a href="<?php echo site_url('user/edit'); ?>">Edit Profile</a></li>
 			    	<?php if($logged_in_user['user_type'] == 5 ||

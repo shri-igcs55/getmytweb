@@ -44,12 +44,7 @@
 		    							<table id="contact_list_table" class="table table-hover save_edit_delete_table">
 		    								<thead>
 		    									<tr>
-		    										<th>
-		    											<!-- <div class="checkbox">
-		    												<input type="checkbox" id="add1" class="select_all_box">
-		    												<label for="add1"></label>
-		    											</div> -->
-		    										</th>
+		    										<th>&nbsp;</th>
 		    										<th>Group Name</th>
 		    										<th>Number of Contact</th>
 		    									</tr>
@@ -64,11 +59,11 @@
 														<td>
 															<div class="checkbox">
 																<input type="checkbox" id="add<?php echo $orderObj->group_id; ?>">
-																<input type="hidden" name="groupid_<?php echo $orderObj->group_id; ?>" id="groupid_<?php echo $orderObj->group_id; ?>" value="<?php echo $orderObj->group_id; ?>">
+																
 																<label for="add<?php echo $orderObj->group_id; ?>"><?php echo $orderObj->group_id; ?></label>
 															</div>
 														</td>
-														<td>
+														<td><input type="hidden" name="groupid_<?php echo $orderObj->group_id; ?>" id="groupid_<?php echo $orderObj->group_id; ?>" value="<?php echo $orderObj->group_id; ?>">
 															<?php echo $orderObj->group_name; ?>
 														</td>
 														<td>
@@ -126,6 +121,7 @@
 			if(user_id == '' || cont_group_name == ''){
 				$('#form_validation_msg').empty();
 				$('<p style="color:#ed4343;"><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
+				return false;
 			}else{
 				var add_grp = $('#creat_group').serialize();
 				jQuery.ajax({

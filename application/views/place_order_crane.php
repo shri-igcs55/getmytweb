@@ -474,16 +474,19 @@
 			
 			if(validatePhoneNumber(odr_by_mob) == false){
 				$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        }else if(validateWeight(weight) == false){
+	        	return false;
+			}else if(validateWeight(weight) == false){
 	        	$('<p style="color:#ed4343;"><strong>Weight is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        }
+	        	return false;
+			}
 
 			if(user_id == '' || user_type_id == '' || odr_by_fname == '' || odr_by_lname == '' ||
 				odr_by_mob == '' || from_state == '' || from_city == '' || from_location == '' || 
 				weight == '' ||	desc_of_work == '' || sechdule_date == '' || to_state == '' || 
 				to_city == '' || to_location == '' || to_address == '' ){					
 				$('<p style="color:red"><strong>All * marked fields must not be empty.</strong></p>').appendTo('#form_validation_msg');
-	        }
+	        	return false;
+			}
 	        else{
 
 		        $.ajax({

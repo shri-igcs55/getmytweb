@@ -77,7 +77,8 @@
 			if(user_id == '' || old_pass == '' || new_pass == '' || c_pass == ''){
 				$('#form_validation_msg').empty();
 				$('<p style="color:#ed4343;"><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
-			}else{
+				return false;
+        	}else{
 				var change_pass = $('#chg_pass').serialize();
 				jQuery.ajax({
 					type 	: "POST",
