@@ -483,12 +483,18 @@ $(document).ready(function(){
         var company_pan		= objCurrentSection.find("#email_phn").val();
 
 
-        if(validateEmail(user_email) == false){
-        	$('<p style="color:#ed4343;"><strong>Email id is not valid.</strong></p>').appendTo('#form_validation_msg');
-        	return false;
-        }else if(validatePhoneNumber(user_mob) == false){
+         if(validatePhoneNumber(user_mob) == false){
 			$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
         	return false;
+        }else if(validateEmail(user_email) == false){
+        	$('<p style="color:#ed4343;"><strong>Email id is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
+        }else if (validatePassword(user_pass) == false){
+        	$('<p style="color:#ed4343;"><strong>Password is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;
+        }else if (validatePassword(c_pass) == false) {
+        	$('<p style="color:#ed4343;"><strong>Confirm Password is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	return false;        	
         }else if(validatePinCode(pin) == false){
         	$('<p style="color:#ed4343;"><strong>Pincode is not valid.</strong></p>').appendTo('#form_validation_msg');
         	return false;
@@ -542,13 +548,12 @@ $(document).ready(function(){
 		        success: function(res) {
 		            if (res.status_code == 200)
 		            {
-		              	$('#form_validation_msg').empty();
-			            $('<p style="color:#00ff00;"><strong>Registered Successfully</strong></p>').appendTo('#form_validation_msg');
+		              	$('<p style="color:#00ff00;"><strong>Registered Successfully</strong></p>').appendTo('#form_validation_msg');
 		              	$('.reg_form')[0].reset();
 		              	
 		              	jQuery.ajax({
 					    	type:"POST",
-							url: "/gmt/User/user_signin/place_transporter_order",
+							url: "/gmt/User/user_signin",
 							dataType: 'json',
 					        data: { 
 					        	email_mob: user_email,

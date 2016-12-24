@@ -139,7 +139,7 @@
 									<p><a>Pickers and Movers in Bangalore</a></p>
 								</li>
 								<li>
-									<a href="#"><img class="img-responsive" src="<?php echo base_url('assets/');?>images/android-app.png" alt="App"></a>
+									<a href="#"><img class="img-responsive" src="<?php //echo base_url('assets/');?>images/android-app.png" alt="App"></a>
 								</li>
 							</ul> -->
 						</div>
@@ -198,9 +198,9 @@
     $(function() {
         $('#dg-container').gallery();
     });
+
     function validateEmail(sEmail) {
-		// var filter = /^[\w\-\.\_\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
-		// var filter = /^[\w\-\.\_\+]+\@[a-zA-Z0-9\.\-]+(\.[a-zA-Z0-9]{2,4})+(\.[a-zA-Z]{2,4})$/;
+		
 		var filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		if (filter.test(sEmail)) {
 			return true;
@@ -209,6 +209,7 @@
 			return false;
 		}
 	}
+
 	function validatePhoneNumber(inputtxt)  
 	{  
 	  	// var phoneno = /^\d{10}$/;  
@@ -221,6 +222,7 @@
 	        return false;
 		}  
 	}
+
 	function validatePinCode(inputtxt)  
 	{  
 	  	var phoneno = /^([0-9]{6})$/;  
@@ -231,9 +233,10 @@
 	        return false;
 		}  
 	}
+
 	function validatePassword(inputtxt)  
 	{  
-	  	var phoneno = /^([a-zA-Z0-9]{6})$/;  
+	  	var phoneno = /^([a-zA-Z0-9]{6,})$/;  
 	  	if(phoneno.test(inputtxt))  
 	    {  
 	    	return true;
@@ -241,6 +244,7 @@
 	        return false;
 		}  
 	}
+
 	function validateNag(inputtxt)  
 	{  
 	  	var phoneno = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;  
@@ -251,6 +255,7 @@
 	        return false;
 		}  
 	}
+
 	function validatePan(inputtxt)  
 	{  
 	  	var phoneno = /^([a-zA-Z0-9]{10})$/;  
@@ -261,6 +266,7 @@
 	        return false;
 		}  
 	}
+
 	function validateWeight(inputtxt)  
 	{  
 	  	var phoneno = /[+-]?([0-9]*[.])?[0-9]+/;  
@@ -271,6 +277,7 @@
 	        return false;
 		}  
 	}
+
 	function validateLength(inputtxt)  
 	{  
 	  	var phoneno = /[+-]?([0-9]*[.])?[0-9]+/;  
@@ -285,8 +292,3 @@
 </body>
 <?php print_r($this->session->userdata('logged_in_user')); ?>
 </html>
-
-
-
-
-

@@ -215,7 +215,7 @@
 									<article id="othr_desg" hidden="" class="col-md-3">
 										<div class="form-group">
 										    <label for="dsg_typ">&nbsp;</label>
-										    <input name="dsg_typ" type="text" class="form-control" id="dsg_typ" placeholder="Other Designation" required>
+										    <input name="other_designation_new" type="text" class="form-control" id="dsg_typ" placeholder="Other Designation" required>
 										</div>
 									</article>
 									<article class="col-md-6">
@@ -335,7 +335,7 @@
 									<article id="othr_comp" hidden="" class="col-md-3">
 										<div class="form-group">
 										    <label for="cmp_typ">&nbsp;</label>
-										    <input name="cmp_typ" type="text" class="form-control" id="cmp_typ" placeholder="Other Company Type" required>
+										    <input name="other_company_type_new" type="text" class="form-control" id="cmp_typ" placeholder="Other Company Type" required>
 										</div>
 									</article>
 									<article class="col-md-6">

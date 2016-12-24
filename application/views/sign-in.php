@@ -109,11 +109,18 @@
 
 		// to login
 		$(".signin").click(function(event){
-			var objCurrentSection = $('.pad-rit-0 div.signin-wrp');       		
-	   		
+			var objCurrentSection = $('.pad-rit-0 div.signin-wrp');
+			$('#form_validation_msg').empty();
+			
 	   		var email_mob 	= objCurrentSection.find("#email_phn").val();
 			var password 	= objCurrentSection.find("#paswrd").val();
 			// var role	= objCurrentSection.find("#role").val();
+
+			if(validateEmail(email_mob) == false || validatePhoneNumber(email_mob) == false){
+	        	$('<p style="color:#ed4343;"><strong>Email or Mobile is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        	return false;
+	        }
+
 	        jQuery.ajax({
 		    	type:"POST",
 				url: "/gmt/User/user_signin",
@@ -125,13 +132,11 @@
 		        },
 				success: function(res){
 					if(res.status_code == 200){
-						$('#form_validation_msg').empty();
-			    		$('<p style="color:#00ff00"><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
+						$('<p style="color:#00ff00"><strong>Login Successfully.</strong></p>').appendTo('#form_validation_msg');
 			    		// window.location ='<?php //echo site_url('user/edit'); ?>';
 			    		window.location = '<?php echo site_url('userdashboard/place_transporter_order'); ?>';
 					}else{
-						$('#form_validation_msg').empty();
-			        	$.each(res.data, function(key, val) {
+						$.each(res.data, function(key, val) {
 			            	$('<p style="color:#ed4343"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
 			            });
 					}
