@@ -9,7 +9,7 @@
 						<div class="each-col">
 							<div class="row">
 								<article class="col-xs-3 pad-rit-0">
-									<img class="img-responsive" src="<?php echo base_url('assets/');?>images/mail.png">
+									<a href="mailto:info@getmytruck.in"><img class="img-responsive" src="<?php echo base_url('assets/');?>images/mail.png"></a>
 								</article>
 								<article class="col-xs-9">
 									<p>Connect with us</p>
@@ -23,7 +23,7 @@
 						<div class="each-col">
 							<div class="row">
 								<article class="col-xs-3 pad-rit-0">
-									<img class="img-responsive" src="<?php echo base_url('assets/');?>images/chat.png">
+									<a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"><img class="img-responsive" src="<?php echo base_url('assets/');?>images/chat.png"></a>
 								</article>
 								<article class="col-xs-9">
 									<p>Chat with us</p>
@@ -38,7 +38,7 @@
 						<div class="each-col">
 							<div class="row">
 								<article class="col-xs-3 pad-rit-0">
-									<img class="img-responsive" src="<?php echo base_url('assets/');?>images/call.png">
+									<a href="tel:0123456789"><img class="img-responsive" src="<?php echo base_url('assets/');?>images/call.png"></a>
 								</article>
 								<article class="col-xs-9">
 									<p>Talk with us</p>
@@ -114,8 +114,8 @@
 									Imli wala Phatak,<br> near vidhan sabha,<br>
 									Jaipur - 302015</p>
 									<p style="font-size:12px;">
-										<a><i class="fa fa-whatsapp"></i></a> <a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">+91 94145 56951</a><br>
-										<a><i class="fa fa-phone"></i></a> <a href="tel:+919461117851">+91 94611 17851</a><br>
+										<a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"><i class="fa fa-whatsapp"></i></a> <a href="intent://send/9414556951#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end">+91 94145 56951</a><br>
+										<a href="tel:+919461117851"><i class="fa fa-phone"></i></a> <a href="tel:+919461117851">+91 94611 17851</a><br>
 										<b>Office hours 10am-6pm (Sunday &amp; Holidays off)</b>
 									</p>
 								</li>
