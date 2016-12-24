@@ -103,11 +103,12 @@
 								<li>
 									<p><span>Follow Us</span></p>
 									<p>
-										<a><i class="fa fa-twitter" aria-hidden="true"></i></a>
-										<a><i class="fa fa-facebook" aria-hidden="true"></i></a>
-										<a><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+										<a href="https://twitter.com/getmytruck"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+										<a href="https://www.facebook.com/Getmytruck1-1622806354694976/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+										<a href="https://plus.google.com/u/0/105992885109897234294"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
 										<!-- <a><i class="fa fa-camera-retro" aria-hidden="true"></i></a> -->
-										<a><i class="fa fa-youtube" aria-hidden="true"></i></a>
+										<a href="https://in.linkedin.com/in/getmy-truck-95239a135"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+										<a href="https://www.youtube.com/channel/UCBOrJ5fSS4DcM5pQi7ZGhqg"><i class="fa fa-youtube" aria-hidden="true"></i></a>
 									</p>
 									<p style="font-size:12px;">81-A, Janak Puri 1<sup>st</sup>,<br>
 									Imli wala Phatak,<br> near vidhan sabha,<br>

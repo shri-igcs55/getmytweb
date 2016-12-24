@@ -15,20 +15,20 @@ if(validateEmail(user_email) == false){
 
 
 18 - done
-17 - from SEO
+17 - done
 16 - 
-15 - 
-14 - 
+15 - reg msg
+14 - done
 13 - done
 12 - done
 11 - done
 10 - Pay now for station pending
-09 - 
-08 - 
-07 - 
-06 - 
+09 - done
+08 - trail end msg
+07 - notification
+06 - contact show
 05 - done
-04 - 
+04 - done
 03 - done
 02 - done
 01 - done
