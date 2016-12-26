@@ -115,11 +115,14 @@
 	   		var email_mob 	= objCurrentSection.find("#email_phn").val();
 			var password 	= objCurrentSection.find("#paswrd").val();
 			// var role	= objCurrentSection.find("#role").val();
-
-			if(validateEmail(email_mob) == false || validatePhoneNumber(email_mob) == false){
-	        	$('<p style="color:#ed4343;"><strong>Email or Mobile is not valid.</strong></p>').appendTo('#form_validation_msg');
-	        	return false;
+			
+			if(validateEmail(email_mob) == true || validatePhoneNumber(email_mob) == true){	        	
 	        }
+			else
+			{
+				$('<p style="color:#ed4343;"><strong>Email or Mobile is not valid.</strong></p>').appendTo('#form_validation_msg');
+	        	return false;
+			}
 
 	        jQuery.ajax({
 		    	type:"POST",
