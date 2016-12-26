@@ -522,10 +522,13 @@
 			if(validatePhoneNumber(user_mob) == false){
 				$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
-			}else if(validateWeight(weight) == false){
+			}
+			/*
+			else if(validateWeight(weight) == false){
 	        	$('<p style="color:#ed4343;"><strong>Weight is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
-			}else if(validateNag(no_of_quantity) == false){
+			}*/
+			else if(validateNag(no_of_quantity) == false){
 	        	$('<p style="color:#ed4343;"><strong>Nag (Quantity) is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
 			}else if(validateLength(feet) == false){

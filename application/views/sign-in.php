@@ -107,6 +107,8 @@
 	        }
 		});
 
+		
+
 		// to login
 		$(".signin").click(function(event){
 			var objCurrentSection = $('.pad-rit-0 div.signin-wrp');
