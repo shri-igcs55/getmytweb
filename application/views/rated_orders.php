@@ -72,7 +72,7 @@
 												<div class="row rated-row-button">
 													<article class="col-sm-6">
 														<h4>Do you have vehicle available or not?</h4>
-														<h3>Left Time <span class="left_time"><?php echo $orderObj->time_left?></span></h3>
+														<h3>Left Time <span class="left_time_<?php echo $orderObj->order_id?>"><?php echo $orderObj->time_left?></span></h3>
 													</article>
 													<article class="col-sm-6 text-right">
 														<input name="order_confirm" class="order_confirm_cancle green-btn" type="button" value="Yes">
@@ -321,6 +321,7 @@
 											?>
 				    					<div class="order_row">
 						    				<center><h4><span>Quotation Details</span></h4></center>
+																					
 											<?php
 												$disabled = '';
 												foreach($orderObj->quotation as $quation_details):													
@@ -525,129 +526,6 @@
 		</div>
 	</section>
 </section>
-<!-- place order crane starts -->
-
-<!-- #### SAVE CONTACT MODAL ### -->
-<div class="modal fade" id="saveContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2 class="modal-title text-center" id="myModalLabel">Save Contact</h2>
-			</div>
-			<div class="modal-body">
-				<table class="table save_contact_table">
-					<tr>
-						<td>Name</td>
-						<td>Santhosh</td>
-					</tr>
-					<tr>
-						<td>Phone No.</td>
-						<td>9876543210</td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td>santhosh@gmail.com</td>
-					</tr>
-					<tr>
-						<td>Group</td>
-						<td>
-							<select name="" id="" class="form-control">
-								<option value="">Transport</option>
-								<option value="">Truck</option>
-							</select>
-						</td>
-					</tr>
-				</table>
-				<div class="form-group text-center">
-					<button class="btn btn_cmmn_red" type="submit">Save Contact</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- #### GET QUOTATION MODAL ### -->
-<div class="modal fade" id="getQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2 class="modal-title text-center" id="myModalLabel">Quotation Format</h2>
-			</div>
-			<div class="modal-body">
-				<form action="javascript:void(0);">
-					<input type="hidden" name="quoted_order_id" value="0">
-					<?php if($logged_in_user['user_type'] == 6){ ?>
-					<div class="first_form">
-						<table class="table">
-							<tr>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
-										<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
-									</div>
-								</td>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
-										<label for="per_day" class="custom_radio_label">Per Day Basis</label>
-									</div>
-								</td>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
-										<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ul class="list-inline">
-										<li><input type="text" class="form-control" placeholder="Amount"></li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<?php }else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] > 7){ ?>
-					<div class="second_form">
-						<table class="table">
-							<tr>
-								<td class="col-md-6">
-									<div class="radio">
-										<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
-										<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
-									</div>
-								</td>
-								<td class="col-md-6">
-									<div class="radio">
-										<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
-										<label for="beetween_range" class="custom_radio_label">Between Range</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
-									<input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate">
-								</td>
-								<?php /*<td>
-									<label for="max_amnt" class="control-label">Maximum Amount</label>
-									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
-								</td>*/ ?>
-							</tr>
-						</table>
-					</div>
-					<?php } 	?>
-					<div class="form-group text-center form_message">
-						<span></span>
-					</div>
-					<div class="form-group text-center">
-						<button class="btn btn_cmmn_red" id="quote_order_btn" type="submit">Submit</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
 <!-- $re = '/^([0-9-]+)$/m';
 $str = '159-951-66';
 
@@ -837,9 +715,12 @@ $(document).ready(function(){
 		            {		              	
 		              	$('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-								alert(val);
-								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
+			            	if(key == 'message'){								
+								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');			
+								setTimeout(function(){ 
+									$('.order_id_'+order_id).slideUp();																						
+									}, 4000);
+								
 							}
 			            });
 		            }else{
@@ -847,10 +728,14 @@ $(document).ready(function(){
 			            $('#form_validation_msg').empty();
 			            $.each(res.data, function(key, val) {
 			            	if(key == 'message'){
-			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
+			            		$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');			
+									setTimeout(function(){ 
+									$('.order_id_'+order_id).slideUp();																						
+									}, 4000);
 			            	}
 			            });
 		            }
+					
 	          	},
 		        error: function(){
 		        	console.log('Somthing went wrong');

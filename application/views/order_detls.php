@@ -451,6 +451,10 @@
 		</div>
 	</div>
 </div>
+
+
+
+
 <!-- #### GET QUOTATION MODAL ### -->
 <div class="modal fade" id="getQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">

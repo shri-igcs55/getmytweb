@@ -334,6 +334,32 @@
 										</div>
 									<?php }?>
 										
+										
+										<div class="order_row">
+						    				<center><h4><span>Contact Details</span></h4></center>
+						    				<div class="row">
+						    					<article class="col-sm-5">
+						    						<label>Name:</label>
+						    					</article>
+												<article class="col-sm-7">
+						    						<p><?php echo $orderObj->first_name?> - <?php echo $orderObj->last_name?></p>
+						    					</article>
+												<article class="col-sm-5">
+						    						<label>Phone:</label>
+						    					</article>
+												<article class="col-sm-7">
+						    						<p><?php echo $orderObj->mobile?></p>
+						    					</article>
+												<article class="col-sm-5">
+						    						<label>Email:</label>
+						    					</article>
+												<article class="col-sm-7">
+						    						<p><?php echo $orderObj->email?></p>
+						    					</article>
+						    				</div>
+										</div>
+										
+										
 					    			<div class="row">
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
