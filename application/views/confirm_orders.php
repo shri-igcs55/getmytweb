@@ -20,8 +20,7 @@
 									<h1>View Confirmed Order </h1>
 								</div>
 		    				</article>
-		    			</div>
-		    			<span id="form_validation_msg"></span>
+		    			</div>		    			
 						<?php 
 						if(!isset($orderObj->data->message)){
 							if(isset($orderObj->data)):
@@ -335,29 +334,29 @@
 									<?php }?>
 										
 										
-										<div class="order_row">
-						    				<center><h4><span>Contact Details</span></h4></center>
-						    				<div class="row">
-						    					<article class="col-sm-5">
-						    						<label>Name:</label>
-						    					</article>
-												<article class="col-sm-7">
-						    						<p><?php echo $orderObj->first_name?> - <?php echo $orderObj->last_name?></p>
-						    					</article>
-												<article class="col-sm-5">
-						    						<label>Phone:</label>
-						    					</article>
-												<article class="col-sm-7">
-						    						<p><?php echo $orderObj->mobile?></p>
-						    					</article>
-												<article class="col-sm-5">
-						    						<label>Email:</label>
-						    					</article>
-												<article class="col-sm-7">
-						    						<p><?php echo $orderObj->email?></p>
-						    					</article>
-						    				</div>
+									<div class="order_row">
+										<center><h4><span>Contact Details</span></h4></center>
+										<div class="row">
+											<article class="col-sm-5">
+												<label>Name:</label>
+											</article>
+											<article class="col-sm-7">
+												<p class="contact_name"><?php echo $orderObj->first_name?> - <?php echo $orderObj->last_name?></p>
+											</article>
+											<article class="col-sm-5">
+												<label>Phone:</label>
+											</article>
+											<article class="col-sm-7">
+												<p class="contact_number"><?php echo $orderObj->mobile?></p>
+											</article>
+											<article class="col-sm-5">
+												<label>Email:</label>
+											</article>
+											<article class="col-sm-7">
+												<p class="contact_email"><?php echo $orderObj->email?></p>
+											</article>
 										</div>
+									</div>
 										
 										
 					    			<div class="row">
@@ -374,19 +373,7 @@
 					    			<div class="order_listing">
 					    				<div class="row">
 					    					<article class="col-md-10">
-					    						<div class="row">
-													
-													<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
-														<article class="col-sm-6">
-														<h4>Request from Customer:</h4>
-														</article>
-														<article class="col-sm-6 text-right">
-														<h4>Do you have vehicle available or not?</h4>
-														<input name="order_confirm" class="order_confirm_cancle"  type="button" value="Yes">
-														<input name="order_decline" class="order_confirm_cancle"  type="button" value="No">
-														</article>
-													<?php }?>
-											
+					    						<div class="row">																				
 								    				<article class="col-sm-3">
 								    					<label>Order ID</label>
 								    					<h4><span class="order_no"><?php echo $orderObj->order_id?></span></h4>
@@ -503,333 +490,140 @@
 				<h2 class="modal-title text-center" id="myModalLabel">Save Contact</h2>
 			</div>
 			<div class="modal-body">
-				<table class="table save_contact_table">
-					<tr>
-						<td>Name</td>
-						<td>Santhosh</td>
-					</tr>
-					<tr>
-						<td>Phone No.</td>
-						<td>9876543210</td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td>santhosh@gmail.com</td>
-					</tr>
-					<tr>
-						<td>Group</td>
-						<td>
-							<select name="" id="" class="form-control">
-								<option value="">Transport</option>
-								<option value="">Truck</option>
+				<form id="sv_cont" name="sv_cont" class="transporter-form save_contact_form" action="">
+					<table class="table save_contact_table">
+						<tr>
+							<td>Name</td>
+							<td class="contact_name"></td>
+						</tr>
+						<tr>
+							<td>Phone No.</td>
+							<td class="contact_number"></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td class="contact_email"></td>
+						</tr>
+						<tr>
+							<td>Group</td>
+							<td>
+							<select id="group" class="group_list form-control trans_plc_ord" required>
+								<option value="">Select Group</option>
+								<option value="">Loading...</option>
 							</select>
-						</td>
-					</tr>
-				</table>
-				<div class="form-group text-center">
-					<button class="btn btn_cmmn_red" type="submit">Save Contact</button>
-				</div>
+							</td>
+						</tr>
+					</table>
+					<div class="form-group text-center">						
+						<button class="btn btn_cmmn_red sv_cont chg_pass" type="button">Save Contact</button>
+					</div>
+					<span id="form_validation_msg"></span>
+					<input name="contact_name" type="hidden" class="form-control contact_name" id="contact_name" required>
+					<input name="contact_number" type="hidden" class="form-control contact_number" id="contact_number" required>
+					<input name="contact_email" type="hidden" class="form-control contact_email" id="contact_email">
+					<input type="hidden" name="u_id" id="u_id" value="<?php echo $logged_in_user['user_id']; ?>">
+			    </form>
 			</div>
 		</div>
 	</div>
 </div>
-<!-- #### GET QUOTATION MODAL ### -->
-<div class="modal fade" id="getQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2 class="modal-title text-center" id="myModalLabel">Quotation Format</h2>
-			</div>
-			<div class="modal-body">
-				<form action="javascript:void(0);">
-					<input type="hidden" name="quoted_order_id" value="0">
-					<?php if($logged_in_user['user_type'] == 6){ ?>
-					<div class="first_form">
-						<table class="table">
-							<tr>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="per_hour" class="custom_radio" name="rent_crane">
-										<label for="per_hour" class="custom_radio_label">Per Hour Basis</label>
-									</div>
-								</td>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="per_day" class="custom_radio" name="rent_crane">
-										<label for="per_day" class="custom_radio_label">Per Day Basis</label>
-									</div>
-								</td>
-								<td class="col-md-3">
-									<div class="radio">
-										<input type="radio" id="contract_basis" class="custom_radio" name="rent_crane">
-										<label for="contract_basis" class="custom_radio_label">Contract Basis</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<ul class="list-inline">
-										<li><input type="text" class="form-control" placeholder="Amount"></li>
-									</ul>
-								</td>
-							</tr>
-						</table>
-					</div>
-					<?php }else if($logged_in_user['user_type'] == 5 || $logged_in_user['user_type'] > 7){ ?>
-					<div class="second_form">
-						<table class="table">
-							<tr>
-								<td class="col-md-6">
-									<div class="radio">
-										<input type="radio" id="estimate_rate" class="custom_radio" name="rate_trans" checked value="er">
-										<label for="estimate_rate" class="custom_radio_label">Estimated Rate</label>
-									</div>
-								</td>
-								<td class="col-md-6">
-									<div class="radio">
-										<input type="radio" id="beetween_range" class="custom_radio" name="rate_trans" value="br">
-										<label for="beetween_range" class="custom_radio_label">Between Range</label>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label id="amt_label" for="min_amnt" class="control-label">Estimated Amount (Ex. 8000)</label>
-									<input type="text" id=est_range_amnt class="form-control" placeholder="Amount" name="quoted_rate">
-								</td>
-								<?php /*<td>
-									<label for="max_amnt" class="control-label">Maximum Amount</label>
-									<input type="text" id="max_amnt" class="form-control" placeholder="10000">
-								</td>*/ ?>
-							</tr>
-						</table>
-					</div>
-					<?php } 	?>
-					<div class="form-group text-center form_message">
-						<span></span>
-					</div>
-					<div class="form-group text-center">
-						<button class="btn btn_cmmn_red" id="quote_order_btn" type="submit">Submit</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- $re = '/^([0-9-]+)$/m';
-$str = '159-951-66';
 
-preg_match_all($re, $str, $matches);
 
-// Print the entire match result
-print_r($matches); -->
 
-<!-- <script type="text/javascript">
-	$(document).ready(function(){
-		$.ajax({
-			type: "POST",
-			url: "/gmt/Book_history/book_history",
-			cache: false,
-			dataType: 'json',
-			success:function(result){
-					if (result.status_code == 200)
-					{
-						console.log(result.data);
-						/*var orderData = result.data;
-						//alert(orderData[0]['first_name']);
-						
-						var orderObj = $('.place_order_main');
-						$.each(result.data, function(multipleKey,multipleObject) {	
-							var multipleCities = '';
-							$.each(multipleObject, function(key, value) {
-								//console.log(key+':'+value);
-								
-								if(key=='from_city'){
-									multipleCities ='<article class="col-sm-3"><label>From City</label><h4>'+value+'</h4></article>';										
-								}
-								else if(key=='to_city'){
-									multipleCities +='<article class="col-sm-3"><label>To City</label><h4>'+value+'</h4></article>';								
-								}
-								else if(value!=0){
-									orderObj.find('.'+key).html(value);
-								}
-							})
-							//alert(multipleCities);
-							$('.cities').append(multipleCities);							
-						})*/
-						
-					}else{
-						console.log(result.data);
-						/*$('#form_validation_msg').empty();
-						$.each(result.data, function(key, val) {
-							$('<p><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
-						});*/
-					}
-			},
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$('input[name="cancel_order"]').click(function(){		
+			$(this).closest('.tab-pane').removeClass('active in');
+			$(this).closest('.tab-content').find('.order_listing_wp').addClass('active in');
 		})
-	});
-</script> -->
-<script type="text/javascript">
-$('input[type=radio][name=rate_trans]').on('change', function(){
-    var str = "";
-    if (this.value == 'er') {
-        var str = "Estimated Rate (Ex. 8000)";
-        $( "#amt_label" ).text( str );
-    }
-    else if (this.value == 'br') {
-    	var str = "Beetween Rage (Ex. 8000-8500)";
-        $( "#amt_label" ).text( str );
-    }
-});
+		
+		//Appending value to the contact box
+		$('input[name=save_contact]').click(function(){
+			var currentOrderObj = $(this).closest('.order_wrpr');
+			var saveContactForm = $('.save_contact_form');			
+			saveContactForm.find('.contact_name').html(currentOrderObj.find('.contact_name').text()).val(currentOrderObj.find('.contact_name').text());
+			saveContactForm.find('.contact_number').html(currentOrderObj.find('.contact_number').text()).val(currentOrderObj.find('.contact_number').text());
+			saveContactForm.find('.contact_email').html(currentOrderObj.find('.contact_email').text()).val(currentOrderObj.find('.contact_email').text());	
+		})		
+		//End
+		
+		
+		
+		// to get group list
+		$(".group_list").one('click',function(){
+	        var user_id = $('#u_id').val();
+	        
+	        jQuery.ajax({
+		    	type:"POST",
+				url: "/gmt/Save_contact/listGroup",
+				dataType: 'json',
+		        data: { user_id: user_id },
+				success: function(res){
+					if(res.status_code == 200){
+						
+						$('.group_list').empty();
+						$('.group_list').val('');
+						var option ='<option value="">Select Group</option>';
+			            $.each(res.data, function(key, val) {
+			            	option +='<option value="'+val['group_id']+'">'+val['group_name']+'</option>';
+			            });
+			            $('.group_list').html(option);
+					}else{
+						console.log('No response.');
+					}
+				},
+		        error: function(){
+		        	console.log('Somthing went wrong');
+		        }
+			});
+		});
 
+		$('.sv_cont').click(function()
+		{			
+			var user_id  	= $('#u_id').val();
+			var cont_name	= $('#contact_name').val();
+			var cont_number	= $('#contact_number').val();
+			var cont_email  = $('#contact_email').val();
+			var cont_group_id = $("option:selected").val();
+									
+			if(user_id == '' || cont_name == '' || cont_number == '' || cont_email == '' || cont_group_id == ''){
+				
+				$('#form_validation_msg').empty();
+				$('<p style="color:#ed4343;"><strong>All * fields are required</strong></p>').appendTo('#form_validation_msg');
+				return false;
+			}else{
+				var save_contact = $('#sv_cont').serialize();
+				jQuery.ajax({
+					type 	: "POST",
+					url  	: "/gmt/Save_contact/save_contact",
+					data	: {
+				        		user_id 		: user_id,
+								cont_name 		: cont_name,
+								cont_number 	: cont_number,
+								cont_email		: cont_email,
+								cont_group_id	: cont_group_id
+							},
+					success: function(res){
+						if(res.status_code == 200){							
+							$('#form_validation_msg').empty();							
+							$('<p style="color:#00ff00;"><strong>Contact saved successfully.</strong></p>').appendTo('#form_validation_msg');
+							
+							setTimeout(function(){ 										
+									$('#saveContactModal').modal('hide');
+								}, 4000);
+						}else{
+							$('#form_validation_msg').empty();
+							$.each(res.data, function(key, val) {
+				            	$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
+				            });
+						}
+					},
+					error: function(){
+						console.log('Something went wrong.');
+					}
+				}); // ajax
+			}
+		}); // Ajax post for submiting registration form
+	}); // doc ready 
 </script>
-<script type="text/javascript">
-$(document).ready(function(){
-
-	$('input[name="cancel_order"]').click(function(){		
-		$(this).closest('.tab-pane').removeClass('active in');
-		$(this).closest('.tab-content').find('.order_listing_wp').addClass('active in');
-	})
-
-	$('.del_order_btn').click(function(){
-		
-		if(confirm('Are you sure you want to delete this order?')){
-			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
-		
-			$.ajax({
-				type: "POST",
-		        url : "/gmt/Delete_document/delete_order",
-		        data: {
-		        	order_id: order_id
-		        },
-
-		        success: function(res) {
-		        	
-		        	if (res.status_code == 200)
-		            {
-		              	
-		              	$('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-			            		$('<p style="color:#00FF00;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
-			            		alert(val);
-			            		location.reload();
-			            	}
-			            });
-		            }else{
-			            
-			            $('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-			            		$('<p style="color:#ed4343;"><strong>'+val+'</strong></p>').appendTo('#form_validation_msg');
-			            	}
-			            });
-		            }
-	          	},
-		        error: function(){
-		        	console.log('Somthing went wrong');
-		        }
-	        });
-		}
-	})
-	
-	
-	//<!-- Added by Bhavesh -->	
-	//<!-- this function for the customer -->
-	$('.accept_order').click(function(){
-		
-			if(!confirm('Are you sure you want to sent request?'))
-				return false;
-			var currentObj = $(this);
-			var transpoter_id = $(this).attr('data-quoted_user_id');
-			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
-			
-			$.ajax({
-				type: "POST",
-		        url : "/gmt/Quotation/acceptOrder",
-		        data: {
-		        	order_id: order_id,transpoter_id: transpoter_id
-		        },
-
-		        success: function(res) {
-		        	
-		        	if (res.status_code == 200)
-		            {		              	
-		              	$('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
-								currentObj.val('Sent');
-								currentObj.closest('.order_row').find('input[type=button]').attr('disabled','disabled');
-							}
-			            });
-		            }else{
-			            
-			            $('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
-			            	}
-			            });
-		            }
-	          	},
-		        error: function(){
-		        	console.log('Somthing went wrong');
-		        }
-	        });
-		});
-		
-		//<!-- This function is for transportor -->
-		$('.order_confirm_cancle').click(function(){
-		
-			if(!confirm('Are you sure you want to perform this action?'))
-				return false;
-			var currentObj = $(this);
-			var transpoter_id = '<?php echo $logged_in_user['user_id']?>';
-			var order_id = $(this).closest('.order_wrpr').find('input[name=del_order_text]').val();
-			if($(this).val()=='Yes')
-				var order_status = 9; //Vehicle Available and Order Confirm
-			else
-				var order_status = 7; //Vehicle Not Available
-			
-			$.ajax({
-				type: "POST",
-		        url : "/gmt/Quotation/confirmOrder",
-		        data: {
-		        	order_id: order_id,transpoter_id: transpoter_id,order_status: order_status
-		        },
-
-		        success: function(res) {
-		        	
-		        	if (res.status_code == 200)
-		            {		              	
-		              	$('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-								$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#00FF00;"><strong>'+val+'</strong></p>');
-							}
-			            });
-		            }else{
-			            
-			            $('#form_validation_msg').empty();
-			            $.each(res.data, function(key, val) {
-			            	if(key == 'message'){
-			            		$('.form_message span').html('<p style="color:#ed4343;"><strong>'+val+'</strong></p>');
-			            	}
-			            });
-		            }
-	          	},
-		        error: function(){
-		        	console.log('Somthing went wrong');
-		        }
-	        });
-		});
-		
-	
-	<!-- End by Bhavesh -->
-	
-	
-	
-	
-})
-</script>			

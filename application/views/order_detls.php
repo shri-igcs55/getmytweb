@@ -413,48 +413,6 @@
 </section>
 <!-- place order crane starts -->
 
-<!-- #### SAVE CONTACT MODAL ### -->
-<div class="modal fade" id="saveContactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h2 class="modal-title text-center" id="myModalLabel">Save Contact</h2>
-			</div>
-			<div class="modal-body">
-				<table class="table save_contact_table">
-					<tr>
-						<td>Name</td>
-						<td>Santhosh</td>
-					</tr>
-					<tr>
-						<td>Phone No.</td>
-						<td>9876543210</td>
-					</tr>
-					<tr>
-						<td>Email</td>
-						<td>santhosh@gmail.com</td>
-					</tr>
-					<tr>
-						<td>Group</td>
-						<td>
-							<select name="" id="" class="form-control">
-								<option value="">Transport</option>
-								<option value="">Truck</option>
-							</select>
-						</td>
-					</tr>
-				</table>
-				<div class="form-group text-center">
-					<button class="btn btn_cmmn_red" type="submit">Save Contact</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-
 <!-- #### GET QUOTATION MODAL ### -->
 <div class="modal fade" id="getQuotationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
