@@ -45,7 +45,15 @@
 								<div class="tab-content order_wrpr order_id_<?php echo $orderObj->order_id?>">
 								<div class="row">
 									<div class="col-sm-12">
-										<h4 class="order_small_head"><?php echo "Order for ".$orderObj->order_place_for; ?></h4>
+										<h4 class="order_small_head"><?php echo "Order for ".$orderObj->order_place_for; ?>
+										<?php 
+											if($logged_in_user['user_type_parent_id'] != 2){
+												if($orderObj->is_owner == 1){
+													echo "&nbsp&nbsp<b>(Your Own Order)</b>";
+												}
+											}
+										?>										
+										</h4>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
@@ -280,7 +288,11 @@
 					    				<article class="col-sm-12">
 					    					<input data-toggle="tab" type="button" name="cancel_order" id="cancel_butn" value="Back">
 											<?php if($logged_in_user['user_type'] > 4):?>
-												<input type="button" name="rate_order" id="rate_butn" value="Give Quotation" data-toggle="modal" data-target="#getQuotationModal">
+											
+												<?php if($orderObj->is_owner == 0){?>
+													<input type="button" name="rate_order" id="rate_butn" value="Give Quotation" data-toggle="modal" data-target="#getQuotationModal">												
+												<?php }	?>
+												
 											<?php endif; /*if(9==$quation_details->order_status): ?>
 												<input type="button" name="save_contact" class="pull-right save_contact" value="Save Contact" data-toggle="modal" data-target="#saveContactModal">
 											<?php endif;*/?>

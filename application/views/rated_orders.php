@@ -48,7 +48,16 @@
 								<div class="tab-content order_wrpr order_id_<?php echo $orderObj->order_id?>">
 								<div class="row">
 									<div class="col-sm-12">
-										<h4 class="order_small_head"><?php echo "Order for ".$orderObj->order_place_for; ?></h4>
+										<h4 class="order_small_head">
+										<?php echo "Order for ".$orderObj->order_place_for; ?>
+										<?php 
+										if($logged_in_user['user_type_parent_id'] != 2){
+											if($orderObj->is_owner == 1){
+												echo "&nbsp&nbsp<b>(Your Own Order)</b>";
+											}
+										}
+										?>
+										</h4>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
@@ -316,7 +325,8 @@
 						    			</div>
 					    			<?php }?>
 									
-									<?php if($logged_in_user['user_type_parent_id'] == 2){
+									<?php //if($logged_in_user['user_type_parent_id'] == 2){
+										if($orderObj->is_owner == 1){									
 											if(isset($orderObj->quotation)){
 											?>
 				    					<div class="order_row">
@@ -357,9 +367,9 @@
 												</div>
 											<?php endforeach;?>
 						    			</div>
-											<?php }
-										}?>
-									<?php if($logged_in_user_parent_id != 2){ ?>
+											<?php } ?>
+										
+									<?php }else{ ?>
 						    			<div class="order_row">
 						    				<center><h4><span>Given Quotation</span></h4></center>
 						    				<div class="row">

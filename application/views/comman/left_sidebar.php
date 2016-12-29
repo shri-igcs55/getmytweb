@@ -66,7 +66,7 @@ Transporter 							= 7
 		    		 $logged_in_user['user_type'] == 10 ||
 		    		 $logged_in_user['user_type'] == 11 ||
 		    		 $logged_in_user['user_type'] == 12 ){ ?>
-					    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Rate Order</a></li>
+					    <li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li> <!--changed lable by Bhvaesh Rate to Pending-->
 				    <?php }else{ ?>
 						<li><a href="<?php echo site_url('userdashboard/booked_orders'); ?>">Pending Order</a></li>
 					<?php } ?>

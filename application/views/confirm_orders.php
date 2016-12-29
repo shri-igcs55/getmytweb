@@ -45,14 +45,22 @@
 								<div class="tab-content order_wrpr order_id_<?php echo $orderObj->order_id?>">
 								<div class="row">
 									<div class="col-sm-12">
-										<h4 class="order_small_head"><?php echo "Order for ".$orderObj->order_place_for; ?></h4>
+										<h4 class="order_small_head"><?php echo "Order for ".$orderObj->order_place_for; ?>
+										<?php 
+										if($logged_in_user['user_type_parent_id'] != 2){
+											if($orderObj->is_owner == 1){
+												echo "&nbsp&nbsp<b>(Your Own Order)</b>";
+											}
+										}
+										?>
+										</h4>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="order_detailes_<?php echo $orderObj->order_id?>">
 				    				<div class="order_row">
 					    				<div class="row">
 										
-												<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+												<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5 && $orderObj->is_owner==0){ ?>
 													<article class="col-sm-6">
 													<h4>Request from Customer:</h4>
 													</article>
