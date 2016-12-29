@@ -11,7 +11,8 @@
 			$logged_in_user['user_type'] == 9 || 
 			$logged_in_user['user_type'] == 10 || 
 			$logged_in_user['user_type'] == 11 || 
-			$logged_in_user['user_type'] == 12 ){
+			$logged_in_user['user_type'] == 12 ||
+			$logged_in_user['user_type'] == 13){
 				$findOrder = site_url('userdashboard/search_transporter_order');
 	}
 ?>
@@ -43,6 +44,7 @@ Transporter 							= 7
 		    		 $logged_in_user['user_type'] == 10 ||
 		    		 $logged_in_user['user_type'] == 11 ||
 		    		 $logged_in_user['user_type'] == 12 ||
+					 $logged_in_user['user_type'] == 13 ||
 		    		 $logged_in_user['user_type'] == 5 ||
 		    		 $logged_in_user['user_type'] == 6 ):?>
 				<li><a href="<?php echo site_url('userdashboard/place_transporter_order'); ?>">Book your Order</a></li>
@@ -53,7 +55,8 @@ Transporter 							= 7
 		    		 $logged_in_user['user_type'] == 9 ||
 		    		 $logged_in_user['user_type'] == 10 ||
 		    		 $logged_in_user['user_type'] == 11 ||
-		    		 $logged_in_user['user_type'] == 12 ){ ?>
+		    		 $logged_in_user['user_type'] == 12 ||
+					 $logged_in_user['user_type'] == 13){ ?>
 
 			    	<li><a href="<?php echo $findOrder; ?>">Find Order</a></li>
 			<?php } ?>
