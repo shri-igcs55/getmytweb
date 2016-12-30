@@ -517,8 +517,8 @@
 	        var no_of_vehicle 		= objCurrentSection.find("#vehicle_no").val();
 	        var pickup_points 		= objCurrentSection.find("#pick_point").val();
 			var destination_points 	= objCurrentSection.find("#drop_point").val();
-	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();
-	        
+	        var sechdule_date	 	= objCurrentSection.find("#schedule_date").val();			
+			
 			if(validatePhoneNumber(user_mob) == false){
 				$('<p style="color:#ed4343;"><strong>Mobile Number is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
@@ -527,11 +527,12 @@
 			else if(validateWeight(weight) == false){
 	        	$('<p style="color:#ed4343;"><strong>Weight is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
-			}*/
+			}
 			else if(validateNag(no_of_quantity) == false){
 	        	$('<p style="color:#ed4343;"><strong>Nag (Quantity) is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
-			}else if(validateLength(feet) == false){
+			}*/
+			else if(validateLength(feet) == false){
 	        	$('<p style="color:#ed4343;"><strong>Length is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
 			}
@@ -554,7 +555,7 @@
 				}
 			});
 			
-			if(no_of_quantity == '' && weight == ''){
+			if(validateNag(no_of_quantity) == false && validateWeight(weight) == false){
 				$('<p style="color:red"><strong>Any one field must not be empty from Nag & Weight.</strong></p>').appendTo('#form_validation_msg');
 				return false;
 			}

@@ -485,11 +485,20 @@
 											
 											<script type="text/javascript">
 												var modified_datetime = "<?php echo date("Y/m/d H:i:s", strtotime($orderObj->modified_datetime."+35 minutes"));?>";
+												var order_id = "<?php echo $orderObj->order_id?>";
+												
 												$(".left_time_"+<?php echo $orderObj->order_id?>)
 													.countdown(modified_datetime, function(event) {		
 													$(this).text(
 														event.strftime('%M:%S')
 													);
+													if($(this).text()=='00:00'){
+														$('.order_id_'+order_id+' .form_message_orderwise').html('<p style="color:#ed4343;"><strong>Sorry Time out!!</strong></p>');
+														$('.order_id_'+order_id).find('.order_confirm_cancle').attr('disabled','disabled');				setTimeout(function(){ 
+															$('.order_id_'+order_id).slideUp();
+														},3000);
+													}
+														
 												});
 											</script>
 
