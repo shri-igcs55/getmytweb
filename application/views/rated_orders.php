@@ -1,4 +1,3 @@
-<?php echo $expriedTime = date("Y-m-d H:i:s", strtotime("-35 minutes"));?>
 <script type="text/javascript" src="<?php echo base_url('assets/');?>js/jquery.countdown.min.js"></script>
 <!-- place order crane starts -->
 <section class="place_orderwrp custmer_reg">

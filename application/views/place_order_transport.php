@@ -531,11 +531,11 @@
 			else if(validateNag(no_of_quantity) == false){
 	        	$('<p style="color:#ed4343;"><strong>Nag (Quantity) is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
-			}*/
+			}
 			else if(validateLength(feet) == false){
 	        	$('<p style="color:#ed4343;"><strong>Length is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
-			}
+			}*/
 			var array_from_city = new Array();
 			var array_from_location = new Array();
 			var array_to_city = new Array();

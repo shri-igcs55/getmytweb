@@ -490,7 +490,7 @@ $(document).ready(function(){
         	$('<p style="color:#ed4343;"><strong>Email id is not valid.</strong></p>').appendTo('#form_validation_msg');
         	return false;
         }else if (validatePassword(user_pass) == false){
-        	$('<p style="color:#ed4343;"><strong>Password is not valid.</strong></p>').appendTo('#form_validation_msg');
+        	$('<p style="color:#ed4343;"><strong>Password should be 6 character long.</strong></p>').appendTo('#form_validation_msg');
         	return false;
         }else if (validatePassword(c_pass) == false) {
         	$('<p style="color:#ed4343;"><strong>Confirm Password is not valid.</strong></p>').appendTo('#form_validation_msg');
