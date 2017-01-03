@@ -72,11 +72,11 @@
 					    				</div>
 					    			</div>
 					    			<div class="row">
-										<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+										<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5 && $orderObj->is_owner!=1){ ?>
 											<!--<article class="col-sm-6">
 											<h4>Request from Customer:</h4>
 											</article>-->
-											<div col-md-12>
+											<div class="col-md-12">
 												<div class="row rated-row-button">
 													<article class="col-sm-6">
 														<h4>Do you have vehicle available or not?</h4>
@@ -465,7 +465,7 @@
 												<?php } ?>
 
 													<div class="row">
-										<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5){ ?>
+										<?php if($logged_in_user_parent_id != 2 && $orderObj->status_id_fk==5 && $orderObj->is_owner!=1){ ?>
 											<!--<article class="col-sm-6">
 											<h4>Request from Customer:</h4>
 											</article>-->
