@@ -313,9 +313,9 @@
             // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
             $('#notifications').fadeToggle('fast', 'linear', function () {
                 if ($('#notifications').is(':hidden')) {
-                    $('#noti_Button').css('background-color', '#0195E2');
+                    $('#noti_Button').css('background-color', '#ED4343');
                 }
-                else $('#noti_Button').css('background-color', '#0195e2');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
+                else $('#noti_Button').css('background-color', '#ED4343');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
             });
 
             $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
@@ -330,7 +330,7 @@
             // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
             if ($('#noti_Counter').is(':hidden')) {
                 // CHANGE BACKGROUND COLOR OF THE BUTTON.
-                $('#noti_Button').css('background-color', '#0195E2');
+                $('#noti_Button').css('background-color', '#ED4343');
             }
         });
 

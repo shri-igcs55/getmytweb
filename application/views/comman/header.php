@@ -112,7 +112,7 @@ endif;
 										<!--THE NOTIFICAIONS DROPDOWN BOX.-->
 											<div id="notifications">
 												<h3>Notifications</h3>
-												<div style="height:300px;">
+												<div>
 													<ul>
 													<?php foreach($this->notification as $notification): ?>
 														<li class="<?php echo ($notification->status == 0 ? "unread" : "read")?>" data-notification="<?php echo $notification->id?>">

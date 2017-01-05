@@ -2222,6 +2222,8 @@ margin: 0px 10px;
 	}
 	#notifications > div{
 		text-align:left;
+		height:420px;
+		overflow:auto;
 	}
 	#notifications > div ul li{
 		border-bottom:1px solid #DDD;
