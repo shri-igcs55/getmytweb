@@ -47,6 +47,7 @@ h1,h2,h3,h4,h5,h6,p,ul,label,input,textarea{
 		display: inline-block;
 		list-style: none;
 		padding: 0 7px;
+		vertical-align:top;
 	}
 
 	#header ul.top-menu li:last-child{
@@ -2147,3 +2148,92 @@ margin: 0px 10px;
 	max-width: 150px;
 	width: 150px;
 }
+
+/* Added by Bhavesh */
+    
+    #noti_Container {
+        position:relative;
+    }
+       
+    /* A CIRCLE LIKE BUTTON IN THE TOP MENU. */
+    #noti_Button,.noti_Button {
+        width:20px;
+        height:20px;
+        line-height:20px;
+        border-radius:50%;
+        -moz-border-radius:50%; 
+        -webkit-border-radius:50%;
+        background:#ED4343;
+        margin:-3px 10px 0 10px;
+        cursor:pointer;
+    }
+        
+    /* THE POPULAR RED NOTIFICATIONS COUNTER. */
+    #noti_Counter {
+        display:block;
+        position:absolute;
+        background:#050601;
+        color:#FFF;
+        font-size:12px;
+        font-weight:normal;
+        padding:1px 3px;
+        margin:-8px 0 0 25px;
+        border-radius:2px;
+        -moz-border-radius:2px; 
+        -webkit-border-radius:2px;
+        z-index:1;
+    }
+        
+    /* THE NOTIFICAIONS WINDOW. THIS REMAINS HIDDEN WHEN THE PAGE LOADS. */
+    #notifications {
+        display:none;
+        width:299px;
+        position:absolute;
+        top:30px;
+        left:0;
+        background:#FFF;
+        border:solid 1px rgba(100, 100, 100, .20);
+        -webkit-box-shadow:0 3px 8px rgba(0, 0, 0, .20);
+        z-index: 1;
+    }
+    /* AN ARROW LIKE STRUCTURE JUST OVER THE NOTIFICATIONS WINDOW */
+    #notifications:before {         
+        content: '';
+        display:block;
+        width:0;
+        height:0;
+        color:transparent;
+        border:10px solid #ED4343;
+        border-color:transparent transparent #ED4343;
+        margin-top:-20px;
+        margin-left:10px;
+    } 
+	#notifications ul li {
+		width:100%;
+		padding: 10px;
+		position:relative;
+	}
+	#notifications h3{
+		border-bottom:2px solid #ED4344;
+		font-weight:700;
+		text-align:left;
+		font-size:20px;
+		padding:5px 10px;
+	}
+	#notifications > div{
+		text-align:left;
+	}
+	#notifications > div ul li{
+		border-bottom:1px solid #DDD;
+	}
+	#notifications > div ul li.unread{
+		background:#F6F6F6;
+	}
+	#notifications ul li span{
+		position:absolute;
+		top:10px;
+		right:10px;
+		cursor:pointer;
+		font-weight:700;
+	}
+/* End by Bhavesh */

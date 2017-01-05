@@ -1,4 +1,15 @@
 <?php $logged_in_user = $this->session->userdata('logged_in_user'); ?>
+<?php 
+/*
+echo '<pre>';
+print_r($this->notification);
+echo '</pre>';
+*/
+$notification = '';
+if(isset($this->notification)):
+	$notification = count($this->notification);
+endif;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +69,11 @@
 	<script type="text/javascript">
 		var base_url = '<?php echo base_url(); ?>';
 		var site_url = '<?php echo site_url(); ?>';
+		var notification_total = '<?php echo $notification; ?>';
+		
 	</script>
+	
+	
 </head>
 <body><section class="master_wrp">
 	
@@ -87,11 +102,54 @@
 							<div class="menu-wrp">
 								<?php if($logged_in_user){ ?>
 									<ul class="top-menu text-right">
+									
+										<li id="noti_Container">
+											<div id="noti_Counter"></div>   <!--SHOW NOTIFICATIONS COUNT.-->
+
+											<!--A CIRCLE LIKE BUTTON TO DISPLAY NOTIFICATION DROPDOWN.-->
+											<div id="noti_Button"></div>    
+
+										<!--THE NOTIFICAIONS DROPDOWN BOX.-->
+											<div id="notifications">
+												<h3>Notifications</h3>
+												<div style="height:300px;">
+													<ul>
+													<?php foreach($this->notification as $notification): ?>
+														<li class="<?php echo ($notification->status == 0 ? "unread" : "read")?>" data-notification="<?php echo $notification->id?>">
+															<a href="<?php echo site_url($notification->link); ?>">
+																<?php echo $notification->notification_message?></a>
+															<span>X</span>
+														</li>
+													<?php endforeach;?>														
+													</ul>
+												</div>												
+											</div>
+										</li>
+										
 										<li>Welcome <span style="color:#ed4343;">
 											<a href="<?php if($logged_in_user['user_status'] == '1') echo site_url('userdashboard'); else echo site_url('user/edit'); ?>">
 												<?php echo ucfirst($logged_in_user['first_name']).' '.ucfirst($logged_in_user['last_name']); ?>
 											</a></span>
 										</li>
+										
+										<?php /*?>
+										<li>
+											<ul>
+												<?php foreach($this->notification as $notification): ?>
+												<li>
+													
+													<p><?php $notification->notification_message?></p>
+												</li>
+												<?php endforeach;?>
+											</ul>
+										</li>
+										<?php */?>
+										
+										
+										
+										
+										
+			
 										<li><span style="color:#ed4343;">
 											<a href="<?php echo site_url('user/signout'); ?>">Logout
 											</a></span>

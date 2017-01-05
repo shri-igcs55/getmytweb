@@ -10,7 +10,7 @@
 
 					<form class="user_signin" action="" id="signin_form" name="signin_form">
 						<div class="form-group">
-						    <label for="text">Email/Mobile Number<sup>*</sup></label>
+						    <label for="text">Mobile Number<sup>*</sup></label>
 						    <input type="text" class="form-control" id="email_phn" required>
 						</div>
 						<div class="form-group">
@@ -118,11 +118,13 @@
 			var password 	= objCurrentSection.find("#paswrd").val();
 			// var role	= objCurrentSection.find("#role").val();
 			
-			if(validateEmail(email_mob) == true || validatePhoneNumber(email_mob) == true){	        	
+			//if(validateEmail(email_mob) == true || validatePhoneNumber(email_mob) == true){
+			if(validatePhoneNumber(email_mob) == true){
 	        }
 			else
 			{
-				$('<p style="color:#ed4343;"><strong>Email or Mobile is not valid.</strong></p>').appendTo('#form_validation_msg');
+				$('<p style="color:#ed4343;"><strong>Mobile is not valid.</strong></p>').appendTo('#form_validation_msg');
+				//$('<p style="color:#ed4343;"><strong>Email or Mobile is not valid.</strong></p>').appendTo('#form_validation_msg');
 	        	return false;
 			}
 

@@ -235,14 +235,12 @@
 	}
 
 	function validatePassword(inputtxt)  
-	{  
-	  	var phoneno = /^([a-zA-Z0-9]{6,})$/;  
-	  	if(phoneno.test(inputtxt))  
-	    {  
+	{  	 
+		//minimum 6 character long		
+	  	if(inputtxt.length > 5)  
 	    	return true;
-	    } else {
-	        return false;
-		}  
+	    else
+	        return false;  
 	}
 
 	function validateNag(inputtxt)  
@@ -289,6 +287,99 @@
 		}  
 	}
 </script>
+
+
+<!-- Added for Notification -->
+<script>
+    $(document).ready(function () {
+
+		if(notification_total=='')
+		{
+			$('#noti_Button').html('<a href="'+base_url+'userdashboard/booked_orders"></a>').addClass('noti_Button').removeAttr( "id" );
+			$('#noti_Counter').hide();
+		}
+		$('.noti_Button').click(function () {
+			window.location.href = $(this).find('a').attr('href');
+		}) 
+        // ANIMATEDLY DISPLAY THE NOTIFICATION COUNTER.
+        $('#noti_Counter')
+            .css({ opacity: 0 })
+            .text(notification_total)              // ADD DYNAMIC VALUE (YOU CAN EXTRACT DATA FROM DATABASE OR XML).
+            .css({ top: '-10px' })
+            .animate({ top: '-2px', opacity: 1 }, 500);
+
+        $('#noti_Button').click(function () {
+
+            // TOGGLE (SHOW OR HIDE) NOTIFICATION WINDOW.
+            $('#notifications').fadeToggle('fast', 'linear', function () {
+                if ($('#notifications').is(':hidden')) {
+                    $('#noti_Button').css('background-color', '#0195E2');
+                }
+                else $('#noti_Button').css('background-color', '#0195e2');        // CHANGE BACKGROUND COLOR OF THE BUTTON.
+            });
+
+            $('#noti_Counter').fadeOut('slow');                 // HIDE THE COUNTER.
+
+            return false;
+        });
+
+        // HIDE NOTIFICATIONS WHEN CLICKED ANYWHERE ON THE PAGE.
+        $(document).click(function () {
+            $('#notifications').hide();
+
+            // CHECK IF NOTIFICATION COUNTER IS HIDDEN.
+            if ($('#noti_Counter').is(':hidden')) {
+                // CHANGE BACKGROUND COLOR OF THE BUTTON.
+                $('#noti_Button').css('background-color', '#0195E2');
+            }
+        });
+
+        $('#notifications').click(function () {
+            return false;       // DO NOTHING WHEN CONTAINER IS CLICKED.
+        });
+		
+		
+		$('#notifications ul li span').click(function () {
+			var id = $(this).closest('li').attr('data-notification');
+			$(this).closest('li').hide('fast');			
+			$.ajax({
+		        type: "POST",
+		        url : "/gmt/quotation/notificationdelete",
+		        data: { id:id}
+	        });			
+        });
+		
+		$('#notifications ul li a').click(function () {	
+			var notification_id = $(this).closest('li').attr('data-notification');
+			window.location.href = $(this).attr('href')+'&notification_id='+notification_id;
+        });
+		
+		function getParameterByName(name) {
+			var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+			return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+		}
+		var order_id = getParameterByName('order_id');
+		var notification_id = getParameterByName('notification_id');
+		if(order_id!='' && notification_id!='')
+		{
+			$("html, body").scrollTop($('.order_id_'+order_id).offset().top);
+			$('.order_id_'+order_id).effect('highlight',{},4000); // four seconds
+			//$('#notifications ul li').find('[data-notification="'+notification_id+'"]').addClass('read').removeClass('unread');
+			$('ul li[data-notification="'+notification_id+'"]').addClass('read').removeClass('unread');
+			$.ajax({
+		        type: "POST",
+		        url : "/gmt/quotation/notificationread",
+		        data: { id:notification_id}
+	        });	
+		}
+		
+		
+		
+    });
+</script>
+<!-- End for Notification -->
+
+
 </body>
 <?php print_r($this->session->userdata('logged_in_user')); ?>
 </html>

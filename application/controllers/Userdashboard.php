@@ -5,11 +5,12 @@
 */
 class Userdashboard extends CI_Controller
 {
-	
+	var $notification='';
 	public function Userdashboard()
 	{
 		parent:: __construct();
 		$logged_in_user = $this->session->userdata('logged_in_user');
+		$this->notification = $this->getData('quotation','notification',array('user_id'=>$logged_in_user['user_id']));		
 		if (!isset($logged_in_user)) {
 			redirect(site_url('user/signin'));
 		}

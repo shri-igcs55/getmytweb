@@ -9,6 +9,8 @@ class User extends CI_Controller
 	public function __construct()
 	{
 		parent:: __construct();
+		$logged_in_user = $this->session->userdata('logged_in_user');
+		$this->notification = $this->getData('quotation','notification',array('user_id'=>$logged_in_user['user_id']));
 		$this->load->helper('captcha');
 	}
 
@@ -189,5 +191,23 @@ class User extends CI_Controller
 	   	echo json_encode($data);
         exit;
     }
+	
+	
+	public function getData($class,$method,$arrayField){	
+		$ch = curl_init();		
+		$wurl = $st_url = site_url('/gmt');		
+		if($st_url == 'http://127.0.0.1/getmytruckweb/gmt' || $st_url == 'http://127.0.0.1/getmytruck/gmt'){
+			$wurl = $st_url = 'http://127.0.0.1/gmt';
+		}
+		
+		curl_setopt($ch,CURLOPT_URL, $wurl.'/'.$class.'/'.$method);
+		curl_setopt($ch,CURLOPT_POST, count($arrayField));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $arrayField);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		$result = curl_exec($ch);
+		$obj = json_decode($result);		
+		curl_close($ch);
+		return $obj;
+	}
 
 }
