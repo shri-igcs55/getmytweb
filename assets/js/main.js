@@ -550,13 +550,13 @@ $(document).ready(function(){
 		            {
 		              	$('<p style="color:#00ff00;"><strong>Registered Successfully</strong></p>').appendTo('#form_validation_msg');
 		              	$('.reg_form')[0].reset();
-		              	
+		              	//alert(user_mob);
 		              	jQuery.ajax({
 					    	type:"POST",
 							url: "/gmt/User/user_signin",
 							dataType: 'json',
 					        data: { 
-					        	email_mob: user_email,
+					        	email_mob: user_mob,
 					        	password : user_pass
 					        	// utype_id : role
 					        },

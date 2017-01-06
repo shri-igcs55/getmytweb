@@ -69,8 +69,7 @@ endif;
 	<script type="text/javascript">
 		var base_url = '<?php echo base_url(); ?>';
 		var site_url = '<?php echo site_url(); ?>';
-		var notification_total = '<?php echo $notification; ?>';
-		
+		var notification_total = '<?php echo $notification; ?>';		
 	</script>
 	
 	

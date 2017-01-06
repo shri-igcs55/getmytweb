@@ -360,7 +360,9 @@
 		}
 		var order_id = getParameterByName('order_id');
 		var notification_id = getParameterByName('notification_id');
-		if(order_id!='' && notification_id!='')
+		
+		
+		if(order_id!=null && notification_id!=null)
 		{
 			$("html, body").scrollTop($('.order_id_'+order_id).offset().top);
 			$('.order_id_'+order_id).effect('highlight',{},4000); // four seconds
