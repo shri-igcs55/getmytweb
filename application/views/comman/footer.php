@@ -383,5 +383,5 @@
 
 
 </body>
-<?php //print_r($this->session->userdata('logged_in_user')); ?>
+<?php print_r($this->session->userdata('logged_in_user')); ?>
 </html>
