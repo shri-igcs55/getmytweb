@@ -46,7 +46,7 @@ endif;
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/normalize.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/hover.css"> -->
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/responsive.css">
+	
 	<!-- main css ends -->
 
 	<!-- Home page css -->
@@ -61,7 +61,7 @@ endif;
 	<!-- datatable js -->
 	<script type="text/javascript" src="/gmt/assets/js/dataTables/jquery.dataTables.js"></script>
 	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/');?>css/responsive.css">
 	<!-- home page js -->
 	
 

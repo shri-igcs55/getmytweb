@@ -107,7 +107,7 @@
 					<section class="about-1">
 						<div class="row">
 							<article class="col-sm-5 col-xs-4"></article>
-							<article class="col-sm-6 col-xs-7">
+							<article class="col-sm-6 col-xs-12">
 								<div class="about-content">
 									<h1>About <i>Getmy</i><span>TRUCK</span></h1>
 									<p>We are the leaders in online goods transport services by connecting customers and transporters across India. Our objective is to make the transportation of your goods simple and efficient by providing cutting edge technology that is secure, economical and user friendly.</p>
